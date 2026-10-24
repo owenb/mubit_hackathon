@@ -7,8 +7,27 @@
   <title>London Travel</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2307121d'/%3E%3Cpath d='M10 7v18h14' stroke='%2370f0d3' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/intro.css">
+  <link rel="preload" as="image" href="/media/session-ended.png?v=1">
 </head>
 <body>
+  <div id="intro" role="dialog" aria-modal="true" aria-label="Think Mubit intro">
+    <div class="intro-gate">
+      <svg class="intro-speaker" viewBox="0 0 48 48" aria-hidden="true"><path class="body" d="M7 18h8l11-9v30l-11-9H7z"/><path class="wave" d="M32 17a9 9 0 0 1 0 14"/><path class="wave wave-2" d="M37 12a16 16 0 0 1 0 24"/></svg>
+      <h1>Turn your volume up</h1>
+      <button id="intro-ok" class="intro-button intro-primary">OK</button>
+    </div>
+    <video id="intro-video" src="/media/think-mubit.mp4?v=9" poster="/media/think-mubit-poster.jpg?v=9" playsinline preload="auto" hidden></video>
+    <button id="intro-skip" hidden>Skip intro <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <div id="intro-prank" hidden>
+      <img id="intro-prank-image" src="/media/session-ended.png?v=1" alt="Mubit: Your session ended. Sign in again.">
+      <div id="intro-kidding" hidden>JUST KIDDING</div>
+    </div>
+    <div id="intro-end" hidden>
+      <button id="intro-again" class="intro-button intro-secondary">Play again</button>
+      <button id="intro-demo" class="intro-button intro-primary">Go to demo</button>
+    </div>
+  </div>
   <canvas id="homeward" aria-label="Interactive 3D map of London" tabindex="0"></canvas>
   <div id="app-chrome" hidden>
     <header id="toolbar">
@@ -59,6 +78,7 @@
     <p id="loading-title" role="status">Loading London...</p>
     <p id="failure" class="sr-only" role="alert" hidden></p>
   </main>
+  <script type="module" src="/intro.mjs"></script>
   <script type="module" src="/loader.mjs"></script>
   <script type="module" src="/experience.mjs"></script>
   <script type="module" src="/enterprise.mjs"></script>
