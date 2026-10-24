@@ -8,6 +8,22 @@ Built for the Mubit hackathon to explore a recurring task: turn an operator's tr
 
 This repository contains the **browser/WebGPU version**, its Node backend, teaching experiments and evaluation code. The renderer is supplied as precompiled WebAssembly with JavaScript bindings. No native desktop application, Rust source or Rust toolchain is included or required to run this distribution.
 
+## Why this matters to travel operators
+
+A great travel guide's advantage is the “secret knowledge” built over years: how the city really works, what visitors love, and which recommendation fits this particular person. That expertise lives in guides' heads and comes through in many small decisions every day.
+
+Homeward gives operators a way to teach that judgement. A guide can correct an answer or move a map pin; Mubit can turn reviewed examples of this recurring task into updates to a task-adapted open model. The ambition is an intelligence layer that carries the operator's expertise and improves through their corrections.
+
+For an operator, the reasons to pursue this are:
+
+- **Sovereignty of data.** With exported weights and self-hosted inference, operators could choose where traveller requests and their proprietary knowledge are processed, subject to their own retention and access policies.
+- **Ownership.** Build a model shaped by years of local expertise, with weights the operator can export and retain as a business asset.
+- **Reliability.** Use versioned models and repeatable evaluations to check that familiar travel questions receive useful answers and correct map pins. Keep changing facts, such as lift outages, in fresh evidence and live feeds.
+- **Optionality — including running locally.** Export provides a path to serving on suitable local hardware or a chosen hosting provider, and to changing infrastructure as requirements change.
+- **A degree of resistance to future censorship.** Retained, independently served open weights reduce dependence on a closed provider's future access restrictions, regional availability and refusal policies. They do not remove legal or infrastructure constraints.
+
+The current prototype uses hosted Mubit for recorded teaching calls. Local inference, operational independence and improved model quality remain to be demonstrated.
+
 ## Run locally
 
 Requirements: Node.js 22 or later and a desktop browser with WebGPU and hardware acceleration. Use `localhost` or HTTPS.
