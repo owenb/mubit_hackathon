@@ -9,11 +9,11 @@
     "codec": "brotli"
   },
   "engine": {
-    "url": "/assets/homeward-8b57f3710d8748ef.wasm.gz",
-    "bytes": 2376832,
-    "sha256": "8b57f3710d8748ef639698e8f09eea6b955e8a7f70994374fdb28bc6714b2e52",
-    "raw_bytes": 7026405,
+    "url": "/assets/homeward-98db2b853e9a56f8.wasm.gz",
+    "bytes": 2423822,
+    "sha256": "98db2b853e9a56f84bc56640b0437d3c8929b9fbe1cf9b753d182d4cf269ec2e",
+    "raw_bytes": 7127413,
     "codec": "gzip"
   },
-  "bindings": "/assets/homeward-33f99a441d7a3a5e.mjs"
+  "bindings": "/assets/homeward-db6783e6c31d2478.mjs"
 }
