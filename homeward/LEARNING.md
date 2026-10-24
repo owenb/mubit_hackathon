@@ -1,12 +1,10 @@
 # Helping Homeward learn
 
-Open **Fix an answer** in the WebGPU app. The flow has three steps:
+The current WebGPU flow starts with **Fix this** beneath a travel answer. Add/remove verified places and choose **Edit wording** for the answer text. **Use on my map** saves a personal edit. **Share as a correction…** asks for a reason; **Send correction** submits the reusable correction through the Luna audit and teacher flow. The shared **Evidence** panel shows receipts and observed model progress.
 
-1. **Fix:** edit what Homeward should say, remove the wrong map places and add missing ones. Explain the mistake in a few words. Tick **Help Homeward answer this better for everyone** for a reusable correction; leave it off for a personal trip edit.
-2. **Check:** **Preview my changes** saves the edit and draws it on the real map. Check the answer, places and travel sources. Choose **Send correction** for shared teaching, or **Keep for this trip** for a personal edit.
-3. **Follow:** see whether Mubit received and reviewed it, whether a new model exists, and whether that model does better on different questions. Detailed receipts and raw replies are under **How we know**.
+A personal preview is your edit, not a model-learned reply. Original answers remain preserved. Duplicate submission of a saved correction is blocked, including across server restarts.
 
-The map labels edited previews **Your correction · preview**. That is your edit, not an answer learned by a model. Saved originals remain unchanged. Sending an identical saved correction twice is blocked, including across server restarts.
+This page describes the **original travel task**. The separate Bank and enterprise experiments have trained adapters and distinct development results; see [the current results](../README.md#what-the-trained-models-actually-did) and [the agent handoff](../AGENTS.md). Their progress must not be attributed to the original Greville Street correction.
 
 ## What actually happened
 
@@ -14,7 +12,7 @@ The Greville Street development example incorrectly included Canary Wharf DLR. A
 
 Luna checked the correction and returned a matching teaching reply through Mubit. The console then confirmed that its request and answer were stored, grouped under the original Homeward task, and trainable. A Good rating and its explanation were saved and re-read. Homeward’s pool rose from **149 to 150 kept examples**, with the other counts unchanged. The console has no per-row kept flag, so that aggregate increase is not treated as confirmed per-row lineage.
 
-**Only v1 is visible. No post-correction model improvement is proved yet.** The recorded task policy refreshes every 24 hours after enough new examples; its exact next-run time is not exposed. The available version actions control rollout, not retraining. App routing was not changed.
+**At the last verified original-task check, only v1 was visible; no updated-model gain for this Greville Street correction was proved.** The recorded task policy refreshes every 24 hours after enough new examples; its exact next-run time is not exposed. The available version actions control rollout, not retraining. App routing was not changed.
 
 See [the console observations](data/feedback-observations.json) and [the original live teaching evidence](data/learning-flow-evidence.json). These are timestamped observations, not live queries. Refreshing the progress panel reads the latest saved check; use its Mubit link for the live console.
 
@@ -34,7 +32,7 @@ A call receipt, stored content, positive review, kept training example, trained 
 
 ## Storage and API
 
-`src/feedback.mjs` validates corrections and owns the teacher flow. `web/public/corrections.mjs` renders the three steps. Records live under ignored `homeward/results/feedback/`, restricted to the browser-session cookie. Persist that directory on a writable volume for deployment. This session ownership is not a multi-user authentication system; losing the cookie loses browser access to that session’s history. Original questions still pass through Mubit under the app’s normal recording policy; only trip-specific correction submissions stay local.
+`src/feedback.mjs` validates corrections and owns the teacher flow. `web/public/experience.mjs` owns the shared correction interface, alongside the correction helpers. Records live under ignored `homeward/results/feedback/`, restricted to the browser-session cookie. Persist that directory on a writable volume for deployment. This session ownership is not a multi-user authentication system; losing the cookie loses browser access to that session’s history. Original questions still pass through Mubit under the app’s normal recording policy; only trip-specific correction submissions stay local.
 
 - `GET /api/places?q=…`: verified catalogue search.
 - `GET /api/learning`: this session’s saved corrections.
@@ -63,7 +61,7 @@ Every Mubit HTTP attempt from Homeward's app, correction flow, evaluation gatewa
 
 The daily journal is `homeward/results/mubit-headers/YYYY-MM-DD.jsonl`, ignored by Git and written with owner-only file permissions. It contains no request/answer bodies or outbound credentials. Credential, cookie and token headers are redacted; other fields are scrubbed for known keys. Preserve the directory on a writable private volume. A logging failure produces a server warning and never retries the model call. Existing responses keep only a smaller safe header subset; correction audit and teaching records now retain that subset too.
 
-New model/adapter/routing header names are retained as candidates for interpretation. Their presence is not treated as proof of an adapter version until their meaning is documented or confirmed. Unknown gateway identity hints also stop the previous Luna heuristic from silently overriding them. The current [Mubit API reference](https://docs.mubit.ai/reference/api) documents the receipt and retry headers; the founders' forthcoming serving identity contract is still awaited. The logger uses the official SDK's [custom fetch support](https://developers.openai.com/api/reference/typescript/#customizing-the-fetch-client).
+New model/adapter/routing header names are retained as candidates for interpretation. Their presence is not treated as proof of an adapter version until their meaning is documented or confirmed. Unknown gateway identity hints also stop the previous Luna heuristic from silently overriding them. The [Mubit API reference](https://docs.mubit.ai/reference/api) documented receipt and retry headers at the 24 October check; no new adapter identity header was observed in the later Bank teaching batch. Recheck the supported contract before interpreting new identity fields. The logger uses the official SDK's [custom fetch support](https://developers.openai.com/api/reference/typescript/#customizing-the-fetch-client).
 
 Run `npm run homeward:headers` to inspect captured header names and the latest receipts without making a network call.
 

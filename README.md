@@ -1,12 +1,15 @@
-# London Travel — London, in your words
+# Homeward / London Travel — London, in your words
 
-A conversational London travel assistant on a full-screen **WebGPU map**. Ask about step-free stations, museum visits, payment rules or getting home late; London Travel answers from dated source evidence and brings the relevant places into view.
+A conversational London assistant on a full-screen **WebGPU map**, with two modes in the same interface:
 
-Built for the Mubit hackathon to explore a recurring task: turn an operator's travel knowledge and corrections into a task-adapted open model. The intended benefit is owning an intelligence layer that can evolve with the product. Model quality, independence, latency and cost must be demonstrated rather than assumed.
+- **Travel:** ask about step-free access, museums, payment rules or getting home late; see dated sources and the relevant map places.
+- **Businesses:** explore seven verified London enterprise offices, assess a possible recurring LLM workload for Mubit, and correct the proposed fit or pitch. Public evidence, estimated uses and unknowns stay separate.
 
-![London Travel: the full London map and glowing ask bar](docs/images/london-travel-webgpu.png)
+Built for the Mubit hackathon around **expert correction → reviewed example → task-adapted open model → fresh-question test**. The product and correction flows work. Several isolated models have trained, but **we have not demonstrated that Mubit beats Luna overall** or that an adapter serves ordinary app traffic. Current app assessments request Luna through Mubit.
 
-This repository contains the **browser/WebGPU version**, its Node backend, teaching experiments and evaluation code. The renderer is supplied as precompiled WebAssembly with JavaScript bindings. No native desktop application, Rust source or Rust toolchain is included or required to run this distribution.
+For a new coding agent, read [AGENTS.md](AGENTS.md) first. It contains the exact model/task IDs, constraints, private evidence locations, completed work and next steps. The latest backend checkpoint is 24 October 2026, 20:14 BST; status files are observations, not live platform health.
+
+![London Travel WebGPU map](docs/images/london-travel-webgpu.png)
 
 ## Why this matters to travel operators
 
@@ -22,7 +25,7 @@ For an operator, the reasons to pursue this are:
 - **Optionality — including running locally.** Export provides a path to serving on suitable local hardware or a chosen hosting provider, and to changing infrastructure as requirements change.
 - **A degree of resistance to future censorship.** Retained, independently served open weights reduce dependence on a closed provider's future access restrictions, regional availability and refusal policies. They do not remove legal or infrastructure constraints.
 
-The current prototype uses hosted Mubit for recorded teaching calls. Local inference, operational independence and improved model quality remain to be demonstrated.
+The current prototype uses hosted Mubit for recorded teaching calls. Export and self-hosted inference remain unverified. A narrow Bank correction changed a later trained-model answer, but overall answer acceptance did not improve; the results below separate that observation from the longer-term ambition.
 
 ## Potential customers
 
@@ -32,88 +35,92 @@ The current prototype uses hosted Mubit for recorded teaching calls. Local infer
 
 These are prospective customer groups, not existing customers or partnerships.
 
-## Run locally
+## Run the browser distribution
 
-Requirements: Node.js 22 or later and a desktop browser with WebGPU and hardware acceleration. Use `localhost` or HTTPS.
+This Git repository contains the browser/WebGPU version, Node backend and selected experiments. Its renderer is precompiled WebAssembly with JavaScript bindings. **No native application, Rust source or Rust toolchain is needed** to run this distribution.
 
-```bash
+Requirements: Node.js 22+, a desktop browser with WebGPU/hardware acceleration, and localhost or HTTPS.
+
+```sh
 git clone https://github.com/owenb/mubit_hackathon.git
 cd mubit_hackathon
 npm ci
 cp .env.example .env
-# Add your Mubit inference key to .env, then:
+# Fill the keys privately, then:
 npm run build
 npm start
 ```
 
-Open **http://localhost:3000**. The map loads without model credentials; asking questions requires a working Mubit inference key and provider access. The server uses `PORT` when set, otherwise port 3000.
+Do not replace an existing `.env`. Open **http://localhost:3000/**; choose **Businesses** or open **http://localhost:3000/enterprise**. The map loads without credentials. Questions require a working Mubit key and provider access. `PORT` overrides 3000.
 
-```dotenv
-MUBIT_API_KEY=YOUR_MUBIT_INFERENCE_KEY
-MUBIT_BASE_URL=https://api.mubit.ai/openai/v1
+Travel uses `MUBIT_API_KEY` and `MUBIT_BASE_URL=https://api.mubit.ai/openai/v1`. Businesses requires a separate `ENTERPRISE_MUBIT_API_KEY`; the authorized local demo can instead use `BANK_DEMO_MUBIT_API_KEY` from the private `.env.bank-demo`. There is deliberately **no enterprise fallback to the travel key**. Add the enterprise variable privately to `.env` on a fresh setup, or start the existing local setup with:
+
+```sh
+PORT=3000 node --env-file-if-exists=.env --env-file-if-exists=.env.bank-demo homeward/web/server.mjs
 ```
 
-Use a key created for your own Mubit project. Configure starter credit or your provider key in the Mubit console. An optional `OPENAI_API_KEY` in `.env` is used only by the separate direct-provider baseline scripts; it does not configure the provider key in Mubit. Normal London Travel inference explicitly requests **gpt-6-luna** through Mubit.
+Both modes explicitly use **gpt-6-luna**. Configure starter credit/provider access in the Mubit console. `OPENAI_API_KEY` is optional for historical direct-baseline scripts only; adding it locally does not configure Mubit's provider key. Direct OpenAI mode is not used by the product or demo. Secrets remain on the server.
 
-Try:
-
-- “Is there step-free access at Bank station?”
-- “Can I touch in with my phone and touch out with my watch?”
-- “Suggest two free indoor museums for a rainy afternoon.”
-- “Does Night Tube run on Tuesday?”
+Try “Is there step-free access at Bank station?”, “Can I touch in with my phone and touch out with my watch?”, or select a business and ask which narrow recurring task would make a useful Mubit pilot.
 
 ## How it works
 
-```mermaid
-flowchart LR
-    Q[Question and map context] --> H[Hono /api/ask]
-    H --> E[Dated research and verified place candidates]
-    E --> M[Mubit gateway]
-    M --> A[Adapter when eligible]
-    M --> L[Luna provider]
-    A --> V[Validate answer, sources and scene IDs]
-    L --> V
-    V --> B[Browser answer and WebGPU camera / pins]
-    V --> T[Separate live TfL lift check when requested]
-    M -. recorded eligible calls .-> R[Mubit review and kept examples]
-    R -. training .-> A
-```
+**Ground the answer.** The travel backend retrieves a local, dated research snapshot and verified map candidates. It does not search the web on every request. Expired evidence is not presented as current. Current lift questions use a separate TfL disruption feed; no notice is not a guarantee that a lift works. Complete accessible journeys, bookings and live departure times are not verified by this prototype.
 
-**Research and grounding.** The backend retrieves relevant facts from a local, dated research collection. It preserves exceptions and source links, distinguishes general guidance from live conditions, and refuses to present expired research as current. This is a hackathon knowledge snapshot, not an automatically maintained travel database. Research preparation is in `homeward/scripts/prepare-travel.mjs`; refresh sources honestly and review changes before updating dates.
+**Control the map.** The model returns a strict JSON answer and scene: a camera command plus up to six catalogue IDs and place roles. The backend validates them and the renderer resolves coordinates. A station pin does not establish an accessible entrance or route. The learned task is selecting places/actions from evidence, not learning the London geometry itself.
 
-**Map control.** The model returns a strict JSON answer containing `response_kind`, `static_access`, `source_ids` and a `scene`. A scene selects `keep`, `focus` or `fit`, plus verified catalogue IDs and place roles. The backend validates IDs and camera constraints before drawing. The model never invents coordinates. Station markers represent locations, not audited accessible entrances or routes.
+**Keep enterprise claims honest.** Businesses uses actual OSM office objects for Morgan Stanley, Barclays, HSBC, J.P. Morgan, Unilever, Shell and Google. Six licensed Wikimedia photos accompany the cards; J.P. Morgan has a monogram fallback. The requested cap was 30, not a target. Public AI evidence does not prove private LLM usage, spend or adoption by a particular London office. No business outreach is performed.
 
-**Live information.** Current lift questions trigger a separate TfL disruption-feed request. A missing outage notice does not guarantee that a lift works. Departure times, bookings and complete accessible journeys are not independently verified by this prototype.
+**Keep model identity visible.** The UI distinguishes positively identified Luna via Mubit, an unverified route and a saved answer. A gateway receipt is not adapter-serving proof. Normal travel calls use full recording; business assessments use metadata-only recording. Evaluation inputs must stay out of teaching.
 
-**Serving provenance.** The UI distinguishes positively identified **Luna via Mubit**, an unverified route and a saved answer. A Mubit receipt proves the gateway handled a request; it does not prove a trained adapter answered. Invalid answers are retained as rejected attempts, and any one-off recovery is labelled separately.
+## Correct an answer or map pin
 
-**Learning.** Normal app calls use full Mubit recording and may become kept training examples after Mubit review. Stable instructions, model and output schema keep examples grouped into one task. Feedback and corrections are evidence for an update, but saved feedback alone does not establish that an adapter learned it. Metadata-only evaluation calls keep question/answer content out of Mubit teaching records.
+Choose **Fix this** beneath an answer. Add/remove verified places and use **Edit wording** to correct the text. **Use on my map** saves a personal edit. **Share as a correction…** asks for a reason and explains the Luna audit and teaching calls before **Send correction**. A successful submission shows a receipt, not an automatic claim that the model learned.
 
-## Correct answers and map pins
+In Businesses, use the same answer card and editor to save a local correction, then explicitly **Teach this judgement**. This makes a full-recorded Luna teaching call under the separate enterprise task. Concurrent duplicate submissions coalesce; ambiguous failures are retained without automatic retry. The latest real Unilever and Shell flows produced teaching receipts, which remain inspectable after reload.
 
-Choose **Fix this** beneath an answer. Add or remove verified places and see the pins change immediately; **Edit wording** opens the answer editor. **Use on my map** saves a personal edit without a teaching call. **Share as a correction…** asks for a reason and explains the Luna audit and Mubit teaching calls before **Send correction**. You can undo a personal map edit or resume an unfinished draft.
+The shared **Evidence** panel holds source dates, corrections, model results and renderer measurements. The ask bar retains your exact draft. Travel and business histories stay separate across mode changes. There is no separate enterprise app or sidebar.
 
-The initial screen contains the full map, three example questions and the ask bar. The ask bar keeps your exact text and remains editable while a request finishes; the glow shows processing. **View → Evidence** holds sources, correction receipts, evaluation and renderer/load measurements. The model task retains its original Homeward identity so the product rename does not split the training pool.
+The travel correction pipeline audits with recording off, then supplies the accepted target in a recorded teacher request. **Luna reproducing that target is submission fidelity, not generalization.** Stored content, Good review, kept example, trained version and improved fresh answer are different stages. The original Greville Street pin correction reached stored/trainable content and a saved Good rating; exact per-row weight inclusion is not exposed.
 
-A real Greville Street correction removed Canary Wharf DLR and kept Farringdon and Chancery Lane. The corrected teaching reply was retained in Mubit under the original Homeward task, marked trainable, and positively reviewed. Its task pool rose from 149 to **150 kept examples**. A per-row kept flag and weight inclusion are not exposed, so the UI distinguishes that progress from a completed model update.
+See [the learning workflow](homeward/LEARNING.md) and [enterprise implementation/evidence](homeward/experiments/enterprise-prospecting/README.md). Travel records live privately in `homeward/results/feedback/`; enterprise records in `homeward/experiments/enterprise-prospecting/results/interactions/`. Persist them on writable private storage. Session cookies provide ownership scoping, not full multi-user authentication.
 
-**Only v1 is visible for the original app task; no trained improvement is proved yet.** Six fresh development questions were frozen and tested without an operator target. V1 produced five retained replies; only **1/6** passed the answer/map contract, with one interrupted call kept as a failure. These playground diagnostics do not establish a general accuracy score or a controlled Luna comparison. Inputs remain private and out of teaching for an eventual matched old/new run. The final 20 questions remain untouched.
+## What the trained models actually did
 
-See [the learning workflow](homeward/LEARNING.md), [timestamped Mubit observations](homeward/data/feedback-observations.json) and [development summary](homeward/data/development-learning.json). The updated UI shows the last verified check; it does not invent a trained state or trigger retraining.
+All results below are dated development observations, not a final benchmark. Internal Mubit exams differ across tasks and must not be compared as one learning curve. Preview/API decoding and schema settings are not proven identical; reviews were non-blinded and not independent expert assessment.
 
-Corrections persist under ignored `homeward/results/feedback/`, scoped to the browser session. Persist that directory when deploying. Real API keys, raw personal correction stores and development test payloads are excluded.
+| Experiment | Internal Mubit check | Fresh development result |
+| --- | --- | --- |
+| Original travel v1 | 1/12 (8.3%) | Original pin-correction baseline: 1/6 valid full answers/maps, including one interrupted failure |
+| Corrected-guide isolated v1 | 4/12 (33.3%) | Adapter: 3 pass, 1 uncertain, 2 fail; Luna: 5 pass, 1 uncertain |
+| New isolated Bank v1 | 5/12 (41.7%) | Answers stayed 2/6 → 2/6; full answer/classification/map improved 0/6 → 2/6 |
+| Enterprise v1 | 11/12 (91.7%) | Semantic 2 pass, 1 uncertain, 3 fail; only 1/6 valid format; full task 0/6 |
 
-![London Travel’s contextual pin editor, with personal edits separate from shared teaching](docs/images/london-travel-correction.png)
+The Bank comparison did produce a useful learning moment: a fresh question about Waterloo & City to DLR interchange gained the supported 290-metre street-and-lifts detail and a correct Bank focus command. But control answers regressed, so the overall answer count did not improve. The old and new models had different training sets; no per-row inclusion manifest or matched retrain without the correction establishes causality. The capture-reconstruction limitation is recorded in the experiment evidence.
 
-## Response-header evidence
+Enterprise's strong internal score did not translate into six reliable app-format answers. A separate explicit-schema diagnostic improved format and is excluded from those six results. Its Luna diagnostic accepted 3/6 complete tasks, retaining one transport failure; it was not a controlled superiority test. The app continues to use Luna.
 
-All backend Mubit calls now retain a private, redacted journal of response headers, including errors and newly introduced model/version fields. Inspect it with `npm run homeward:headers`; this makes no API call. The files live in ignored `homeward/results/mubit-headers/` and contain no prompt/answer bodies or outbound credentials. New identity headers remain unverified until their meaning is confirmed. The latest isolated metadata-only check returned Luna and no new Mubit serving-model header.
+Original travel still had only v1 at its last verified check (153 kept, 10% silent testing, zero verified normal adapter traffic). The separate guide, Bank and enterprise models are **v1 of different tasks/projects**, not v2 of the original app. Fixed-version serving has been observed in Mubit **Try models**, not verified for ordinary app API traffic. No cost, latency or self-hosted-inference advantage is claimed.
 
-See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-learns-about-the-map) and [the preserved scene comparison](homeward/data/spatial-learning-evidence.json). The saved Greville Street correction and recorded teacher output have identical pin, role and camera hashes. Updated-model transfer for that original app correction remains pending. The separate corrected-guide experiment below now has its own trained adapter and six development results.
+Public supporting evidence: [original diagnostic](docs/evidence/v1-development-report.json), [corrected-guide report](homeward/experiments/corrected-guide-lab/results/paired-development-report.md), [enterprise raw results and status](homeward/experiments/enterprise-prospecting/observed-status.json). The Bank captures are private in the source workspace; exact locations and IDs are in [AGENTS.md](AGENTS.md).
+
+## The unfinished next step: Bank round 2
+
+**38 Luna teaching calls are already complete.** Audit recommends 26 Good and withholds 12. **None of those round-2 ratings has been submitted, no next version is verified, and no round-2 student test has run.** At the last check the console was signed out after an earlier engine outage; service recovery is unconfirmed. Gateway inference working did not establish that reviews/training worked.
+
+After normal sign-in and console recovery, the next agent must verify exact receipt/task membership, capture the planned fresh v1 baseline, submit the 26 reviewed examples through supported controls, and observe a new training job/version before the after test. Six development inputs are already frozen. Last preview quota was 11, so the recorded plan is five matched before/after pairs plus one after-only question; do not compare unequal denominators. Do not rerun the paid teaching batch or delete its completion locks.
+
+The first isolated Bank model trained automatically after 29 accepted examples. A nominal 25 was insufficient: Mubit exposed a calibration holdout minimum and a 28-accepted threshold. The old travel task separately recorded a 24-hour/25-new-rated-row refresh policy; the current Bank refresh cursor is unknown. [Mubit's first-adapter guide](https://docs.mubit.ai/guides/first-adapter), last checked 24 October, says there is no retry-training button. No supported force-refresh API was found. Rollout controls change serving, not training, and were not applied to the app.
+
+## Response headers and protected evaluation
+
+Every backend Mubit HTTP attempt, including errors, is journalled with redacted response headers under ignored `homeward/results/mubit-headers/`. No prompt/answer bodies or outbound credentials are stored in that journal. `npm run homeward:headers` reads it without an API call. New model-identity fields are preserved but must have a confirmed meaning before they establish adapter/version proof. No new adapter identity header was seen in Bank round 2.
+
+**The final 20 questions remain private and untouched.** Their SHA-256 is `a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91`. Do not read, teach, edit or run them during development. An eventual final run requires explicit authorization, attributable fixed-version inference, an identified Luna comparator, identical evidence/settings, metadata-only recording, no answer cache/recovery and retained failures. The harness fails closed without serving proof.
 
 ## Light, from night to day
 
-The circular **Light** dial beside **View** turns continuously through 270°: deep, night, day and clean. Drag around the ring, use arrow keys for fine adjustment, or Home/End for the extremes. All three sections of its travel change the map, glass and accent light: deep black to cosmic violet, night through daylight, then natural materials to a clean white city. It follows the system appearance until you choose a value. The browser retains a bounded local choice history; **Undo light change** restores the previous choice, and **Follow system** removes the override. This is browser-local view history, separate from Mubit teaching.
+The circular **Light** dial in the top-right corner turns continuously through 270°: deep, night, day and clean. Drag around the ring, use arrow keys for fine adjustment, or Home/End for the extremes. All three sections of its travel change the map, glass and accent light: deep black to cosmic violet, night through daylight, then natural materials to a clean white city. It follows the system appearance until you choose a value. The dial remembers your last choice locally. Lighting has no additional menu controls.
 
 ![The circular Light dial across its full range](docs/images/london-travel-dial.png)
 
@@ -129,106 +136,44 @@ The complete London map contains **183,550 source features**, producing **5,121,
 - Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
-A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading stages report actual download bytes, completed geometry layers and GPU upload bytes, with indeterminate progress where measurement is unavailable. Content-hashed assets are verified before use and cached in the browser.
+A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading shows a rotating London Eye and “Loading London...”. Actual download, geometry and GPU upload measurements remain available in Evidence. Content-hashed assets are verified before use and cached in the browser.
 
 `npm run build` verifies the bundled map/engine checksums and rebuilds the editable HTML/CSS/JavaScript shell. The compiled renderer is a supplied artifact; this distribution does not rebuild that engine from source.
 
-## Current model results — 24 October 2026
+## Verify without model calls
 
-This is a working product prototype with an unfinished adaptation experiment. **We have not demonstrated that Mubit beats Luna.**
-
-| Observation | Result |
-| --- | --- |
-| Original Homeward task calls, last console check 15:59 BST | 210 headline / 211 seven-day chart |
-| Kept examples in original task | 153 |
-| Real trained adapter | Qwen3-4B PEFT v1 |
-| Mubit recorded-reference gate | 1/12, or 8.3% |
-| Latest observed rollout | 10% silent testing; zero graded pairs |
-| Verified ordinary adapter API serving | Not established |
-| Existing adapter v2 | Not started at the last check |
-| Frozen final 20-question comparison | Not run |
-
-A four-case **development diagnostic** compared the selected v1 playground adapter with positively identified Luna API replies, using identical evidence per pair:
-
-| Manual assessment | Adapter v1 | Luna |
-| --- | ---: | ---: |
-| Core advice acceptable | 2/4 | 4/4 |
-| Complete task acceptable, including map | 1/4 | 3/4 |
-
-These are known development cases, assessed without blinding. Playground/API generation settings differ, and the night-answer rubric nuance is documented. These results are not the final benchmark, evidence of general model superiority, or a measured cost/latency comparison. See the [development report](docs/evidence/v1-development-report.json) and [readable findings](docs/evidence/v1-development-summary.txt).
-
-The task History records a separate refresh policy of every 24 hours after 25 new rated-up rows. The scheduler cursor and exact next training time are unknown. No supported self-service early-refresh action was found. Manual rollout controls affect all calls in a task, so they were not applied under the requirement to isolate tests from the app. See the [backend investigation](docs/evidence/v2-self-service-investigation-2026-10-24.json).
-
-The isolated [decision lab](homeward/experiments/decision-lab/manifest.json) prepares 40 compact evidence/place-selection examples around observed failures. It has **not been submitted or integrated into the app**. It would create a separate task whose first adapter starts at v1, not v2 of the original model.
-
-## New isolated model — 24 October, 16:39 BST
-
-The **Homeward corrected guide lab** trained a new Qwen3-4B adapter without waiting for the original task's daily refresh. This is **v1 of a separate task**, not v2 of the app model. The app's instructions and routing remain unchanged.
-
-Luna supplied 40 teaching replies and five corrective demonstrations. Console review reached **36 kept, 8 rejected and 1 pending**; training began earlier when 29 examples were kept. All five corrective demonstrations were reviewed before training, but Mubit did not expose a per-example training snapshot. We cannot prove each correction's weight inclusion.
-
-- Task: `ln_cd244c7ae58bc8483b16fb6b`
-- Adapter: `ad_lane_a190986c`, version 1; job `ftjob_be8160c9`
-- Internal gate: **4/12 (33.3%)**, below its 95% target. This differs from the original task's gate and is not a controlled improvement from 8.3%.
-- A 10% silent test affects only this isolated task. No production promotion or app rollout was applied.
-- Six direct playground replies visibly identified the fixed lab adapter. Normal adapter API serving remains unverified.
-
-Six fresh development inputs were frozen before teaching and supplied to both this adapter and Luna without target answers, rubrics, answer caching or repair:
-
-| Complete-answer assessment | Pass | Uncertain | Fail |
-| --- | ---: | ---: | ---: |
-| New isolated Mubit adapter v1 | 3 | 1 | 2 |
-| Luna | 5 | 1 | 0 |
-
-Map intent was acceptable on all six adapter responses, allowing an optional area-pin omission. The two clear failures were an unsupported Bank lift-accessibility claim and saying Cutty Sark has free general entry. **The new model does not outperform Luna overall in this diagnostic.** Partial correction transfer is visible, but this does not establish causal improvement over an older model. A Luna agent performed the non-blinded assessment; playground/API decoding settings are not proven identical. No cost or latency saving is claimed.
-
-The [experiment README](homeward/experiments/corrected-guide-lab/README.md), [paired report](homeward/experiments/corrected-guide-lab/results/paired-development-report.md) and [captured replies](homeward/experiments/corrected-guide-lab/results/adapter-dev.json) preserve the evidence and limitations. All 51 API responses in this experiment have recorded safe headers and positive Luna identity. Playground HTTP headers were unavailable through the supported UI. The six questions are now used development cases and must stay out of subsequent teaching. The final 20 remain private and untouched.
-
-## Evaluation and tests
-
-```bash
+```sh
 npm test
+npm run homeward:headers
 ```
 
-Tests use injected model/feed responses and local assets, so they do not consume inference credit. They cover freshness, typed map IDs, camera rules, cache behaviour, provider identity, API validation, lossless map integrity, serving gates, version consistency and blinded-review formatting.
-
-The final 20 questions and grading rubrics remain private to preserve the existing held-out evaluation. Their checksum is `a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91`. The public checkout skips the private-file integrity test when that file is absent; all fixture-based evaluation tests still run. The evaluation UI shows the pending state and never fills missing scores with invented results.
-
-A valid final run requires attributable fixed-version adapter inference and an identified Luna comparator, identical evidence/settings, no answer cache or recovery, metadata-only Mubit recording and retained failures. The harness stops before sending final questions if serving proof is missing. No final benchmark or paid teaching batch runs at startup or during `npm test`.
+Handoff check on 24 October: **78 tests passed, one expected private-file checksum test skipped**, zero failures. The full source workspace passed 79/79 including that byte-checksum test. Tests use injected model/feed responses and local assets, with no paid inference. No teaching batch or benchmark runs at startup. The skipped test does not mean the private final questions are bundled here.
 
 ## Repository guide
 
 | Path | Purpose |
 | --- | --- |
-| `homeward/web/public/` | Editable browser shell, loader, worker and evaluation/correction overlays |
-| `homeward/web/dist/` | Runnable browser distribution, compiled renderer and complete map |
-| `homeward/web/app.mjs` | Hono routes and static-asset serving |
-| `homeward/src/core.mjs` | Grounding, Luna calls, validation, cache and live lifts |
-| `homeward/src/map-contract.mjs` | Place catalogue lookup and validated scene contract |
-| `homeward/src/feedback.mjs` | Session-owned corrections, validation, Luna audit and teaching receipts |
-| `homeward/src/inference.mjs` | Conservative serving identity and metrics |
-| `homeward/src/evaluation*.mjs` | Paired collection, serving gates and review |
-| `homeward/src/demo-evidence.mjs` | Judging-criteria evidence and honest demo status |
-| `homeward/data/` | Research snapshot, place catalogue, teaching/development data and status |
-| `homeward/experiments/decision-lab/` | Prepared compact-decision experiment, not submitted |
-| `homeward/experiments/corrected-guide-lab/` | Completed isolated training and six-case development evidence |
-| `homeward/experiments/spatial-wave4/` | Additional Luna-authored spatial teaching curriculum |
-| `docs/evidence/` | Selected development results and backend investigation |
-| `scripts/experiment.mjs` | Original synthetic gateway experiments and optional direct baseline |
+| `AGENTS.md` | Complete cross-agent handoff, exact identities, evidence and resume order |
+| `homeward/web/public/` | Editable shared WebGPU shell, worker, map modes and correction UI |
+| `homeward/web/dist/` | Built shell, full map and compiled renderer |
+| `homeward/web/app.mjs` | Hono APIs and static serving |
+| `homeward/src/` | Grounding, validation, corrections, telemetry, enterprise service and evaluation |
+| `homeward/data/` | Dated research, verified place catalogue and observed evidence snapshots |
+| `homeward/experiments/corrected-guide-lab/` | Completed isolated model and development report |
+| `homeward/experiments/enterprise-prospecting/` | OSM company data, photos, contract, trained-model evidence and UI handoff |
+| `docs/mubit-notes.md` | Earlier gateway/documentation research |
+| `scripts/experiment.mjs` | Historical synthetic support-ticket experiments; optional direct baseline, outside the demo |
 
-Correction endpoints are documented in [the learning workflow](homeward/LEARNING.md). Useful endpoints: `GET /health`, `POST /api/ask`, `GET /api/metrics`, `GET /api/evals`, and `GET /api/demo-evidence`.
+Useful routes: `GET /health`, `POST /api/ask`, `GET /api/metrics`, `GET /api/evals`, `GET /api/demo-evidence`, `GET /api/enterprise/companies`, `POST /api/enterprise/assess`, `GET /api/enterprise/status`. See the learning/enterprise docs for correction routes.
 
-## Container deployment
+## Deployment status
 
-```bash
-docker build -t homeward-webgpu .
-docker run --rm -p 3000:3000 --env-file .env homeward-webgpu
-```
+Local Node execution is the verified path. **The existing Dockerfiles need a packaging fix before deploying the integrated app:** they omit the enterprise experiment's imported runtime contract/catalogue assets, and do not provision its default writable interaction directory. Copy only the required public runtime data/assets, provide private writable storage for both correction services, and smoke-test the built container before treating it as deployment-ready. Publishing this repository does not deploy a public app.
 
-The container runs Node as a non-root user and uses the bundled browser assets. Set runtime secrets on your host, expose the `PORT` supplied by the platform and use `/health` as the healthcheck. The inference endpoint is intended for a controlled demo; add authentication and usage controls before allowing unrestricted public model calls. Publishing this repository does not deploy a public app.
+The service listens on `0.0.0.0:$PORT`; `/health` is its healthcheck. Keep credentials as runtime secrets and add authentication/usage limits before exposing unrestricted paid inference.
 
-## Data, attribution and credentials
+## Data and attribution
 
-Map data is **© OpenStreetMap contributors**, distributed under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Attribution remains visible. The complete derived map and its notice are served at `/maps/london.ael` and `/maps/README.txt`; see [the format documentation](docs/LONDON_DATA.md). The place catalogue is derived from the same database. Travel facts link to their original sources and retain their retrieval dates.
+London map and office geometry: **© OpenStreetMap contributors**, [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Attribution remains visible. The complete derived map and notice are served at `/maps/london.ael` and `/maps/README.txt`; see [the map format](docs/LONDON_DATA.md). Company photo creators/licences are retained in `homeward/experiments/enterprise-prospecting/images.json`. Travel facts retain source URLs and retrieval dates.
 
-Only an empty `.env.example` is included. Real `.env` files, credentials, caches, raw private logs, private final questions and native build products are excluded. The corrected-guide lab includes reviewed synthetic teaching/test records; these are distinct from private app correction stores. API keys remain on the server; the browser never receives them.
+No API keys are documented or added by this handoff. Environment files, private logs, session stores and the final questions must remain outside Git. Selected reviewed synthetic evidence is included; Bank private captures and raw app corrections are not. The cancelled scheduled monitor stays cancelled: console checks occur only during active work, and stop when sign-in expires.
