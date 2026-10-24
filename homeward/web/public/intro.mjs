@@ -51,8 +51,8 @@ if(intro){
   const playAgain=()=>{
     clearTimers();fullscreen();video.pause();
     end.hidden=true;skip.hidden=true;controls.hidden=true;kidding.hidden=true;prank.hidden=false;
-    timers.push(setTimeout(()=>{kidding.hidden=false;},2500));
-    timers.push(setTimeout(play,3500));
+    timers.push(setTimeout(()=>{kidding.hidden=false;},2000));
+    timers.push(setTimeout(play,3000));
   };
   // Leaving keeps the page full screen so the demo continues there.
   const close=()=>{
