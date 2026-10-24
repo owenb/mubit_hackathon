@@ -111,13 +111,21 @@ All backend Mubit calls now retain a private, redacted journal of response heade
 
 See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-learns-about-the-map) and [the preserved scene comparison](homeward/data/spatial-learning-evidence.json). The saved Greville Street correction and recorded teacher output have identical pin, role and camera hashes. Updated-model transfer for that original app correction remains pending. The separate corrected-guide experiment below now has its own trained adapter and six development results.
 
+## Light, from night to day
+
+**View → Light** is one continuous 0–3 dial: deep, night, day and clean. It follows the system appearance until you choose a value. The browser retains a bounded local choice history; **Undo light change** restores the previous choice, and **Follow system** removes the override. This is browser-local view history, separate from Mubit teaching.
+
+![London Travel at night, mid-sunrise and by day](docs/images/london-travel-modes.png)
+
+Aether’s date-aware London sun path drives sky brightness, warmth and stars. One Rust frame value updates the WebGPU map, ask bar and HTML panels together. Hand changes settle with exponential easing; system changes take three seconds per unit. Surface colours blend in linear light; text switches RGB at one-quarter UI daylight instead of fading through grey. Reduced-motion preferences skip the transition. Map labels and raw evidence retain contrasting dark plates. The full map and typed ask-bar text remain intact.
+
 ## The WebGPU city
 
 The complete London map contains **183,550 source features**, producing **5,121,079 vertices** and **8,813,310 indices**. No map geometry was simplified for the browser.
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,351,981 bytes**.
+- Gzip WebAssembly engine: **2,352,747 bytes**.
 - Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 

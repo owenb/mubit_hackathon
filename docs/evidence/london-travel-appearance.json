@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-24",
+  "scope": "Visual appearance only",
+  "states": [
+    {
+      "name": "sunrise",
+      "ambience": 1.5499999523162842,
+      "dark_ink": true,
+      "day": 0.8267387747764587,
+      "elevation": 11.396114349365234,
+      "stars": 0,
+      "sun": [
+        -0.791483461856842,
+        0.19759085774421692,
+        -0.5783699154853821
+      ],
+      "ui": 0.309911847114563,
+      "warm": 0.18110154569149017
+    },
+    {
+      "name": "day",
+      "ambience": 2,
+      "dark_ink": true,
+      "day": 1,
+      "elevation": 24.50835418701172,
+      "stars": 0,
+      "sun": [
+        0.3208039402961731,
+        0.4148259460926056,
+        -0.8514718413352966
+      ],
+      "ui": 1,
+      "warm": 3.818064669758314e-06
+    },
+    {
+      "name": "night",
+      "ambience": 1,
+      "dark_ink": false,
+      "day": 0,
+      "elevation": -17.18873405456543,
+      "stars": 1,
+      "sun": [
+        0.9544322490692139,
+        -0.29552021622657776,
+        0.04155565798282623
+      ],
+      "ui": 0,
+      "warm": 0.02309437282383442
+    },
+    {
+      "name": "deep",
+      "ambience": 0,
+      "dark_ink": false,
+      "day": 0,
+      "elevation": -17.18873405456543,
+      "stars": 1,
+      "sun": [
+        -0.9544322490692139,
+        -0.29552021622657776,
+        0.04155565798282623
+      ],
+      "ui": 0,
+      "warm": 0.02309437282383442
+    },
+    {
+      "name": "clean",
+      "ambience": 3,
+      "dark_ink": true,
+      "day": 1,
+      "elevation": 24.50835418701172,
+      "stars": 0,
+      "sun": [
+        0.3208039402961731,
+        0.4148259460926056,
+        -0.8514718413352966
+      ],
+      "ui": 1,
+      "warm": 3.818064669758314e-06
+    }
+  ],
+  "checks": {
+    "saved_override_survives_reload": true,
+    "undo_restores_previous_value": true,
+    "follow_system_restores_system_choice": true,
+    "no_browser_errors": true,
+    "same_geometry_and_catalogue": true,
+    "captions_at_least_4_5_over_black_and_white": true,
+    "typed_text_and_glow_only_processing_preserved": true
+  },
+  "tests": {
+    "rust_pass": 35,
+    "browser_distribution_pass": 60,
+    "browser_distribution_skip": 1,
+    "fail": 0,
+    "skip_reason": "Private final-question checksum file is excluded from the browser distribution."
+  },
+  "inference_calls": 0,
+  "teaching_calls": 0,
+  "cache_observation": {
+    "redraws_before": 795,
+    "redraws_after": 795,
+    "reused_before": 28695,
+    "reused_after": 47055
+  },
+  "map": {
+    "url": "/assets/london-49578966da597c69.ael.br",
+    "bytes": 7992181,
+    "sha256": "49578966da597c697e31835d696f047ede3ff54dfea6b0de83cb05b4accfe3cc",
+    "raw_bytes": 21910636,
+    "source_sha256": "b6739ab69cad7b75b5a3f8341519c60dcf8640babf8380da57e54749ba3b2719",
+    "codec": "brotli"
+  },
+  "engine": {
+    "url": "/assets/homeward-57e1ed60fb62561b.wasm.gz",
+    "bytes": 2352747,
+    "sha256": "57e1ed60fb62561b59ca4fe73f5608505cbc4e04c350f1749ffaa102be82d8ce",
+    "raw_bytes": 6929410,
+    "codec": "gzip"
+  },
+  "rendering_note": "GPU timings are single local observations under shared load. City interval excludes tone mapping and egui; ask interval covers its composition passes. CPU update is not whole-frame or GPU time.",
+  "source_note": "Aether London material choice is independent of its global ambience; this port additionally turns the full-screen map with the sun. Browser history is bounded local view history, not Aether EAV history."
+}

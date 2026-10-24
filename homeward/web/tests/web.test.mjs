@@ -50,7 +50,7 @@ test('evaluation endpoints show the evidence state without inventing an adapter 
 
 test('editable shell bypasses date-based stale cache while immutable assets keep their cache policy',async()=>{
  const app=createWebApp();
- for(const path of ['corrections.mjs','experience.mjs','correction-state.mjs','ui.mjs']){
+ for(const path of ['corrections.mjs','experience.mjs','correction-state.mjs','ui.mjs','appearance.mjs','appearance-state.mjs']){
   const response=await app.request('http://homeward.test/'+path,{headers:{'If-Modified-Since':'Wed, 01 Jan 2031 00:00:00 GMT'}});
   assert.equal(response.status,200);assert.equal(response.headers.get('cache-control'),'no-store');assert.match(response.headers.get('content-type'),/javascript/);assert.doesNotMatch(await response.text(),/<!doctype html>/i);
  }
