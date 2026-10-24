@@ -1,12 +1,24 @@
 {
-  "state": "reviewing_examples",
-  "checked_at": "2026-10-24T17:17:30.135Z",
+  "state": "evaluated_needs_work",
+  "checked_at": "2026-10-24T18:03:00.116821+00:00",
   "submitted": 37,
   "unique_receipts": 37,
-  "kept": 0,
+  "kept": 28,
   "task_id": "ln_a45d95b39436e0f1ea9583d0",
-  "adapter": null,
-  "detail": "The signed-in Mubit console confirms all 37 examples belong to the distinct Enterprise Lens task. It reports 0 kept, 37 waiting and 3 reviews running. First training has not started, so no enterprise adapter or fresh quality improvement is available yet.",
+  "adapter": {
+    "id": "ad_lane_39642a41",
+    "version": 1,
+    "base": "Qwen/Qwen3-4B-Instruct-2507",
+    "training_job": "ftjob_89d5f355",
+    "state": "graded_preview_verified",
+    "internal_pass": 11,
+    "internal_total": 12,
+    "internal_percent": 91.7,
+    "internal_target_percent": 85,
+    "preview_calls": 7,
+    "app_api_serving_verified": false
+  },
+  "detail": "Mubit trained an enterprise Qwen3 4B adapter after accepting 28 examples. It passed 11 of 12 internal checks. Fresh testing found important gaps, so live assessments continue to use Luna.",
   "batch_teaching": 36,
   "browser_corrections": 1,
   "baseline": {
@@ -18,7 +30,155 @@
   },
   "task_url": "https://app.mubit.ai/console/projects/ws-f6fde7f8cb6510fa/workloads/ln_a45d95b39436e0f1ea9583d0",
   "rejected": 0,
-  "waiting": 37,
+  "waiting": 9,
   "running_reviews": 3,
-  "first_training": "not_started"
+  "first_training": "v1_complete",
+  "user_approved_rating": {
+    "saved": true,
+    "request_id": "01a16ee1-4e6b-7891-aeef-3c33e0e9e3c1",
+    "reviewer": "coding assistant"
+  },
+  "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "review_provenance": {
+    "reviewer": "coding assistant, not an independent enterprise expert",
+    "batch_ratings": 27,
+    "browser_correction_ratings": 1,
+    "authorization": "User explicitly authorized testing the idea fully with judgement."
+  },
+  "training_job": "ftjob_89d5f355",
+  "evaluation": {
+    "scope": "Six frozen DEVELOPMENT questions; one attempt each, no correction note, target, retry or repair.",
+    "counts": {
+      "attempts": 6,
+      "responses": 6,
+      "semantic_pass": 2,
+      "semantic_uncertain": 1,
+      "semantic_fail": 3,
+      "contract_pass": 1,
+      "contract_fail": 5,
+      "full_task_pass": 0,
+      "luna_diagnostic_full_task_pass": 3,
+      "luna_diagnostic_transport_failure": 1
+    },
+    "summary": "2 of 6 met the substantive judgement rubric, with 1 uncertain and 3 failing. Only 1 of 6 matched the app response format; none passed both checks. This is a small diagnostic, not a controlled before-and-after result.",
+    "schema_diagnostic": "A separate new HSBC prompt included the response schema explicitly and produced a valid format. It is excluded from the original six scores; preview schema/settings differences limit interpretation.",
+    "limitations": "The preview does not expose the full system prompt, response schema or generation settings. There is no matched untrained base control on these six questions. Reviews are by the coding assistant. No cost or speed advantage is established.",
+    "cases": [
+      {
+        "id": "ent-dev-01",
+        "company_id": "morgan-stanley",
+        "question": "Morgan Stanley already has an AI assistant. Why would we still pitch Mubit, and what exactly should we trial?",
+        "semantic_grade": "uncertain",
+        "reason": "Grounded complementary pilot, advisor reviewer, ownership/hosting optionality and held-out examples. It does not explicitly freeze fresh questions; conservative rubric leaves this uncertain.",
+        "contract_pass": false,
+        "extra_fields": [
+          "pilot_scope"
+        ],
+        "missing_fields": [],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"morgan-stanley\",\"fit\":\"conditional\",\"llm_usage\":\"public_evidence\",\"public_fact\":\"Morgan Stanley announced in June 2024 an OpenAI-powered meeting-notes and draft-follow-up tool for Wealth Management, with client consent and advisor review. This does not establish London deployment.\",\"source_ids\":[\"morgan-stanley-ai\"],\"workload_hypothesis\":\"A possible task to evaluate is drafting or classifying follow-up actions from advisor-client meeting notes, with human review for accuracy and alignment with firm standards. This is a hypothesis, not evidence of current workload or need.\",\"fit_reason\":\"The announced tool establishes a relevant use case, but Mubit could still offer a distinct route for task-adapted open weights and hosting optionality, subject to validation and review against existing capabilities.\",\"unknowns\":\"Unknown: London-specific adoption, task volumes or spend, existing in-house AI capability, procurement path, data rights, and evaluation requirements.\",\"discovery_question\":\"Is there a London team with an accountable reviewer who can provide examples of advisor meeting notes and follow-up drafts, and what are the procurement, data-rights, and evaluation requirements for evaluating a new tool?\",\"pitch\":\"If discovery confirms a suitable task and rights to evaluate, pilot a narrowly scoped, reviewable trial of Mubit\u2019s task-adapted open weights on anonymized examples, with advisor review and firm rubrics. Assess whether it offers a useful complement or alternative to the existing OpenAI-powered workflow.\",\"pilot_scope\":\"Limited to one advisor team, with examples approved for use and review by an accountable advisor; do not use for client-facing content or decision-making.\",\"pilot_measure\":\"Agree a held-out set of meeting notes and follow-ups; have the accountable reviewer score drafts on task accuracy, alignment with firm standards, and usefulness for action planning; report results and review gaps with the team.\"}",
+        "ui_latency_ms": 6190,
+        "input_sha256": "5df60d78e61edce0d5a9a2e6028b696f1686c238dd6f82dbbd65843871e24dd1",
+        "frozen_user_input_matches": true
+      },
+      {
+        "id": "ent-dev-02",
+        "company_id": "google",
+        "question": "Google is right here. Is it really one of our best customers? Give me a candid go or no-go.",
+        "semantic_grade": "pass",
+        "reason": "Candid no-go and in-house platform barrier, with a specific discovery gate and no private spend claim. fit=unknown is less decisive than the rubric wording, but go_or_no_go explicitly gives the required no-go judgement.",
+        "contract_pass": false,
+        "extra_fields": [
+          "go_or_no_go"
+        ],
+        "missing_fields": [
+          "pilot_measure"
+        ],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"google\",\"fit\":\"unknown\",\"llm_usage\":\"public_evidence\",\"public_fact\":\"Google lists a London office at 6 Pancras Square. Google DeepMind publishes model cards for Gemini and Gemma, indicating public model transparency. Neither fact establishes London-specific use, private volumes, or spend.\",\"source_ids\":[\"google-office\",\"google-ai\"],\"workload_hypothesis\":\"A possible task to investigate is answering recurring, reviewable questions about internal AI model capabilities or usage guidance. This is a hypothesis, not evidence of a current workload.\",\"fit_reason\":\"Public model cards show AI capability, but also a significant build-versus-buy barrier. A narrow pilot could test whether a specific, reviewable task is suitable for adaptation, while acknowledging existing in-house platforms.\",\"unknowns\":\"Unknown: London-specific usage, task volumes, spend, procurement path, data rights, and evaluation requirements. Existing in-house AI capability may already cover the proposed task.\",\"discovery_question\":\"Is there a London team with a recurring, reviewable question about AI model capabilities or usage, and who can approve a pilot? What procurement, data-rights, and evaluation requirements would apply?\",\"pitch\":\"If discovery confirms a suitable task, Mubit could pilot task-adapted open weights for that specific reviewable question set, while assessing hosting optionality. This is a possibility, not a guarantee.\",\"go_or_no_go\":\"No-go: The public evidence of a strong in-house model platform makes a broad or unreviewed pilot unlikely. A narrow, task-specific evaluation may warrant further investigation, but the fit remains unknown.\"}",
+        "ui_latency_ms": 4411,
+        "input_sha256": "84c6d5429568b0494d568e091ae6f2d21a327336328799a19ff5e7ded084e94d",
+        "frozen_user_input_matches": true
+      },
+      {
+        "id": "ent-dev-03",
+        "company_id": "unilever",
+        "question": "What could Unilever teach a model that would be worth owning, and how would we know it worked?",
+        "semantic_grade": "fail",
+        "reason": "A plausible marketing-text hypothesis and reviewed held-out baseline. It omits expert corrections teaching task judgement and latency measurement, and does not freeze fresh questions.",
+        "contract_pass": true,
+        "extra_fields": [],
+        "missing_fields": [],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"unilever\",\"fit\":\"unknown\",\"llm_usage\":\"public_evidence\",\"public_fact\":\"Unilever lists Unilever House as a London contact office and describes AI-enabled marketing production and a Beauty AI studio. These facts do not establish a London text workflow, private LLM spend, or a specific task to own.\",\"source_ids\":[\"unilever-office\",\"unilever-ai\"],\"workload_hypothesis\":\"A possible candidate is adapting open weights to draft or revise marketing copy for Beauty AI use cases, with human review for brand alignment. This is a hypothesis, not evidence of a current London task or its suitability for ownership.\",\"fit_reason\":\"The public AI activity suggests a relevant domain, but the supplied evidence does not establish a suitable, repeatable text task with an accountable reviewer or data rights to own. Fit remains unknown without discovery.\",\"unknowns\":\"Unknown: London-specific text workload, task volumes, existing in-house AI capability, procurement path, data rights, evaluation requirements, and whether a pilot would be permitted.\",\"discovery_question\":\"Is there a London team with a repeatable marketing copy task, reviewable examples, and an accountable reviewer who could evaluate a narrow pilot, and what are the data rights, procurement, and evaluation requirements?\",\"pitch\":\"If discovery confirms a suitable task, Mubit could pilot task-adapted open weights for reviewable examples, with an agreed evaluation and data-rights boundary. This offers a possible route to owned task-adapted weights and hosting optionality, subject to validation.\",\"pilot_measure\":\"Agree a held-out set of brand-aligned examples and reviewer rubric; measure task error and reviewer acceptance against a baseline, and require explicit approval before any ownership decision.\"}",
+        "ui_latency_ms": 4903,
+        "input_sha256": "c8723f74f56dc26785f5d90e5274da03454ccee69e0f7fcdf245080194cdf30a",
+        "frozen_user_input_matches": true
+      },
+      {
+        "id": "ent-dev-04",
+        "company_id": "shell",
+        "question": "Can we say Shell spends millions on LLMs and promise a 50 percent saving if we run the model locally?",
+        "semantic_grade": "fail",
+        "reason": "Avoids confirming spend or promising savings and proposes research-document QA. It does not clearly answer the local-serving hardware/export/validation condition required by the rubric.",
+        "contract_pass": false,
+        "extra_fields": [
+          "pilot_decision"
+        ],
+        "missing_fields": [
+          "pilot_measure"
+        ],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"shell\",\"fit\":\"unknown\",\"llm_usage\":\"public_evidence\",\"public_fact\":\"Shell lists Shell Centre, London SE1 7NA as its headquarters. It describes work with NVIDIA on generative AI and LLMs for research documents, custom models, and retrieval; this does not establish current spend or London deployment.\",\"source_ids\":[\"shell-office\",\"shell-ai\"],\"workload_hypothesis\":\"A possible task to investigate is answering recurring, reviewable questions about internal research documents using adapted open weights, with an accountable reviewer to assess outputs. This is a hypothesis, not evidence of Shell\u2019s current workload or need.\",\"fit_reason\":\"Public evidence of LLM experimentation makes a focused pilot plausible, but the supplied facts do not establish a suitable task, existing in-house capability, or willingness to evaluate a hosted or locally-run option.\",\"unknowns\":\"Unknown: task suitability, existing AI capability, procurement path, data rights, evaluation requirements, and whether a pilot or owned model approach would be appropriate.\",\"discovery_question\":\"Is there a recurring, reviewable research-document task with an accountable reviewer, and can you share examples and procurement/data-rights constraints for evaluating a task-adapted open-weight approach?\",\"pitch\":\"If discovery confirms a suitable task, Mubit could pilot adapting open weights to answer reviewable questions about research documents, while assessing hosting optionality and data-rights requirements; this is not a claim of savings or a partnership.\",\"pilot_decision\":\"Pilot only if discovery confirms a suitable task, an accountable reviewer, and willingness to evaluate a task-adapted open-weight approach under agreed data-rights and procurement terms.\"}",
+        "ui_latency_ms": 4680,
+        "input_sha256": "3233720af4c6e138b601a5dd9838126960b492702f3787d265703f1e65af2725",
+        "frozen_user_input_matches": true
+      },
+      {
+        "id": "ent-dev-05",
+        "company_id": "jpmorgan",
+        "question": "What do we actually know about this office's LLM use? If not enough, what is the next useful conversation?",
+        "semantic_grade": "pass",
+        "reason": "Separates office evidence from unknown LLM usage, volumes and spend; asks for an accountable reviewer, a repeatable task, data rights and procurement constraints.",
+        "contract_pass": false,
+        "extra_fields": [],
+        "missing_fields": [
+          "pilot_measure"
+        ],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"jpmorgan\",\"fit\":\"unknown\",\"llm_usage\":\"unknown\",\"public_fact\":\"The supplied source lists JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch at 25 Bank Street and describes private banking and treasury/securities services. It does not establish LLM use at this office.\",\"source_ids\":[\"jpmorgan-office\"],\"workload_hypothesis\":\"A possible task to investigate is drafting or classifying internal treasury or securities-service queries, with human review for accuracy. This is a hypothesis, not evidence of current workload or LLM use.\",\"fit_reason\":\"The supplied evidence establishes a relevant financial-services function but says nothing about LLM adoption. A narrow pilot could assess whether task-adapted open weights suit a specific reviewable workflow, subject to data-rights and procurement checks.\",\"discovery_question\":\"Is there a London team with an accountable reviewer who could evaluate a bounded, example-reviewed pilot on a task like classifying or drafting treasury-service queries, and what are the data-rights, procurement, and existing-AI constraints?\",\"pitch\":\"If discovery confirms a suitable task, Mubit could pilot task-adapted open weights for reviewable drafts or classifications, while assessing hosting optionality. This is a possibility, not a commitment.\",\"unknowns\":\"Unknown: London office\u2019s LLM usage, task volumes or spend, procurement path, data-rights, and existing in-house capability. Public AI announcements do not establish London-specific use.\"}",
+        "ui_latency_ms": 4227,
+        "input_sha256": "a8a7e85c709a9512aefd68759a01971bf0ed660c764c6a6aae694d7c073b05df",
+        "frozen_user_input_matches": true
+      },
+      {
+        "id": "ent-dev-06",
+        "company_id": "barclays",
+        "question": "The buyer wants a chatbot for changing policy documents. What goes in weights, and what stays outside?",
+        "semantic_grade": "fail",
+        "reason": "Keeps policy/source material outside weights but does not clearly teach stable response judgement or require fresh development evaluation; proposed pilot has no success measure.",
+        "contract_pass": false,
+        "extra_fields": [
+          "pilot_boundary"
+        ],
+        "missing_fields": [
+          "pilot_measure"
+        ],
+        "full_task_pass": false,
+        "raw": "{\"company_id\":\"barclays\",\"fit\":\"unknown\",\"llm_usage\":\"public_evidence\",\"public_fact\":\"Microsoft announced a planned global Microsoft 365 Copilot rollout to 100,000 Barclays colleagues in June 2025. Barclays lists a London contact address at 1 Churchill Place. These facts do not establish London adoption, task-specific use, or spend.\",\"source_ids\":[\"barclays-ai\",\"barclays-office\"],\"workload_hypothesis\":\"A possible task to investigate is answering recurring policy-document questions with approved, reviewed examples. This is a hypothesis, not evidence of Barclays\u2019 current workload or need.\",\"fit_reason\":\"The announced Copilot rollout makes a broad AI evaluation relevant, but the specified policy-document task is unverified. Fit depends on whether a suitable, reviewable task exists and an accountable owner can validate it.\",\"unknowns\":\"Unknown: London-specific adoption, task volumes, existing in-house AI capability, procurement path, data rights, and evaluation requirements.\",\"discovery_question\":\"Is there a recurring policy-document task with approved examples and an accountable reviewer? What in-house AI capability already covers it, and what procurement, data-rights, and evaluation requirements would a pilot need to address?\",\"pitch\":\"If discovery confirms a suitable task, Mubit could pilot task-adapted open weights for answering policy questions, with a clear review and rights-checking process. This is a possibility, not a Barclays commitment.\",\"pilot_boundary\":\"Weights would be trained only on approved, rights-cleared examples and reviewed for compliance. All policy content, source documents, and decision rationale stay outside the model; Mubit offers a possible route to owned task-adapted weights and hosting optionality, subject to validation.\"}",
+        "ui_latency_ms": 4852,
+        "input_sha256": "bb5beade78ed288b9a637a6dfe88e2bdb26fcb63750d0ba4829993a0971e7821",
+        "frozen_user_input_matches": true
+      }
+    ]
+  },
+  "internal_evaluation": {
+    "pass": 11,
+    "total": 12,
+    "percent": 91.7,
+    "target_percent": 85,
+    "base_plus_prompt_reported_pass": 0,
+    "base_plus_prompt_reported_total": 12,
+    "provenance": "Mubit internal grader; exact inputs, base serving identity and per-row training exclusion not independently established. Not the fresh development set."
+  }
 }
