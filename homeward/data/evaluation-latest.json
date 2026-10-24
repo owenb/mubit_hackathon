@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "pending_verified_adapter",
+  "checked_at": "2026-10-24T08:37:24.523Z",
+  "test": {
+    "id": "travel-final-20",
+    "sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+    "cases": 20
+  },
+  "complete": false,
+  "adjudicated": false,
+  "arms": {
+    "mubit_adapter": null,
+    "luna": null
+  },
+  "rows": [],
+  "error": null,
+  "training": {
+    "checked_at": "2026-10-24T08:37:24.523Z",
+    "task_name": "Homeward practical London travel",
+    "task_id": "ln_445191829380864c541213cd",
+    "task_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+    "training_job": "ftjob_a58f1590",
+    "status": "v1 shadow; recorded refresh interval 24 hours; v2 not started",
+    "calls_counter": 181,
+    "kept": 149,
+    "rejected": 26,
+    "waiting": 0,
+    "running_reviews": 0,
+    "kept_sessions": 149,
+    "note": "149 kept,26 rejected,6 unable to review. The previously observed24-hour refresh and12-case/20-case gate mismatch remain unresolved; only v1 is visible. Latest API probe remains the prior Luna fallback, not a new serving measurement.",
+    "training_base": "Qwen/Qwen3-4B-Instruct-2507",
+    "base_evidence": "Task history Why tooltip: first version submitted for training on Qwen/Qwen3-4B-Instruct-2507 from the base",
+    "history": [
+      {
+        "checked_at": "2026-10-23T21:26:45Z",
+        "kept": 49,
+        "status": "Training v1"
+      }
+    ],
+    "adapter_id": "ad_lane_8bdd977d",
+    "version": 1,
+    "adapter_passed": 1,
+    "evaluation_cases": 12,
+    "adapter_quality_percent": 8.3,
+    "base_passed": 0,
+    "provider_live_comparison": "not measured; recorded reference answers",
+    "target_percent": 95,
+    "served_app_adapter_calls_verified": 0,
+    "could_not_review": 6,
+    "new_teaching_examples_submitted": 80,
+    "api_served_adapter_percent": 0,
+    "review_cap_per_day": 200,
+    "new_rows_for_retrain": 25,
+    "retrain_fraction": 0.5,
+    "cooldown_minutes": 0,
+    "queued_today": 175,
+    "new_recorded_api_attempts": 87,
+    "locally_valid_structured_responses": 85,
+    "saved_bad_ratings_this_round": 8,
+    "adapter_checked_at": "2026-10-24T08:37:24.523Z",
+    "latest_adapter_activity": "24 October morning check:149 kept from181 calls; still only v1 at8.3%, shadow10%, 0/50 pairs, 0/10 sessions and0.0% adapter-served traffic. No v2 visible. No new inference calls made.",
+    "recorded_refresh_interval_hours": 24,
+    "next_refresh_at": null,
+    "monitor_access": {
+      "status": "signed_in",
+      "checked_at": "2026-10-24T08:36:13.649Z",
+      "user_action_requested": false,
+      "recheck_requires_user_confirmation": false,
+      "reason": "User confirmed restored sign-in; signed-in Tasks page observed in the in-app browser."
+    }
+  },
+  "latest_serving_probe": {
+    "checked_at": "2026-10-23T23:41:31.062Z",
+    "inference": {
+      "route": "luna",
+      "label": "Luna via Mubit",
+      "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+      "requested_model": "gpt-6-luna",
+      "response_model": "gpt-6-luna",
+      "request_id": "mreq_01a16b241d7b7b50805a766a1a02aa58",
+      "original_request_id": null,
+      "recording": "full",
+      "adapter_id": null,
+      "evidence": [
+        "Mubit gateway receipt: mreq_01a16b241d7b7b50805a766a1a02aa58",
+        "Completion model gpt-6-luna",
+        "OpenAI request ID and processing-time response headers"
+      ]
+    },
+    "latency_ms": 3665
+  },
+  "pending_reason": "Homeward has a recorded 24-hour refresh policy. v1 is unpromoted, so the latest API probe fell back to Luna. Its fixed 12-case exam is below the 20-case promotion minimum; verified adapter API inference is still unavailable."
+}

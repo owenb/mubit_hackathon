@@ -1,0 +1,174 @@
+[
+  {
+    "id": "map-train-01",
+    "question": "Find Bank station for me.",
+    "camera": "focus",
+    "places": [
+      "station:bank"
+    ]
+  },
+  {
+    "id": "map-train-02",
+    "question": "I need the map around Waterloo station.",
+    "camera": "focus",
+    "places": [
+      "station:waterloo"
+    ]
+  },
+  {
+    "id": "map-train-03",
+    "question": "Where is Euston?",
+    "camera": "focus",
+    "places": [
+      "station:euston"
+    ]
+  },
+  {
+    "id": "map-train-04",
+    "question": "Take me to Canada Water on this map.",
+    "camera": "focus",
+    "places": [
+      "station:canada-water"
+    ]
+  },
+  {
+    "id": "map-train-05",
+    "question": "Locate the Jubilee station at Canary Wharf.",
+    "camera": "focus",
+    "places": [
+      "station:canary-wharf-jubilee"
+    ]
+  },
+  {
+    "id": "map-train-06",
+    "question": "Pin the DLR stop at Canary Wharf.",
+    "camera": "focus",
+    "places": [
+      "station:canary-wharf-dlr"
+    ]
+  },
+  {
+    "id": "map-train-07",
+    "question": "Locate Canary Wharf Elizabeth line station.",
+    "camera": "focus",
+    "places": [
+      "station:canary-wharf-elizabeth"
+    ]
+  },
+  {
+    "id": "map-train-08",
+    "question": "Compare Bank with Euston on the map.",
+    "camera": "fit",
+    "places": [
+      "station:bank",
+      "station:euston"
+    ]
+  },
+  {
+    "id": "map-train-09",
+    "question": "I want to see Waterloo and Canada Water together.",
+    "camera": "fit",
+    "places": [
+      "station:waterloo",
+      "station:canada-water"
+    ]
+  },
+  {
+    "id": "map-train-10",
+    "question": "Frame Bank, Euston, and Canada Water.",
+    "camera": "fit",
+    "places": [
+      "station:bank",
+      "station:euston",
+      "station:canada-water"
+    ]
+  },
+  {
+    "id": "map-train-11",
+    "question": "Find Trafalgar Square for me.",
+    "camera": "focus",
+    "places": [
+      "osm:2026-10-12:48952"
+    ]
+  },
+  {
+    "id": "map-train-12",
+    "question": "Does Euston provide lifts between the Victoria line and the street?",
+    "camera": "focus",
+    "places": [
+      "station:euston"
+    ]
+  },
+  {
+    "id": "map-train-13",
+    "question": "Does Bank have a completely underground step-free change from the Waterloo & City line to Northern?",
+    "camera": "focus",
+    "places": [
+      "station:bank"
+    ]
+  },
+  {
+    "id": "map-train-14",
+    "question": "Are any Jubilee lifts broken at Canary Wharf today?",
+    "camera": "focus",
+    "places": [
+      "station:canary-wharf-jubilee"
+    ]
+  },
+  {
+    "id": "map-train-15",
+    "question": "Reset to the city overview.",
+    "camera": "city",
+    "places": []
+  },
+  {
+    "id": "map-train-16",
+    "question": "Find the station called Hogwarts.",
+    "camera": "keep",
+    "places": []
+  },
+  {
+    "id": "map-train-17",
+    "question": "Zoom in a little on this place.",
+    "context_ids": [
+      "station:waterloo"
+    ],
+    "camera": "closer",
+    "places": [
+      "station:waterloo"
+    ]
+  },
+  {
+    "id": "map-train-18",
+    "question": "Show more of the surrounding area.",
+    "context_ids": [
+      "station:euston"
+    ],
+    "camera": "wider",
+    "places": [
+      "station:euston"
+    ]
+  },
+  {
+    "id": "map-train-19",
+    "question": "Pull back a little.",
+    "context_ids": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "camera": "wider",
+    "places": [
+      "station:bank",
+      "station:waterloo"
+    ]
+  },
+  {
+    "id": "map-train-20",
+    "question": "Show all London once more.",
+    "context_ids": [
+      "station:euston"
+    ],
+    "camera": "city",
+    "places": []
+  }
+]

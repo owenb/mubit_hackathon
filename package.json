@@ -1,0 +1,38 @@
+{
+  "name": "homeward-webgpu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "doctor": "node --env-file=.env scripts/experiment.mjs doctor",
+    "preview": "node --env-file=.env scripts/experiment.mjs batch --dry-run",
+    "smoke": "node --env-file=.env scripts/experiment.mjs smoke",
+    "batch": "node --env-file=.env scripts/experiment.mjs batch",
+    "session": "node --env-file=.env scripts/experiment.mjs session",
+    "stream": "node --env-file=.env scripts/experiment.mjs stream",
+    "responses": "node --env-file=.env scripts/experiment.mjs responses",
+    "structured": "node --env-file=.env scripts/experiment.mjs structured",
+    "tools": "node --env-file=.env scripts/experiment.mjs tools",
+    "training": "node --env-file=.env scripts/experiment.mjs training",
+    "baseline": "node --env-file=.env scripts/experiment.mjs smoke --direct",
+    "homeward": "node --env-file-if-exists=.env homeward/web/server.mjs",
+    "homeward:test": "node --test homeward/tests/*.test.mjs",
+    "homeward:map-eval": "node --env-file=.env homeward/src/map-experiment.mjs",
+    "homeward:eval": "node --env-file=.env homeward/src/experiment.mjs eval",
+    "homeward:train": "node --env-file=.env homeward/src/experiment.mjs train",
+    "homeward:web:build": "node homeward/web/scripts/build.mjs",
+    "homeward:web:test": "node --test homeward/web/tests/*.test.mjs",
+    "start": "node --env-file-if-exists=.env homeward/web/server.mjs",
+    "build": "node homeward/web/scripts/build.mjs",
+    "test": "node --test homeward/tests/*.test.mjs homeward/web/tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "hono": "^4.13.13",
+    "openai": "7.34.0"
+  },
+  "description": "London travel assistant with a WebGPU city map and Mubit learning experiments"
+}

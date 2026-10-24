@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-24T09:53:12Z",
+  "status": "blocked",
+  "scope": "Observed dashboard state; not a live health check or serving proof for future calls",
+  "summary": "Homeward has a recorded 24-hour refresh policy. v1 is unpromoted, so the latest API probe fell back to Luna. Its fixed 12-case exam is below the 20-case promotion minimum; verified adapter API inference is still unavailable.",
+  "ids": {
+    "project": "ws-1ac8e778cff912a3",
+    "task": "ln_445191829380864c541213cd",
+    "adapter": "ad_lane_8bdd977d",
+    "pathway": "pwy_283e9d6555f2462f",
+    "deployment": "dep_00cd3df2b02747e0",
+    "training_job": "ftjob_a58f1590",
+    "gate_set": "gs_r4_ck3c77cff25b8ab442"
+  },
+  "training": {
+    "visible_version": 1,
+    "v1_created_at": "2026-10-23T21:31:28Z",
+    "kept": 149,
+    "rejected": 26,
+    "unable_to_review": 6,
+    "running_reviews": 0,
+    "v2_job_visible": false,
+    "refresh_policy_history_quote": "refresh policy created on the lane: every 24 hours once 25 new rows are rated up, from the base, replaying 10% of the last training rows; its exam is the first version's 12 held-out checks",
+    "recorded_interval_hours": 24,
+    "minimum_new_rows": 25,
+    "minimum_new_fraction": 0.5,
+    "workspace_cooldown_minutes": 0,
+    "daily_training_limit": null,
+    "daily_training_limit_note": "Console explicitly says No daily limit",
+    "new_rows_counted_by_refresh_scheduler": null,
+    "next_run_at": null,
+    "interpretation": "The task's recorded daily refresh interval remains the strongest explanation for the wait, despite the separate zero-minute workspace cooldown. Current scheduler state, exact due time, and its new-row cursor are not exposed; platform confirmation is needed.",
+    "available_controls": "Freshly rechecked: project training section edits new-example threshold and max row bytes; task overrides cover adapter, areas, drop_rules, exclude_rows, evals, max_rows and max_row_bytes. No task refresh interval/manual train action exposed. No settings were changed."
+  },
+  "promotion": {
+    "state": "shadow",
+    "shadow_percent": 10,
+    "exam_passed": 1,
+    "exam_total": 12,
+    "exam_required_judged": 20,
+    "exam_verdict": "failed",
+    "graded_live_pairs": 0,
+    "required_live_pairs": 50,
+    "graded_live_sessions": 0,
+    "required_live_sessions": 10,
+    "primary_binding_history_quote": "the lane's adapter is the primary of pathway mw-auto/gpt-6-luna-9a7e60/lk1_372af8b5834a257eb60d59933c9dc9ff through new deployment dep_00cd3df2b02747e0 of its promoted version; no call moves until a version is promoted (mode auto)",
+    "manual_rollout_controls_present": true,
+    "manual_rollout_applied": false,
+    "note": "A manual rollout dialog exists, but has not been applied. Exam and live-pair gates are distinct. The failed exam is labelled advisory on the version table; its details report failed conformance and too few judged rows. The platform must clarify the actual promotion predicate.",
+    "manual_rollout_note": "24 October: user authorized an isolated test. Manual rollout dialog covers all task calls, so it was cancelled; direct playground v1 used without changing app route. Confirmed still silent test 10% afterwards."
+  },
+  "latest_request": {
+    "checked_at": "2026-10-23T23:41:31.062Z",
+    "receipt": "mreq_01a16b241d7b7b50805a766a1a02aa58",
+    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16b24-1df0-7660-928d-b6308ba10cc2",
+    "route": "fallback",
+    "reason": "the primary deployment is not serving",
+    "answered_on": "gpt-6-luna \u00b7 openai",
+    "trainable": true,
+    "match": "no match ran",
+    "guard": "no guard ran",
+    "adapter_version": null,
+    "silent_test_copy": false,
+    "interpretation": "Consistent with the recorded primary binding waiting for a promoted version; not proof of a deployment outage. One unsampled request alone does not establish a broken 10% shadow sampler."
+  },
+  "required_actions": [
+    {
+      "owner": "Mubit platform",
+      "action": "Confirm the lane's effective 24-hour schedule and new-row cursor; shorten the interval or trigger v2 using the already kept development examples for the hackathon.",
+      "reason": "More paid teacher traffic does not remove a time-based refresh condition."
+    },
+    {
+      "owner": "Mubit platform",
+      "action": "Reconcile the fixed 12-case exam with the 20-judged-case minimum; regenerate or extend its development gate and confirm semantic grading of the JSON answer contract.",
+      "reason": "Do not feed Homeward's frozen final 20 questions into training or this development gate."
+    },
+    {
+      "owner": "Mubit platform",
+      "action": "Provide a supported fixed-version adapter inference path, adapter/version identity on each response, and a forced-Luna comparator through Mubit; clarify whether an isolated evaluation deployment can serve before customer rollout.",
+      "reason": "A sampled route or a gateway receipt cannot establish a controlled comparison."
+    },
+    {
+      "owner": "Homeward backend",
+      "action": "After endpoint/version proof is available, run development canaries, then the frozen paired 20-question benchmark with identical evidence and settings, metadata-only recording, no answer cache, and blinded adjudication.",
+      "reason": "Publish failures, paired quality, latency and tokens; leave cost unknown until billing is measured."
+    }
+  ],
+  "evaluation_ready": false,
+  "heldout_questions_sent": 0,
+  "training_settings_changed": false,
+  "policy_observed_at": "2026-10-23T23:47:00Z",
+  "adapter_observed_at": "2026-10-24T10:10:45Z",
+  "latest_adapter_observation": {
+    "visible_versions": [
+      1
+    ],
+    "state": "silent_test",
+    "new_serving_proof": false,
+    "scope": "Refreshed signed-in adapter Overview. Detailed pair counts, percentage and exam score not freshly re-read."
+  },
+  "latest_development_comparison": {
+    "checked_at": "2026-10-24T09:08:07Z",
+    "scope": "Four known development cases; UI adapter vs API Luna, not controlled final benchmark",
+    "adapter_id": "ad_lane_8bdd977d",
+    "version": 1,
+    "cases": 4,
+    "manual_full_task_acceptable": {
+      "adapter": 1,
+      "luna": 3
+    },
+    "manual_core_advice_pass": {
+      "adapter": 2,
+      "luna": 4
+    },
+    "playground_adapter_serving_verified": true,
+    "api_adapter_serving_verified": false,
+    "app_rollout_changed": false,
+    "final_heldout_unchanged": true,
+    "final_heldout_questions_sent": 0,
+    "report_file": "homeward/results/travel/isolated-v1-smoke-2026-10-24/report.json",
+    "summary_file": "homeward/results/travel/isolated-v1-smoke-2026-10-24/summary.txt",
+    "provider_playground_error": "502 wrapping provider 401; API Luna worked",
+    "limitations": [
+      "UI decoding and schema enforcement settings are not fully exposed; no controlled API benchmark or latency claim",
+      "Existing development cases already inspected and may overlap training; not unseen generalization evidence",
+      "Luna API uses strict JSON schema; adapter playground schema enforcement is unknown. Latency clocks differ. UI proves selected v1, not a per-response API version header. No independent/blinded reviewer."
+    ]
+  },
+  "latest_self_service_investigation": {
+    "checked_at": "2026-10-24T09:53:12Z",
+    "report_file": "homeward/results/travel/v2-self-service-investigation-2026-10-24.json",
+    "supported_manual_refresh_found": false,
+    "new_inference_calls": 0,
+    "successor_prepared": true,
+    "successor_submitted": false
+  }
+}

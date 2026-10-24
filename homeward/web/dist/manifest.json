@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "map": {
+    "url": "/assets/london-49578966da597c69.ael.br",
+    "bytes": 7992181,
+    "sha256": "49578966da597c697e31835d696f047ede3ff54dfea6b0de83cb05b4accfe3cc",
+    "raw_bytes": 21910636,
+    "source_sha256": "b6739ab69cad7b75b5a3f8341519c60dcf8640babf8380da57e54749ba3b2719",
+    "codec": "brotli"
+  },
+  "engine": {
+    "url": "/assets/homeward-910911f8fef17ab4.wasm.gz",
+    "bytes": 2372889,
+    "sha256": "910911f8fef17ab42e45337cf3cf80d10855846c62e4ac0078da24fb1c098e67",
+    "raw_bytes": 7016561,
+    "codec": "gzip"
+  },
+  "bindings": "/assets/homeward-5da034834afe3d60.mjs"
+}

@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-24T09:53:12Z",
+  "scope": "Read-only self-service investigation of existing Homeward task; offline preparation of a separate successor.",
+  "existing_task_id": "ln_445191829380864c541213cd",
+  "existing_adapter_id": "ad_lane_8bdd977d",
+  "current_counts": {
+    "calls": 181,
+    "kept": 149,
+    "rejected": 26,
+    "unable_to_review": 6,
+    "running_reviews": 0
+  },
+  "existing_v2_started": false,
+  "manual_rollout_applied": false,
+  "settings_changed": false,
+  "new_inference_calls": 0,
+  "observed_refresh_policy": "every 24 hours once 25 new rows are rated up, from the base, replaying 10% of the last training rows; its exam is the first version\u2019s 12 held-out checks",
+  "checked_controls": [
+    "Adapter menu exposes switch-off/emergency-stop controls; version rollout controls do not start training.",
+    "Task page and Details expose counts, route, history, progress and IDs; no retrain/refresh action was exposed.",
+    "Training section exposes only new-example count and maximum row size; organization has no daily training limit.",
+    "Task override editor lists adapter, areas, drop_rules, exclude_rows, evals, max_rows and max_row_bytes. No refresh interval.",
+    "Advanced policy lists refresh.min_new_rows=25, refresh.min_new_fraction=0.5, cooldown_minutes=0 and replay_fraction=0.1. No task schedule editor.",
+    "Current full public docs have no management refresh/retrain endpoint. First-adapter guide explicitly documents no training retry button."
+  ],
+  "conclusion": "No supported self-service mechanism found to force an early v2 of the existing adapter. Lowering a row threshold is not evidence of shortening the independent lane schedule. The current scheduler cursor and next-run time remain unknown.",
+  "workaround": {
+    "status": "prepared_awaiting_successor_choice",
+    "folder": "homeward/experiments/decision-lab",
+    "description": "Separate compact decision-selection task with 40 synthetic source-grounded teaching questions across eight failure families. First version would be v1 of a new adapter.",
+    "max_calls": 40,
+    "requested_teacher": "gpt-6-luna",
+    "max_user_message_bytes": 1567,
+    "rubrics_sent_to_model": false,
+    "app_imports_experiment": false,
+    "limitations": [
+      "Not a v2 of the old adapter",
+      "Not an end-to-end travel benchmark",
+      "More canonical outputs may make this task easier; any gain must be measured on this changed task and not compared directly with the old 8.3% gate",
+      "Training acceptance and timing are unconfirmed"
+    ],
+    "safeguards": [
+      "Unique task fingerprint",
+      "No project-wide settings changes",
+      "No app routing changes",
+      "No final held-out questions used",
+      "Stops on first teacher/audit mismatch",
+      "No automatic retries or replay of the paid batch"
+    ]
+  },
+  "sources": [
+    "https://docs.mubit.ai/guides/first-adapter",
+    "https://docs.mubit.ai/reference/api",
+    "https://docs.mubit.ai/guides/import-past-calls"
+  ],
+  "final_heldout_sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+  "final_heldout_questions_sent": 0
+}

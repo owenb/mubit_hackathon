@@ -1,0 +1,28 @@
+[
+  {
+    "id": "homeward-correction-001",
+    "case_id": "train-09",
+    "question": "Can I change step free from Waterloo and City to Northern at Bank entirely underground?",
+    "request_id": "mreq_01a16a660e3d70c286771747591f3291",
+    "dashboard_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16a66-0e45-7170-bef9-e9b0ac895168",
+    "original_answer": "Yes. The step-free interchange between the Waterloo & City and Northern lines at Bank involves about 290 metres via street and lifts, so it is not entirely underground. The Waterloo & City lift route uses Walbrook, Monday to Friday. This describes the interchange route, not platform-to-train boarding or current lift availability.",
+    "corrected_answer": "No. The step-free interchange between Waterloo & City and Northern/DLR at Bank involves about 290 metres via street and lifts. The Waterloo & City lift route uses Walbrook, Monday to Friday. This does not establish current lift availability or gap-free boarding.",
+    "reason": "Leading Yes contradicts entirely underground condition; structured labels alone missed the error.",
+    "source_urls": [
+      "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf"
+    ],
+    "reviewer": "coding assistant; source-checked, not independent transport expert",
+    "rating": "bad",
+    "comment_saved_at": "2026-10-23T21:24:50+01:00",
+    "status": "Rating and correction comment verified in dashboard; supervised target ingestion and model update unverified.",
+    "subsequent_task_state": {
+      "checked_at": "2026-10-23T21:27:28+01:00",
+      "kept": 0,
+      "rejected": 1,
+      "waiting_for_review": 31,
+      "reviews_running": 2,
+      "first_training": "not started",
+      "note": "Dashboard task totals after bad rating; no completed model update."
+    }
+  }
+]

@@ -1,0 +1,310 @@
+[
+  {
+    "question": "I have a free afternoon and enjoy ancient civilisations more than paintings. Which two places would you put on my map, and how do their collections differ?",
+    "source_id": "british-museum",
+    "essential_points": [
+      "Show the British Museum and National Gallery on the map.",
+      "Explain that the British Museum covers human history, art and culture, including Egyptian material; the National Gallery focuses on paintings."
+    ],
+    "id": "wave3-001"
+  },
+  {
+    "question": "For a rainy day, would you compare the British Museum with Tate Modern? Please mark both on the map and say what kind of art or history I’d find at each.",
+    "source_id": "british-museum",
+    "essential_points": [
+      "Show the British Museum and Tate Modern on the map.",
+      "Both are indoor options; the British Museum covers human history, art and culture, including Egyptian material, while Tate Modern shows modern and contemporary art."
+    ],
+    "id": "wave3-002"
+  },
+  {
+    "question": "I’m more interested in modern works than old masters. Could you map Tate Modern and the National Gallery and contrast their art collections?",
+    "source_id": "tate-modern",
+    "essential_points": [
+      "Show Tate Modern and the National Gallery on the map.",
+      "Tate Modern shows modern and contemporary art; the National Gallery is a destination for paintings."
+    ],
+    "id": "wave3-003"
+  },
+  {
+    "question": "Which would suit someone curious about Egyptian history better, the British Museum or Tate Modern? Show me both locations on the map and explain the difference in focus.",
+    "source_id": "british-museum",
+    "essential_points": [
+      "Show the British Museum and Tate Modern on the map.",
+      "The British Museum’s collection includes Egyptian material and spans human history, art and culture; Tate Modern focuses on modern and contemporary art."
+    ],
+    "id": "wave3-004"
+  },
+  {
+    "question": "I’d like a free general-admission art visit. Can you map the National Gallery and Tate Modern and compare what their collections offer?",
+    "source_id": "national-gallery",
+    "essential_points": [
+      "Show the National Gallery and Tate Modern on the map.",
+      "General admission or collection entry is free at both; the National Gallery focuses on paintings, while Tate Modern shows modern and contemporary art.",
+      "Some exhibitions at either venue may charge separately."
+    ],
+    "id": "wave3-005"
+  },
+  {
+    "question": "I’m choosing between the British Museum and National Gallery for a history-focused visit. Which is the stronger fit, and where are both on the map?",
+    "source_id": "british-museum",
+    "essential_points": [
+      "Show the British Museum and National Gallery on the map.",
+      "The British Museum is the stronger history fit: its collection covers human history, art and culture, including Egyptian material; the National Gallery focuses on paintings."
+    ],
+    "id": "wave3-006"
+  },
+  {
+    "question": "A friend wants contemporary art, while I’d rather explore human history. Could you put Tate Modern and the British Museum on the map and help us compare?",
+    "source_id": "tate-modern",
+    "essential_points": [
+      "Show Tate Modern and the British Museum on the map.",
+      "Tate Modern shows modern and contemporary art; the British Museum covers human history, art and culture, including Egyptian material."
+    ],
+    "id": "wave3-007"
+  },
+  {
+    "question": "I’m planning two contrasting gallery stops. Could you map all three—the National Gallery, Tate Modern and British Museum—and briefly distinguish their collections?",
+    "source_id": "national-gallery",
+    "essential_points": [
+      "Show the National Gallery, Tate Modern and British Museum on the map.",
+      "The National Gallery is focused on paintings; Tate Modern shows modern and contemporary art; the British Museum covers human history, art and culture, including Egyptian material."
+    ],
+    "id": "wave3-008"
+  },
+  {
+    "question": "I have a flexible day in Greenwich and enjoy ships and local history. Which places could I pair with time in the park, and what should I consider before visiting the Observatory?",
+    "source_id": "greenwich-museums",
+    "essential_points": [
+      "Greenwich can be a suggested day out combining maritime history with the park.",
+      "National Maritime Museum and Queen’s House have free general entry; Cutty Sark and Royal Observatory are ticketed.",
+      "Book ahead where possible and check availability for the date.",
+      "An uphill walk to the Observatory is not an audited step-free route; consult access guidance if mobility is a concern."
+    ],
+    "id": "wave3-009"
+  },
+  {
+    "question": "I’d like a low-cost Greenwich visit without committing to a full itinerary. Which Royal Museums Greenwich sites have free general entry, and which are ticketed?",
+    "source_id": "greenwich-museums",
+    "essential_points": [
+      "National Maritime Museum and Queen’s House have free general entry.",
+      "Cutty Sark and Royal Observatory are ticketed attractions.",
+      "Suggest booking ahead where possible and checking date availability."
+    ],
+    "id": "wave3-010"
+  },
+  {
+    "question": "I have limited mobility and am considering the Royal Observatory in Greenwich. What should I verify rather than assuming the uphill walk is accessible?",
+    "source_id": "greenwich-museums",
+    "essential_points": [
+      "The uphill walk to the Observatory is not equivalent to an audited step-free route.",
+      "Ask about mobility needs and consult the venue’s access guidance."
+    ],
+    "id": "wave3-011"
+  },
+  {
+    "question": "Between museum visits, where could I get free outdoor time in central London and enjoy gardens or a quieter change of pace?",
+    "source_id": "royal-parks",
+    "essential_points": [
+      "Hyde Park and Kensington Gardens are central options for outdoor time, gardens, and a quieter change from indoor attractions.",
+      "Royal Parks are free to explore; attractions, events, and facilities within them may have separate charges or opening policies."
+    ],
+    "id": "wave3-012"
+  },
+  {
+    "question": "I’m planning a relaxed break outdoors and want to avoid paying just to enter a park. What could I consider, and are activities inside necessarily free?",
+    "source_id": "royal-parks",
+    "essential_points": [
+      "London’s Royal Parks are free to explore.",
+      "Hyde Park and Kensington Gardens are central options for outdoor time and a quieter change from indoor attractions.",
+      "Free park entry does not make every attraction, event, or facility free; these can have separate charges and opening policies."
+    ],
+    "id": "wave3-013"
+  },
+  {
+    "question": "I’d like to explore Covent Garden on foot, then head toward Leicester Square. Which public areas can I visit without paying, and what should I know about nearby transport?",
+    "source_id": "covent-garden",
+    "essential_points": [
+      "Covent Garden Piazza and Market Building are public spaces free to walk around; individual shops and markets have their own hours.",
+      "Leicester Square is a short walk away.",
+      "Covent Garden station is on the Piccadilly line; Leicester Square is an alternative when Covent Garden station is busy."
+    ],
+    "id": "wave3-014"
+  },
+  {
+    "question": "Covent Garden station has lifts, but I use a wheelchair. Can I assume they provide a step-free route to the trains, and what information would help assess my journey?",
+    "source_id": "covent-garden",
+    "essential_points": [
+      "The station’s lifts do not establish a fully step-free route to the trains.",
+      "Lift access and wheelchair accessibility are not interchangeable.",
+      "Ask for the required destination or route if accessibility matters."
+    ],
+    "id": "wave3-015"
+  },
+  {
+    "question": "I’m deciding whether to use Covent Garden station or walk from Leicester Square. What does the visitor information say about the line, walking distance, and station crowding?",
+    "source_id": "covent-garden",
+    "essential_points": [
+      "Covent Garden station is on the Piccadilly line.",
+      "Leicester Square is a short walk away and an alternative when Covent Garden station is busy.",
+      "Do not claim more specific walking times or live crowding information."
+    ],
+    "id": "wave3-016"
+  },
+  {
+    "question": "I’m trying to arrange a visit to a jewellery workshop in Hatton Garden. What should I find out before asking whether its entrance is accessible?",
+    "source_id": "hatton-garden",
+    "essential_points": [
+      "Hatton Garden is a district, not a single venue.",
+      "Ask for the particular shop or building to assess entrance accessibility.",
+      "The whole district cannot be certified step-free."
+    ],
+    "id": "wave3-017"
+  },
+  {
+    "question": "A friend says to meet them at Hatton Garden station. How can I clarify the location and suggest nearby rail options for the district?",
+    "source_id": "hatton-arrival",
+    "essential_points": [
+      "Hatton Garden is a neighbourhood, not a Tube station.",
+      "Farringdon and Chancery Lane are nearby station options.",
+      "Station proximity does not establish the same walking time to every shop."
+    ],
+    "id": "wave3-018"
+  },
+  {
+    "question": "I’m visiting Hatton Garden for jewellery, but would also like something to eat nearby. Which nearby street is known for a street-food market?",
+    "source_id": "hatton-garden",
+    "essential_points": [
+      "Hatton Garden is known for jewellery shops and workshops.",
+      "Nearby Leather Lane has a street-food market."
+    ],
+    "id": "wave3-019"
+  },
+  {
+    "question": "I’m meeting someone who’s travelling to a jeweller on Greville Street. Which stations could I suggest, and what shouldn’t I assume about their onward route?",
+    "source_id": "hatton-arrival",
+    "essential_points": [
+      "Farringdon and Chancery Lane are nearby station options for the Greville Street jeweller.",
+      "Do not assume a universal accessible entrance or identical walk time to every shop.",
+      "Check the onward pavement and shop route."
+    ],
+    "id": "wave3-020"
+  },
+  {
+    "question": "I’d like to explore the South Bank on foot and pass several riverside sights. What places could I string together along Queen’s Walk?",
+    "source_id": "south-bank",
+    "essential_points": [
+      "Queen’s Walk is the pedestrian promenade along the South Bank.",
+      "Suggested sequence can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern.",
+      "This is a suggested itinerary, not verified turn-by-turn directions."
+    ],
+    "id": "wave3-021"
+  },
+  {
+    "question": "How should I describe the Queen’s Walk route to a visitor who needs an accessible path, rather than just a list of landmarks?",
+    "source_id": "south-bank",
+    "essential_points": [
+      "Do not certify the suggested itinerary as an accessible route or claim ramps and lifts are verified.",
+      "The source provides a suggested sequence of destinations, not a guaranteed accessible route or turn-by-turn directions."
+    ],
+    "id": "wave3-022"
+  },
+  {
+    "question": "I’m considering Borough Market for a Saturday visit. What should I know about its usual hours and whether I pay to enter?",
+    "source_id": "borough-market",
+    "essential_points": [
+      "Borough Market’s regular published Saturday hours are 09:00–17:00, with holiday or festive exceptions.",
+      "Entry is free; food and purchases cost money.",
+      "Avoid asserting live opening without checking."
+    ],
+    "id": "wave3-023"
+  },
+  {
+    "question": "A visitor is coming to Borough Market by train and wants a clear meeting point. Which station is beside the market, and what services does it have?",
+    "source_id": "borough-market",
+    "essential_points": [
+      "Borough Market is beside London Bridge station.",
+      "London Bridge serves the Jubilee and Northern lines and National Rail."
+    ],
+    "id": "wave3-024"
+  },
+  {
+    "question": "My kids are fascinated by wildlife and fossils, but I’d also like to fit in a second museum nearby. Which two South Kensington museums suit that plan, and what should I allow time for?",
+    "source_id": "natural-history",
+    "essential_points": [
+      "Natural History Museum suits natural-history and dinosaur interests.",
+      "Science Museum is nearby in the South Kensington museum cluster.",
+      "Allow time for travel and visits; do not expect to see everything in a multi-museum afternoon."
+    ],
+    "id": "wave3-025"
+  },
+  {
+    "question": "I’m drawn to space and engineering, and would like another nearby stop focused on a different subject. Which museums could I pair in South Kensington?",
+    "source_id": "science-museum",
+    "essential_points": [
+      "Science Museum suits science, space and engineering interests.",
+      "Natural History Museum and V&A are nearby options in the museum cluster.",
+      "V&A focuses on art and design rather than science or natural history."
+    ],
+    "id": "wave3-026"
+  },
+  {
+    "question": "Could you mark two museum choices on a map for a rainy afternoon: one for art and design, and another for dinosaurs?",
+    "source_id": "va-museum",
+    "essential_points": [
+      "Identify the V&A as the art and design choice.",
+      "Identify the Natural History Museum as the dinosaur and natural-history choice.",
+      "Both are in the South Kensington museum cluster."
+    ],
+    "id": "wave3-027"
+  },
+  {
+    "question": "I’m keen on clothes and fashion, but I also enjoy decorative arts. Which South Kensington museum should I map out, and is its Fashion Gallery available to visit?",
+    "source_id": "va-museum",
+    "essential_points": [
+      "The V&A is the museum for art and design interests.",
+      "The V&A Fashion Gallery is closed for redevelopment until autumn 2028, based on the visit page checked 23 October 2026.",
+      "Do not recommend visiting the closed Fashion Gallery; suggest checking which other galleries match the visitor’s interests."
+    ],
+    "id": "wave3-028"
+  },
+  {
+    "question": "We’ll be in South Kensington and want an indoor visit combining experiments with natural history. Which destinations belong on our map, and what should we know about getting into them?",
+    "source_id": "science-museum",
+    "essential_points": [
+      "Science Museum and Natural History Museum are nearby South Kensington choices for science and natural history.",
+      "Science Museum has free general admission but asks visitors to pre-book a free ticket.",
+      "Natural History Museum galleries are free; a free entry ticket guarantees entry under its published policy, while busy weekends and school holidays can mean queues without one."
+    ],
+    "id": "wave3-029"
+  },
+  {
+    "question": "I love jewellery and design, and need a museum entrance without steps. Which place should I pin, and what should I verify about the route from the Tube?",
+    "source_id": "va-museum",
+    "essential_points": [
+      "V&A South Kensington suits art and design interests, including jewellery.",
+      "Its Cromwell Road and Exhibition Road entrances are step-free.",
+      "South Kensington is the nearest station, but that does not imply a step-free station route; verify the specific journey."
+    ],
+    "id": "wave3-030"
+  },
+  {
+    "question": "We have one afternoon and are choosing between dinosaurs, hands-on science and design. Which nearby museums match those interests, and should we expect to cover all three?",
+    "source_id": "natural-history",
+    "essential_points": [
+      "Natural History Museum suits dinosaur and natural-history interests.",
+      "Science Museum suits science interests; V&A suits art and design interests.",
+      "The museums form a practical nearby cluster, but allow for travel and visits rather than expecting to see everything in one afternoon."
+    ],
+    "id": "wave3-031"
+  },
+  {
+    "question": "I’m visiting on 26 October 2026 and want to put the Science Museum on my map. What opening-time information applies to that week, and what should I check before setting out?",
+    "source_id": "science-museum",
+    "essential_points": [
+      "The published half-term opening for 24–30 October 2026 is 09:00.",
+      "Check the visit page for the actual date; do not claim the museum is open right now without a fresh check."
+    ],
+    "id": "wave3-032"
+  }
+]

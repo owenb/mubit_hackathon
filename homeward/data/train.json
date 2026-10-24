@@ -1,0 +1,194 @@
+[
+  {
+    "id": "train-01",
+    "question": "Is Bank station step free?",
+    "expected_access": "partial",
+    "expected_kind": "clarify"
+  },
+  {
+    "id": "train-02",
+    "question": "Can I take my wheelchair onto the Central line at Bank from the street?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-03",
+    "question": "Can I get from street level to the Northern line at Bank without stairs?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-04",
+    "question": "Does Bank DLR have lift access from the street?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-05",
+    "question": "Where should I enter Bank for the Northern line lifts?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-06",
+    "question": "Which entrance at Bank should I use for the DLR lift?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-07",
+    "question": "Is the King William Street lift at Bank available on request?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-08",
+    "question": "How do I reach the Waterloo and City platforms at Bank step free?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-09",
+    "question": "Can I change step free from Waterloo and City to Northern at Bank entirely underground?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-10",
+    "question": "Are the lifts at Bank working right now?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "train-11",
+    "question": "Is Waterloo station fully step free?",
+    "expected_access": "partial",
+    "expected_kind": "clarify"
+  },
+  {
+    "id": "train-12",
+    "question": "Can I get from the street onto the Jubilee line platform at Waterloo using lifts?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-13",
+    "question": "Does the Bakerloo at Waterloo have step-free street access?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-14",
+    "question": "Can a wheelchair user reach Waterloo Northern line from the street without stairs?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-15",
+    "question": "How do I exit Waterloo and City at Waterloo without stairs?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-16",
+    "question": "Is the Jubilee lift at Waterloo broken today?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "train-17",
+    "question": "Can I change from the southbound Northern via Bank to southbound Victoria at Euston step free?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-18",
+    "question": "Can I change from northbound Victoria to northbound Northern Bank branch at Euston step free?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-19",
+    "question": "Does a step-free interchange at Euston mean I can leave the Victoria line to the street step free?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-20",
+    "question": "Are the Euston Northern Charing Cross branch platforms step free?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-21",
+    "question": "Can I reach the Canada Water ticket hall from the street step free during October 2026?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-22",
+    "question": "Is Canada Water step free while the street lift is being replaced until spring 2027?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-23",
+    "question": "Is the Canada Water street lift working this minute?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "train-24",
+    "question": "Are the Jubilee and Elizabeth line at Canary Wharf the same station?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-25",
+    "question": "Does Canary Wharf normally have step-free routes for DLR and Jubilee?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "train-26",
+    "question": "Can I trust that Canary Wharf lifts are working from an old map?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "train-27",
+    "question": "Is the Jubilee lift at Canary Wharf operational now?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "train-28",
+    "question": "Is there step-free access at Oxford Circus?",
+    "expected_access": "not_applicable",
+    "expected_kind": "outside_scope"
+  },
+  {
+    "id": "train-29",
+    "question": "What is the fare from Bank to Heathrow?",
+    "expected_access": "not_applicable",
+    "expected_kind": "outside_scope"
+  },
+  {
+    "id": "train-30",
+    "question": "Find the fastest train from Bank to Greenwich now.",
+    "expected_access": "not_applicable",
+    "expected_kind": "outside_scope"
+  },
+  {
+    "id": "train-31",
+    "question": "My train is at Bank and I cannot use stairs. Can I board it?",
+    "expected_access": "partial",
+    "expected_kind": "clarify"
+  },
+  {
+    "id": "train-32",
+    "question": "I need the lift at Waterloo but have not chosen a Tube line. Is it accessible?",
+    "expected_access": "partial",
+    "expected_kind": "clarify"
+  }
+]

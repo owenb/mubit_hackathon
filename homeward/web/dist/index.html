@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07121d">
+  <meta name="description" content="London, in your words. Explore the full architectural map with Homeward.">
+  <title>Homeward · London</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2307121d'/%3E%3Cpath d='M8 25V10l8-5 8 5v15M13 25v-9h6v9' stroke='%2370f0d3' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <canvas id="homeward" aria-label="Interactive 3D map of London" tabindex="0"></canvas>
+  <details id="evaluation" hidden><summary>Evaluation</summary><section aria-labelledby="eval-heading"><button id="eval-close" aria-label="Close evaluation">×</button><p class="eyebrow">MODEL EVIDENCE</p><h2 id="eval-heading">Learning, measured.</h2><div id="eval-content">Loading the latest comparison…</div></section></details>
+  <script type="application/json" id="homeward-proof">{}</script>
+  <main id="loading" aria-labelledby="loading-title">
+    <div class="loading-brand"><i></i> H O M E W A R D <span>LONDON, IN YOUR WORDS.</span></div>
+    <div class="journey">
+      <p class="eyebrow">YOUR CITY IS ON ITS WAY</p>
+      <h1 id="loading-title">London, coming<br>into focus<span>.</span></h1>
+      <p class="intro">Every building. Every bend in the river.<br>The whole map, ready to explore.</p>
+      <div class="skyline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><b>◯</b><span></span><span></span><span></span><span></span><span></span></div>
+      <ol class="stations" aria-label="Loading stages">
+        <li data-station="0" class="active"><i></i><span>Collect</span></li><li data-station="1"><i></i><span>Assemble</span></li><li data-station="2"><i></i><span>Illuminate</span></li><li data-station="3"><i></i><span>Explore</span></li>
+      </ol>
+      <div class="progress-copy"><strong id="phase-label">Finding the platform…</strong><span id="progress-number"></span></div>
+      <div id="progress-track" class="track indeterminate" role="progressbar" aria-label="Preparing London"><div id="progress-fill"></div><i></i></div>
+      <p id="progress-detail" class="detail">Checking your browser’s WebGPU connection.</p>
+      <p id="failure" role="alert" hidden></p><button id="retry" hidden>Try again</button>
+      <p class="honest">The bar follows real bytes and completed work. No imaginary percentages.</p>
+    </div>
+    <footer><span id="package-note">Full London · lossless map package</span><a href="/maps/README.txt">© OpenStreetMap contributors</a></footer>
+  </main>
+  <script type="module" src="/loader.mjs"></script>
+  <script type="module" src="/evaluation.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+{"id":"travel-01","question":"I have a rainy afternoon and two children who love dinosaurs. Suggest a free London museum and show it.","expected_kind":"answer","contains":["Natural History Museum","free"],"places":["osm:2026-10-12:18306"]},
+{"id":"travel-02","question":"Can I enter the V&A and Science Museum for free without reserving anything? Show both.","expected_kind":"answer","contains":["free","Science","book"],"places":["osm:2026-10-12:180927","osm:2026-10-12:20531"]},
+{"id":"travel-03","question":"Can I tap into the Tube with my phone and out with my watch if both use the same bank card?","expected_kind":"answer","contains":["same","device"],"forbidden":["yes, you can"]},
+{"id":"travel-04","question":"What will one adult London bus ride cost on 30 October 2026, and on 2 November 2026?","expected_kind":"answer","contains":["1.75","1.85"]},
+{"id":"travel-05","question":"Does a normal Monday lunchtime work for visiting Borough Market food stalls?","expected_kind":"answer","contains":["Monday","closed"],"places":["osm:2026-10-12:3958"]},
+{"id":"travel-06","question":"We want modern art and maritime history, both free. Give us two London places and show both.","expected_kind":"answer","contains":["Tate Modern","National Maritime"],"places":["osm:2026-10-12:18520","osm:2026-10-12:60145"]},
+{"id":"travel-07","question":"I have hit my TfL daily cap. Is an Uber Boat to Greenwich now included for free?","expected_kind":"answer","contains":["cap"],"any":["not","separate","doesn’t","doesn't"]},
+{"id":"travel-08","question":"Is the Night Tube available after midnight on a Tuesday?","expected_kind":"answer","contains":["Friday","Saturday"],"any":["bus","buses"]},
+{"id":"travel-09","question":"I'm landing at Heathrow with a suitcase and staying near Farringdon. What rail option should I consider?","expected_kind":"answer","contains":["Elizabeth","Farringdon"]},
+{"id":"travel-10","question":"Is Hatton Garden a station? I need step-free access to a jeweller there.","expected_kind":"clarify","contains":["Hatton"],"any":["shop","building","address"],"places":["osm:2026-10-12:3012"]},
+{"id":"travel-11","question":"I want to see the V&A Fashion Gallery next week in October 2026. Can I just go?","expected_kind":"answer","contains":["closed","2028"]},
+{"id":"travel-12","question":"Will a London Travelcard cover the train leg from Gatwick even though Oyster is accepted?","expected_kind":"answer","contains":["Travelcard"],"any":["not","doesn’t","doesn't"]},
+{"id":"travel-13","question":"Can one paying adult take five children aged nine free on the Tube?","expected_kind":"answer","any":["four","4"],"contains":["adult"]},
+{"id":"travel-14","question":"Can I drop off my wheeled suitcase inside the British Museum while I visit?","expected_kind":"answer","contains":["suitcase"],"any":["not","cannot","can't","can’t"]},
+{"id":"travel-15","question":"I want to use the glass floor at Tower Bridge: does the free pedestrian crossing include it?","expected_kind":"answer","contains":["free"],"any":["ticket","paid","separate"]},
+{"id":"travel-16","question":"Find me a guaranteed free walk-in visit to Sky Garden in ten minutes.","expected_kind":"answer","contains":["Sky Garden"],"any":["cannot","can't","can’t","not guaranteed","can't guarantee","cannot guarantee"]},
+{"id":"travel-17","question":"Do I have to book ahead just to ask for staff assistance on the Elizabeth line?","expected_kind":"answer","any":["turn-up","turn up","without","no advance"]},
+{"id":"travel-18","question":"Does a Santander Cycles day pass mean I can keep one bike continuously all day?","expected_kind":"answer","any":["return","dock"],"contains":["ride"]},
+{"id":"travel-19","question":"The Jubilee lift at Canary Wharf: can you check if it is working right now?","expected_kind":"live_check","places":["station:canary-wharf-jubilee"]},
+{"id":"travel-20","question":"Show Bank and Waterloo together; I only need their locations.","expected_kind":"answer","places":["station:bank","station:waterloo"]}
+]

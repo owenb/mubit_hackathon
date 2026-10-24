@@ -1,0 +1,32 @@
+Homeward v1 vs Luna — isolated development diagnostic
+24 October 2026
+
+Four previously used development cases, identical evidence per pair. Final 20 questions untouched (checksum verified).
+V1 ran in the direct Mubit playground; Luna ran through the Mubit API. App routing and rollout stayed unchanged.
+
+Outcome: manual core-advice checks v1 2/4, Luna 4/4; manually acceptable complete app answers v1 1/4, Luna 3/4.
+This is NOT a controlled benchmark: UI/API settings differ, known development cases, non-blinded assessment. Night answer omits an unasked weekend detail present in the preparation rubric; its core answer was accepted and this exception is disclosed.
+
+challenge-04: I tapped into a train with my phone but only have my linked watch ready now. Is using the watch fine, and should I tap out on a bus afterwards?
+  V1: Says Yes, use your watch after phone tap-in, then gives contradictory bus tap-in/out versus touch-in-only advice. The supplied evidence explicitly says devices are distinct and buses are touch-in-only.
+  Luna: Correct same-device rail rule and touch-in-only bus rule.
+
+challenge-01: We have two children: one loves dinosaurs, the other fashion and design. Suggest two free indoor museums, explain whether to book, and show both.
+  V1: Conflicts with its own Science Museum booking advice by saying neither needs booking. Uses focus for two pins; app requires fit. Includes the useful V&A closure caveat.
+  Luna: Correct museum choices, different booking policies, dated V&A closure and two valid pins with fit.
+
+challenge-07: It is Tuesday after midnight. Does Night Tube get me home, or can I hail a minicab that appears in an app?
+  V1: Correctly rejects Tuesday Night Tube, requires licensed minicab booking and reserves hailing for black taxis. Does not state Friday/Saturday explicitly: the prewritten rubric includes that background detail, so this is a manual core-task acceptance, not a strict all-rubric-points score.
+  Luna: Correct night schedule and pre-booked minicab distinction; no invented availability or safety guarantee.
+
+challenge-06: For a wet day, can my wheelchair stay entirely indoors transferring from Waterloo & City to DLR at Bank, even if staff arrange assistance?
+  V1: Unnecessary Outside scope refusal despite explicit supplied street-interchange evidence; fails to answer no and omits the Bank pin.
+  Luna: Correctly explains the street section and limits of assistance, but falsely maps Waterloo station as an origin from the Waterloo & City line name.
+
+Why no manual rollout? The control says v1 would answer a percentage of ALL task calls, including app traffic. There is no test-only selector. A direct adapter playground call provides isolation without changing the route.
+The playground Luna comparator still fails 502/provider 401; that is an authentication failure, not a quality score. The working Luna API positively identified all comparator calls.
+
+Conclusion: 8.3% does not mean 92% of every possible response is useless. But these fresh concrete errors confirm v1 is not suitable for app rollout. We have not demonstrated a Mubit win or a correction-to-new-version improvement.
+
+Next technical direction: separate concise, canonical decisions/place IDs from prose; build a small development gate around explicit invariants and factual essentials. Keep the current v1 and final evaluation frozen. Any new task or retraining experiment needs its own frozen evaluation and verified serving path.
+No speed/cost win claimed. Raw inputs, UI traces/screenshots, response headers, tokens and all failed attempts accompany report.json.

@@ -1,0 +1,73 @@
+[
+  {
+    "id": 5469508777,
+    "url": "https://api.openstreetmap.org/api/0.6/node/5469508777",
+    "tags": {
+      "fare_zone": "2",
+      "light_rail": "yes",
+      "name": "Canary Wharf",
+      "naptan:AtcoCode": "940GZZDLCAN",
+      "network": "Docklands Light Railway",
+      "operator": "KeolisAmey Docklands Ltd",
+      "payment:contactless": "yes",
+      "payment:oyster": "yes",
+      "public_transport": "station",
+      "railway": "station",
+      "station": "light_rail",
+      "wheelchair": "yes",
+      "wikidata": "Q1032811",
+      "wikipedia": "en:Canary Wharf DLR station"
+    }
+  },
+  {
+    "id": 6402222390,
+    "url": "https://api.openstreetmap.org/api/0.6/node/6402222390",
+    "tags": {
+      "fare_zone": "2",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "line": "Jubilee",
+      "name": "Canary Wharf",
+      "name:zh": "\u91d1\u4e1d\u96c0\u7801\u5934",
+      "naptan:AtcoCode": "9400ZZLUCYF",
+      "network": "London Underground",
+      "network:wikidata": "Q20075",
+      "noaddress": "yes",
+      "operator": "London Underground",
+      "payment:contactless": "yes",
+      "payment:oyster": "yes",
+      "public_transport": "station",
+      "railway": "station",
+      "ref:crs": "ZCZ",
+      "station": "subway",
+      "subway": "yes",
+      "wheelchair": "yes",
+      "wikidata": "Q1032842",
+      "wikipedia": "en:Canary Wharf tube station"
+    }
+  },
+  {
+    "id": 9097410038,
+    "url": "https://api.openstreetmap.org/api/0.6/node/9097410038",
+    "tags": {
+      "fare_zone": "2",
+      "level": "-3",
+      "line": "Elizabeth",
+      "name": "Canary Wharf",
+      "network": "Elizabeth line",
+      "network:wikidata": "Q111297173",
+      "operator": "Elizabeth line",
+      "operator:wikidata": "Q682520",
+      "payment:contactless": "yes",
+      "payment:oyster": "yes",
+      "public_transport": "station",
+      "railway": "station",
+      "ref:crs": "CWX",
+      "ref:tiploc": "CANWHRF",
+      "train": "yes",
+      "wheelchair": "yes",
+      "wikidata": "Q5031204",
+      "wikipedia": "en:Canary Wharf railway station"
+    }
+  }
+]

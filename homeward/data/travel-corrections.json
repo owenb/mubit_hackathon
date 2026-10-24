@@ -1,0 +1,53 @@
+[
+  {
+    "id": "travel-correction-1",
+    "question": "At Bank, can a wheelchair user transfer from Waterloo & City to DLR without ever going outside?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna",
+    "contains": [
+      "No",
+      "street"
+    ],
+    "expected_kind": "answer"
+  },
+  {
+    "id": "travel-correction-2",
+    "question": "Could I remain entirely underground when changing from Waterloo & City to Northern at Bank?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna",
+    "contains": [
+      "No",
+      "street"
+    ],
+    "expected_kind": "answer"
+  },
+  {
+    "id": "travel-correction-3",
+    "question": "If it is raining, can I do the step-free Bank Waterloo & City to DLR interchange indoors all the way?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna",
+    "contains": [
+      "No",
+      "street"
+    ],
+    "expected_kind": "answer"
+  },
+  {
+    "id": "travel-correction-4",
+    "question": "At Euston, can I change from the northbound Northern Bank branch to northbound Victoria without stairs?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna"
+  },
+  {
+    "id": "travel-correction-5",
+    "question": "Does a step-free same-direction change at Euston also mean the street exit is step-free?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna"
+  },
+  {
+    "id": "travel-correction-6",
+    "question": "What is the difference between changing lines step-free at Euston and getting to the street?",
+    "source_id": "tfl-guide",
+    "author": "coding assistant; reviewed correction probes, answered by Luna"
+  }
+]

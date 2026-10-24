@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "id": "greville-street-map-correction",
+  "question": "I’m meeting someone who’s travelling to a jeweller on Greville Street. Which stations could I suggest, and what shouldn’t I assume about their onward route?",
+  "recorded_at": "2026-10-23",
+  "is_live": false,
+  "observed_before": {
+    "answer": "Suggest **Farringdon** or **Chancery Lane**: a local Greville Street jeweller lists both as nearby, but the best choice depends on the exact shop. Don’t assume the same walking distance or an accessible pavement/shop route for every address. Farringdon’s step-free Elizabeth line access may be relevant, but that does not establish a step-free onward route to the jeweller. If accessibility matters, check the exact shop address and route with them.",
+    "scene": {
+      "camera": "fit",
+      "places": [
+        {
+          "id": "station:canary-wharf-dlr",
+          "role": "context"
+        },
+        {
+          "id": "osm:2026-10-12:1685",
+          "role": "context"
+        },
+        {
+          "id": "osm:2026-10-12:1621",
+          "role": "context"
+        }
+      ]
+    },
+    "resolved_scene": {
+      "camera": "fit",
+      "places": [
+        {
+          "id": "station:canary-wharf-dlr",
+          "name": "Canary Wharf · DLR",
+          "aliases": [
+            "Canary Wharf"
+          ],
+          "lines": [
+            "DLR"
+          ],
+          "feature_index": 2321,
+          "osm_id": 5469508777,
+          "kind": 5,
+          "rank": 700,
+          "east": 7400.75,
+          "north": -255.25,
+          "height": 0,
+          "lat": 51.505107050237285,
+          "lon": -0.020986663525736193,
+          "role": "context",
+          "location_precision": "station or feature anchor; not an entrance"
+        },
+        {
+          "id": "osm:2026-10-12:1685",
+          "name": "Farringdon",
+          "aliases": [
+            "Farringdon"
+          ],
+          "lines": [],
+          "feature_index": 1685,
+          "osm_id": 3284103165,
+          "kind": 5,
+          "rank": 700,
+          "east": 1610.5,
+          "north": 1398.5,
+          "height": 0,
+          "lat": 51.51996293924841,
+          "lon": -0.10455602089088242,
+          "role": "context",
+          "location_precision": "station or feature anchor; not an entrance"
+        },
+        {
+          "id": "osm:2026-10-12:1621",
+          "name": "Chancery Lane",
+          "aliases": [
+            "Chancery Lane"
+          ],
+          "lines": [],
+          "feature_index": 1621,
+          "osm_id": 3076573915,
+          "kind": 5,
+          "rank": 700,
+          "east": 1111,
+          "north": 1199.25,
+          "height": 0,
+          "lat": 51.5181730460448,
+          "lon": -0.11176519044381893,
+          "role": "context",
+          "location_precision": "station or feature anchor; not an entrance"
+        }
+      ],
+      "version": "london-2026-10-12-v1",
+      "attribution": "© OpenStreetMap contributors"
+    },
+    "inference": {
+      "route": "luna",
+      "label": "Luna via Mubit",
+      "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+      "requested_model": "gpt-6-luna",
+      "response_model": "gpt-6-luna",
+      "request_id": "mreq_01a16ac9e1aa7020831e1c66be19dccf",
+      "original_request_id": null,
+      "recording": "full",
+      "adapter_id": null,
+      "evidence": [
+        "Mubit gateway receipt: mreq_01a16ac9e1aa7020831e1c66be19dccf",
+        "Completion model gpt-6-luna",
+        "OpenAI request ID and processing-time response headers"
+      ]
+    },
+    "latency_ms": 3482,
+    "request_id": "mreq_01a16ac9e1aa7020831e1c66be19dccf",
+    "source_record_sha256": "a14b2386806c5a738c6543baad748fe60dc2a437e1f31192fb5b6ec1dd2f4183",
+    "failure": "The text names Farringdon and Chancery Lane, but the map also pins Canary Wharf DLR. Valid IDs did not make this a correct map."
+  },
+  "operator_target": {
+    "label": "Operator correction — expected scene, not a model result",
+    "scene": {
+      "camera": "fit",
+      "places": [
+        {
+          "id": "osm:2026-10-12:1685",
+          "role": "context"
+        },
+        {
+          "id": "osm:2026-10-12:1621",
+          "role": "context"
+        }
+      ]
+    },
+    "resolved_scene": {
+      "camera": "fit",
+      "places": [
+        {
+          "id": "osm:2026-10-12:1685",
+          "name": "Farringdon",
+          "aliases": [
+            "Farringdon"
+          ],
+          "lines": [],
+          "feature_index": 1685,
+          "osm_id": 3284103165,
+          "kind": 5,
+          "rank": 700,
+          "east": 1610.5,
+          "north": 1398.5,
+          "height": 0,
+          "lat": 51.51996293924841,
+          "lon": -0.10455602089088242,
+          "role": "context",
+          "location_precision": "station or feature anchor; not an entrance"
+        },
+        {
+          "id": "osm:2026-10-12:1621",
+          "name": "Chancery Lane",
+          "aliases": [
+            "Chancery Lane"
+          ],
+          "lines": [],
+          "feature_index": 1621,
+          "osm_id": 3076573915,
+          "kind": 5,
+          "rank": 700,
+          "east": 1111,
+          "north": 1199.25,
+          "height": 0,
+          "lat": 51.5181730460448,
+          "lon": -0.11176519044381893,
+          "role": "context",
+          "location_precision": "station or feature anchor; not an entrance"
+        }
+      ],
+      "version": "london-2026-10-12-v1",
+      "attribution": "© OpenStreetMap contributors"
+    },
+    "correction": "Keep Farringdon and Chancery Lane. Remove the unrelated Canary Wharf DLR pin. Never treat a station pin as an audited accessible onward route.",
+    "feedback_status": "Bad rating and correction saved in Mubit",
+    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16ac9-e293-79c3-8622-5efacf001d3b"
+  },
+  "learned_after": null,
+  "update_version": null,
+  "lineage_verified": false,
+  "transfer_eval": null,
+  "note": "A replay of a real development failure. The target is authored, not a trained output; no before/after improvement is claimed. Fill learned_after only from an attributable adapter response and preserve the untouched source record."
+}

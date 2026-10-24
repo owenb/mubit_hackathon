@@ -1,0 +1,104 @@
+{
+  "created_at": "2026-10-23T21:27:46.766Z",
+  "note": "Prospective comparison cases, not used in training. New question combinations; topic families overlap training, so not a family-held-out benchmark. Score full answers against sources, separately from exact labels.",
+  "cases": [
+    {
+      "id": "challenge-01",
+      "question": "We have two children: one loves dinosaurs, the other fashion and design. Suggest two free indoor museums, explain whether to book, and show both.",
+      "required": [
+        "Natural History Museum and V&A are suitable distinct choices",
+        "Keep free general admission separate from paid exhibitions",
+        "Do not promise the closed V&A Fashion Gallery is available"
+      ],
+      "scope": "new combination of taught museum facts"
+    },
+    {
+      "id": "challenge-02",
+      "question": "It is Monday and I have a wheeled suitcase. Can I leave it at the British Museum and then get lunch from Borough Market stalls?",
+      "required": [
+        "British Museum does not admit wheeled suitcases",
+        "Regular Borough Market stalls are closed Monday; retain holiday exception"
+      ],
+      "scope": "new combination of taught constraints"
+    },
+    {
+      "id": "challenge-03",
+      "question": "I land at Gatwick with a London Travelcard and a 12-year-old. Does Oyster acceptance mean our pass and my bank card give us the airport leg and child discount automatically?",
+      "required": [
+        "London Travelcard does not cover Gatwick leg",
+        "Young Visitor discount is not automatically applied to contactless",
+        "Do not assert every airport service shares child policy"
+      ],
+      "scope": "new combination of taught fare rules"
+    },
+    {
+      "id": "challenge-04",
+      "question": "I tapped into a train with my phone but only have my linked watch ready now. Is using the watch fine, and should I tap out on a bus afterwards?",
+      "required": [
+        "Use same payment device on rail",
+        "Phone and watch separate payment identities",
+        "Bus touches in only"
+      ],
+      "scope": "new combination of taught payment rules"
+    },
+    {
+      "id": "challenge-05",
+      "question": "We want the Tower Bridge glass floor and Sky Garden this weekend, with no booking and no entrance charge. Can you guarantee that plan and show both?",
+      "required": [
+        "Tower Bridge high-level exhibition is ticketed; free crossing is different",
+        "Sky Garden free tickets timed; walk-ins not guaranteed",
+        "Map both verified anchors"
+      ],
+      "scope": "new combination of taught booking rules"
+    },
+    {
+      "id": "challenge-06",
+      "question": "For a wet day, can my wheelchair stay entirely indoors transferring from Waterloo & City to DLR at Bank, even if staff arrange assistance?",
+      "required": [
+        "No, the step-free interchange includes 290m via street and lifts",
+        "Assistance does not remove physical route limits",
+        "Do not assert live lift operation"
+      ],
+      "scope": "new combination; correction context may apply"
+    },
+    {
+      "id": "challenge-07",
+      "question": "It is Tuesday after midnight. Does Night Tube get me home, or can I hail a minicab that appears in an app?",
+      "required": [
+        "Night Tube Friday/Saturday only",
+        "Night buses alternative subject to actual journey",
+        "Minicabs booked; only licensed black taxis hailed at rank/street"
+      ],
+      "scope": "new combination of taught night-travel facts"
+    },
+    {
+      "id": "challenge-08",
+      "question": "I want free modern art and maritime history, but I assumed Cutty Sark and every Tate exhibition were included. What should I choose and map?",
+      "required": [
+        "Tate Modern collection free, special exhibitions may charge",
+        "National Maritime Museum free",
+        "Cutty Sark ticketed"
+      ],
+      "scope": "new combination of taught admission rules"
+    },
+    {
+      "id": "challenge-09",
+      "question": "If all Elizabeth line stations are street-to-platform step-free, can I assume level boarding everywhere and no broken lift today?",
+      "required": [
+        "No: street-platform, boarding and live operation differ",
+        "Current lift state requires fresh check and cannot be guaranteed"
+      ],
+      "scope": "new phrasing of taught access distinctions"
+    },
+    {
+      "id": "challenge-10",
+      "question": "We want an outdoor break at Hyde Park after the Natural History Museum. Does free park entry mean its events and attractions are free too? Show both.",
+      "required": [
+        "Park entry free but events/facilities can charge",
+        "Map Hyde Park and Natural History Museum",
+        "No verified-route or time guarantee"
+      ],
+      "scope": "new combination of taught park/museum facts"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+ {"id":"map-01","question":"Is there step-free access at Bank station?","camera":"focus","places":["station:bank"]},
+ {"id":"map-02","question":"Show me Bank and Waterloo together on the map.","camera":"fit","places":["station:bank","station:waterloo"]},
+ {"id":"map-03","question":"Put Euston, Waterloo and Bank on the same view.","camera":"fit","places":["station:euston","station:waterloo","station:bank"]},
+ {"id":"map-04","question":"Zoom into Trafalgar Square.","camera":"focus","places":["osm:2026-10-12:48952"]},
+ {"id":"map-05","question":"Is the Jubilee lift at Canary Wharf working right now?","camera":"focus","places":["station:canary-wharf-jubilee"]},
+ {"id":"map-06","question":"At Bank, can I change from Waterloo & City to Northern entirely underground?","camera":"focus","places":["station:bank"]},
+ {"id":"map-07","question":"Can I use the Victoria line lifts to the street at Euston?","camera":"focus","places":["station:euston"]},
+ {"id":"map-08","question":"A little closer, please.","context_ids":["station:bank"],"camera":"closer","places":["station:bank"]},
+ {"id":"map-09","question":"Show the whole city again.","context_ids":["station:bank"],"camera":"city","places":[]},
+ {"id":"map-10","question":"Show Hogwarts station in London.","camera":"keep","places":[]}
+]

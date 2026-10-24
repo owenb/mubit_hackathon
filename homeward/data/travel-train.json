@@ -1,0 +1,777 @@
+[
+  {
+    "source_id": "tfl-payment",
+    "question": "How should I tap when changing trains, and what should I do to avoid paying with the wrong card or device?",
+    "essential_points": [
+      "Touch in and out on rail journeys, even if gates are open.",
+      "Use the same card or device throughout a journey; a phone, watch and physical card count as separate identities.",
+      "Keep cards separate to avoid card clash."
+    ],
+    "id": "travel-train-001"
+  },
+  {
+    "source_id": "tfl-payment",
+    "question": "If I only touch in on a bus, have I missed a required tap, and when might a pink reader matter?",
+    "essential_points": [
+      "On buses and trams, touch in only.",
+      "A pink reader can record an interchange that avoids Zone 1.",
+      "Missing required touches can cause a maximum fare."
+    ],
+    "id": "travel-train-002"
+  },
+  {
+    "source_id": "tfl-payment",
+    "question": "I’m changing trains and want to avoid Zone 1 where possible. What should I check or use during the interchange?",
+    "essential_points": [
+      "A pink reader can record an interchange avoiding Zone 1.",
+      "Check the single fare finder for the correct route."
+    ],
+    "id": "travel-train-003"
+  },
+  {
+    "source_id": "tfl-bus-fares",
+    "question": "What are the adult bus and tram pay-as-you-go single fare and daily cap on 23 October 2026?",
+    "essential_points": [
+      "On 23 October 2026, the adult single fare is £1.75.",
+      "On 23 October 2026, the daily cap is £5.25."
+    ],
+    "id": "travel-train-004"
+  },
+  {
+    "source_id": "tfl-bus-fares",
+    "question": "Does the £1.85 bus and tram fare apply in October 2026, and are all children eligible to travel free?",
+    "essential_points": [
+      "The £1.85 single fare and £5.55 daily cap begin on 1 November 2026, not in October.",
+      "Children aged 5–10 travel free on buses and trams without a Zip card unless they look older than 10.",
+      "Older-child discounts require the appropriate eligibility or card."
+    ],
+    "id": "travel-train-005"
+  },
+  {
+    "source_id": "tfl-bus-fares",
+    "question": "I’m taking two buses within an hour and my Oyster has a negative balance. What do I need to do for Hopper to apply?",
+    "essential_points": [
+      "Hopper covers unlimited bus and tram journeys within one hour of the first touch-in.",
+      "Use the same card or device; Hopper is automatic.",
+      "Top up a negative Oyster balance within the hour to qualify."
+    ],
+    "id": "travel-train-006"
+  },
+  {
+    "source_id": "tfl-children",
+    "question": "What free travel can a family with under-11s use on London buses and rail services?",
+    "essential_points": [
+      "Under-11s travel free on buses and trams.",
+      "On Tube, DLR, London Overground, Elizabeth line and some National Rail services, up to four under-11s travel free per fare-paying adult.",
+      "Do not assume the rail allowance applies to every airport train or National Rail service."
+    ],
+    "id": "travel-train-007"
+  },
+  {
+    "source_id": "tfl-children",
+    "question": "Can an 11–15-year-old get the Young Visitor discount automatically with a contactless bank card?",
+    "essential_points": [
+      "The Young Visitor discount is for visitors aged 11–15.",
+      "It provides half-price travel on a Visitor Oyster card, not an ordinary contactless bank card.",
+      "TfL staff or a Visitor Centre can add it, and the child must be present."
+    ],
+    "id": "travel-train-008"
+  },
+  {
+    "source_id": "tfl-children",
+    "question": "We’re visiting with a 12-year-old and want to arrange discounted travel. Where should we go, and who must be there?",
+    "essential_points": [
+      "Visitors aged 11–15 can receive half-price travel using the Young Visitor discount on a Visitor Oyster card.",
+      "Ask TfL staff or a Visitor Centre to add the discount.",
+      "The child must be present."
+    ],
+    "id": "travel-train-009"
+  },
+  {
+    "source_id": "tfl-night",
+    "question": "I’m travelling late on a Friday. What TfL options can I consider, and how should I check whether they suit my journey?",
+    "essential_points": [
+      "Night Tube and Night London Overground operate on Friday and Saturday nights, not every night.",
+      "Night buses offer additional overnight options.",
+      "Use the current journey planner for the actual date and destination."
+    ],
+    "id": "travel-train-010"
+  },
+  {
+    "source_id": "tfl-night",
+    "question": "If a minicab app accepts my booking, does that mean I can pick one up at a rank or that the journey is risk-free?",
+    "essential_points": [
+      "Minicabs and private hire must be booked through a licensed operator.",
+      "Only licensed black taxis may be hailed or hired at a rank without prior booking.",
+      "Booking or using an app does not establish that a route or neighbourhood is risk-free."
+    ],
+    "id": "travel-train-011"
+  },
+  {
+    "source_id": "tfl-night",
+    "question": "My late-night plans change and I need to get home. What should I check before choosing between a train, bus, taxi or minicab?",
+    "essential_points": [
+      "Check the current journey planner for the actual date and destination; do not assume a particular service is running.",
+      "Night buses provide additional overnight options.",
+      "Only licensed black taxis may be hailed or hired at a rank without prior booking; minicabs must be booked through a licensed operator."
+    ],
+    "id": "travel-train-012"
+  },
+  {
+    "source_id": "tfl-night-lines",
+    "question": "Which Tube lines have Night Tube service on Friday and Saturday nights, and what should I check before travelling?",
+    "essential_points": [
+      "Night Tube runs on the Central, Jubilee, Northern, Piccadilly and Victoria lines on Friday and Saturday nights.",
+      "Branch and station limitations apply.",
+      "Check exact coverage and disruptions for the journey."
+    ],
+    "id": "travel-train-013"
+  },
+  {
+    "source_id": "tfl-night-lines",
+    "question": "Does Night Tube run every night, and does it cover every station on the listed lines?",
+    "essential_points": [
+      "Night Tube runs on Friday and Saturday nights, not every night.",
+      "Branch and station limitations apply.",
+      "Check exact coverage and disruptions for the journey."
+    ],
+    "id": "travel-train-014"
+  },
+  {
+    "source_id": "tfl-night-lines",
+    "question": "I’m travelling overnight from Highbury & Islington towards New Cross Gate. Which Night Overground route should I check, and what could affect coverage?",
+    "essential_points": [
+      "Night Overground uses the Windrush line between Highbury & Islington and New Cross Gate.",
+      "Check exact coverage and disruptions for the journey."
+    ],
+    "id": "travel-train-015"
+  },
+  {
+    "source_id": "tfl-heathrow",
+    "question": "I’m taking the Elizabeth line from Heathrow into central London. Which central destinations does the source list, and what should I check about my train?",
+    "essential_points": [
+      "The Elizabeth line links Heathrow with Paddington, Bond Street, Tottenham Court Road, Farringdon, Liverpool Street and Canary Wharf.",
+      "Check the train destination and airport terminal; not all trains serve the same terminal."
+    ],
+    "id": "travel-train-016"
+  },
+  {
+    "source_id": "tfl-heathrow",
+    "question": "If a typical Paddington-to-Heathrow Elizabeth line journey is published as about 28 minutes, can I rely on that as my exact travel time today?",
+    "essential_points": [
+      "TfL publishes about 28 minutes between Paddington and Heathrow on the Elizabeth line.",
+      "This is a typical journey time, not a live departure or guaranteed arrival time."
+    ],
+    "id": "travel-train-017"
+  },
+  {
+    "source_id": "tfl-heathrow",
+    "question": "I’m changing between Heathrow terminals by rail with luggage. What does the source say about transfers, accessibility and keeping the train clear?",
+    "essential_points": [
+      "Transfers between Terminals 2 & 3, Terminal 4 and Terminal 5 are free; use contactless or obtain a free inter-terminal ticket.",
+      "All Elizabeth line stations have street-to-platform step-free access; Heathrow rail stations are step-free from train to street.",
+      "Keep luggage close and aisles clear.",
+      "Street-to-platform access elsewhere does not establish level boarding or current lift availability."
+    ],
+    "id": "travel-train-018"
+  },
+  {
+    "source_id": "gatwick-rail",
+    "question": "Where is Gatwick’s rail station, and what payment options can I use for a journey between the airport and London?",
+    "essential_points": [
+      "The rail station is at the South Terminal.",
+      "Oyster, except the 60+ Oyster photocard, or contactless can be used by touching in and out.",
+      "Advance tickets are another option."
+    ],
+    "id": "travel-train-019"
+  },
+  {
+    "source_id": "gatwick-rail",
+    "question": "Does Gatwick’s guidance say Oyster is accepted for every Oyster card, including the 60+ Oyster photocard?",
+    "essential_points": [
+      "Oyster is accepted except the 60+ Oyster photocard."
+    ],
+    "id": "travel-train-020"
+  },
+  {
+    "source_id": "gatwick-rail",
+    "question": "You’re choosing how to pay for a Gatwick–London train journey. How should you compare Oyster, contactless, and advance tickets?",
+    "essential_points": [
+      "Oyster, except the 60+ Oyster photocard, and contactless are options when touching in and out.",
+      "Advance tickets are another option.",
+      "Compare the actual journey and date; no payment method is always cheapest."
+    ],
+    "id": "travel-train-021"
+  },
+  {
+    "source_id": "gatwick-tickets",
+    "question": "Can I use a London Travelcard for the Gatwick leg if I use Oyster for travel between Gatwick and central London?",
+    "essential_points": [
+      "Oyster or contactless can be used between Gatwick and central London.",
+      "London Travelcards are not valid for the Gatwick leg.",
+      "Acceptance of Oyster does not mean a London Travelcard covers the airport leg."
+    ],
+    "id": "travel-train-022"
+  },
+  {
+    "source_id": "gatwick-tickets",
+    "question": "Does accepting Oyster between Gatwick and central London mean a London Travelcard is valid for the airport leg?",
+    "essential_points": [
+      "No: London Travelcards are not valid for the Gatwick leg.",
+      "Oyster or contactless can be used between Gatwick and central London."
+    ],
+    "id": "travel-train-023"
+  },
+  {
+    "source_id": "gatwick-tickets",
+    "question": "You have a London Travelcard and need to travel to Gatwick. What should you check before assuming your pass covers the whole journey?",
+    "essential_points": [
+      "London Travelcards are not valid for the Gatwick leg.",
+      "Oyster or contactless can be used between Gatwick and central London."
+    ],
+    "id": "travel-train-024"
+  },
+  {
+    "source_id": "tfl-access-help",
+    "question": "How can station staff help arrange a wheelchair-accessible journey, including at interchanges and when boarding?",
+    "essential_points": [
+      "Ask station staff to check the planned step-free journey for disruption.",
+      "Turn-up-and-go staff can arrange accompaniment to the train and meeting at interchanges or the destination.",
+      "Staff can arrange boarding ramps or mini ramps where available."
+    ],
+    "id": "travel-train-025"
+  },
+  {
+    "source_id": "tfl-access-help",
+    "question": "Does a lift symbol prove that a station journey is gap-free and accessible from the street to the train?",
+    "essential_points": [
+      "A lift symbol does not prove a gap-free journey.",
+      "Street-to-platform access, boarding the train, and interchange are separate questions."
+    ],
+    "id": "travel-train-026"
+  },
+  {
+    "source_id": "tfl-access-help",
+    "question": "You’re planning a wheelchair journey and see a lift symbol, but need step-free access throughout. What should you ask staff to check?",
+    "essential_points": [
+      "Ask station staff to check the planned step-free journey for disruption.",
+      "A lift symbol does not prove a gap-free journey.",
+      "Street-to-platform access, boarding the train, and interchange are different questions."
+    ],
+    "id": "travel-train-027"
+  },
+  {
+    "source_id": "tfl-assistance-policy",
+    "question": "How can I get turn-up-and-go help when travelling on the Underground, Overground or Elizabeth line?",
+    "essential_points": [
+      "Available without advance booking on the Underground, Overground and Elizabeth line.",
+      "Ask staff in the ticket hall or use a Help Point information button."
+    ],
+    "id": "travel-train-028"
+  },
+  {
+    "source_id": "tfl-assistance-policy",
+    "question": "If I arrange assistance, does that mean a station without lifts will be step-free?",
+    "essential_points": [
+      "Assistance does not make a station without lifts step-free.",
+      "Passenger Assist is a separate bookable option."
+    ],
+    "id": "travel-train-029"
+  },
+  {
+    "source_id": "tfl-assistance-policy",
+    "question": "I haven’t booked assistance and need help at a station. What can I do, and what should I know about step-free access?",
+    "essential_points": [
+      "Turn-up-and-go assistance is available without advance booking on the Underground, Overground and Elizabeth line.",
+      "Ask staff in the ticket hall or use a Help Point information button.",
+      "Assistance does not make a station without lifts step-free."
+    ],
+    "id": "travel-train-030"
+  },
+  {
+    "source_id": "river-tickets",
+    "question": "How should two people pay for an Uber Boat by Thames Clippers trip using contactless or Oyster?",
+    "essential_points": [
+      "Contactless and Oyster pay-as-you-go are accepted.",
+      "Each passenger needs a separate card.",
+      "Touch in and out with the same card, including at interchanges."
+    ],
+    "id": "travel-train-031"
+  },
+  {
+    "source_id": "river-tickets",
+    "question": "Does a TfL Travelcard make River Bus travel free, and are its fare zones the same as Tube zones?",
+    "essential_points": [
+      "A qualifying TfL Travelcard on paper or Oyster gives a one-third discount on standard fares, not free travel.",
+      "River Bus has West, Central and East fare zones, which are not Tube zones."
+    ],
+    "id": "travel-train-032"
+  },
+  {
+    "source_id": "river-tickets",
+    "question": "I’m changing River Bus services and want to benefit from my Travelcard. How should I pay, and what should I expect?",
+    "essential_points": [
+      "Touch in and out with the same card, including at interchanges.",
+      "River services do not count towards the TfL daily cap.",
+      "A qualifying TfL Travelcard on paper or Oyster gives a one-third discount on standard fares.",
+      "Sightseeing cruises and River Bus tickets are different products."
+    ],
+    "id": "travel-train-033"
+  },
+  {
+    "source_id": "tfl-cycles",
+    "question": "What should I do when returning a Santander Cycle to make sure the hire has ended properly?",
+    "essential_points": [
+      "Return the cycle to a docking station.",
+      "Wait for the green light confirming the lock."
+    ],
+    "id": "travel-train-034"
+  },
+  {
+    "source_id": "tfl-cycles",
+    "question": "Does a Santander Cycle day pass let me keep one bike for an unlimited continuous ride?",
+    "essential_points": [
+      "A day pass permits repeated limited-duration rides, not one unlimited continuous hire."
+    ],
+    "id": "travel-train-035"
+  },
+  {
+    "source_id": "tfl-cycles",
+    "question": "I’m using a Santander Cycle day pass for several rides. How can I avoid extra charges when returning each bike?",
+    "essential_points": [
+      "Return the cycle to a docking station and wait for the green light confirming the lock.",
+      "Return before the ride allowance ends to avoid extra charges.",
+      "A day pass permits repeated limited-duration rides, not one unlimited continuous hire.",
+      "Check the current tariff and docking availability."
+    ],
+    "id": "travel-train-036"
+  },
+  {
+    "source_id": "british-museum",
+    "question": "I’m interested in Egyptian history and want a rainy-day museum visit. What should I know about admission and getting in?",
+    "essential_points": [
+      "The indoor collection includes Egyptian material.",
+      "Permanent collection admission is free.",
+      "A free timed ticket gives priority entry; walk-ups depend on capacity and may queue.",
+      "Exhibitions may require separate paid tickets."
+    ],
+    "id": "travel-train-037"
+  },
+  {
+    "source_id": "british-museum",
+    "question": "Does free entry mean I can count on walking straight into the British Museum without booking?",
+    "essential_points": [
+      "The permanent collection is free.",
+      "A free timed ticket is for priority entry.",
+      "Walk-ups depend on capacity and can queue."
+    ],
+    "id": "travel-train-038"
+  },
+  {
+    "source_id": "british-museum",
+    "question": "I’m heading to the British Museum with a wheeled suitcase. Can I take it inside or leave it there?",
+    "essential_points": [
+      "Wheeled suitcases and larger bags are not permitted.",
+      "The museum should not be recommended as luggage storage."
+    ],
+    "id": "travel-train-039"
+  },
+  {
+    "source_id": "natural-history",
+    "question": "My children want to see dinosaurs, and we’ll be in South Kensington. What should we know about tickets and entry?",
+    "essential_points": [
+      "The museum is a good choice for dinosaur interests.",
+      "Galleries are free.",
+      "Booking a free entry ticket guarantees entry under the museum’s published policy.",
+      "Some exhibitions and events have separate tickets."
+    ],
+    "id": "travel-train-040"
+  },
+  {
+    "source_id": "natural-history",
+    "question": "If I visit the Natural History Museum on a busy weekend without a ticket, am I guaranteed to avoid a queue because its galleries are free?",
+    "essential_points": [
+      "Galleries are free.",
+      "Busy weekends and school holidays can mean queues without a free entry ticket.",
+      "Booking a free entry ticket guarantees entry under the museum’s published policy."
+    ],
+    "id": "travel-train-041",
+    "original_luna_question": "If I visit on a busy weekend without a ticket, am I guaranteed to avoid a queue because the galleries are free?",
+    "edit_note": "Named the intended venue to remove ambiguity; no answer supplied."
+  },
+  {
+    "source_id": "natural-history",
+    "question": "I’m planning an afternoon at the Natural History Museum, Science Museum and V&A. Is it sensible to expect to see everything?",
+    "essential_points": [
+      "The three museums form a practical South Kensington museum cluster.",
+      "A multi-museum afternoon should allow time for travel and visits.",
+      "Do not promise that visitors can see everything."
+    ],
+    "id": "travel-train-042"
+  },
+  {
+    "source_id": "science-museum",
+    "question": "I’m planning a family visit to the Science Museum. What should I know about general admission and booking?",
+    "essential_points": [
+      "General admission is free.",
+      "Visitors are asked to pre-book a free ticket.",
+      "Some experiences and exhibitions require separate tickets."
+    ],
+    "id": "travel-train-043"
+  },
+  {
+    "source_id": "science-museum",
+    "question": "Since the Science Museum has free admission, can we just turn up without booking?",
+    "essential_points": [
+      "Free admission does not mean no booking.",
+      "The museum asks visitors to pre-book a free ticket."
+    ],
+    "id": "travel-train-044"
+  },
+  {
+    "source_id": "science-museum",
+    "question": "I am planning a Science Museum visit for 24–30 October 2026. What opening-time information should I use, and what should I check before going?",
+    "essential_points": [
+      "The published half-term opening for 24–30 October 2026 is 09:00.",
+      "Usual published opening is 10:00–18:00.",
+      "Check the visit page for the actual date; these notes do not establish current opening status."
+    ],
+    "id": "travel-train-045",
+    "original_luna_question": "I’m planning a visit for 24–30 October 2026. What opening-time information should I use, and what should I check before going?",
+    "edit_note": "Named the intended venue to remove ambiguity; no answer supplied."
+  },
+  {
+    "source_id": "va-museum",
+    "question": "I’m interested in art and design; what kind of museum is the V&A, and what should I know about general admission?",
+    "essential_points": [
+      "The V&A focuses on art and design.",
+      "General admission is free and does not need booking.",
+      "Some exhibitions and events cost extra."
+    ],
+    "id": "travel-train-046"
+  },
+  {
+    "source_id": "va-museum",
+    "question": "Can I visit the V&A Fashion Gallery during its redevelopment, and does the nearest Tube station being South Kensington guarantee a step-free route?",
+    "essential_points": [
+      "The Fashion Gallery is closed for redevelopment until autumn 2028, according to the source checked 23 October 2026.",
+      "South Kensington being the nearest station does not imply a step-free station route; verify the specific journey."
+    ],
+    "id": "travel-train-047"
+  },
+  {
+    "source_id": "va-museum",
+    "question": "I use a step-free entrance and want to plan a V&A visit around my interests. Which entrances are step-free, and what should I check about galleries?",
+    "essential_points": [
+      "The Cromwell Road and Exhibition Road entrances are step-free.",
+      "Check which galleries suit the visitor’s interests.",
+      "The Fashion Gallery is closed for redevelopment until autumn 2028, according to the source checked 23 October 2026."
+    ],
+    "id": "travel-train-048"
+  },
+  {
+    "source_id": "national-gallery",
+    "question": "Where is the National Gallery, and what are the options for free general admission?",
+    "essential_points": [
+      "The National Gallery is on Trafalgar Square.",
+      "General admission is free.",
+      "A free booked ticket offers fast-track entry; walk-up entry is also available."
+    ],
+    "id": "travel-train-049"
+  },
+  {
+    "source_id": "national-gallery",
+    "question": "If I visit on a Friday, can I assume every part of the National Gallery stays open until 21:00?",
+    "essential_points": [
+      "Usual published hours are 10:00–18:00, with Friday hours until 21:00 and listed holiday exceptions.",
+      "On 23 October 2026, the east wing closes at 18:00 while the rest remains open until 21:00.",
+      "Check the actual date and wing."
+    ],
+    "id": "travel-train-050"
+  },
+  {
+    "source_id": "national-gallery",
+    "question": "I am planning a Friday visit to the National Gallery and want to see its east wing in the evening; what should I verify before relying on usual hours?",
+    "essential_points": [
+      "Usual published Friday hours extend until 21:00, with listed holiday exceptions.",
+      "On 23 October 2026, the east wing closes at 18:00 while the rest remains open until 21:00.",
+      "Check the actual date and wing."
+    ],
+    "id": "travel-train-051",
+    "original_luna_question": "I’m planning a Friday visit and want to see the east wing in the evening; what should I verify before relying on the usual hours?",
+    "edit_note": "Named the intended venue to remove ambiguity; no answer supplied."
+  },
+  {
+    "source_id": "tate-modern",
+    "question": "What kind of art does Tate Modern show, and what is free to visit?",
+    "essential_points": [
+      "Tate Modern on Bankside shows modern and contemporary art.",
+      "Entry to the collection is free.",
+      "Paid exhibitions are separate."
+    ],
+    "id": "travel-train-052"
+  },
+  {
+    "source_id": "tate-modern",
+    "question": "Does free entry to Tate Modern mean every exhibition is free?",
+    "essential_points": [
+      "Entry to the collection is free.",
+      "Paid exhibitions are separate; do not assume all exhibitions are free."
+    ],
+    "id": "travel-train-053"
+  },
+  {
+    "source_id": "tate-modern",
+    "question": "I’m interested in a paid exhibition at Tate Modern; what should I know about booking and the building?",
+    "essential_points": [
+      "Booking is recommended for paid exhibitions.",
+      "The Turbine Hall is a distinctive part of the building.",
+      "Do not assume a particular exhibition is currently available."
+    ],
+    "id": "travel-train-054"
+  },
+  {
+    "source_id": "greenwich-museums",
+    "question": "Which Royal Museums Greenwich sites have free general entry, and which require tickets?",
+    "essential_points": [
+      "National Maritime Museum and Queen’s House have free general entry.",
+      "Cutty Sark and Royal Observatory are ticketed attractions."
+    ],
+    "id": "travel-train-055"
+  },
+  {
+    "source_id": "greenwich-museums",
+    "question": "Is walking uphill to the Royal Observatory in Greenwich guaranteed to be a step-free route for someone with mobility needs?",
+    "essential_points": [
+      "The uphill walk is not equivalent to an audited step-free route.",
+      "Ask about mobility needs and consult the venue’s access guidance."
+    ],
+    "id": "travel-train-056",
+    "original_luna_question": "Is walking uphill to the Observatory guaranteed to be a step-free route for someone with mobility needs?",
+    "edit_note": "Named the intended venue to remove ambiguity; no answer supplied."
+  },
+  {
+    "source_id": "greenwich-museums",
+    "question": "We’re planning a Greenwich day out combining maritime history with a visit to the park. What does the visitor information suggest?",
+    "essential_points": [
+      "Greenwich can combine maritime history with the park as a suggested day out."
+    ],
+    "id": "travel-train-057"
+  },
+  {
+    "source_id": "royal-parks",
+    "question": "Where could I go in central London for free outdoor time, gardens, and a quieter break from indoor attractions?",
+    "essential_points": [
+      "Hyde Park and Kensington Gardens are central options.",
+      "The Royal Parks are free to explore."
+    ],
+    "id": "travel-train-058"
+  },
+  {
+    "source_id": "royal-parks",
+    "question": "If entry to a Royal Park is free, does that mean every attraction or event inside is free too?",
+    "essential_points": [
+      "Park entry is free.",
+      "Attractions, events, and facilities inside parks can have separate charges and opening policies."
+    ],
+    "id": "travel-train-059"
+  },
+  {
+    "source_id": "royal-parks",
+    "question": "I want a relaxed outdoor change of pace between indoor attractions without paying for park entry. What should I consider?",
+    "essential_points": [
+      "London’s Royal Parks are free to explore.",
+      "Hyde Park and Kensington Gardens offer outdoor time, gardens, and a quieter change from indoor attractions."
+    ],
+    "id": "travel-train-060"
+  },
+  {
+    "source_id": "borough-market",
+    "question": "When is Borough Market normally open on a Saturday, and does it cost anything to enter?",
+    "essential_points": [
+      "Saturday hours are 09:00–17:00.",
+      "Entry is free; food and purchases cost money.",
+      "Holiday and festive exceptions apply."
+    ],
+    "id": "travel-train-061"
+  },
+  {
+    "source_id": "borough-market",
+    "question": "Can I plan a normal Borough Market lunch on Monday, and are the food stalls free?",
+    "essential_points": [
+      "The market is normally closed on Monday.",
+      "Food and purchases cost money."
+    ],
+    "id": "travel-train-062"
+  },
+  {
+    "source_id": "borough-market",
+    "question": "I’m arriving by Tube or train for a market visit. Which station is beside Borough Market, and which services does it serve?",
+    "essential_points": [
+      "Borough Market is beside London Bridge station.",
+      "London Bridge serves the Jubilee, Northern, and National Rail services."
+    ],
+    "id": "travel-train-063"
+  },
+  {
+    "source_id": "covent-garden",
+    "question": "What can I visit for free at Covent Garden, and does that mean the shops and markets are free to enter?",
+    "essential_points": [
+      "Covent Garden Piazza and Market Building are free public spaces to walk around.",
+      "Individual shops and markets have their own hours."
+    ],
+    "id": "travel-train-064"
+  },
+  {
+    "source_id": "covent-garden",
+    "question": "If Covent Garden station has lifts, does that guarantee a step-free route to the trains?",
+    "essential_points": [
+      "Lift access does not establish a fully step-free route to the trains.",
+      "Ask which destination or route is needed if accessibility matters."
+    ],
+    "id": "travel-train-065"
+  },
+  {
+    "source_id": "covent-garden",
+    "question": "Covent Garden station is busy. What nearby station could I consider instead, and which Tube line serves Covent Garden station?",
+    "essential_points": [
+      "Leicester Square is a short walk away and can be an alternative when Covent Garden station is busy.",
+      "Covent Garden station is on the Piccadilly line."
+    ],
+    "id": "travel-train-066"
+  },
+  {
+    "source_id": "south-bank",
+    "question": "What landmarks could I include in a stroll along Queen’s Walk?",
+    "essential_points": [
+      "Queen’s Walk is the pedestrian promenade along South Bank.",
+      "A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continue toward Bankside or Tate Modern."
+    ],
+    "id": "travel-train-067"
+  },
+  {
+    "source_id": "south-bank",
+    "question": "Does the suggested Queen’s Walk itinerary guarantee an accessible route with ramps and lifts?",
+    "essential_points": [
+      "The itinerary is a suggested sequence of destinations, not a verified turn-by-turn route.",
+      "The notes do not certify ramps, lifts or an accessible route."
+    ],
+    "id": "travel-train-068"
+  },
+  {
+    "source_id": "south-bank",
+    "question": "I want a riverside stroll without extended stops. About how long is the stretch from Lambeth Bridge to Blackfriars Bridge, and can my pace differ?",
+    "essential_points": [
+      "The tourism body gives about 30 minutes without extended stops.",
+      "Individual pace varies."
+    ],
+    "id": "travel-train-069"
+  },
+  {
+    "source_id": "hatton-garden",
+    "question": "What is Hatton Garden known for, and what nearby place has a street-food market?",
+    "essential_points": [
+      "Hatton Garden is a jewellery district with shops and workshops.",
+      "Nearby Leather Lane has a street-food market."
+    ],
+    "id": "travel-train-070"
+  },
+  {
+    "source_id": "hatton-garden",
+    "question": "Is Hatton Garden the name of a Tube station, and can the whole district be described as step-free?",
+    "essential_points": [
+      "Hatton Garden is a neighbourhood, not the name of a Tube station.",
+      "The district as a whole cannot be certified step-free."
+    ],
+    "id": "travel-train-071"
+  },
+  {
+    "source_id": "hatton-garden",
+    "question": "I need to check entrance accessibility for a visit in Hatton Garden. What detail should I identify first?",
+    "essential_points": [
+      "Ask for the particular shop or building when discussing entrance accessibility.",
+      "The district as a whole cannot be certified step-free."
+    ],
+    "id": "travel-train-072"
+  },
+  {
+    "source_id": "hatton-arrival",
+    "question": "I’m visiting a jeweller on Greville Street in Hatton Garden. Which nearby stations could I consider for getting there?",
+    "essential_points": [
+      "Farringdon and Chancery Lane are identified as nearby stations.",
+      "The notes do not establish a universal accessible entrance or identical walking time for every shop."
+    ],
+    "id": "travel-train-073"
+  },
+  {
+    "source_id": "hatton-arrival",
+    "question": "Is Farringdon guaranteed to have a step-free route all the way to every Hatton Garden shop?",
+    "essential_points": [
+      "Farringdon’s Elizabeth line has street-to-platform access.",
+      "The onward pavement and shop route should be verified; the notes do not guarantee accessibility to every shop."
+    ],
+    "id": "travel-train-074"
+  },
+  {
+    "source_id": "hatton-arrival",
+    "question": "I’m planning to use Farringdon’s Elizabeth line access to reach a Hatton Garden jeweller. What should I check for the rest of the journey?",
+    "essential_points": [
+      "Verify the onward pavement and route to the specific shop."
+    ],
+    "id": "travel-train-075"
+  },
+  {
+    "source_id": "sky-garden",
+    "question": "How far ahead can I book a free public access ticket to Sky Garden, and how long is the visit time specified on it?",
+    "essential_points": [
+      "Free public access tickets can be booked up to three weeks ahead.",
+      "Tickets specify a date and time and a one-hour visit."
+    ],
+    "id": "travel-train-076"
+  },
+  {
+    "source_id": "sky-garden",
+    "question": "Can I rely on walking in to Sky Garden without booking, especially at the weekend?",
+    "essential_points": [
+      "Walk-ins depend on capacity and are not guaranteed.",
+      "Booking is recommended, particularly at weekends."
+    ],
+    "id": "travel-train-077"
+  },
+  {
+    "source_id": "sky-garden",
+    "question": "I’m hoping to visit Sky Garden on a weekend but haven’t booked. What should I know about relying on a walk-in?",
+    "essential_points": [
+      "Booking is recommended, particularly at weekends.",
+      "Walk-ins depend on capacity and are not guaranteed."
+    ],
+    "id": "travel-train-078"
+  },
+  {
+    "source_id": "tower-bridge",
+    "question": "What’s the difference between crossing Tower Bridge and visiting its high-level exhibition?",
+    "essential_points": [
+      "The public pedestrian crossing is free.",
+      "The interior/high-level exhibition is separately ticketed."
+    ],
+    "id": "travel-train-079"
+  },
+  {
+    "source_id": "tower-bridge",
+    "question": "Does a free public crossing of Tower Bridge include entry to its high-level exhibition?",
+    "essential_points": [
+      "Crossing Tower Bridge on the public pedestrian route is free.",
+      "The high-level exhibition requires a separate ticket."
+    ],
+    "id": "travel-train-080"
+  },
+  {
+    "source_id": "tower-bridge",
+    "question": "I’m planning to cross Tower Bridge at a particular time. What could interrupt the crossing, and where should I check details?",
+    "essential_points": [
+      "Bridge lifts can interrupt crossing.",
+      "Check the published schedule for a specific visit."
+    ],
+    "id": "travel-train-081"
+  }
+]

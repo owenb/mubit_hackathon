@@ -1,0 +1,492 @@
+{
+  "status": "completed_development_diagnostic",
+  "scope": "Development smoke test, not the frozen final benchmark",
+  "adapter_id": "ad_lane_8bdd977d",
+  "version": 1,
+  "comparator": "gpt-6-luna",
+  "isolation": "Try models direct adapter selection; task rollout unchanged; UI says not stored/trains nothing",
+  "cases": [
+    {
+      "id": "challenge-04",
+      "input_sha256": "b7c67de0bbf63a8872afbfa3a95e42878566eea45220885fbfc340782701c0be",
+      "input_file": "challenge-04-input.txt",
+      "rubric": [
+        "Use the same payment device on rail; a linked watch is a different identity",
+        "Touch in only on a bus; do not tap out",
+        "No outside-scope refusal"
+      ]
+    },
+    {
+      "id": "challenge-01",
+      "input_sha256": "ffb2e8f5cb6ebe2dbc60de30b77bfab5e3c0a5982f0c266c1a4b8f648a34369b",
+      "input_file": "challenge-01-input.txt",
+      "rubric": [
+        "Recommend Natural History Museum and V&A with their different booking policies",
+        "State the dated V&A fashion-gallery closure if suggesting it for fashion",
+        "Use fit with exactly the two appropriate catalogue IDs and valid roles"
+      ]
+    },
+    {
+      "id": "challenge-07",
+      "input_sha256": "b9a03c36dec0e25a84d002eff0fbd243861b5b4ad0f83f4b3f89899aa8e9989f",
+      "input_file": "challenge-07-input.txt",
+      "rubric": [
+        "Night Tube is Friday/Saturday nights, not Tuesday",
+        "Minicab requires pre-booking with a licensed operator; an app listing does not permit hailing",
+        "No invented live service or safety guarantee"
+      ]
+    },
+    {
+      "id": "challenge-06",
+      "input_sha256": "557507609d7068504a0d3e33d8e4ba0ee8ce4908ce91ef2a6ec1621dfe81fe86",
+      "input_file": "challenge-06-input.txt",
+      "rubric": [
+        "Cannot promise wholly indoor step-free Waterloo & City to DLR interchange at Bank",
+        "Staff assistance does not remove the street interchange",
+        "Do not pin Waterloo station merely from the line name"
+      ],
+      "original_input_sha256": "954b994e175d0af2ec3dd31d052e76d52d1d02f441c582c0327906ef59c6fa09",
+      "transport_repair": {
+        "reason": "Playground rejected original adapter message above 8 KiB",
+        "original_bytes": 8742,
+        "compact_bytes": 6608,
+        "method": "Existing compactPayload: preserve facts, source records and candidate IDs; remove retrieval tags, aliases and duplicate policy rules. Repeat both model arms with identical compact input."
+      }
+    }
+  ],
+  "limitations": [
+    "UI decoding and schema enforcement settings are not fully exposed; no controlled API benchmark or latency claim",
+    "Existing development cases already inspected and may overlap training; not unseen generalization evidence",
+    "Luna API uses strict JSON schema; adapter playground schema enforcement is unknown. Latency clocks differ. UI proves selected v1, not a per-response API version header. No independent/blinded reviewer."
+  ],
+  "final_heldout_sha256_before": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+  "results": [
+    {
+      "id": "challenge-04",
+      "question": "I tapped into a train with my phone but only have my linked watch ready now. Is using the watch fine, and should I tap out on a bus afterwards?",
+      "input_sha256": "b7c67de0bbf63a8872afbfa3a95e42878566eea45220885fbfc340782701c0be",
+      "adapter": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Yes, use your watch: it counts as a separate payment identity from your phone, so you’ll need a separate tap in/out on the bus. On the rail journey, tap in and out even if the gates are open; on the bus, touch in only. Use the same card or device throughout, and check you’ve touched in and out before setting off and after reaching your destination.",
+          "source_ids": [
+            "tfl-payment"
+          ],
+          "scene": {
+            "camera": "keep",
+            "places": []
+          }
+        },
+        "ui_latency_ms": 2006,
+        "serving_proof": {
+          "type": "visible_playground_selection",
+          "adapter_id": "ad_lane_8bdd977d",
+          "version": 1,
+          "label": "Homeward practical London travel v1 / Your adapter",
+          "evidence_file": "challenge-04-ui.txt"
+        },
+        "core_advice_correct": false,
+        "full_task_acceptable": false,
+        "notes": "Says Yes, use your watch after phone tap-in, then gives contradictory bus tap-in/out versus touch-in-only advice. The supplied evidence explicitly says devices are distinct and buses are touch-in-only.",
+        "contract_validation_error": null
+      },
+      "luna": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Use the same device identity for the whole train journey: your phone and linked watch count as separate payment methods, so tap out with the phone you tapped in with. On a bus, tap in only—there’s no tap out. If you can’t use your phone to tap out, check TfL’s guidance on missing touches, as it may affect the fare.",
+          "source_ids": [
+            "tfl-payment"
+          ],
+          "scene": {
+            "camera": "keep",
+            "places": []
+          }
+        },
+        "client_latency_ms": 1949,
+        "serving_proof": {
+          "route": "luna",
+          "label": "Luna via Mubit",
+          "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+          "requested_model": "gpt-6-luna",
+          "response_model": "gpt-6-luna",
+          "request_id": "mreq_01a16d26d3c07230abc264f1f2a12a41",
+          "original_request_id": null,
+          "recording": "metadata",
+          "adapter_id": null,
+          "evidence": [
+            "Mubit gateway receipt: mreq_01a16d26d3c07230abc264f1f2a12a41",
+            "Completion model gpt-6-luna",
+            "OpenAI request ID and processing-time response headers"
+          ]
+        },
+        "request_headers": {
+          "openai-processing-ms": "1607",
+          "x-middleware-request-id": "mreq_01a16d26d3c07230abc264f1f2a12a41",
+          "x-request-id": "req_63c66f25e91d4ddc9bccda3a7be038fb"
+        },
+        "usage": {
+          "prompt_tokens": 2761,
+          "completion_tokens": 114,
+          "total_tokens": 2875,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 2758,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "core_advice_correct": true,
+        "full_task_acceptable": true,
+        "notes": "Correct same-device rail rule and touch-in-only bus rule.",
+        "contract_validation_error": null
+      }
+    },
+    {
+      "id": "challenge-01",
+      "question": "We have two children: one loves dinosaurs, the other fashion and design. Suggest two free indoor museums, explain whether to book, and show both.",
+      "input_sha256": "ffb2e8f5cb6ebe2dbc60de30b77bfab5e3c0a5982f0c266c1a4b8f648a34369b",
+      "adapter": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Natural History Museum: its South Kensington galleries are free; booking a free-entry ticket under its published policy guarantees entry, though a queue may still form on a busy weekend or school holiday. Some exhibitions/events need separate tickets. Science Museum: general admission is free, but visitors are asked to pre-book a free ticket; separate tickets may be needed for some experiences. Neither needs booking for general entry, but pre-booking can help secure a place. For your children’s interests, the Natural History Museum is a good match for dinosaurs, while the V&A is a better fit for fashion and design. V&A general admission is free and does not require booking; some exhibitions and events cost extra. The V&A Fashion Gallery is closed for redevelopment until autumn 2028, according to the visit page checked 23 October 2026. Check which galleries meet your child’s interest before visiting.",
+          "source_ids": [
+            "natural-history",
+            "science-museum",
+            "va-museum"
+          ],
+          "scene": {
+            "camera": "focus",
+            "places": [
+              {
+                "id": "osm:2026-10-12:18306",
+                "role": "context"
+              },
+              {
+                "id": "osm:2026-10-12:180927",
+                "role": "context"
+              }
+            ]
+          }
+        },
+        "ui_latency_ms": 3740,
+        "serving_proof": {
+          "type": "visible_playground_selection",
+          "adapter_id": "ad_lane_8bdd977d",
+          "version": 1,
+          "label": "Homeward practical London travel v1 / Your adapter",
+          "evidence_file": "challenge-01-ui.txt"
+        },
+        "core_advice_correct": false,
+        "full_task_acceptable": false,
+        "notes": "Conflicts with its own Science Museum booking advice by saying neither needs booking. Uses focus for two pins; app requires fit. Includes the useful V&A closure caveat.",
+        "contract_validation_error": "Focus needs exactly one place; use fit for multiple destinations"
+      },
+      "luna": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Try the **Natural History Museum** for the dinosaur fan: its galleries are free. A free ticket guarantees entry under its published policy; without one, busy weekends and school holidays can mean queues. Some exhibitions and events need separate tickets.\n\nFor fashion and design, choose the **V&A**: general admission is free and does not need booking, though some exhibitions or events cost extra. Note: its Fashion Gallery is closed for redevelopment until autumn 2028, so check which other galleries suit your child’s interests. Both museums are indoors and in South Kensington.",
+          "source_ids": [
+            "natural-history",
+            "va-museum"
+          ],
+          "scene": {
+            "camera": "fit",
+            "places": [
+              {
+                "id": "osm:2026-10-12:18306",
+                "role": "destination"
+              },
+              {
+                "id": "osm:2026-10-12:180927",
+                "role": "destination"
+              }
+            ]
+          }
+        },
+        "client_latency_ms": 2430,
+        "serving_proof": {
+          "route": "luna",
+          "label": "Luna via Mubit",
+          "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+          "requested_model": "gpt-6-luna",
+          "response_model": "gpt-6-luna",
+          "request_id": "mreq_01a16d26daef75d0819733665f3ff446",
+          "original_request_id": null,
+          "recording": "metadata",
+          "adapter_id": null,
+          "evidence": [
+            "Mubit gateway receipt: mreq_01a16d26daef75d0819733665f3ff446",
+            "Completion model gpt-6-luna",
+            "OpenAI request ID and processing-time response headers"
+          ]
+        },
+        "request_headers": {
+          "openai-processing-ms": "2177",
+          "x-middleware-request-id": "mreq_01a16d26daef75d0819733665f3ff446",
+          "x-request-id": "req_1e25a9ac9334424cb9d58e7d5653a692"
+        },
+        "usage": {
+          "prompt_tokens": 3019,
+          "completion_tokens": 195,
+          "total_tokens": 3214,
+          "prompt_tokens_details": {
+            "cached_tokens": 1177,
+            "cache_write_tokens": 1839,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "core_advice_correct": true,
+        "full_task_acceptable": true,
+        "notes": "Correct museum choices, different booking policies, dated V&A closure and two valid pins with fit.",
+        "contract_validation_error": null
+      }
+    },
+    {
+      "id": "challenge-07",
+      "question": "It is Tuesday after midnight. Does Night Tube get me home, or can I hail a minicab that appears in an app?",
+      "input_sha256": "b9a03c36dec0e25a84d002eff0fbd243861b5b4ad0f83f4b3f89899aa8e9989f",
+      "adapter": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Night Tube does not run on Tuesday nights. You can book a minicab through a licensed operator, but I cannot confirm a minicab will appear in an app or that your route is risk-free. Check your date and destination in TfL’s journey planner, and remember only licensed black taxis can be hailed or taken from a rank without booking.",
+          "source_ids": [
+            "tfl-night",
+            "tfl-night-lines"
+          ],
+          "scene": {
+            "camera": "keep",
+            "places": []
+          }
+        },
+        "ui_latency_ms": 1732,
+        "serving_proof": {
+          "type": "visible_playground_selection",
+          "adapter_id": "ad_lane_8bdd977d",
+          "version": 1,
+          "label": "Homeward practical London travel v1 / Your adapter",
+          "evidence_file": "challenge-07-ui.txt"
+        },
+        "core_advice_correct": true,
+        "full_task_acceptable": true,
+        "notes": "Correctly rejects Tuesday Night Tube, requires licensed minicab booking and reserves hailing for black taxis. Does not state Friday/Saturday explicitly: the prewritten rubric includes that background detail, so this is a manual core-task acceptance, not a strict all-rubric-points score.",
+        "contract_validation_error": null
+      },
+      "luna": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "If you mean Tuesday night into Wednesday, Night Tube doesn’t run: it operates Friday and Saturday nights, with route and station limits. Night buses run every night; check TfL’s journey planner for your destination and date. You can’t hail a minicab, even if it appears in an app—private-hire vehicles must be booked through a licensed operator. Only licensed black taxis can be hailed or taken from a rank. An app booking isn’t a guarantee that a journey is risk-free.",
+          "source_ids": [
+            "tfl-night",
+            "tfl-night-lines"
+          ],
+          "scene": {
+            "camera": "keep",
+            "places": []
+          }
+        },
+        "client_latency_ms": 2450,
+        "serving_proof": {
+          "route": "luna",
+          "label": "Luna via Mubit",
+          "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+          "requested_model": "gpt-6-luna",
+          "response_model": "gpt-6-luna",
+          "request_id": "mreq_01a16d26e4697de393f6063720e4453c",
+          "original_request_id": null,
+          "recording": "metadata",
+          "adapter_id": null,
+          "evidence": [
+            "Mubit gateway receipt: mreq_01a16d26e4697de393f6063720e4453c",
+            "Completion model gpt-6-luna",
+            "OpenAI request ID and processing-time response headers"
+          ]
+        },
+        "request_headers": {
+          "openai-processing-ms": "2238",
+          "x-middleware-request-id": "mreq_01a16d26e4697de393f6063720e4453c",
+          "x-request-id": "req_3d987a0596994d98bdd545631af9f0ec"
+        },
+        "usage": {
+          "prompt_tokens": 3114,
+          "completion_tokens": 145,
+          "total_tokens": 3259,
+          "prompt_tokens_details": {
+            "cached_tokens": 1177,
+            "cache_write_tokens": 1934,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "core_advice_correct": true,
+        "full_task_acceptable": true,
+        "notes": "Correct night schedule and pre-booked minicab distinction; no invented availability or safety guarantee.",
+        "contract_validation_error": null
+      }
+    },
+    {
+      "id": "challenge-06",
+      "question": "For a wet day, can my wheelchair stay entirely indoors transferring from Waterloo & City to DLR at Bank, even if staff arrange assistance?",
+      "input_sha256": "557507609d7068504a0d3e33d8e4ba0ee8ce4908ce91ef2a6ec1621dfe81fe86",
+      "adapter": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "Outside scope. Staff can arrange assistance with accompaniment and ramps where available, and check the journey for disruption; they cannot confirm whether your wheelchair can stay indoors. Street-to-platform access, boarding the train and interchanges are separate. A lift symbol does not mean the whole journey is gap-free. Check with staff at Waterloo & City and Bank before setting off, and ask them to check your planned journey for disruption.",
+          "source_ids": [
+            "tfl-access-help",
+            "tfl-assistance-policy"
+          ],
+          "scene": {
+            "camera": "keep",
+            "places": []
+          }
+        },
+        "ui_latency_ms": 2111,
+        "serving_proof": {
+          "type": "visible_playground_selection",
+          "adapter_id": "ad_lane_8bdd977d",
+          "version": 1,
+          "label": "Homeward practical London travel v1 / Your adapter",
+          "evidence_file": "challenge-06-ui.txt"
+        },
+        "core_advice_correct": false,
+        "full_task_acceptable": false,
+        "notes": "Unnecessary Outside scope refusal despite explicit supplied street-interchange evidence; fails to answer no and omits the Bank pin.",
+        "contract_validation_error": "Answer contradicts its response kind with an outside-scope refusal"
+      },
+      "luna": {
+        "answer": {
+          "static_access": "not_applicable",
+          "response_kind": "answer",
+          "answer": "No. The Waterloo & City–DLR step-free interchange at Bank involves 290 metres via the street and lifts, so it is not an entirely indoor transfer. Staff can accompany you, but assistance does not remove the street section. The Waterloo & City lift route uses Walbrook on weekdays; ask staff to check the planned journey and current lift availability before travelling.",
+          "source_ids": [
+            "tfl-guide",
+            "tfl-topology",
+            "tfl-access-help",
+            "tfl-assistance-policy"
+          ],
+          "scene": {
+            "camera": "fit",
+            "places": [
+              {
+                "id": "station:waterloo",
+                "role": "origin"
+              },
+              {
+                "id": "station:bank",
+                "role": "destination"
+              }
+            ]
+          }
+        },
+        "client_latency_ms": 2378,
+        "serving_proof": {
+          "route": "luna",
+          "label": "Luna via Mubit",
+          "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+          "requested_model": "gpt-6-luna",
+          "response_model": "gpt-6-luna",
+          "request_id": "mreq_01a16d286b3f7d5287809f57d7620594",
+          "original_request_id": null,
+          "recording": "metadata",
+          "adapter_id": null,
+          "evidence": [
+            "Mubit gateway receipt: mreq_01a16d286b3f7d5287809f57d7620594",
+            "Completion model gpt-6-luna",
+            "OpenAI request ID and processing-time response headers"
+          ]
+        },
+        "request_headers": {
+          "openai-processing-ms": "2108",
+          "x-middleware-request-id": "mreq_01a16d286b3f7d5287809f57d7620594",
+          "x-request-id": "req_b1fc65a31770467984361b158efb8ad2"
+        },
+        "usage": {
+          "prompt_tokens": 2874,
+          "completion_tokens": 152,
+          "total_tokens": 3026,
+          "prompt_tokens_details": {
+            "cached_tokens": 1177,
+            "cache_write_tokens": 1694,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "core_advice_correct": true,
+        "full_task_acceptable": false,
+        "notes": "Correctly explains the street section and limits of assistance, but falsely maps Waterloo station as an origin from the Waterloo & City line name.",
+        "contract_validation_error": null
+      }
+    }
+  ],
+  "completed_at": "2026-10-24T09:07:03.495Z",
+  "rollout": {
+    "applied": false,
+    "reason": "Manual partial rollout explicitly affects all task calls, including the app; no test-only scope was exposed. Used direct adapter playground instead."
+  },
+  "platform_failures": [
+    {
+      "surface": "Try models Luna",
+      "result": "502 wrapping provider 401",
+      "attempts": 1
+    },
+    {
+      "surface": "Try models adapter",
+      "result": "Original Bank payload 8742 bytes exceeded 8 KiB; compacted to 6608 bytes and repeated both arms",
+      "attempts": 1
+    },
+    {
+      "surface": "sandbox network",
+      "result": "Connection error before any response; repeated with approved network access",
+      "attempts": 1
+    }
+  ],
+  "summary": {
+    "cases": 4,
+    "manual_core_advice_pass": {
+      "adapter": 2,
+      "luna": 4
+    },
+    "manual_full_task_acceptable": {
+      "adapter": 1,
+      "luna": 3
+    },
+    "strict_all_rubric_points_score": null,
+    "scoring_note": "Manual non-blinded development assessment; night-answer acceptance is based on the asked question, with its omitted unasked weekend detail disclosed. Not a formal benchmark.",
+    "mubit_better_than_luna": false,
+    "api_adapter_serving_verified": false,
+    "playground_adapter_serving_verified": true,
+    "cost": null,
+    "latency_winner": null
+  },
+  "final_heldout_sha256_after": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+  "final_heldout_unchanged": true,
+  "final_heldout_questions_sent": 0
+}

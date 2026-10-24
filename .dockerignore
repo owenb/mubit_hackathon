@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+**/.env
+**/.env.*
+node_modules
+**/node_modules
+results
+**/results
+homeward/data/travel-final-heldout.json
+docs

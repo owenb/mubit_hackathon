@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "decision-train-payment-device-1",
+    "family": "payment-device",
+    "question": "I tapped into the Tube with my phone. Can I touch out using my watch on the same bank account?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-device-2",
+    "family": "payment-device",
+    "question": "For one rail journey, may I enter with my plastic bank card and leave with its phone wallet version?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-device-3",
+    "family": "payment-device",
+    "question": "My bank card and smart watch share an account. Do they count as the same contactless payment device?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-device-4",
+    "family": "payment-device",
+    "question": "Which device should I use to leave the station if I entered with my phone?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-device-5",
+    "family": "payment-device",
+    "question": "Can I change contactless devices halfway through a single rail journey without changing my payment identity?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-touch-1",
+    "family": "payment-touch",
+    "question": "Do I touch out when leaving a London bus?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-1"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-touch-2",
+    "family": "payment-touch",
+    "question": "On a London tram, should I tap both before and after my ride?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-1"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-touch-3",
+    "family": "payment-touch",
+    "question": "The rail station gates are open. Must I still touch in and touch out?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-1"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-touch-4",
+    "family": "payment-touch",
+    "question": "How does touching on a bus differ from touching on the Tube?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-1"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-payment-touch-5",
+    "family": "payment-touch",
+    "question": "Do buses and trams require the same touch-in and touch-out pattern as trains?",
+    "input_facts": [
+      "tfl-payment-1",
+      "tfl-payment-2",
+      "tfl-payment-3"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-payment-1"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-bank-interchange-1",
+    "family": "bank-interchange",
+    "question": "At Bank, can my step-free interchange from Waterloo & City to DLR remain wholly indoors?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank-wc"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-interchange-2",
+    "family": "bank-interchange",
+    "question": "What street section is involved in the step-free Bank change from Waterloo & City to the Northern line?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank-wc"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-interchange-3",
+    "family": "bank-interchange",
+    "question": "Which entrance and operating days apply to the Waterloo & City lifts at Bank?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank-wc"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-interchange-4",
+    "family": "bank-interchange",
+    "question": "I am already at Bank on Waterloo & City. Does the lift route to DLR involve going outside?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank-wc"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-interchange-5",
+    "family": "bank-interchange",
+    "question": "For my wheelchair interchange at Bank from Waterloo & City to Northern, how long is the street section?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank-wc"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-line-1",
+    "family": "bank-line",
+    "question": "Does Bank have a street-to-platform lift route for the Central line?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-line-2",
+    "family": "bank-line",
+    "question": "Can I get from street level to Bank Northern line platforms using lifts?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-line-3",
+    "family": "bank-line",
+    "question": "Does Bank DLR have street-to-platform step-free access?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-line-4",
+    "family": "bank-line",
+    "question": "Are all lines at Bank equally step-free from the street?",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-bank-line-5",
+    "family": "bank-line",
+    "question": "Compare Bank Central line street access with Bank Northern and DLR.",
+    "input_facts": [
+      "bank",
+      "bank-entrance",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank",
+      "station:waterloo"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "bank"
+      ],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-booking-1",
+    "family": "museum-booking",
+    "question": "Does free general admission at the Science Museum mean I do not need to pre-book?",
+    "input_facts": [
+      "science-museum-1",
+      "natural-history-1",
+      "va-museum-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:20531",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:180927"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "science-museum-1"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:20531"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-booking-2",
+    "family": "museum-booking",
+    "question": "What should I book for the Science Museum if I only want free general admission?",
+    "input_facts": [
+      "science-museum-1",
+      "natural-history-1",
+      "va-museum-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:20531",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:180927"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "science-museum-1"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:20531"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-booking-3",
+    "family": "museum-booking",
+    "question": "The Science Museum costs nothing to enter generally. Is reserving a free ticket still requested?",
+    "input_facts": [
+      "science-museum-1",
+      "natural-history-1",
+      "va-museum-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:20531",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:180927"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "science-museum-1"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:20531"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-booking-4",
+    "family": "museum-booking",
+    "question": "Can I infer from free Science Museum entry that every exhibition is free?",
+    "input_facts": [
+      "science-museum-1",
+      "natural-history-1",
+      "va-museum-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:20531",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:180927"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "science-museum-1"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:20531"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-booking-5",
+    "family": "museum-booking",
+    "question": "What are the Science Museum general-entry booking and separately ticketed experience rules?",
+    "input_facts": [
+      "science-museum-1",
+      "natural-history-1",
+      "va-museum-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:20531",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:180927"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "science-museum-1"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:20531"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-fashion-1",
+    "family": "museum-fashion",
+    "question": "I want to visit the V&A Fashion Gallery during October 2026. Is free general entry enough to make that visit possible?",
+    "input_facts": [
+      "va-museum-1",
+      "va-museum-3",
+      "natural-history-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:180927",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:20531"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "va-museum-1",
+        "va-museum-3"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:180927"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-fashion-2",
+    "family": "museum-fashion",
+    "question": "Can I see the V&A Fashion Gallery in 2027, and does general admission require booking?",
+    "input_facts": [
+      "va-museum-1",
+      "va-museum-3",
+      "natural-history-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:180927",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:20531"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "va-museum-1",
+        "va-museum-3"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:180927"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-fashion-3",
+    "family": "museum-fashion",
+    "question": "Is the free V&A South Kensington general-admission policy a reason to promise access to its Fashion Gallery in November 2026?",
+    "input_facts": [
+      "va-museum-1",
+      "va-museum-3",
+      "natural-history-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:180927",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:20531"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "va-museum-1",
+        "va-museum-3"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:180927"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-fashion-4",
+    "family": "museum-fashion",
+    "question": "Before I plan a V&A fashion visit in 2026, explain general booking and the Fashion Gallery closure.",
+    "input_facts": [
+      "va-museum-1",
+      "va-museum-3",
+      "natural-history-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:180927",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:20531"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "va-museum-1",
+        "va-museum-3"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:180927"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-museum-fashion-5",
+    "family": "museum-fashion",
+    "question": "I want free V&A entry in early 2028 specifically for the Fashion Gallery. What exception matters?",
+    "input_facts": [
+      "va-museum-1",
+      "va-museum-3",
+      "natural-history-1"
+    ],
+    "input_places": [
+      "osm:2026-10-12:180927",
+      "osm:2026-10-12:18306",
+      "osm:2026-10-12:20531"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "va-museum-1",
+        "va-museum-3"
+      ],
+      "place_ids": [
+        "osm:2026-10-12:180927"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-night-1",
+    "family": "night",
+    "question": "On a Tuesday night, can I depend on Night Tube, and can I hail a minicab without booking?",
+    "input_facts": [
+      "tfl-night-1",
+      "tfl-night-2",
+      "tfl-night-lines-1"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-night-1",
+        "tfl-night-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-night-2",
+    "family": "night",
+    "question": "For Wednesday overnight travel, does Night Tube run and how must private hire be booked?",
+    "input_facts": [
+      "tfl-night-1",
+      "tfl-night-2",
+      "tfl-night-lines-1"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-night-1",
+        "tfl-night-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-night-3",
+    "family": "night",
+    "question": "Is Night Tube a Monday-night option, and can an unbooked private-hire driver take a street hail?",
+    "input_facts": [
+      "tfl-night-1",
+      "tfl-night-2",
+      "tfl-night-lines-1"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-night-1",
+        "tfl-night-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-night-4",
+    "family": "night",
+    "question": "What should I know about Night Tube on Thursday and booking a minicab?",
+    "input_facts": [
+      "tfl-night-1",
+      "tfl-night-2",
+      "tfl-night-lines-1"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-night-1",
+        "tfl-night-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-night-5",
+    "family": "night",
+    "question": "Compare Friday/Saturday Night Tube availability with a Tuesday night, and explain black taxi versus private hire booking.",
+    "input_facts": [
+      "tfl-night-1",
+      "tfl-night-2",
+      "tfl-night-lines-1"
+    ],
+    "input_places": [],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "answer",
+      "fact_ids": [
+        "tfl-night-1",
+        "tfl-night-2"
+      ],
+      "place_ids": []
+    }
+  },
+  {
+    "id": "decision-train-live-lifts-1",
+    "family": "live-lifts",
+    "question": "Are the lifts at Bank working right now?",
+    "input_facts": [
+      "bank",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "live_check",
+      "fact_ids": [],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-live-lifts-2",
+    "family": "live-lifts",
+    "question": "Can you check whether Bank station has any broken lifts today?",
+    "input_facts": [
+      "bank",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "live_check",
+      "fact_ids": [],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-live-lifts-3",
+    "family": "live-lifts",
+    "question": "Is the Bank Northern line street lift operational at this moment?",
+    "input_facts": [
+      "bank",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "live_check",
+      "fact_ids": [],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-live-lifts-4",
+    "family": "live-lifts",
+    "question": "Please check current lift outages at Bank before I travel.",
+    "input_facts": [
+      "bank",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "live_check",
+      "fact_ids": [],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  },
+  {
+    "id": "decision-train-live-lifts-5",
+    "family": "live-lifts",
+    "question": "Does Bank have a lift disruption right now?",
+    "input_facts": [
+      "bank",
+      "bank-wc",
+      "waterloo"
+    ],
+    "input_places": [
+      "station:bank"
+    ],
+    "place_names": {
+      "station:bank": "Bank station",
+      "osm:2026-10-12:18306": "Natural History Museum",
+      "osm:2026-10-12:20531": "Science Museum",
+      "osm:2026-10-12:180927": "V&A South Kensington",
+      "station:waterloo": "Waterloo station"
+    },
+    "expected": {
+      "kind": "live_check",
+      "fact_ids": [],
+      "place_ids": [
+        "station:bank"
+      ]
+    }
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "eval-01",
+    "question": "I have a buggy. Is every line at Bank accessible without stairs?",
+    "expected_access": "partial",
+    "expected_kind": "clarify"
+  },
+  {
+    "id": "eval-02",
+    "question": "Someone told me all Bank lines gained lifts. Can I enter the Central line from the pavement without steps?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-03",
+    "question": "I am arriving at Bank on Northern and need a lift to ground level. Is there one?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-04",
+    "question": "Which Bank entrance gets me to a DLR platform by lift?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-05",
+    "question": "Can I stay inside Bank when changing step-free from Waterloo & City to DLR?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-06",
+    "question": "Waterloo: could I reach a Bakerloo platform from the street with no stairs?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-07",
+    "question": "Does Waterloo offer a lift route between street and Jubilee platforms?",
+    "expected_access": "yes",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-08",
+    "question": "Can I get outside at Euston from Victoria without stairs, or is it only an interchange?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-09",
+    "question": "Can I change southbound from Northern via Bank to Victoria at Euston without using stairs?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-10",
+    "question": "I use a wheelchair. Can I get from the street into Canada Water in October 2026?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-11",
+    "question": "Is the Canada Water lift replacement already finished in October 2026?",
+    "expected_access": "no",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-12",
+    "question": "Are Canary Wharf DLR and Elizabeth line in one station building?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-13",
+    "question": "Please confirm the lift for Jubilee at Canary Wharf is working right now.",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "eval-14",
+    "question": "I have just reached Bank. Are all its lifts working at this moment?",
+    "expected_access": "unknown",
+    "expected_kind": "live_check"
+  },
+  {
+    "id": "eval-15",
+    "question": "Can you guarantee no step or gap onto the train just because a station has lifts?",
+    "expected_access": "not_applicable",
+    "expected_kind": "answer"
+  },
+  {
+    "id": "eval-16",
+    "question": "How much is the cash fare between Bank and Paddington?",
+    "expected_access": "unknown",
+    "expected_kind": "outside_scope"
+  }
+]

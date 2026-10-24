@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-10-24T09:53:12Z",
+  "task_name": "Homeward practical London travel",
+  "task_id": "ln_445191829380864c541213cd",
+  "task_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+  "training_job": "ftjob_a58f1590",
+  "status": "v1 shadow; recorded refresh interval 24 hours; v2 not started",
+  "calls_counter": 181,
+  "kept": 149,
+  "rejected": 26,
+  "waiting": 0,
+  "running_reviews": 0,
+  "kept_sessions": 149,
+  "note": "149 kept,26 rejected,6 unable to review. The previously observed24-hour refresh and12-case/20-case gate mismatch remain unresolved; only v1 is visible. Latest API probe remains the prior Luna fallback, not a new serving measurement.",
+  "training_base": "Qwen/Qwen3-4B-Instruct-2507",
+  "base_evidence": "Task history Why tooltip: first version submitted for training on Qwen/Qwen3-4B-Instruct-2507 from the base",
+  "history": [
+    {
+      "checked_at": "2026-10-23T21:26:45Z",
+      "kept": 49,
+      "status": "Training v1"
+    }
+  ],
+  "adapter_id": "ad_lane_8bdd977d",
+  "version": 1,
+  "adapter_passed": 1,
+  "evaluation_cases": 12,
+  "adapter_quality_percent": 8.3,
+  "base_passed": 0,
+  "provider_live_comparison": "not measured; recorded reference answers",
+  "target_percent": 95,
+  "served_app_adapter_calls_verified": 0,
+  "could_not_review": 6,
+  "new_teaching_examples_submitted": 80,
+  "api_served_adapter_percent": 0,
+  "review_cap_per_day": 200,
+  "new_rows_for_retrain": 25,
+  "retrain_fraction": 0.5,
+  "cooldown_minutes": 0,
+  "queued_today": 175,
+  "new_recorded_api_attempts": 87,
+  "locally_valid_structured_responses": 85,
+  "saved_bad_ratings_this_round": 8,
+  "adapter_checked_at": "2026-10-24T10:10:45Z",
+  "latest_adapter_activity": "Four isolated playground v1 development answers compared with positively identified Luna API answers. Manual full-task acceptance 1/4 vs 3/4; UI/API settings differ. Rollout still v1 silent test 10%; no verified adapter API traffic.",
+  "recorded_refresh_interval_hours": 24,
+  "next_refresh_at": null,
+  "monitor_access": {
+    "status": "signed_out",
+    "checked_at": "2026-10-24T10:12:51Z",
+    "user_action_requested": true,
+    "recheck_requires_user_confirmation": true,
+    "reason": "Dashboard resolved to Sign in to your workspace with Sign in button. Requested restored sign-in once; stop browser checks until human confirmation."
+  },
+  "latest_monitor_activity": "Dashboard session expired despite frequent checks; waiting for user sign-in confirmation. Training/serving state preserved, no inference calls.",
+  "latest_development_comparison": {
+    "checked_at": "2026-10-24T09:08:07Z",
+    "scope": "Four known development cases; UI adapter vs API Luna, not controlled final benchmark",
+    "adapter_id": "ad_lane_8bdd977d",
+    "version": 1,
+    "cases": 4,
+    "manual_full_task_acceptable": {
+      "adapter": 1,
+      "luna": 3
+    },
+    "manual_core_advice_pass": {
+      "adapter": 2,
+      "luna": 4
+    },
+    "playground_adapter_serving_verified": true,
+    "api_adapter_serving_verified": false,
+    "app_rollout_changed": false,
+    "final_heldout_unchanged": true,
+    "final_heldout_questions_sent": 0,
+    "report_file": "homeward/results/travel/isolated-v1-smoke-2026-10-24/report.json",
+    "summary_file": "homeward/results/travel/isolated-v1-smoke-2026-10-24/summary.txt",
+    "provider_playground_error": "502 wrapping provider 401; API Luna worked",
+    "limitations": [
+      "UI decoding and schema enforcement settings are not fully exposed; no controlled API benchmark or latency claim",
+      "Existing development cases already inspected and may overlap training; not unseen generalization evidence",
+      "Luna API uses strict JSON schema; adapter playground schema enforcement is unknown. Latency clocks differ. UI proves selected v1, not a per-response API version header. No independent/blinded reviewer."
+    ]
+  },
+  "latest_self_service_investigation": {
+    "checked_at": "2026-10-24T09:53:12Z",
+    "report_file": "homeward/results/travel/v2-self-service-investigation-2026-10-24.json",
+    "supported_manual_refresh_found": false,
+    "new_inference_calls": 0,
+    "successor_prepared": true,
+    "successor_submitted": false
+  }
+}
