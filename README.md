@@ -1,5 +1,11 @@
 # Homeward / London Travel — London, in your words
 
+## 🔴 Live demo: [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app)
+
+Open in desktop Chrome or Edge (WebGPU required). The full city map takes about 20 seconds on first load.
+
+---
+
 A conversational London assistant on a full-screen **WebGPU map**, with two modes in the same interface:
 
 - **Travel:** ask about step-free access, museums, payment rules or getting home late; see dated sources and the relevant map places.
