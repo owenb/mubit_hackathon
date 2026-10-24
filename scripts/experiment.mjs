@@ -1,3 +1,4 @@
+import {createMubitFetch} from '../homeward/src/mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { parseArgs } from 'node:util';
@@ -101,7 +102,7 @@ async function main() {
   if (!direct && !apiKey.startsWith('mbt_')) throw new Error('MUBIT_API_KEY must be a Mubit inference key beginning mbt_.');
   if (direct && apiKey.startsWith('mbt_')) throw new Error('OPENAI_API_KEY contains a Mubit key; use your OpenAI API key for a direct baseline.');
 
-  const client = new OpenAI({ apiKey, baseURL, maxRetries: 0, timeout: 60_000 });
+  const client = new OpenAI({ fetch: direct ? undefined : createMubitFetch({source:'experiment'}), apiKey, baseURL, maxRetries: 0, timeout: 60_000 });
   const options = direct ? {} : { headers: { 'x-middleware-record': values.record } };
   const results = [];
   const resultsDir = new URL('../results/', import.meta.url);

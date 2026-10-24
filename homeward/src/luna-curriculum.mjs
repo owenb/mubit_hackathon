@@ -1,8 +1,9 @@
+import {createMubitFetch} from './mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {redact} from './core.mjs';
 const packets=JSON.parse(await readFile(new URL('../research/travel/source-packets.json',import.meta.url),'utf8'));
-const client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
+const client=new OpenAI({ fetch: createMubitFetch({source:'luna-curriculum'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
 const schema={type:'object',additionalProperties:false,properties:{questions:{type:'array',items:{type:'object',additionalProperties:false,properties:{source_id:{type:'string'},question:{type:'string'},essential_points:{type:'array',items:{type:'string'}}},required:['source_id','question','essential_points']}}},required:['questions']};
 const all=[],receipts=[];
 for(let i=0;i<packets.length;i+=3){

@@ -35,3 +35,9 @@ test('contradictory answer kind and multi-place focus are rejected before render
  assert.throws(()=>validateAnswer({answer:'Outside scope. Here are travel facts.',static_access:'not_applicable',response_kind:'answer',source_ids:[]}),/contradicts/);
  assert.throws(()=>validateScene({camera:'focus',places:[{id:'a',role:'context'},{id:'b',role:'context'}]},[{id:'a'},{id:'b'}]),/exactly one/);
 });
+
+// Hypothetical header name: test conservative handling, not a Mubit API contract.
+test('new gateway identity hints cannot be silently labelled as Luna or adapter',()=>{
+ const result=describeInference({...provider,response_headers:{...provider.response_headers,'x-mubit-served-model':'adapter-fixture'}});
+ assert.equal(result.route,'unverified');assert.equal(result.adapter_id,null);assert.deepEqual(result.uninterpreted_identity_headers,['x-mubit-served-model']);
+});

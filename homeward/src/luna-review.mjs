@@ -1,10 +1,11 @@
+import {createMubitFetch} from './mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import {readFile,writeFile} from 'node:fs/promises';
 import {researchFor} from './core.mjs';
 const file=process.argv[2];
 if(!file?.startsWith('homeward/results/travel/')||!file.endsWith('.json'))throw new Error('Pass a saved Homeward travel run');
 const run=JSON.parse(await readFile(file,'utf8'));
-const client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
+const client=new OpenAI({ fetch: createMubitFetch({source:'luna-review'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
 const schema={type:'object',additionalProperties:false,properties:{reviews:{type:'array',items:{type:'object',additionalProperties:false,properties:{id:{type:'string'},supported:{type:'boolean'},answers_question:{type:'boolean'},material_errors:{type:'array',items:{type:'string'}},missing_points:{type:'array',items:{type:'string'}},irrelevant_advice:{type:'array',items:{type:'string'}}},required:['id','supported','answers_question','material_errors','missing_points','irrelevant_advice']}}},required:['reviews']};
 const reviews=[],receipts=[];
 for(let i=0;i<run.results.length;i+=9){

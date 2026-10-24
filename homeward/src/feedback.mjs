@@ -1,3 +1,4 @@
+import {createMubitFetch, inferenceHeaders} from './mubit-telemetry.mjs';
 import {readFile,writeFile,mkdir,rename,open} from 'node:fs/promises';
 import {createHash,randomUUID} from 'node:crypto';
 import OpenAI from 'openai';
@@ -103,8 +104,9 @@ export function createFeedbackStore({directory=new URL('../results/feedback/',im
 }
 
 export async function teachCorrection(row,checkpoint,{client}={}){
- if(!client){if(!process.env.MUBIT_API_KEY?.trim().startsWith('mbt_'))throw Error('A Mubit inference key is required');client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:60000});}
+ if(!client){if(!process.env.MUBIT_API_KEY?.trim().startsWith('mbt_'))throw Error('A Mubit inference key is required');client=new OpenAI({ fetch: createMubitFetch({source:'feedback'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:60000});}
  const evidence=row.original.input,research=evidence.research;
+ await checkpoint({spatial_contract:{catalog_version:catalog.version,task_hash:taskHash,target_scene_sha256:hash(cleanScene(row.target.scene)),representation:'catalogue IDs, roles and camera; local renderer resolves geometry'}});
  // Keep the actual dated packet; do not silently relabel stale facts as current.
  const {researchFresh}=await import('./research.mjs');if(!researchFresh(research))throw Error('Source evidence needs revalidation before teaching');
  const auditSchema={type:'object',additionalProperties:false,properties:{accepted:{type:'boolean'},reason:{type:'string'}},required:['accepted','reason']};
@@ -116,7 +118,7 @@ export async function teachCorrection(row,checkpoint,{client}={}){
  if(audit.data.choices[0]?.finish_reason!=='stop')throw Error('Luna audit did not complete');
  const a=JSON.parse(audit.data.choices[0].message.content);if(typeof a.accepted!=='boolean'||typeof a.reason!=='string')throw Error('Invalid audit');
  const auditProvenance=providerEvidence(audit);if(auditProvenance.route!=='luna')throw Error('Audit answer was not positively identified as Luna');
- await checkpoint({audit:{...a,request_id:audit.response.headers.get('x-middleware-request-id'),usage:audit.data.usage||null,latency_ms:Math.round(performance.now()-auditStarted),label:'Luna evidence check; not independent review'}});
+ await checkpoint({audit:{...a,response_headers:inferenceHeaders(audit.response.headers),response_header_names:[...audit.response.headers.keys()],request_id:audit.response.headers.get('x-middleware-request-id'),usage:audit.data.usage||null,latency_ms:Math.round(performance.now()-auditStarted),label:'Luna evidence check; not independent review'}});
  if(!a.accepted)return;
  const selected=row.target.scene.places.map(p=>catalog.places.find(c=>c.id===p.id));
  const candidates=[...new Map([...evidence.map_candidates,...selected].map(p=>[p.id,({id:p.id,name:p.name,lines:p.lines})])).values()];
@@ -130,12 +132,12 @@ export async function teachCorrection(row,checkpoint,{client}={}){
  },{headers:{'x-middleware-record':'full'}}).withResponse();
  const receipt=reply.response.headers.get('x-middleware-request-id');
  // Save the receipt before parsing or scoring: malformed replies were recorded too.
- await checkpoint({receipt,recording_requested:'full',content_stored_verified:false,completion_model:reply.data.model,submitted_at:new Date().toISOString(),usage:reply.data.usage||null,latency_ms:Math.round(performance.now()-teachingStarted),output:reply.data.choices[0]?.message?.content||'',inference:providerEvidence(reply),matched:false,task_hash:taskHash,context_includes_operator_target:true});
+ await checkpoint({receipt,response_headers:inferenceHeaders(reply.response.headers),response_header_names:[...reply.response.headers.keys()],recording_requested:'full',content_stored_verified:false,completion_model:reply.data.model,submitted_at:new Date().toISOString(),usage:reply.data.usage||null,latency_ms:Math.round(performance.now()-teachingStarted),output:reply.data.choices[0]?.message?.content||'',inference:providerEvidence(reply),matched:false,task_hash:taskHash,context_includes_operator_target:true});
  if(!receipt)throw Error('Mubit recording receipt missing');
  if(providerEvidence(reply).route!=='luna')throw Error('Teaching reply was not positively identified as Luna');
  if(reply.data.choices[0]?.finish_reason!=='stop')throw Error('Teaching reply was incomplete');
  const output=validateAnswer(JSON.parse(reply.data.choices[0].message.content));validateScene(output.scene,candidates);
- const checks=teachingChecks(output,row.target,evidence),matched=checks.answer_exact&&checks.labels_exact&&checks.pins_exact&&checks.citations_supplied;await checkpoint({matched,target_checks:checks});
+ const checks=teachingChecks(output,row.target,evidence),matched=checks.answer_exact&&checks.labels_exact&&checks.pins_exact&&checks.citations_supplied;await checkpoint({matched,target_checks:checks,response_scene_sha256:hash(cleanScene(output.scene))});
  if(!matched)throw Error('Recorded teacher reply differs from the reviewed target. Inspect it and rate it in Mubit; no automatic retry.');
 }
-function providerEvidence({data,response}){return describeInference({requested_model:'gpt-6-luna',completion_model:data.model,request_id:response.headers.get('x-middleware-request-id'),provider_request_id:response.headers.get('x-request-id'),response_headers:Object.fromEntries(['openai-processing-ms','x-request-id'].map(k=>[k,response.headers.get(k)]).filter(([,v])=>v!==null))});}
+function providerEvidence({data,response}){return describeInference({requested_model:'gpt-6-luna',completion_model:data.model,request_id:response.headers.get('x-middleware-request-id'),provider_request_id:response.headers.get('x-request-id'),response_headers:inferenceHeaders(response.headers)});}

@@ -1,3 +1,4 @@
+import {createMubitFetch, inferenceHeaders} from './mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { createHash, randomUUID } from 'node:crypto';
@@ -71,7 +72,7 @@ export async function queryModel(question, { mode = 'grounded', recording = 'met
   if (u.protocol !== 'https:' || u.hostname !== 'api.mubit.ai' || u.pathname.replace(/\/$/, '') !== '/openai/v1' || u.username || u.password || u.search || u.hash) throw new Error('Unexpected Mubit endpoint');
   // This experiment is explicitly Luna-only; shared environment cannot switch it to Astra.
   const model = 'gpt-6-luna';
-  const client = new OpenAI({ apiKey, baseURL, maxRetries: 0, timeout: 60000 });
+  const client = new OpenAI({ fetch: createMubitFetch({source:'core'}), apiKey, baseURL, maxRetries: 0, timeout: 60000 });
   const contextIds=contextFor(context_ids), research=researchFor(question,contextIds), candidates=mapCandidates(question,contextIds,research);
   if(mode==='grounded'&&!researchFresh(research))throw new Error('Relevant research needs revalidation before a model call');
   const payload = compactPayload({ case_id: randomUUID(), date: new Date().toISOString().slice(0, 10), question,
@@ -84,7 +85,7 @@ export async function queryModel(question, { mode = 'grounded', recording = 'met
     response_format: { type: 'json_schema', json_schema: { name: 'homeward_access', strict: true, schema } },
   }, { headers: { 'x-middleware-record': recording } }).withResponse();
   const requestId = response.headers.get('x-middleware-request-id');
-  const responseHeaders=Object.fromEntries([...response.headers].filter(([name])=>(name.startsWith('x-middleware-')&&!/key|token|auth|cookie/.test(name))||['x-request-id','openai-model','openai-processing-ms'].includes(name)));
+  const responseHeaders=inferenceHeaders(response.headers);
   if (!requestId) throw new Error('Missing Mubit request receipt');
   let answer;
   try {

@@ -38,7 +38,7 @@ function mockClient(replies){
  return {calls,chat:{completions:{create}}};
 }
 test('rejected Luna audit sends no recorded teaching call',async()=>{const client=mockClient([{accepted:false,reason:'Target not supported'}]),progress=[];const row={original:{question:base.question,input:{research:researchFor(base.question)},result:base},target:base,note:'Unsupported target'};
- await teachCorrection(row,p=>progress.push(p),{client});assert.equal(client.calls.length,1);assert.equal(client.calls[0].options.headers['x-middleware-record'],'off');assert.equal(progress[0].audit.accepted,false);
+ await teachCorrection(row,p=>progress.push(p),{client});assert.equal(client.calls.length,1);assert.equal(client.calls[0].options.headers['x-middleware-record'],'off');assert.equal(progress.find(p=>p.audit).audit.accepted,false);
 });
 test('teaching preserves task contract, records actual output and cannot turn a receipt into training proof',async()=>{
  const target={...base,answer:'Use the same device.'};for(const k of ['question','request_id','inference'])delete target[k];
@@ -61,4 +61,34 @@ test('signed-in console observations must match the receipt and task, and cannot
  const observed=createFeedbackStore({directory:x.directory,observations:async()=>[{receipt:'mreq_observed',source:'signed_in_console',task_id:'ln_445191829380864c541213cd',content_retained:true,review_state:'rated_good',operator_rating:'good'}],training:async()=>({version:3})});
  const matched=await observed.get('one',saved.id);assert.equal(matched.stages.mubit_recording.content_stored_verified,true);assert.equal(matched.stages.mubit_review.state,'rated_good');assert.equal(matched.stages.model_update.correction_inclusion_verified,false);assert.equal(matched.stages.transfer_test.state,'not_run');
  }finally{await x.done();}
+});
+
+test('corrected map IDs and camera survive save, audit and recorded teacher payload in the same task',async()=>{
+ const {instructions,schema}=await import('../src/core.mjs');
+ const {catalog}=await import('../src/map-contract.mjs');
+ const question='Which stations should I suggest for Greville Street?';
+ const places=['Farringdon','Chancery Lane'].map(name=>catalog.places.find(p=>p.name===name));
+ assert.ok(places.every(Boolean));
+ const target={static_access:'not_applicable',response_kind:'answer',answer:'Consider Farringdon or Chancery Lane. Check the exact address and onward route.',source_ids:[],scene:{camera:'fit',places:places.map(p=>({id:p.id,role:'context'}))}};
+ const original={...target,scene:{camera:'focus',places:target.scene.places.slice(0,1)}};
+ const client=mockClient([{accepted:true,reason:'fixture audit'},target]);
+ const dir=await mkdtemp(tmpdir()+'/homeward-spatial-test-');
+ try{
+  const store=createFeedbackStore({directory:pathToFileURL(dir+'/'),teach:(row,checkpoint)=>teachCorrection(row,checkpoint,{client}),training:async()=>({version:1})});
+  const interaction=store.record('session',question,{},original);
+  const saved=await store.save('session',{
+   interaction_id:interaction.interaction_id,answer:target.answer,scene:target.scene,response_kind:target.response_kind,static_access:target.static_access,reason:'wrong_place',note:'Include both nearby stations.',scope:'reusable'
+  });
+  const result=await store.submit('session',saved.id,{reviewed:true});
+  assert.equal(result.status,'submitted');
+  assert.equal(result.teaching.spatial_contract.target_scene_sha256,result.teaching.response_scene_sha256);
+  const call=client.calls[1],payload=JSON.parse(call.body.messages[1].content);
+  assert.equal(call.body.messages[0].content,instructions);assert.deepEqual(call.body.response_format.json_schema.schema,schema);
+  assert.deepEqual(payload.operator_reviewed_correction.target.scene,target.scene);
+  for(const pin of target.scene.places)assert.ok(payload.map_candidates.some(p=>p.id===pin.id));
+  assert.ok(payload.map_candidates.every(p=>!('lat' in p)&&!('lon' in p)&&!('x' in p)&&!('y' in p)));
+  assert.equal(call.options.headers['x-middleware-record'],'full');
+  assert.deepEqual(result.teaching.response_header_names,['openai-processing-ms','x-middleware-request-id','x-request-id']);
+  assert.equal(result.stages.model_update.correction_inclusion_verified,false);
+ }finally{await rm(dir,{recursive:true,force:true});}
 });

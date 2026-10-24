@@ -1,3 +1,4 @@
+import {createMubitFetch} from '../../src/mubit-telemetry.mjs';
 // Explicit opt-in, bounded teacher calls; never imported by the application.
 import OpenAI from 'openai';
 import {readFile,writeFile,mkdir,open} from 'node:fs/promises';
@@ -22,7 +23,7 @@ if(process.env.MUBIT_BASE_URL&&process.env.MUBIT_BASE_URL.replace(/\/$/,'')!=='h
 const resultDir=new URL('./results/',import.meta.url);await mkdir(resultDir,{recursive:true});
 const lock=await open(new URL('submitted.lock',resultDir),'wx');
 await lock.writeFile(JSON.stringify({created_at:new Date().toISOString(),task_hash:taskHash,max_calls:40})+'\n');await lock.close();
-const client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:60000});
+const client=new OpenAI({ fetch: createMubitFetch({source:'run'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:60000});
 const report={status:'running',task_hash:taskHash,model:'gpt-6-luna',max_calls:40,recording:'full',cache:false,retries:0,
  final_heldout_questions_sent:0,existing_app_route_changed:false,existing_adapter_v2_started:false,
  scope:'Isolated compact decision selection successor; its first trained version will be v1. Not the original end-to-end travel benchmark.',results:[]};

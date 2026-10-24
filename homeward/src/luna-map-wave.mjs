@@ -1,8 +1,9 @@
+import {createMubitFetch} from './mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import {readFile,writeFile} from 'node:fs/promises';
 import {knowledge,instructions,schema as answerSchema} from './core.mjs';
 import {createHash} from 'node:crypto';
-const client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
+const client=new OpenAI({ fetch: createMubitFetch({source:'luna-map-wave'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
 const groups=[
  {ids:['british-museum','national-gallery','tate-modern'],focus:'Useful art or history recommendations and explicitly show two or three places on the map. Ask natural comparative visitor questions. Avoid exact live availability.'},
  {ids:['royal-parks','greenwich-museums','covent-garden'],focus:'Helpful feasible suggestions for a flexible visit, selecting one or two named places and showing them. Mobility limitations and ticketed exceptions; never claim an audited route.'},

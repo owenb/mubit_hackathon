@@ -27,7 +27,8 @@
     "homeward:web:test": "node --test homeward/web/tests/*.test.mjs",
     "start": "node --env-file-if-exists=.env homeward/web/server.mjs",
     "build": "node homeward/web/scripts/build.mjs",
-    "test": "node --test homeward/tests/*.test.mjs homeward/web/tests/*.test.mjs"
+    "test": "node --test homeward/tests/*.test.mjs homeward/web/tests/*.test.mjs",
+    "homeward:headers": "node homeward/src/header-report.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.5",

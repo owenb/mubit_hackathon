@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-24T14:07:05.981408+00:00",
+  "scope": "Offline comparison of preserved real correction and teaching response; no new model call or training observation",
+  "receipt": "mreq_01a16d9f5f057443a15d1f84712d71c6",
+  "task_id": "ln_445191829380864c541213cd",
+  "task_hash": "0771930a0dd626b64fe9a0ed80dcf628b2da46b38cd1ff34ca440dc064b774c4",
+  "representation": "catalogue IDs, roles and camera; renderer resolves coordinates",
+  "target_scene": {
+    "camera": "fit",
+    "places": [
+      {
+        "id": "osm:2026-10-12:1685",
+        "role": "context"
+      },
+      {
+        "id": "osm:2026-10-12:1621",
+        "role": "context"
+      }
+    ]
+  },
+  "recorded_reply_scene": {
+    "camera": "fit",
+    "places": [
+      {
+        "id": "osm:2026-10-12:1685",
+        "role": "context"
+      },
+      {
+        "id": "osm:2026-10-12:1621",
+        "role": "context"
+      }
+    ]
+  },
+  "target_scene_sha256": "1159db6bb92e50d22fa1466c400e43532658e71021dd82f63e18dd8ca5f39392",
+  "recorded_reply_scene_sha256": "1159db6bb92e50d22fa1466c400e43532658e71021dd82f63e18dd8ca5f39392",
+  "exact_scene_match": true,
+  "console_retention_observed_at": "2026-10-24T12:47:33.413252+00:00",
+  "content_retained": true,
+  "trainable": true,
+  "review_state": "rated_good",
+  "weight_inclusion_verified": false,
+  "updated_version_tested": false,
+  "final_twenty_used": false
+}

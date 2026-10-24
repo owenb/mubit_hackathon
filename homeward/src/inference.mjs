@@ -2,12 +2,14 @@
 // Provider-specific headers plus its completion model are positive provider evidence.
 export function describeInference(answer, { cache = false } = {}) {
   const headers = answer.response_headers || {};
-  const provider = answer.completion_model === 'gpt-6-luna'
+  const pendingIdentityHeaders=Object.keys(headers).filter(name=>/^x-(middleware|mubit)-/.test(name)&&/model|adapter|served|serving|route|deployment/.test(name));
+  const provider = pendingIdentityHeaders.length===0 && answer.completion_model === 'gpt-6-luna'
     && /^req_/.test(answer.provider_request_id || headers['x-request-id'] || '')
     && Number.isFinite(Number(headers['openai-processing-ms']))
     && headers['openai-processing-ms'] !== undefined;
   const route = provider ? 'luna' : 'unverified';
   const evidence = ['Mubit gateway receipt: '+(answer.request_id || 'not available')];
+  if(pendingIdentityHeaders.length)evidence.push('New gateway identity headers retained; semantics await verification: '+pendingIdentityHeaders.join(', '));
   if (provider) evidence.push('Completion model gpt-6-luna', 'OpenAI request ID and processing-time response headers');
   else evidence.push('No verified serving-model signal; the requested model alone is insufficient');
   return {
@@ -21,7 +23,7 @@ export function describeInference(answer, { cache = false } = {}) {
     request_id: cache ? null : answer.request_id || null,
     original_request_id: cache ? answer.request_id || null : null,
     recording: cache ? 'none' : answer.recording || 'unknown',
-    adapter_id: null, evidence, ...(cache ? {original_route:route} : {}),
+    adapter_id: null, uninterpreted_identity_headers:pendingIdentityHeaders, evidence, ...(cache ? {original_route:route} : {}),
   };
 }
 

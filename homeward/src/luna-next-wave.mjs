@@ -1,8 +1,9 @@
+import {createMubitFetch} from './mubit-telemetry.mjs';
 import OpenAI from 'openai';
 import {readFile,writeFile} from 'node:fs/promises';
 import {knowledge,instructions,schema as answerSchema} from './core.mjs';
 import {createHash} from 'node:crypto';
-const client=new OpenAI({apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
+const client=new OpenAI({ fetch: createMubitFetch({source:'luna-next-wave'}),apiKey:process.env.MUBIT_API_KEY,baseURL:'https://api.mubit.ai/openai/v1',maxRetries:0,timeout:90000});
 const groups=[
  {ids:['tfl-bus-fares','tfl-payment'],focus:'Hopper quantity and negative balance, payment device identities, date-specific future fares. New natural questions; no answer hints.'},
  {ids:['tfl-night','tfl-night-lines'],focus:'Night Overground versus Night Tube and night buses; correct operating days and coverage, private-hire booking. Avoid live claims.'},

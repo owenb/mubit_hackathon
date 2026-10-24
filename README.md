@@ -24,6 +24,14 @@ For an operator, the reasons to pursue this are:
 
 The current prototype uses hosted Mubit for recorded teaching calls. Local inference, operational independence and improved model quality remain to be demonstrated.
 
+## Potential customers
+
+- **Citymapper:** conversational help inside a journey-planning app, combining transport knowledge with recommendations and the right map locations.
+- **London hotels and concierges:** a digital extension of the concierge team's local expertise, with staff corrections teaching the recommendations they want to give guests.
+- **Theatre websites:** practical advice around a visit, such as arrival stations, nearby places to eat and getting home after the show, grounded in current venue and transport information.
+
+These are prospective customer groups, not existing customers or partnerships.
+
 ## Run locally
 
 Requirements: Node.js 22 or later and a desktop browser with WebGPU and hardware acceleration. Use `localhost` or HTTPS.
@@ -95,14 +103,20 @@ Corrections persist under ignored `homeward/results/feedback/`, scoped to the br
 
 ![Homeward’s correction flow: saved, reviewed in Mubit, waiting for the next model](docs/images/homeward-correction.png)
 
+## Response-header evidence
+
+All backend Mubit calls now retain a private, redacted journal of response headers, including errors and newly introduced model/version fields. Inspect it with `npm run homeward:headers`; this makes no API call. The files live in ignored `homeward/results/mubit-headers/` and contain no prompt/answer bodies or outbound credentials. New identity headers remain unverified until their meaning is confirmed. The latest isolated metadata-only check returned Luna and no new Mubit serving-model header.
+
+See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-learns-about-the-map) and [the preserved scene comparison](homeward/data/spatial-learning-evidence.json). The saved Greville Street correction and recorded teacher output have identical pin, role and camera hashes. Updated-model transfer remains pending.
+
 ## The WebGPU city
 
 The complete London map contains **183,550 source features**, producing **5,121,079 vertices** and **8,813,310 indices**. No map geometry was simplified for the browser.
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,376,832 bytes**.
-- Combined map/engine transfer: about **10.37 MB**, before the small page and bindings.
+- Gzip WebAssembly engine: **2,423,822 bytes**.
+- Combined map/engine transfer: about **10.42 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
 A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading stages report actual download bytes, completed geometry layers and GPU upload bytes, with indeterminate progress where measurement is unavailable. Content-hashed assets are verified before use and cached in the browser.

@@ -46,3 +46,25 @@ A call receipt, stored content, positive review, kept training example, trained 
 - `POST /api/learning/corrections/:id/teach`: reviewed reusable correction only.
 
 Network failures are retained rather than automatically retried. The final questions are never loaded by this feature. API keys and raw session stores are not published. No rollout or training policy was changed.
+
+## What the model learns about the map
+
+Homeward's recurring spatial task is **choosing places and map actions from supplied evidence**. Its normal and recorded teaching inputs contain catalogue IDs, names, line information and dated travel facts. The response contains a `scene`: a camera command and up to six `{id, role}` selections. The renderer resolves those IDs to the local map geometry. This is discrete place selection; it does not train a model on the London mesh or establish distance, route or accessibility reasoning.
+
+A reusable pin correction follows the same task instructions, model and JSON schema as ordinary answers. The selected catalogue places are included in the teaching candidates, and the corrected camera, IDs and roles are compared against the actual recorded reply. The separate audit can inspect richer selected-place metadata, including anchors; its recording is off. Personal trip edits never become shared teaching submissions.
+
+The [spatial correction receipt](data/spatial-learning-evidence.json) preserves exact scene hashes for the saved target and the recorded reply. Future submissions retain those hashes in their correction record. The real Greville Street correction has been observed as retained, trainable and positively rated in the original task. Its exact answer and map choices survived the teacher call. The model has not yet demonstrated that it can make those choices on different questions without the supplied target. Full training-row inclusion is not exposed. A newer version alone cannot establish that this individual row caused any improvement.
+
+To test transfer, compare the frozen six development inputs against the same evidence and candidates using the identified updated version. Assess factual advice, selected pin set, roles, camera validity and unsupported route/access claims separately, retaining failures. Never insert the target or test rubrics into training. Map catalogue IDs are tied to the supplied map snapshot; a future catalogue migration needs explicit ID mapping and regression checks.
+
+## Recording which model answered
+
+Every Mubit HTTP attempt from Homeward's app, correction flow, evaluation gateway and teaching scripts now passes through `src/mubit-telemetry.mjs`. It records the HTTP status, request receipt, timestamp, all response header names and redacted values before SDK parsing. This includes successful responses, HTTP errors and streaming handshakes; network failures are logged without error-message contents. Time to headers is not total generation latency or a benchmark.
+
+The daily journal is `homeward/results/mubit-headers/YYYY-MM-DD.jsonl`, ignored by Git and written with owner-only file permissions. It contains no request/answer bodies or outbound credentials. Credential, cookie and token headers are redacted; other fields are scrubbed for known keys. Preserve the directory on a writable private volume. A logging failure produces a server warning and never retries the model call. Existing responses keep only a smaller safe header subset; correction audit and teaching records now retain that subset too.
+
+New model/adapter/routing header names are retained as candidates for interpretation. Their presence is not treated as proof of an adapter version until their meaning is documented or confirmed. Unknown gateway identity hints also stop the previous Luna heuristic from silently overriding them. The current [Mubit API reference](https://docs.mubit.ai/reference/api) documents the receipt and retry headers; the founders' forthcoming serving identity contract is still awaited. The logger uses the official SDK's [custom fetch support](https://developers.openai.com/api/reference/typescript/#customizing-the-fetch-client).
+
+Run `npm run homeward:headers` to inspect captured header names and the latest receipts without making a network call.
+
+The journal applies to backend API calls. Browser playground responses expose only the selected version and visible output through the supported UI; no HTTP header evidence is claimed for those historical runs.
