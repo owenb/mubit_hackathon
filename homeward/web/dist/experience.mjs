@@ -3,7 +3,7 @@ import {el,button,api,sourceList} from './ui.mjs';
 import {createEditor,correctionHistory,correctionProof} from './corrections.mjs';
 import {correctionStatus} from './correction-state.mjs';
 import {loadEvaluation} from './evaluation.mjs';
-const $=id=>document.getElementById(id),card=$('answer-card'),view=$('answer-view'),learning=$('learning'),evidence=$('evidence'),menu=$('view-menu');
+const $=id=>document.getElementById(id),card=$('answer-card'),view=$('answer-view'),learning=$('learning'),evidence=$('evidence');
 let enterpriseUI=null,sharedMode='travel';const modeNodes=new Map();const businessActive=()=>document.documentElement.dataset.enterprise==='true';
 function syncSharedMode(){const next=businessActive()?'businesses':'travel';if(next===sharedMode)return;for(const [id,modes]of modeNodes){modes[sharedMode]=[...$(id).childNodes];$(id).replaceChildren(...(modes[next]||[]));}sharedMode=next;}
 export function registerEnterpriseUI(ui){enterpriseUI=ui;for(const id of ['answer-view','learning','evidence-answer','evidence-corrections','evidence-evaluation','evidence-map'])modeNodes.set(id,{travel:[...$(id).childNodes],businesses:[]});const nav=$('evidence-tabs'),tab=button('Businesses',()=>showTab('businesses'));tab.dataset.tab='businesses';tab.hidden=true;nav.prepend(tab);const page=el('section',null,'evidence-page');page.id='evidence-businesses';page.hidden=true;evidence.append(page);}
@@ -69,16 +69,15 @@ async function inspectCorrection(row){lastCorrection=row;$('correction-proof').r
 async function showTab(tab){selectedTab=tab;for(const section of document.querySelectorAll('.evidence-page'))section.hidden=section.id!=='evidence-'+tab;for(const b of document.querySelectorAll('[data-tab]'))b.setAttribute('aria-pressed',String(b.dataset.tab===tab));if(businessActive()&&enterpriseUI){await enterpriseUI.evidence(tab,$('evidence-'+tab));return;}if(tab==='answer')renderAnswerEvidence();if(tab==='map')renderMapEvidence();if(tab==='evaluation')loadEvaluation($('eval-content'));if(tab==='corrections'){
  $('operator-fields').replaceChildren(editor.operatorFields());try{await correctionHistory($('learning-history'),{onInspect:inspectCorrection});if(lastCorrection)inspectCorrection(lastCorrection);if(editor.hasDraft())$('learning-history').prepend(button('Resume unfinished edit',()=>{evidence.hidden=true;resumeEdit();},'quiet'));}catch(e){$('learning-history').replaceChildren(el('p',e.message,'form-message'));}
 }}
-document.addEventListener('pointerdown',event=>{if(!menu.contains(event.target))menu.open=false;});
-export function openEvidence(tab){evidence.hidden=false;menu.open=false;showTab(tab||(businessActive()?'businesses':'answer'));}
+export function openEvidence(tab){evidence.hidden=false;showTab(tab||(businessActive()?'businesses':'answer'));}
 $('open-evidence').onclick=()=>openEvidence();$('evidence-close').onclick=()=>evidence.hidden=true;
 for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>showTab(b.dataset.tab);
 for(const b of document.querySelectorAll('[data-question]'))b.onclick=()=>{if(!pending)command({type:'ask',question:b.dataset.question});};
-$('overview').onclick=()=>{if(businessActive()&&enterpriseUI)enterpriseUI.overview();else command({type:'overview'});menu.open=false;};
-$('fullscreen').onclick=async()=>{menu.open=false;if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();};
-document.addEventListener('fullscreenchange',()=>$('fullscreen').textContent=document.fullscreenElement?'Exit full screen':'Full screen');
+$('overview').onclick=()=>{if(businessActive()&&enterpriseUI)enterpriseUI.overview();else command({type:'overview'});};
+$('fullscreen').onclick=async()=>{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();};
+document.addEventListener('fullscreenchange',()=>{const button=$('fullscreen'),active=Boolean(document.fullscreenElement),label=active?'Exit full screen':'Full screen';button.setAttribute('aria-pressed',String(active));button.setAttribute('aria-label',label);button.title=label;});
 $('closed-book').onchange=()=>command({type:'diagnostic',value:$('closed-book').checked});
 $('replay-example').onclick=async()=>{if(editor.isBusy())return;try{const value=await api('/api/learning/replay',{});onAnswer(value,{preview:true});evidence.hidden=true;}catch(e){notice(e.message);}};
-document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'&&globalThis.londonMap){event.preventDefault();event.stopPropagation();menu.open=false;if(businessActive()&&enterpriseUI){enterpriseUI.focus();return;}$('homeward').focus();command({type:'focus-input'});return;}if(event.key==='Escape'){if(!evidence.hidden){evidence.hidden=true;event.stopPropagation();}menu.open=false;}});
+document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'&&globalThis.londonMap){event.preventDefault();event.stopPropagation();if(businessActive()&&enterpriseUI){enterpriseUI.focus();return;}$('homeward').focus();command({type:'focus-input'});return;}if(event.key==='Escape'){if(!evidence.hidden){evidence.hidden=true;event.stopPropagation();}}});
 const reveal=()=>{if(document.documentElement.dataset.homewardReady==='true'){$('app-chrome').hidden=false;renderAnswer();if(new URLSearchParams(location.search).get('evidence')==='open')openEvidence();observer.disconnect();}};
 const observer=new MutationObserver(reveal);observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-homeward-ready']});reveal();

@@ -7,21 +7,13 @@ const mb=n=>(n/1e6).toFixed(1)+' MB';
 let failed=false,ready=false,worker;
 function status(label,station,detail,completed=0,total=0){
   if(failed||ready)return;
-  const determinate=Number.isFinite(total)&&total>0;
-  const fraction=determinate?Math.min(Math.max(completed/total,0),1):0;
-  $('phase-label').textContent=label;$('progress-detail').textContent=detail;
-  $('progress-number').textContent=determinate?`${Math.floor(fraction*100)}%`:'';
-  $('progress-track').classList.toggle('indeterminate',!determinate);
-  $('progress-track').setAttribute('aria-label',label);
-  if(determinate){$('progress-track').setAttribute('aria-valuenow',String(Math.floor(fraction*100)));$('progress-track').setAttribute('aria-valuemin','0');$('progress-track').setAttribute('aria-valuemax','100');}else{$('progress-track').removeAttribute('aria-valuenow');}
-  $('progress-fill').style.width=`${fraction*100}%`;$('progress-track').style.setProperty('--progress',`${fraction*100}%`);
-  document.querySelectorAll('[data-station]').forEach((node,i)=>{node.classList.toggle('done',i<station);node.classList.toggle('active',i===station);});
   history.push({at_ms:Math.round(performance.now()-loadStarted),label,station,completed,total});
 }
 function fail(error){
   if(failed)return;failed=true;worker?.terminate();
-  $('phase-label').textContent='We missed this connection';$('progress-number').textContent='';$('progress-track').classList.remove('indeterminate');
-  $('failure').textContent=error?.message||String(error);$('failure').hidden=false;$('retry').hidden=false;
+  $('loading').dataset.failed='';$('loading').setAttribute('aria-busy','false');
+  $('failure').textContent=error?.message||String(error);$('failure').hidden=false;
+  $('retry').disabled=false;$('retry').setAttribute('aria-label','Retry loading London');$('retry').title='Retry loading London';
   $('retry').onclick=()=>location.reload();console.error('London Travel startup:',error);
   globalThis.homewardDiagnostics={status:'error',error:String(error),history};
 }
@@ -60,7 +52,6 @@ async function boot(){
   const manifest=await fetch('/manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('London Travel assets are not built yet.');return r.json();});
   let cache;try{cache=await caches.open('homeward-verified-assets-v1');}catch{}
   const loaded={engine:0,map:0},total=manifest.engine.bytes+manifest.map.bytes;
-  $('package-note').textContent=`Full London · ${mb(manifest.map.bytes)} lossless package · ${mb(manifest.map.raw_bytes)} unpacked`;
   function update(name,bytes,cached){loaded[name]=bytes;const done=loaded.engine+loaded.map;status(cached?'Finding London in your browser':'Bringing London to you',0,`${mb(done)} / ${mb(total)} received${cached?' · verified browser cache':''}.`,done,total);}
   const [engineBytes,mapBytes]=await Promise.all([fetchAsset(manifest.engine,cache,(n,c)=>update('engine',n,c)),fetchAsset(manifest.map,cache,(n,c)=>update('map',n,c))]);
   status('Preparing the route',1,'Starting the map renderer and opening the London package.');

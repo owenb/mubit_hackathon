@@ -18,10 +18,11 @@
         </div>
         <span id="dial-label" aria-hidden="true">Night</span><span id="dial-help" class="sr-only">Turn clockwise from Deep through Night and Day to Clean. Use arrow keys for fine changes.</span>
       </div>
-      <details id="view-menu"><summary>View</summary><div class="view-popover">
-        <div class="appearance-control"><button id="appearance-system" aria-pressed="true">Following system</button><button id="appearance-undo" hidden>Undo light change</button></div>
-        <button id="overview">Show all London</button><button id="fullscreen">Full screen</button><button id="open-evidence">Evidence</button>
-      </div></details>
+      <div id="view-menu" class="map-actions" role="group" aria-label="Map controls">
+        <button id="overview" class="map-action" hidden aria-label="Show all London" title="Show all London"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 9v11h14V9M9 20v-7h6v7"/></svg></button>
+        <button id="fullscreen" class="map-action" aria-label="Full screen" title="Full screen" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fullscreen-expand"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></g><g class="fullscreen-contract"><path d="M3 8h5V3m13 5h-5V3M8 21v-5H3m13 5v-5h5"/></g></svg></button>
+        <button id="open-evidence" class="map-action" aria-label="Evidence" title="Evidence" aria-controls="evidence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-3M8 3h8v4H8zM7 12h10M7 16h7"/></svg></button>
+      </div>
     </header>
     <nav id="examples" aria-label="Example questions">
       <button data-question="Is there step-free access at Bank station?">Is Bank step-free?</button>
@@ -42,23 +43,21 @@
   </div>
   <script type="application/json" id="homeward-proof">{}</script>
   <script type="application/json" id="appearance-proof">{}</script>
-  <main id="loading" aria-labelledby="loading-title">
-    <div class="loading-brand"><i></i> LONDON TRAVEL</div>
-    <div class="journey">
-      <p class="eyebrow">YOUR CITY IS ON ITS WAY</p>
-      <h1 id="loading-title">London, coming<br>into focus<span>.</span></h1>
-      <p class="intro">Every building. Every bend in the river.<br>The whole map, ready to explore.</p>
-      <div class="skyline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><b>◯</b><span></span><span></span><span></span><span></span><span></span></div>
-      <ol class="stations" aria-label="Loading stages">
-        <li data-station="0" class="active"><i></i><span>Collect</span></li><li data-station="1"><i></i><span>Assemble</span></li><li data-station="2"><i></i><span>Illuminate</span></li><li data-station="3"><i></i><span>Explore</span></li>
-      </ol>
-      <div class="progress-copy"><strong id="phase-label">Finding the platform…</strong><span id="progress-number"></span></div>
-      <div id="progress-track" class="track indeterminate" role="progressbar" aria-label="Preparing London"><div id="progress-fill"></div><i></i></div>
-      <p id="progress-detail" class="detail">Checking your browser’s WebGPU connection.</p>
-      <p id="failure" role="alert" hidden></p><button id="retry" hidden>Try again</button>
-      <p class="honest">The whole city. Progress measured as it loads.</p>
-    </div>
-    <footer><span id="package-note">Full London · lossless map package</span><a href="/maps/README.txt">© OpenStreetMap contributors</a></footer>
+  <main id="loading" aria-labelledby="loading-title" aria-busy="true">
+    <button id="retry" class="eye-loader" aria-label="Loading London" disabled>
+      <svg viewBox="0 0 200 218" aria-hidden="true">
+        <defs><linearGradient id="eye-light" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b4dcd8"/><stop offset="1" stop-color="#758da7"/></linearGradient></defs>
+        <path class="eye-support" d="M100 91 65 204M100 91l35 113M56 204h88"/>
+        <g class="eye-rotor">
+          <g class="eye-spokes"><path d="M100 91 100.000 15.000"/><path d="M100 91 114.827 16.460"/><path d="M100 91 129.084 20.785"/><path d="M100 91 142.223 27.808"/><path d="M100 91 153.740 37.260"/><path d="M100 91 163.192 48.777"/><path d="M100 91 170.215 61.916"/><path d="M100 91 174.540 76.173"/><path d="M100 91 176.000 91.000"/><path d="M100 91 174.540 105.827"/><path d="M100 91 170.215 120.084"/><path d="M100 91 163.192 133.223"/><path d="M100 91 153.740 144.740"/><path d="M100 91 142.223 154.192"/><path d="M100 91 129.084 161.215"/><path d="M100 91 114.827 165.540"/><path d="M100 91 100.000 167.000"/><path d="M100 91 85.173 165.540"/><path d="M100 91 70.916 161.215"/><path d="M100 91 57.777 154.192"/><path d="M100 91 46.260 144.740"/><path d="M100 91 36.808 133.223"/><path d="M100 91 29.785 120.084"/><path d="M100 91 25.460 105.827"/><path d="M100 91 24.000 91.000"/><path d="M100 91 25.460 76.173"/><path d="M100 91 29.785 61.916"/><path d="M100 91 36.808 48.777"/><path d="M100 91 46.260 37.260"/><path d="M100 91 57.777 27.808"/><path d="M100 91 70.916 20.785"/><path d="M100 91 85.173 16.460"/></g>
+          <circle class="eye-rim" cx="100" cy="91" r="76"/>
+          <g class="eye-pods"><ellipse class="eye-capsule" cx="100.000" cy="15.000" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="114.827" cy="16.460" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="129.084" cy="20.785" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="142.223" cy="27.808" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="153.740" cy="37.260" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="163.192" cy="48.777" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="170.215" cy="61.916" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="174.540" cy="76.173" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="176.000" cy="91.000" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="174.540" cy="105.827" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="170.215" cy="120.084" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="163.192" cy="133.223" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="153.740" cy="144.740" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="142.223" cy="154.192" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="129.084" cy="161.215" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="114.827" cy="165.540" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="100.000" cy="167.000" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="85.173" cy="165.540" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="70.916" cy="161.215" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="57.777" cy="154.192" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="46.260" cy="144.740" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="36.808" cy="133.223" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="29.785" cy="120.084" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="25.460" cy="105.827" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="24.000" cy="91.000" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="25.460" cy="76.173" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="29.785" cy="61.916" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="36.808" cy="48.777" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="46.260" cy="37.260" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="57.777" cy="27.808" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="70.916" cy="20.785" rx="2.8" ry="4.2"/><ellipse class="eye-capsule" cx="85.173" cy="16.460" rx="2.8" ry="4.2"/></g>
+        </g>
+        <circle class="eye-hub" cx="100" cy="91" r="4"/>
+      </svg>
+    </button>
+    <p id="loading-title" role="status">Loading London...</p>
+    <p id="failure" class="sr-only" role="alert" hidden></p>
   </main>
   <script type="module" src="/loader.mjs"></script>
   <script type="module" src="/experience.mjs"></script>
