@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import {enterpriseRoutes} from '../src/enterprise-routes.mjs';
 import { bodyLimit } from 'hono/body-limit';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { fileURLToPath } from 'node:url';
@@ -29,6 +30,7 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
     const origin=c.req.header('origin');if(origin){const u=new URL(origin);if(!['http:','https:'].includes(u.protocol)||u.host!==c.req.header('host'))throw Error('Use the London Travel page');}
     return c.req.json();
   };
+  enterpriseRoutes(app);
   app.get('/api/places',c=>c.json({places:searchPlaces(c.req.query('q'))}));
   app.get('/api/learning',async c=>{c.header('Cache-Control','no-store');return c.json({corrections:await feedback.list(c.get('session'))});});
   app.get('/api/learning/interactions/:id',async c=>{c.header('Cache-Control','no-store');try{return c.json(await feedback.getInteraction(c.req.param('id'),c.get('session')));}catch(e){return c.json({error:redact(e.message)},404);}});
@@ -64,7 +66,7 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
   // The editable shell changes independently of the immutable map/engine. Serve
   // it without date-based 304s, which can retain an old correction UI after a
   // rebuild or when a deployment's file timestamps move backwards.
-  for(const [path,type] of [['/','text/html'],['/index.html','text/html'],['/style.css','text/css'],['/loader.mjs','text/javascript'],['/worker.mjs','text/javascript'],['/evaluation.mjs','text/javascript'],['/corrections.mjs','text/javascript'],['/experience.mjs','text/javascript'],['/correction-state.mjs','text/javascript'],['/ui.mjs','text/javascript'],['/appearance.mjs','text/javascript'],['/appearance-state.mjs','text/javascript']])app.get(path,async c=>{
+  for(const [path,type] of [['/','text/html'],['/index.html','text/html'],['/style.css','text/css'],['/loader.mjs','text/javascript'],['/worker.mjs','text/javascript'],['/evaluation.mjs','text/javascript'],['/corrections.mjs','text/javascript'],['/experience.mjs','text/javascript'],['/correction-state.mjs','text/javascript'],['/ui.mjs','text/javascript'],['/appearance.mjs','text/javascript'],['/appearance-state.mjs','text/javascript'],['/enterprise.mjs','text/javascript'],['/enterprise-gpu.mjs','text/javascript'],['/enterprise-state.mjs','text/javascript'],['/enterprise.css','text/css'],['/enterprise-city.wgsl','text/plain']])app.get(path,async c=>{
     c.header('Cache-Control','no-store');c.header('Content-Type',type+'; charset=utf-8');
     return c.body(await readFile(root+(path==='/'?'index.html':path.slice(1))));
   });

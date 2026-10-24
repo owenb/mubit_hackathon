@@ -1,12 +1,12 @@
 {
-  "state": "37_receipts_review_unverified",
-  "checked_at": "2026-10-24T17:13:49.729Z",
+  "state": "reviewing_examples",
+  "checked_at": "2026-10-24T17:17:30.135Z",
   "submitted": 37,
   "unique_receipts": 37,
-  "kept": null,
-  "task_id": null,
+  "kept": 0,
+  "task_id": "ln_a45d95b39436e0f1ea9583d0",
   "adapter": null,
-  "detail": "36 batch examples and one browser-tested correction produced 37 unique Mubit teaching receipts. Luna provider identity was verified. Console sign-in is required to observe kept review and any enterprise adapter. No adapter or fresh quality improvement is verified.",
+  "detail": "The signed-in Mubit console confirms all 37 examples belong to the distinct Enterprise Lens task. It reports 0 kept, 37 waiting and 3 reviews running. First training has not started, so no enterprise adapter or fresh quality improvement is available yet.",
   "batch_teaching": 36,
   "browser_corrections": 1,
   "baseline": {
@@ -15,5 +15,10 @@
     "transport_failures": 1,
     "manual_full_task_passes": 3,
     "scope": "DEVELOPMENT diagnostic; no trained adapter comparison"
-  }
+  },
+  "task_url": "https://app.mubit.ai/console/projects/ws-f6fde7f8cb6510fa/workloads/ln_a45d95b39436e0f1ea9583d0",
+  "rejected": 0,
+  "waiting": 37,
+  "running_reviews": 3,
+  "first_training": "not_started"
 }
