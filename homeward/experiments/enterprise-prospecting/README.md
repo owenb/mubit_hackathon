@@ -24,7 +24,7 @@ The existing loader exposes the exact full prepared London vertex/index buffers.
 For local inference use a dedicated `ENTERPRISE_MUBIT_API_KEY`, or the already-authorized isolated project environment `.env.bank-demo`. There is deliberately no fallback to the old app’s `MUBIT_API_KEY`. Credentials stay in Node and must never be committed. Example local start from the source workspace:
 
 ```sh
-PORT=3003 node --env-file=.env.bank-demo homeward/web/server.mjs
+PORT=3000 node --env-file-if-exists=.env --env-file-if-exists=.env.bank-demo homeward/web/server.mjs
 ```
 
 ## Teaching and honest demonstration state
