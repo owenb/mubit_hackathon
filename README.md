@@ -93,7 +93,7 @@ flowchart LR
 
 Choose **Fix this** beneath an answer. Add or remove verified places and see the pins change immediately; **Edit wording** opens the answer editor. **Use on my map** saves a personal edit without a teaching call. **Share as a correction…** asks for a reason and explains the Luna audit and Mubit teaching calls before **Send correction**. You can undo a personal map edit or resume an unfinished draft.
 
-The initial screen contains the full map, three example questions and the ask bar. After each answer the bar clears for a follow-up. **View → Evidence** holds sources, correction receipts, evaluation and renderer/load measurements. The model task retains its original Homeward identity so the product rename does not split the training pool.
+The initial screen contains the full map, three example questions and the ask bar. The ask bar keeps your exact text and remains editable while a request finishes; the glow shows processing. **View → Evidence** holds sources, correction receipts, evaluation and renderer/load measurements. The model task retains its original Homeward identity so the product rename does not split the training pool.
 
 A real Greville Street correction removed Canary Wharf DLR and kept Farringdon and Chancery Lane. The corrected teaching reply was retained in Mubit under the original Homeward task, marked trainable, and positively reviewed. Its task pool rose from 149 to **150 kept examples**. A per-row kept flag and weight inclusion are not exposed, so the UI distinguishes that progress from a completed model update.
 
@@ -117,7 +117,7 @@ The complete London map contains **183,550 source features**, producing **5,121,
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,344,187 bytes**.
+- Gzip WebAssembly engine: **2,343,340 bytes**.
 - Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 

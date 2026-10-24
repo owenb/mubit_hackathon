@@ -46,7 +46,6 @@
 .provenance:hover,.text-button:hover { color:white; }
 .correction-status,.draft-link { display:block;background:none;padding:0;color:#a7ccbb;font-size:11px;margin-top:16px;text-align:left; }
 .draft-link { color:#aebccc; }
-.waiting { color:#aebccc;margin:0;font-size:14px; }
 .live-update { border-left:2px solid #ceb992;padding-left:12px;font-size:12px;margin:16px 0;color:#cbd2d7; }
 .live-update small { color:#8e9eac;font-size:10px; }
 #learning { position:static;z-index:auto;color:inherit;font-size:inherit; }

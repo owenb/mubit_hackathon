@@ -16,12 +16,12 @@ const editor=createEditor({container:learning,
 });
 function sourceDisclosure(value){const details=el('details',null,'sources');details.append(el('summary',`Sources · ${value.sources?.length||0}`),sourceList(value.sources));return details;}
 function renderAnswer(){
- card.hidden=!answer&&!pending&&!editing;view.hidden=editing;learning.hidden=!editing;$('examples').hidden=Boolean(answer||pending||editing);command({type:'card',value:!card.hidden});
+ if(pending){card.hidden=true;learning.hidden=true;$('examples').hidden=true;command({type:'card',value:false});return;}
+ card.hidden=!answer&&!editing;view.hidden=editing;learning.hidden=!editing;$('examples').hidden=Boolean(answer||pending||editing);command({type:'card',value:!card.hidden});
  if(editing)return;view.replaceChildren();if(card.hidden)return;
- const value=answer||{},question=pending?lastQuestion:(value.question||lastQuestion);
+ const value=answer||{},question=value.question||lastQuestion;
  const heading=el('div',null,'answer-heading'),q=el('details',null,'question');q.append(el('summary',question));heading.append(q);
- if(!pending){const close=button('×',newQuestion,'icon-button');close.setAttribute('aria-label','New question');heading.append(close);}view.append(heading);
- if(pending){view.append(el('p','Finding an answer…','waiting'));return;}
+ const close=button('×',newQuestion,'icon-button');close.setAttribute('aria-label','New question');heading.append(close);view.append(heading);
  const route=value.inference?.route,label=value.inference?.label||'Route unverified';
  if(route==='operator_preview'||route==='cache'||!['luna','mubit_adapter'].includes(route)||label.startsWith('Recorded'))view.append(el('p',label,'state-label'));
  const prose=el('div',null,'answer-prose');for(const paragraph of (value.answer||'').replaceAll('**','').replace(/\[([^\]]+)\]\(https:\/\/[^)]+\)/g,'$1').split(/\n\s*\n/))prose.append(el('p',paragraph));view.append(prose);
