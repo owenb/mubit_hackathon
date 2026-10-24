@@ -13,7 +13,7 @@
   <div id="app-chrome" hidden>
     <header id="toolbar">
       <details id="view-menu"><summary>View</summary><div class="view-popover">
-        <div class="palette-options" role="group" aria-label="Map style"><button data-palette="0" aria-pressed="true">Night</button><button data-palette="2" aria-pressed="false">Dusk</button><button data-palette="1" aria-pressed="false">Chalk</button></div>
+        <div class="appearance-control"><label for="ambience">Light</label><input id="ambience" type="range" min="0" max="3" step="0.01" value="1" aria-label="Night to day"><div class="appearance-stops"><span>Deep</span><span>Night</span><span>Day</span><span>Clean</span></div><button id="appearance-system" aria-pressed="true">Following system</button><button id="appearance-undo" hidden>Undo light change</button></div>
         <button id="overview">Show all London</button><button id="fullscreen">Full screen</button><button id="open-evidence">Evidence</button>
       </div></details>
     </header>
@@ -35,6 +35,7 @@
     <p id="gesture-hint">Drag to orbit · Scroll to zoom</p>
   </div>
   <script type="application/json" id="homeward-proof">{}</script>
+  <script type="application/json" id="appearance-proof">{}</script>
   <main id="loading" aria-labelledby="loading-title">
     <div class="loading-brand"><i></i> LONDON TRAVEL</div>
     <div class="journey">

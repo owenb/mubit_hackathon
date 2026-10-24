@@ -77,6 +77,7 @@ async function boot(){
   globalThis.homewardDiagnostics={status:'initializing',map:metadata,source_sha256:manifest.map.source_sha256,download_bytes:total,history};
   const {default:init,start,preview_answer,ui_command}=await import(manifest.bindings);await init({module_or_path:module});
   globalThis.londonMap=value=>ui_command(JSON.stringify(value));
+  window.dispatchEvent(new Event('london:engine'));
   globalThis.homewardPreviewAnswer=value=>{if(!preview_answer)throw Error('This renderer needs the correction bridge build.');preview_answer(JSON.stringify(value));};
   await start($('homeward'),new Uint8Array(prepared.vertices),new Uint8Array(prepared.indices),prepared.metadata);
 }
