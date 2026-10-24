@@ -1,7 +1,9 @@
 import test from 'node:test';import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {pathToFileURL} from 'node:url';
 import {createFeedbackStore,teachCorrection,searchPlaces,teachingChecks} from '../src/feedback.mjs';
-import {researchFor} from '../src/core.mjs';
+import {researchFor,instructions,schema} from '../src/core.mjs';
+import {mapInstructions} from '../src/map-contract.mjs';
 const base={static_access:'not_applicable',response_kind:'answer',answer:'Use your watch to leave after entering with your phone.',source_ids:['tfl-payment'],scene:{camera:'keep',places:[]},question:'Can I enter a rail journey with my phone and leave with my watch?',request_id:'mreq_fixture_original',inference:{route:'luna',label:'Fixture, not real inference'}};
 async function setup(teach){const dir=await mkdtemp(tmpdir()+'/homeward-feedback-'),directory=pathToFileURL(dir+'/');const store=createFeedbackStore({directory,teach,training:async()=>({version:2,checked_at:'2026-10-24T12:00:00Z'})});const original=store.record('one',base.question,{},base);return {store,original,directory,done:()=>rm(dir,{recursive:true,force:true})};}
 const correction=original=>({interaction_id:original.interaction_id,answer:'Use the same phone throughout the rail journey. A watch is a separate payment identity.',scene:{camera:'keep',places:[]},response_kind:'answer',static_access:'not_applicable',reason:'unsupported_fact',note:'The watch and phone are separate payment identities.',scope:'reusable'});
@@ -10,6 +12,8 @@ test('saved correction is durable, owned, idempotent and previewed without repla
  const preview=await x.store.preview('one',saved.id);assert.equal(preview.inference.route,'operator_preview');assert.equal(preview.model_calls_this_request,0);assert.equal((await x.store.getInteraction(x.original.interaction_id,'one')).result.answer,base.answer);
  await assert.rejects(()=>x.store.get('two',saved.id),/Unknown/);
  const restarted=createFeedbackStore({directory:x.directory,training:async()=>({version:3})});const restored=await restarted.get('one',saved.id);assert.equal(restored.stages.model_update.newer_version_observed,true);assert.equal(restored.stages.model_update.correction_inclusion_verified,false);assert.equal(restored.original.result.answer,base.answer);
+ const revived=await restarted.getInteraction(x.original.interaction_id,'one');assert.equal(revived.result.answer,base.answer);
+ const trip=await restarted.save('one',{...correction(revived),scope:'trip'});assert.equal(trip.scope,'trip');assert.equal(trip.stages.mubit_recording.state,'not_sent');
  }finally{await x.done();}
 });
 test('unknown/duplicate place IDs and incomplete edits cannot enter feedback',async()=>{const x=await setup();try{
@@ -43,7 +47,14 @@ test('rejected Luna audit sends no recorded teaching call',async()=>{const clien
 test('teaching preserves task contract, records actual output and cannot turn a receipt into training proof',async()=>{
  const target={...base,answer:'Use the same device.'};for(const k of ['question','request_id','inference'])delete target[k];
  const client=mockClient([{accepted:true,reason:'Supported by evidence'},target]),progress=[];const row={original:{question:base.question,input:{question:base.question,research:researchFor(base.question),map_candidates:[]},result:base},target,note:'Keep payment identity consistent'};
- await teachCorrection(row,p=>progress.push(p),{client});assert.equal(client.calls.length,2);assert.equal(client.calls[1].options.headers['x-middleware-record'],'full');assert.equal(client.calls[1].body.model,'gpt-6-luna');assert.equal(client.calls[1].body.response_format.json_schema.name,'homeward_access');assert.equal(progress.at(-1).matched,true);assert.ok(progress.some(p=>p.receipt));assert.equal(progress.some(p=>p.model_update),false);
+ await teachCorrection(row,p=>progress.push(p),{client});assert.equal(client.calls.length,2);assert.equal(client.calls[0].options.headers['x-middleware-record'],'off');
+ assert.ok(client.calls[0].body.messages[0].content.includes(mapInstructions));
+ assert.match(client.calls[0].body.messages[0].content,/Assign origin\/destination only when the user's words establish them; otherwise use context/);
+ assert.equal(client.calls[1].body.messages[0].content,instructions);assert.deepEqual(client.calls[1].body.response_format.json_schema.schema,schema);
+ const canonical=value=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(k=>[k,canonical(value[k])])):value;
+ const expectedTaskHash=createHash('sha256').update(JSON.stringify(canonical([instructions,schema]))).digest('hex');
+ assert.equal(progress.find(p=>p.spatial_contract).spatial_contract.task_hash,expectedTaskHash);
+ assert.equal(client.calls[1].options.headers['x-middleware-record'],'full');assert.equal(client.calls[1].body.model,'gpt-6-luna');assert.equal(client.calls[1].body.response_format.json_schema.name,'homeward_access');assert.equal(progress.at(-1).matched,true);assert.ok(progress.some(p=>p.receipt));assert.equal(progress.some(p=>p.model_update),false);
 });
 test('citation changes are assessed separately from the edited answer and pins',()=>{
  const target={static_access:'not_applicable',response_kind:'answer',answer:'Same device.',source_ids:['tfl-payment','tfl-night'],scene:{camera:'keep',places:[]}};

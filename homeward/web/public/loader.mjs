@@ -1,4 +1,5 @@
 const $=id=>document.getElementById(id);
+globalThis.london_event=(kind,encoded)=>window.dispatchEvent(new CustomEvent('london:'+kind,{detail:JSON.parse(encoded)}));
 globalThis.homeward_answered=encoded=>window.dispatchEvent(new CustomEvent('homeward:answer',{detail:JSON.parse(encoded)}));
 const stages={unpack:['Unpacking the whole city',1,'Opening the lossless London package.'],verify:['Checking every corner',1,'Validating the complete map before it reaches the screen.'],build:['Putting London together',1,'Building the original geometry, district by district.'],transfer:['Passing the city to your browser',1,'The map is ready. Moving its geometry into the renderer.'],gpu:['Switching on the lights',2,'Connecting WebGPU and preparing the glass, streets and skyline.'],upload:['Lighting up London',2,'Sending the complete city to your graphics card.'],present:['All aboard',2,'Waiting for the first completed map frame.']};
 const loadStarted=performance.now(),history=[];
@@ -21,7 +22,7 @@ function fail(error){
   if(failed)return;failed=true;worker?.terminate();
   $('phase-label').textContent='We missed this connection';$('progress-number').textContent='';$('progress-track').classList.remove('indeterminate');
   $('failure').textContent=error?.message||String(error);$('failure').hidden=false;$('retry').hidden=false;
-  $('retry').onclick=()=>location.reload();console.error('Homeward startup:',error);
+  $('retry').onclick=()=>location.reload();console.error('London Travel startup:',error);
   globalThis.homewardDiagnostics={status:'error',error:String(error),history};
 }
 globalThis.homeward_progress=(stage,completed,total)=>{
@@ -36,7 +37,7 @@ globalThis.homeward_ready=()=>{
   globalThis.homewardDiagnostics={...globalThis.homewardDiagnostics,status:'ready',load_ms:performance.now()-loadStarted,history};
   const d=globalThis.homewardDiagnostics;
   $('homeward-proof').textContent=JSON.stringify({status:d.status,load_ms:d.load_ms,features:d.map?.features,vertices:d.map?.vertices,indices:d.map?.indices,geometry_bytes:d.map?.vertices*32+d.map?.indices*4,source_sha256:d.source_sha256,download_bytes:d.download_bytes,history:d.history});
-  $('evaluation').hidden=false;
+  window.dispatchEvent(new Event('london:ready'));
   requestAnimationFrame(()=>requestAnimationFrame(()=>{$('loading').classList.add('depart');setTimeout(()=>$('loading').remove(),500);}));
 };
 async function digest(bytes){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join('');}
@@ -51,12 +52,12 @@ async function fetchAsset(asset,cache,update){
   return bytes;
 }
 async function boot(){
-  if(!isSecureContext)throw Error('Open Homeward over HTTPS or localhost to use WebGPU.');
+  if(!isSecureContext)throw Error('Open London Travel over HTTPS or localhost to use WebGPU.');
   if(!navigator.gpu)throw Error('This desktop browser does not have WebGPU available. Try a current Chrome, Edge, Safari or supported Firefox version.');
   // The real adapter check happens before downloading the city.
   const adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'});
   if(!adapter)throw Error('Your browser could not connect to a WebGPU graphics adapter. Check that hardware acceleration is enabled.');
-  const manifest=await fetch('/manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Homeward assets are not built yet.');return r.json();});
+  const manifest=await fetch('/manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('London Travel assets are not built yet.');return r.json();});
   let cache;try{cache=await caches.open('homeward-verified-assets-v1');}catch{}
   const loaded={engine:0,map:0},total=manifest.engine.bytes+manifest.map.bytes;
   $('package-note').textContent=`Full London · ${mb(manifest.map.bytes)} lossless package · ${mb(manifest.map.raw_bytes)} unpacked`;
@@ -65,7 +66,7 @@ async function boot(){
   status('Preparing the route',1,'Starting the map renderer and opening the London package.');
   const rawEngine=await new Response(new Blob([engineBytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
   const module=await WebAssembly.compile(rawEngine);
-  worker=new Worker('/worker.mjs',{type:'module',name:'Homeward full London builder'});
+  worker=new Worker('/worker.mjs',{type:'module',name:'London Travel full London builder'});
   const prepared=await new Promise((resolve,reject)=>{
     worker.onmessage=({data})=>{if(data.type==='progress')globalThis.homeward_progress(data.stage,data.completed,data.total);else if(data.type==='city')resolve(data);else if(data.type==='error')reject(Error(data.message));};
     worker.onerror=e=>reject(Error(e.message||'The map worker stopped unexpectedly.'));
@@ -74,7 +75,8 @@ async function boot(){
   worker.terminate();
   const metadata=JSON.parse(prepared.metadata);
   globalThis.homewardDiagnostics={status:'initializing',map:metadata,source_sha256:manifest.map.source_sha256,download_bytes:total,history};
-  const {default:init,start,preview_answer}=await import(manifest.bindings);await init({module_or_path:module});
+  const {default:init,start,preview_answer,ui_command}=await import(manifest.bindings);await init({module_or_path:module});
+  globalThis.londonMap=value=>ui_command(JSON.stringify(value));
   globalThis.homewardPreviewAnswer=value=>{if(!preview_answer)throw Error('This renderer needs the correction bridge build.');preview_answer(JSON.stringify(value));};
   await start($('homeward'),new Uint8Array(prepared.vertices),new Uint8Array(prepared.indices),prepared.metadata);
 }

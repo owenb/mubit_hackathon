@@ -3,18 +3,41 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07121d">
-  <meta name="description" content="London, in your words. Explore the full architectural map with Homeward.">
-  <title>Homeward · London</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2307121d'/%3E%3Cpath d='M8 25V10l8-5 8 5v15M13 25v-9h6v9' stroke='%2370f0d3' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+  <meta name="description" content="Ask about London travel. See the places on the map.">
+  <title>London Travel</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2307121d'/%3E%3Cpath d='M10 7v18h14' stroke='%2370f0d3' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <canvas id="homeward" aria-label="Interactive 3D map of London" tabindex="0"></canvas>
-  <details id="evaluation" name="homeward-panel" hidden><summary>Is it getting better?</summary><section aria-labelledby="eval-heading"><button id="eval-close" aria-label="Close evaluation">×</button><p class="eyebrow">LEARNING IN PRACTICE</p><h2 id="eval-heading">Is it getting better?</h2><div id="eval-content">Loading the latest comparison…</div></section></details>
-  <details id="learning" name="homeward-panel" hidden><summary>Fix an answer</summary><section aria-labelledby="learning-heading"><button id="learning-close" aria-label="Close corrections">×</button><p class="eyebrow">A LITTLE HELP GOES A LONG WAY</p><h2 id="learning-heading">Help Homeward learn.</h2><div id="learning-content"></div><p id="learning-message" role="status" aria-live="polite"></p><details class="learning-history"><summary>Your past corrections</summary><div id="learning-history"></div></details></section></details>
+  <div id="app-chrome" hidden>
+    <header id="toolbar">
+      <span class="wordmark">London Travel</span>
+      <details id="view-menu"><summary>View</summary><div class="view-popover">
+        <div class="palette-options" role="group" aria-label="Map style"><button data-palette="0" aria-pressed="true">Night</button><button data-palette="2" aria-pressed="false">Dusk</button><button data-palette="1" aria-pressed="false">Chalk</button></div>
+        <button id="overview">Show all London</button><button id="fullscreen">Full screen</button><button id="open-evidence">Evidence</button>
+      </div></details>
+    </header>
+    <nav id="examples" aria-label="Example questions">
+      <button data-question="Is there step-free access at Bank station?">Is Bank step-free?</button>
+      <button data-question="Can I visit the V&amp;A and Science Museum for free without booking? Show both.">Free museums</button>
+      <button data-question="I am arriving at Heathrow with luggage and staying near Farringdon. What train should I consider?">Heathrow to Farringdon</button>
+    </nav>
+    <article id="answer-card" aria-label="Travel answer" hidden><div id="answer-view"></div><section id="learning" aria-label="Edit this answer" hidden></section></article>
+    <aside id="evidence" aria-label="Evidence" hidden>
+      <header class="evidence-heading"><h2>Evidence</h2><button id="evidence-close" class="icon-button" aria-label="Close evidence">×</button></header>
+      <nav id="evidence-tabs" aria-label="Evidence views"><button data-tab="answer" aria-pressed="true">Answer</button><button data-tab="corrections" aria-pressed="false">Corrections</button><button data-tab="evaluation" aria-pressed="false">Evaluation</button><button data-tab="map" aria-pressed="false">Map</button></nav>
+      <section id="evidence-answer" class="evidence-page"></section>
+      <section id="evidence-corrections" class="evidence-page" hidden><button id="replay-example" class="quiet">Replay an earlier answer</button><div id="learning-history"></div><div id="correction-proof"></div><details><summary>Current edit fields</summary><div id="operator-fields"></div></details></section>
+      <section id="evidence-evaluation" class="evidence-page" hidden><div id="eval-content"></div></section>
+      <section id="evidence-map" class="evidence-page" hidden><p class="muted">Drag to orbit · Shift-drag to pan · Scroll to zoom<br>⌘K to ask · Return to send</p><div id="renderer-data"></div><details><summary>Diagnostics</summary><label class="check-label"><input id="closed-book" type="checkbox"> Closed-book diagnostic</label><p class="muted">Omits saved research from new questions.</p></details><details><summary>Load measurements</summary><pre id="load-evidence"></pre></details></section>
+    </aside>
+    <p id="app-message" role="status" hidden></p>
+    <p id="gesture-hint">Drag to orbit · Scroll to zoom</p>
+  </div>
   <script type="application/json" id="homeward-proof">{}</script>
   <main id="loading" aria-labelledby="loading-title">
-    <div class="loading-brand"><i></i> H O M E W A R D <span>LONDON, IN YOUR WORDS.</span></div>
+    <div class="loading-brand"><i></i> LONDON TRAVEL</div>
     <div class="journey">
       <p class="eyebrow">YOUR CITY IS ON ITS WAY</p>
       <h1 id="loading-title">London, coming<br>into focus<span>.</span></h1>
@@ -27,12 +50,11 @@
       <div id="progress-track" class="track indeterminate" role="progressbar" aria-label="Preparing London"><div id="progress-fill"></div><i></i></div>
       <p id="progress-detail" class="detail">Checking your browser’s WebGPU connection.</p>
       <p id="failure" role="alert" hidden></p><button id="retry" hidden>Try again</button>
-      <p class="honest">The bar follows real bytes and completed work. No imaginary percentages.</p>
+      <p class="honest">The whole city. Progress measured as it loads.</p>
     </div>
     <footer><span id="package-note">Full London · lossless map package</span><a href="/maps/README.txt">© OpenStreetMap contributors</a></footer>
   </main>
   <script type="module" src="/loader.mjs"></script>
-  <script type="module" src="/evaluation.mjs"></script>
-  <script type="module" src="/corrections.mjs"></script>
+  <script type="module" src="/experience.mjs"></script>
 </body>
 </html>

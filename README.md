@@ -1,10 +1,10 @@
-# Homeward — London, in your words
+# London Travel — London, in your words
 
-A conversational London travel assistant on a full-screen **WebGPU map**. Ask about step-free stations, museum visits, payment rules or getting home late; Homeward answers from dated source evidence and brings the relevant places into view.
+A conversational London travel assistant on a full-screen **WebGPU map**. Ask about step-free stations, museum visits, payment rules or getting home late; London Travel answers from dated source evidence and brings the relevant places into view.
 
 Built for the Mubit hackathon to explore a recurring task: turn an operator's travel knowledge and corrections into a task-adapted open model. The intended benefit is owning an intelligence layer that can evolve with the product. Model quality, independence, latency and cost must be demonstrated rather than assumed.
 
-![Homeward WebGPU browser demo: a London map and a source-grounded Bank accessibility answer](docs/images/homeward-webgpu.png)
+![London Travel: the full London map and glowing ask bar](docs/images/london-travel-webgpu.png)
 
 This repository contains the **browser/WebGPU version**, its Node backend, teaching experiments and evaluation code. The renderer is supplied as precompiled WebAssembly with JavaScript bindings. No native desktop application, Rust source or Rust toolchain is included or required to run this distribution.
 
@@ -12,7 +12,7 @@ This repository contains the **browser/WebGPU version**, its Node backend, teach
 
 A great travel guide's advantage is the “secret knowledge” built over years: how the city really works, what visitors love, and which recommendation fits this particular person. That expertise lives in guides' heads and comes through in many small decisions every day.
 
-Homeward gives operators a way to teach that judgement. A guide can correct an answer or move a map pin; Mubit can turn reviewed examples of this recurring task into updates to a task-adapted open model. The ambition is an intelligence layer that carries the operator's expertise and improves through their corrections.
+London Travel gives operators a way to teach that judgement. A guide can correct an answer or move a map pin; Mubit can turn reviewed examples of this recurring task into updates to a task-adapted open model. The ambition is an intelligence layer that carries the operator's expertise and improves through their corrections.
 
 For an operator, the reasons to pursue this are:
 
@@ -53,7 +53,7 @@ MUBIT_API_KEY=YOUR_MUBIT_INFERENCE_KEY
 MUBIT_BASE_URL=https://api.mubit.ai/openai/v1
 ```
 
-Use a key created for your own Mubit project. Configure starter credit or your provider key in the Mubit console. An optional `OPENAI_API_KEY` in `.env` is used only by the separate direct-provider baseline scripts; it does not configure the provider key in Mubit. Normal Homeward inference explicitly requests **gpt-6-luna** through Mubit.
+Use a key created for your own Mubit project. Configure starter credit or your provider key in the Mubit console. An optional `OPENAI_API_KEY` in `.env` is used only by the separate direct-provider baseline scripts; it does not configure the provider key in Mubit. Normal London Travel inference explicitly requests **gpt-6-luna** through Mubit.
 
 Try:
 
@@ -91,7 +91,9 @@ flowchart LR
 
 ## Correct answers and map pins
 
-Open **Fix an answer**. The three steps are **Fix → Check → Follow**: edit what Homeward should say, choose the right places, preview your changes on the real map, then send a reusable correction or keep a personal trip edit local. Receipts and raw replies sit under **How we know**.
+Choose **Fix this** beneath an answer. Add or remove verified places and see the pins change immediately; **Edit wording** opens the answer editor. **Use on my map** saves a personal edit without a teaching call. **Share as a correction…** asks for a reason and explains the Luna audit and Mubit teaching calls before **Send correction**. You can undo a personal map edit or resume an unfinished draft.
+
+The initial screen contains the full map, three example questions and the ask bar. After each answer the bar clears for a follow-up. **View → Evidence** holds sources, correction receipts, evaluation and renderer/load measurements. The model task retains its original Homeward identity so the product rename does not split the training pool.
 
 A real Greville Street correction removed Canary Wharf DLR and kept Farringdon and Chancery Lane. The corrected teaching reply was retained in Mubit under the original Homeward task, marked trainable, and positively reviewed. Its task pool rose from 149 to **150 kept examples**. A per-row kept flag and weight inclusion are not exposed, so the UI distinguishes that progress from a completed model update.
 
@@ -101,7 +103,7 @@ See [the learning workflow](homeward/LEARNING.md), [timestamped Mubit observatio
 
 Corrections persist under ignored `homeward/results/feedback/`, scoped to the browser session. Persist that directory when deploying. Real API keys, raw personal correction stores and development test payloads are excluded.
 
-![Homeward’s correction flow: saved, reviewed in Mubit, waiting for the next model](docs/images/homeward-correction.png)
+![London Travel’s contextual pin editor, with personal edits separate from shared teaching](docs/images/london-travel-correction.png)
 
 ## Response-header evidence
 
@@ -115,8 +117,8 @@ The complete London map contains **183,550 source features**, producing **5,121,
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,423,822 bytes**.
-- Combined map/engine transfer: about **10.42 MB**, before the small page and bindings.
+- Gzip WebAssembly engine: **2,344,187 bytes**.
+- Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
 A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading stages report actual download bytes, completed geometry layers and GPU upload bytes, with indeterminate progress where measurement is unavailable. Content-hashed assets are verified before use and cached in the browser.

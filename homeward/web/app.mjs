@@ -26,7 +26,7 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
   });
   const jsonRequest=async c=>{
     if(c.req.header('content-type')?.split(';')[0]!=='application/json')throw Error('Send JSON');
-    const origin=c.req.header('origin');if(origin){const u=new URL(origin);if(!['http:','https:'].includes(u.protocol)||u.host!==c.req.header('host'))throw Error('Use the Homeward page');}
+    const origin=c.req.header('origin');if(origin){const u=new URL(origin);if(!['http:','https:'].includes(u.protocol)||u.host!==c.req.header('host'))throw Error('Use the London Travel page');}
     return c.req.json();
   };
   app.get('/api/places',c=>c.json({places:searchPlaces(c.req.query('q'))}));
@@ -48,7 +48,7 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
     const origin=c.req.header('origin');
     if(origin){
       let valid=false;try{const u=new URL(origin);valid=['https:','http:'].includes(u.protocol)&&u.host===c.req.header('host');}catch{}
-      if(!valid)return c.json({error:'Use the Homeward page to ask a question'},403);
+      if(!valid)return c.json({error:'Use the London Travel page to ask a question'},403);
     }
     try{
       const {question,mode='grounded',context_ids=[],use_cache=false}=await c.req.json();
@@ -64,7 +64,7 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
   // The editable shell changes independently of the immutable map/engine. Serve
   // it without date-based 304s, which can retain an old correction UI after a
   // rebuild or when a deployment's file timestamps move backwards.
-  for(const [path,type] of [['/','text/html'],['/index.html','text/html'],['/style.css','text/css'],['/loader.mjs','text/javascript'],['/worker.mjs','text/javascript'],['/evaluation.mjs','text/javascript'],['/corrections.mjs','text/javascript']])app.get(path,async c=>{
+  for(const [path,type] of [['/','text/html'],['/index.html','text/html'],['/style.css','text/css'],['/loader.mjs','text/javascript'],['/worker.mjs','text/javascript'],['/evaluation.mjs','text/javascript'],['/corrections.mjs','text/javascript'],['/experience.mjs','text/javascript'],['/correction-state.mjs','text/javascript'],['/ui.mjs','text/javascript']])app.get(path,async c=>{
     c.header('Cache-Control','no-store');c.header('Content-Type',type+'; charset=utf-8');
     return c.body(await readFile(root+(path==='/'?'index.html':path.slice(1))));
   });

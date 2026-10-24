@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-24",
+  "product": "London Travel",
+  "baseline_commit": "c7fa88c",
+  "review_source": "Opus 5.5 UX review, 24 October 2026",
+  "browser_checks": {
+    "viewports": [
+      [
+        845,
+        929
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "actual_webgpu": true,
+    "initial_map_and_examples": true,
+    "ask_bar_typing": true,
+    "global_command_k_from_menu": true,
+    "live_bank_answer_followup_bar_and_sources": true,
+    "live_bank_latency_seconds": 2.6,
+    "recorded_answer_labelled": true,
+    "pin_removal_preview": true,
+    "personal_save_without_explanation": true,
+    "undo_original_map": true,
+    "no_stale_resume_link_after_save": true,
+    "draft_back_new_question_resume_discard": true,
+    "share_reason_required": true,
+    "share_send_disabled_until_reason": true,
+    "sharing_and_personal_save_separate": true,
+    "short_window_actions_visible": true,
+    "wording_optional": true,
+    "technical_evidence_retained": true,
+    "evaluation_pending_honest": true,
+    "catalogue_search_disambiguates_station_lines": true
+  },
+  "model_calls": {
+    "normal_ui_smoke_calls": 1,
+    "shared_teaching_calls": 0,
+    "final_held_out_calls": 0
+  },
+  "tests": {
+    "workspace_javascript": {
+      "pass": 58,
+      "fail": 0
+    },
+    "rust": {
+      "pass": 23,
+      "fail": 0
+    },
+    "browser_distribution_javascript": {
+      "pass": 57,
+      "fail": 0,
+      "skip": 1,
+      "skip_reason": "Private final question checksum test is omitted in browser distribution."
+    }
+  },
+  "map": {
+    "status": "ready",
+    "load_ms": 1393.5,
+    "features": 183550,
+    "vertices": 5121079,
+    "indices": 8813310,
+    "geometry_bytes": 199127768,
+    "source_sha256": "b6739ab69cad7b75b5a3f8341519c60dcf8640babf8380da57e54749ba3b2719",
+    "download_bytes": 10336368
+  },
+  "notes": [
+    "Load time is a local warm-cache observation, not a network performance claim.",
+    "Model task identity and training schema remain Homeward. Product name is London Travel.",
+    "One existing correction-audit contract fix from the backend thread is preserved; no new model training or rollout was triggered."
+  ]
+}

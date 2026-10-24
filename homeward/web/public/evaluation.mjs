@@ -1,10 +1,16 @@
-const panel=document.getElementById('evaluation'),content=document.getElementById('eval-content');
-const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n;};
-document.getElementById('eval-close').onclick=()=>panel.open=false;
-panel.addEventListener('toggle',async()=>{if(!panel.open)return;try{const response=await fetch('/api/evals',{cache:'no-store'});if(!response.ok)throw Error('The results aren’t available right now.');const r=await response.json();content.replaceChildren();
- if(!r.complete){content.append(node('p','Waiting for the next Homeward model','eval-status'),node('p','The correction has been sent. We need Mubit to finish a new model before we can find out whether it helped.','eval-explanation'));
-  if(r.development){const d=r.development;content.append(node('h3','First, test the old model'),node('p',`On ${d.cases} fresh questions, v${d.version_before} returned ${d.before.valid_answer_and_scene} usable answer and map.`,'eval-score'),node('p','The other replies had invalid map instructions or an interrupted call. They remain in the results; we haven’t repaired or retried them.','eval-note'),node('h3','Then, test the updated model'),node('p','Waiting. We will use the same questions and evidence, without showing the model the corrected answer.','eval-note'));}
-  content.append(node('p','The final 20 questions are still saved for the final comparison. They have not been used for training or this development test.','eval-note'));
- }else{content.append(node('p','Comparison ready','eval-status complete'));const table=node('table'),header=node('tr');header.append(node('th','Measure'),node('th','Homeward model'),node('th','Luna'));table.append(header);const ratio=(n,d)=>Number.isFinite(n)&&d>0?`${n} of ${d}`:'Not reviewed yet';const measures=[['Model',a=>[a.model,a.adapter_version].filter(Boolean).join(' · ')],['Complete answers',a=>ratio(a.full_task_passes,a.full_task_total)],['Correct maps',a=>ratio(a.map_correct,a.calls)],['Valid output',a=>ratio(a.structural_passes,a.calls)],['Typical response',a=>Number.isFinite(a.latency_p50_ms)?(a.latency_p50_ms/1000).toFixed(1)+' seconds':'Not measured'],['Measured cost',a=>Number.isFinite(a.observed_cost_usd)?'$'+a.observed_cost_usd.toFixed(4):'Not measured']];for(const [label,format] of measures){const tr=node('tr');tr.append(node('th',label));for(const arm of [r.arms?.mubit_adapter,r.arms?.luna])tr.append(node('td',arm?format(arm):'Not available'));table.append(tr);}content.append(table);}
- const proof=node('details');proof.append(node('summary','Test details and limitations'),node('p',r.pending_reason||'Matched inputs and identified model responses are required.','eval-note'));if(r.development)proof.append(node('pre',JSON.stringify(r.development,null,2)));for(const c of r.caveats||[])proof.append(node('p',c,'eval-note'));if(r.training)proof.append(node('pre',JSON.stringify(r.training,null,2)));for(const row of r.rows||[]){const d=node('details');d.append(node('summary',row.question||row.id||'Answer'),node('pre',JSON.stringify(row,null,2)));proof.append(d);}content.append(proof);
- }catch(e){content.replaceChildren(node('p',e.message,'eval-note'));}});
+import {el,api} from './ui.mjs';
+export async function loadEvaluation(content){
+ content.replaceChildren(el('p','Loading…','muted'));
+ try{const r=await api('/api/evals');content.replaceChildren();
+  if(!r.complete){
+   content.append(el('h3','No verified comparison yet.'),el('p','A new model and matched tests are needed to show improvement.','muted'));
+   if(r.development){const d=r.development;content.append(el('h4','Development check'),el('p',`Version ${d.version_before}: ${d.before.valid_answer_and_scene} of ${d.cases} replies had a usable answer and map.`),el('p','This is a development diagnostic, not an accuracy claim. Failed and interrupted calls remain in the results.','muted'));}
+   content.append(el('p','The final 20 questions are still unused.','muted'));
+  }else{
+   const table=el('table'),head=el('tr');head.append(el('th','Measure'),el('th','Travel model'),el('th','Luna'));table.append(head);
+   const ratio=(n,d)=>Number.isFinite(n)&&d>0?`${n} / ${d}`:'Not reviewed';
+   for(const [label,format]of [['Model',a=>[a.model,a.adapter_version].filter(Boolean).join(' · ')],['Complete answers',a=>ratio(a.full_task_passes,a.full_task_total)],['Correct maps',a=>ratio(a.map_correct,a.calls)],['Valid output',a=>ratio(a.structural_passes,a.calls)],['Latency p50 / p95',a=>Number.isFinite(a.latency_p50_ms)?`${Math.round(a.latency_p50_ms)} / ${Math.round(a.latency_p95_ms)} ms`:'Not measured'],['Observed cost',a=>Number.isFinite(a.observed_cost_usd)?'$'+a.observed_cost_usd.toFixed(4):'Not measured']]){const row=el('tr');row.append(el('th',label));for(const arm of [r.arms?.mubit_adapter,r.arms?.luna])row.append(el('td',arm?format(arm):'Unavailable'));table.append(row);}content.append(table);
+  }
+  const details=el('details');details.append(el('summary','Methods and evidence'),el('p',r.pending_reason||'Matched inputs and identified serving models are required.','muted'));for(const note of r.caveats||[])details.append(el('p',note,'muted'));details.append(el('pre',JSON.stringify(r,null,2)));content.append(details);
+ }catch(e){content.replaceChildren(el('p',e.message,'form-message'));}
+}
