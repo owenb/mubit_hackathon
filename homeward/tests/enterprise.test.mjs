@@ -7,8 +7,8 @@ import {Hono} from 'hono';
 import {createEnterpriseService,enterpriseData} from '../src/enterprise-service.mjs';
 import {enterpriseRoutes} from '../src/enterprise-routes.mjs';
 import {packet,taskHash,hash,validate} from '../experiments/enterprise-prospecting/contract.mjs';
-import {createModeFetch,companyForQuestion} from '../web/public/enterprise-state.mjs';
-import {cameraMatrix,project} from '../web/public/enterprise-gpu.mjs';
+import {createModeFetch,companyForQuestion,initialEnterpriseMode,enterpriseModeUrl,layoutCompanyLabels} from '../web/public/enterprise-state.mjs';
+import {cameraMatrix,project,overviewCamera} from '../web/public/enterprise-gpu.mjs';
 const c=enterpriseData.companies[0];
 const output=input=>({company_id:input.company.id,fit:'conditional',llm_usage:'unknown',public_fact:'Office address is public.',source_ids:[input.company.sources[0].id],workload_hypothesis:'A repeated document classification task could be evaluated.',fit_reason:'Conditional on data rights and reviewable examples.',unknowns:'Private LLM use and spend are unknown.',discovery_question:'Who reviews the repeated task?',pitch:'Test an owned task-adapted model, subject to validation.',pilot_measure:'Use fresh frozen questions and measure quality and latency.'});
 async function setup(model){return createEnterpriseService({directory:pathToFileURL((await mkdtemp(tmpdir()+'/enterprise-test-'))+'/'),model:model||(async input=>({output:output(input),request_id:'mreq_test',inference:{route:'luna',label:'Luna via Mubit'},elapsed_ms:1}))});}
@@ -26,3 +26,17 @@ test('saved corrections survive restart and concurrent recovered teaching still 
 test('enterprise mode blocks hidden travel submits before fetch and restores the original route on return',async()=>{let active=true,calls=0;const fetcher=async()=>{calls++;return new Response('{}',{status:200});};const f=createModeFetch(fetcher,()=>active,'http://localhost:3003');assert.equal((await f('/api/ask',{method:'POST'})).status,409);assert.equal(calls,0);assert.equal((await f('/api/enterprise/assess',{method:'POST'})).status,200);active=false;assert.equal((await f('http://localhost:3003/api/ask',{method:'POST'})).status,200);assert.equal(calls,2);});
 
 test('a named business overrides an earlier selection and multi-company questions cannot silently pick one',()=>{assert.equal(companyForQuestion('Would Google be a sensible prospect?',enterpriseData.companies,'unilever').id,'google');assert.equal(companyForQuestion('What do we know about its budget?',enterpriseData.companies,'unilever').id,'unilever');assert.equal(companyForQuestion('What does shellcode mean?',enterpriseData.companies,null),null);assert.throws(()=>companyForQuestion('Compare Google and Shell',enterpriseData.companies,null));assert.equal(companyForQuestion('Would JP Morgan fit?',enterpriseData.companies,null).id,'jpmorgan');});
+
+test('dense office clusters keep every label readable without moving geographic anchors',()=>{
+ const bounds={left:410,right:1260,top:145,bottom:610};const points=enterpriseData.companies.map((c,i)=>({id:c.id,x:i<4?1180+i*5:650+i*9,y:i<4?400+i*7:180+i*40,width:125,height:34}));const labels=layoutCompanyLabels(points,bounds);assert.equal(labels.size,points.length);
+ for(const point of points){const p=labels.get(point.id);assert.deepEqual(p.anchor,{x:point.x,y:point.y});assert.ok(p.left>=bounds.left&&p.right<=bounds.right&&p.top>=bounds.top&&p.bottom<=bounds.bottom);}
+ const all=[...labels.values()];for(let i=0;i<all.length;i++)for(let j=i+1;j<all.length;j++){const a=all[i],b=all[j];assert.ok(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,'labels overlap');}
+});
+test('business mode survives reload, explicit travel links override it, and links preserve other state',()=>{
+ assert.equal(initialEnterpriseMode('http://localhost/','enterprise'),true);assert.equal(initialEnterpriseMode('http://localhost/enterprise',null),true);assert.equal(initialEnterpriseMode('http://localhost/?mode=travel','enterprise'),false);assert.equal(initialEnterpriseMode('http://localhost/?mode=enterprise','travel'),true);assert.equal(initialEnterpriseMode('http://localhost/',null),false);
+ assert.equal(enterpriseModeUrl('http://localhost/?source=demo#map',true),'/?source=demo&mode=enterprise#map');assert.equal(enterpriseModeUrl('http://localhost/enterprise?mode=enterprise',false),'/enterprise?mode=travel');
+});
+
+test('business overview fits every actual office in wide and narrow desktop map panels',()=>{
+ for(const width of [1280,960,800,620]){const height=720,side=width>900?392:324,camera=overviewCamera(enterpriseData.companies,width,height,side),matrix=cameraMatrix(camera,width/height,side/width).matrix;for(const c of enterpriseData.companies){const p=project(matrix,[c.east,c.height+12,-c.north],width,height);assert.ok(p.x>side+30&&p.x<width-30,c.name+' outside usable map at '+width);assert.ok(p.y>145&&p.y<height-130,c.name+' outside vertical map bounds');}}
+});

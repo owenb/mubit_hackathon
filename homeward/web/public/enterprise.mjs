@@ -1,8 +1,8 @@
 import {el,button,api,sourceList} from './ui.mjs';
 import {createEnterpriseMap} from './enterprise-gpu.mjs';
-import {createModeFetch,companyForQuestion} from './enterprise-state.mjs';
+import {createModeFetch,companyForQuestion,initialEnterpriseMode,enterpriseModeUrl} from './enterprise-state.mjs';
 const css=el('link');css.rel='stylesheet';css.href='/enterprise.css';document.head.append(css);
-const mode=button('Businesses',()=>setMode(!active),'enterprise-mode');mode.setAttribute('aria-label','Switch to business research');document.getElementById('toolbar').append(mode);
+const mode=el('div',null,'enterprise-mode');mode.setAttribute('role','group');mode.setAttribute('aria-label','Map mode');const travelMode=button('Travel',()=>setMode(false),'enterprise-mode-option'),businessMode=button('Businesses',()=>setMode(true),'enterprise-mode-option');travelMode.setAttribute('aria-pressed','true');businessMode.setAttribute('aria-pressed','false');mode.append(travelMode,businessMode);document.getElementById('toolbar').append(mode);const travelTitle=document.title;
 const canvas=el('canvas');canvas.id='enterprise-map';canvas.hidden=true;canvas.setAttribute('aria-label','Enterprise offices on the complete WebGPU London map');canvas.tabIndex=0;document.body.prepend(canvas);
 const shell=el('section',null,'enterprise-shell');shell.hidden=true;shell.setAttribute('aria-label','Mubit business research');document.getElementById('app-chrome').append(shell);
 const panel=el('aside',null,'enterprise-panel');panel.id='enterprise-panel';panel.setAttribute('aria-label','Company research');
@@ -78,12 +78,13 @@ async function showTraining(){
 }
 composer.onsubmit=e=>{e.preventDefault();if(!busy&&input.value.trim())assess(input.value.trim());};
 async function setMode(value){
- active=value;mode.setAttribute('aria-label',active?'Switch to travel mode':'Switch to business research');mode.textContent=active?'Travel':'Businesses';document.documentElement.dataset.enterprise=String(active);shell.hidden=!active;document.getElementById('homeward').style.visibility=active?'hidden':'';
+ active=value;travelMode.setAttribute('aria-pressed',String(!active));businessMode.setAttribute('aria-pressed',String(active));document.title=active?'London Businesses':travelTitle;try{localStorage.setItem('mubit-map-mode-v1',active?'enterprise':'travel');history.replaceState(null,'',enterpriseModeUrl(location.href,active));}catch{};document.documentElement.dataset.enterprise=String(active);shell.hidden=!active;document.getElementById('homeward').style.visibility=active?'hidden':'';
  for(const id of ['examples','answer-card','evidence','gesture-hint']){const n=document.getElementById(id);if(active){n.dataset.enterpriseHidden=String(n.hidden);n.hidden=true;}else if(n.dataset.enterpriseHidden){n.hidden=n.dataset.enterpriseHidden==='true';delete n.dataset.enterpriseHidden;}}
  if(!active){map?.setActive(false);return;}
  document.activeElement?.blur();input.focus({preventScroll:true});
  if(!data){try{data=await api('/api/enterprise/companies');renderDirectory();}catch(e){content.replaceChildren(el('p',e.message));return;}}
+ if(document.documentElement.dataset.homewardReady!=='true')return;
  try{if(!map){mapPromise??=createEnterpriseMap({canvas,companies:data.companies,onSelect:selectCompany});map=await mapPromise;}if(active)map.setActive(true);}catch(e){mapPromise=null;notice(e.message);}
 }
-window.addEventListener('london:ready',()=>{if(new URL(location.href).searchParams.get('mode')==='enterprise')setMode(true);});
+const restoreMode=()=>{let saved;try{saved=localStorage.getItem('mubit-map-mode-v1');}catch{}if(active||initialEnterpriseMode(location.href,saved))setMode(true);};window.addEventListener('london:ready',restoreMode);if(document.documentElement.dataset.homewardReady==='true')restoreMode();
 window.addEventListener('keydown',e=>{if(active&&(e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();input.focus();}});
