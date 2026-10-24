@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-24T09:53:12Z",
+  "checked_at": "2026-10-24T14:59:58.378169+00:00",
   "status": "blocked",
   "scope": "Observed dashboard state; not a live health check or serving proof for future calls",
-  "summary": "Homeward has a recorded 24-hour refresh policy. v1 is unpromoted, so the latest API probe fell back to Luna. Its fixed 12-case exam is below the 20-case promotion minimum; verified adapter API inference is still unavailable.",
+  "summary": "Only v1 is visible. 153 examples kept, 23 awaiting review, four reviews running. The task records a 24-hour refresh policy; a thorough docs/UI recheck found no supported manual training trigger or interval override. The six fresh development cases still await an updated adapter.",
   "ids": {
     "project": "ws-1ac8e778cff912a3",
     "task": "ln_445191829380864c541213cd",
@@ -16,10 +16,10 @@
   "training": {
     "visible_version": 1,
     "v1_created_at": "2026-10-23T21:31:28Z",
-    "kept": 150,
-    "rejected": 26,
+    "kept": 153,
+    "rejected": 28,
     "unable_to_review": 6,
-    "running_reviews": 0,
+    "running_reviews": 4,
     "v2_job_visible": false,
     "refresh_policy_history_quote": "refresh policy created on the lane: every 24 hours once 25 new rows are rated up, from the base, replaying 10% of the last training rows; its exam is the first version's 12 held-out checks",
     "recorded_interval_hours": 24,
@@ -31,7 +31,8 @@
     "new_rows_counted_by_refresh_scheduler": null,
     "next_run_at": null,
     "interpretation": "The task's recorded daily refresh interval remains the strongest explanation for the wait, despite the separate zero-minute workspace cooldown. Current scheduler state, exact due time, and its new-row cursor are not exposed; platform confirmation is needed.",
-    "available_controls": "Freshly rechecked: project training section edits new-example threshold and max row bytes; task overrides cover adapter, areas, drop_rules, exclude_rows, evals, max_rows and max_row_bytes. No task refresh interval/manual train action exposed. No settings were changed."
+    "available_controls": "New versions after 25 new examples; maximum row size 256 KB; no daily training limit. No interval or Train now control. No existing task overrides. Field menu exposes adapter, areas, drop_rules, exclude_rows, evals. Help text also describes max_rows/max_row_bytes. No refresh interval. Form cancelled without submission. No changes applied.",
+    "waiting_reviews": 23
   },
   "promotion": {
     "state": "shadow",
@@ -51,18 +52,15 @@
     "manual_rollout_note": "24 October: user authorized an isolated test. Manual rollout dialog covers all task calls, so it was cancelled; direct playground v1 used without changing app route. Confirmed still silent test 10% afterwards."
   },
   "latest_request": {
-    "checked_at": "2026-10-23T23:41:31.062Z",
-    "receipt": "mreq_01a16b241d7b7b50805a766a1a02aa58",
-    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16b24-1df0-7660-928d-b6308ba10cc2",
+    "checked_at": "2026-10-24T14:40:04.993729+00:00",
+    "receipt": "mreq_01a16e54a24078a292c42ec75636d4f3",
+    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16e54-a247-7a92-adcd-45d0d197bb38",
     "route": "fallback",
     "reason": "the primary deployment is not serving",
     "answered_on": "gpt-6-luna \u00b7 openai",
     "trainable": true,
-    "match": "no match ran",
-    "guard": "no guard ran",
     "adapter_version": null,
-    "silent_test_copy": false,
-    "interpretation": "Consistent with the recorded primary binding waiting for a promoted version; not proof of a deployment outage. One unsampled request alone does not establish a broken 10% shadow sampler."
+    "silent_test_copy": false
   },
   "required_actions": [
     {
@@ -82,17 +80,17 @@
     },
     {
       "owner": "Homeward backend",
-      "action": "After endpoint/version proof is available, run development canaries, then the frozen paired 20-question benchmark with identical evidence and settings, metadata-only recording, no answer cache, and blinded adjudication.",
+      "action": "When an updated adapter can be positively selected, run the six frozen development cases in isolation. Report readiness before any final benchmark; the final 20 remain unused unless separately authorized.",
       "reason": "Publish failures, paired quality, latency and tokens; leave cost unknown until billing is measured."
     }
   ],
   "evaluation_ready": false,
   "heldout_questions_sent": 0,
   "training_settings_changed": false,
-  "policy_observed_at": "2026-10-23T23:47:00Z",
-  "adapter_observed_at": "2026-10-24T14:12:50.102309+00:00",
+  "policy_observed_at": "2026-10-24T14:59:58.378169+00:00",
+  "adapter_observed_at": "2026-10-24T14:59:58.378169+00:00",
   "latest_adapter_observation": {
-    "checked_at": "2026-10-24T14:12:50.102309+00:00",
+    "checked_at": "2026-10-24T14:59:58.378169+00:00",
     "visible_versions": [
       1
     ],
@@ -100,7 +98,7 @@
     "shadow_percent": 10,
     "exam_quality_percent": 8.3,
     "new_serving_proof": false,
-    "scope": "Signed-in Versions and Activity checked; no v2 or new training job shown. Task shows 150 kept / 185 calls."
+    "scope": "Adapter Versions confirms only v1, silent test 10%. Task Details shows 153 kept, 23 awaiting review, four running and 0% normal adapter traffic."
   },
   "latest_development_comparison": {
     "checked_at": "2026-10-24T09:08:07Z",
@@ -131,8 +129,8 @@
     ]
   },
   "latest_self_service_investigation": {
-    "checked_at": "2026-10-24T09:53:12Z",
-    "report_file": "homeward/results/travel/v2-self-service-investigation-2026-10-24.json",
+    "checked_at": "2026-10-24T14:59:58.378169+00:00",
+    "report_file": "homeward/results/travel/v2-refresh-recheck-2026-10-24.json",
     "supported_manual_refresh_found": false,
     "new_inference_calls": 0,
     "successor_prepared": true,
@@ -203,12 +201,107 @@
   },
   "header_instrumentation": {
     "active": true,
-    "checked_at": "2026-10-24T14:12:50.102309+00:00",
+    "checked_at": "2026-10-24T14:25:43.916Z",
     "journal": "homeward/results/mubit-headers/YYYY-MM-DD.jsonl",
-    "probe_receipt": "mreq_01a16e3aa3ea7cc385b5c8e580f79c9d",
+    "probe_receipt": "mreq_01a16e4d9ac77121b6bf3b125f0f1491",
     "probe_recording": "metadata",
     "probe_served_by": "Luna",
     "new_mubit_identity_header_observed": false,
     "final_questions_used": false
+  },
+  "latest_teaching_batch": {
+    "checked_at": "2026-10-24T14:40:04.993729+00:00",
+    "requested_model": "gpt-6-luna",
+    "subagents": "gpt-6-luna only",
+    "status": "awaiting_v2",
+    "batch": {
+      "attempted": 24,
+      "received": 23,
+      "failed_before_receipt": 1,
+      "positive_luna_identity": 23,
+      "schema_valid": 23,
+      "self_review_accepted": 20,
+      "self_review_rejected_content": 2,
+      "self_review_uncertain": 1,
+      "review_caveat": "Luna-agent assessment, not independent/expert/blinded; unavailable attempt reported separately."
+    },
+    "correction_demonstrations": 2,
+    "corrections": [
+      {
+        "case_id": "luna-travel-wave4-10-south-bank-stroll",
+        "receipt": "mreq_01a16e531cf67c709713b1b62e0a4950",
+        "console_request_id": "01a16e53-1d06-71e3-af54-9f6dc3aeca4c",
+        "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16e53-1d06-71e3-af54-9f6dc3aeca4c",
+        "checked_at": "2026-10-24T14:39:15.085291+00:00",
+        "source": "signed_in_console",
+        "task_id": "ln_445191829380864c541213cd",
+        "task_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+        "content_retained": true,
+        "trainable": true,
+        "operator_rating": "good",
+        "reviewer": "Homeward agent under user authorization; not an independent human review",
+        "original_console_request_id": "01a16e4f-a796-70e1-93eb-b5ee5a69b9fd",
+        "original_rating": "bad",
+        "route": "fallback",
+        "fallback_reason": "the primary deployment is not serving",
+        "answered_on": "gpt-6-luna \u00b7 openai",
+        "adapter_version": null,
+        "route_header": null,
+        "content_match": "Unique question, exact corrected reply and time, without assuming receipt-to-console ID conversion",
+        "weight_inclusion_verified": false,
+        "transfer_improvement_verified": false
+      },
+      {
+        "case_id": "luna-wave4-map-06",
+        "receipt": "mreq_01a16e54a24078a292c42ec75636d4f3",
+        "console_request_id": "01a16e54-a247-7a92-adcd-45d0d197bb38",
+        "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16e54-a247-7a92-adcd-45d0d197bb38",
+        "checked_at": "2026-10-24T14:39:15.085291+00:00",
+        "source": "signed_in_console",
+        "task_id": "ln_445191829380864c541213cd",
+        "task_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+        "content_retained": true,
+        "trainable": true,
+        "operator_rating": "good",
+        "reviewer": "Homeward agent under user authorization; not an independent human review",
+        "original_console_request_id": "01a16e4f-e97a-7041-8e07-2d6928665207",
+        "original_rating": "bad",
+        "route": "fallback",
+        "fallback_reason": "the primary deployment is not serving",
+        "answered_on": "gpt-6-luna \u00b7 openai",
+        "adapter_version": null,
+        "route_header": null,
+        "content_match": "Unique question, exact corrected reply and time, without assuming receipt-to-console ID conversion",
+        "weight_inclusion_verified": false,
+        "transfer_improvement_verified": false
+      }
+    ],
+    "headers_logged_for_each_http_attempt": true,
+    "new_mubit_identity_headers_observed": false,
+    "app_rollout_changed": false,
+    "final_twenty_questions_used": false,
+    "fresh_six_questions_used_this_round": false,
+    "task_hash": "0771930a0dd626b64fe9a0ed80dcf628b2da46b38cd1ff34ca440dc064b774c4",
+    "audit_fix": "Off-record correction checker now receives unchanged mapInstructions; ordinary teaching instructions/schema/hash unchanged. 8 feedback tests pass.",
+    "claim": "Additional recorded and reviewed teaching data; no v2 or learned improvement demonstrated.",
+    "latest_console": {
+      "checked_at": "2026-10-24T14:59:58.378169+00:00",
+      "visible_versions": [
+        1
+      ],
+      "kept": 153,
+      "rejected": 28,
+      "waiting_review": 23,
+      "unable_to_review": 6,
+      "running_reviews": 4,
+      "queued_today": 26,
+      "over_daily_review_limit": 0,
+      "calls_counter": 210,
+      "calls_7_days": 211,
+      "usable_for_training_calls": 210,
+      "adapter_served_percent": 0,
+      "v2_training_visible": false,
+      "note": "The task headline says 210 calls; its seven-day traffic chart says 211. Waiting-review and queued-today counters are distinct. No new inference calls were made in this investigation."
+    }
   }
 }

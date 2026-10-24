@@ -1,0 +1,1373 @@
+{
+  "task_id": "ln_cd244c7ae58bc8483b16fb6b",
+  "adapter_id": "ad_lane_a190986c",
+  "version": 1,
+  "training_job": "ftjob_be8160c9",
+  "surface": "Mubit console Try models",
+  "serving_evidence": "Selected fixed adapter v1 with Your adapter label; per-response UI evidence saved. HTTP headers unavailable through supported UI, so this does not verify normal API serving.",
+  "settings_limitations": "Playground decoding and assembled system prompt are not fully exposed; not an identical-settings API benchmark.",
+  "recording": "UI says not stored, trains nothing",
+  "target_answers_in_input": false,
+  "final20_used": false,
+  "started_at": "2026-10-24T15:44:06.900Z",
+  "status": "complete",
+  "results": [
+    {
+      "case_id": "cg-dev-01-bank-wc-dlr-interchange",
+      "input": {
+        "date": "2026-10-24",
+        "question": "At Bank, I want to switch between the Waterloo & City and DLR lines. Is that an all-inside interchange, and can you show the interchange location?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:bank",
+            "name": "Bank",
+            "lines": [
+              "Northern",
+              "Central",
+              "DLR",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:euston",
+            "name": "Euston",
+            "lines": [
+              "Northern",
+              "Victoria"
+            ]
+          },
+          {
+            "id": "station:canada-water",
+            "name": "Canada Water",
+            "lines": [
+              "Jubilee",
+              "Windrush"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-dlr",
+            "name": "Canary Wharf · DLR",
+            "lines": [
+              "DLR"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-jubilee",
+            "name": "Canary Wharf · Jubilee",
+            "lines": [
+              "Jubilee"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-elizabeth",
+            "name": "Canary Wharf · Elizabeth",
+            "lines": [
+              "Elizabeth"
+            ]
+          },
+          {
+            "id": "osm:2026-10-12:2197",
+            "name": "Heathrow Terminals 2 & 3",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:415",
+            "name": "Heathrow Terminal 4",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2198",
+            "name": "Heathrow Terminal 5",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1036",
+            "name": "Paddington",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1685",
+            "name": "Farringdon",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "bank",
+              "text": "Bank is partly step-free. Northern and DLR have street-to-platform lift routes; Central does not. Ask which line when the question is general.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-entrance",
+              "text": "For Northern or DLR lifts use the Cannon Street/Nicholas Lane ticket hall. The additional King William Street DLR lift is staff-operated on request.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-wc",
+              "text": "Waterloo & City lifts at Bank use Walbrook, Monday–Friday. Its step-free interchange with Northern/DLR involves 290 metres via street and lifts.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "waterloo",
+              "text": "Jubilee has step-free access. Northern and Bakerloo do not. Waterloo & City exit uses the National Rail lift; check availability before travel.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "euston",
+              "text": "Euston has no step-free street route to the Victoria or Northern Tube platforms. Same-direction interchange between Victoria and Northern (Bank branch) is step-free. Northern Charing Cross branch platforms are not step-free.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:euston"
+              ]
+            },
+            {
+              "id": "canada-water",
+              "text": "No step-free access between street and ticket hall until spring 2027 during lift replacement. Do not describe current street access as available.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canada-water"
+              ]
+            },
+            {
+              "id": "canary-wharf",
+              "text": "Jubilee, Elizabeth line and DLR are separate stations with lift routes. Changing stations needs travel via street or shopping centre.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canary-wharf-dlr",
+                "station:canary-wharf-jubilee",
+                "station:canary-wharf-elizabeth"
+              ]
+            },
+            {
+              "id": "tfl-night-lines-1",
+              "text": "Night Tube runs on the Central, Jubilee, Northern, Piccadilly and Victoria lines on Friday and Saturday nights, with branch/station limitations. Night Overground uses the Windrush line between Highbury & Islington and New Cross Gate. Night buses operate every night. Check exact coverage and disruptions for a journey.",
+              "source_ids": [
+                "tfl-night-lines"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-heathrow-1",
+              "text": "The Elizabeth line links Heathrow with central London including Paddington, Bond Street, Tottenham Court Road, Farringdon, Liverpool Street and Canary Wharf. Check the train destination and airport terminal; not all trains serve the same terminal.",
+              "source_ids": [
+                "tfl-heathrow"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2197",
+                "osm:2026-10-12:415",
+                "osm:2026-10-12:2198",
+                "osm:2026-10-12:1036",
+                "osm:2026-10-12:1685"
+              ]
+            },
+            {
+              "id": "tfl-heathrow-2",
+              "text": "TfL publishes about 28 minutes between Paddington and Heathrow on the Elizabeth line. This is a published typical journey, not a live departure or guaranteed arrival time.",
+              "source_ids": [
+                "tfl-heathrow"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2197",
+                "osm:2026-10-12:415",
+                "osm:2026-10-12:2198",
+                "osm:2026-10-12:1036",
+                "osm:2026-10-12:1685"
+              ]
+            },
+            {
+              "id": "tfl-heathrow-3",
+              "text": "All Elizabeth line stations have street-to-platform step-free access; all Heathrow rail stations are step-free from train to street. Street-to-platform access elsewhere does not establish level boarding or current lift availability.",
+              "source_ids": [
+                "tfl-heathrow"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2197",
+                "osm:2026-10-12:415",
+                "osm:2026-10-12:2198",
+                "osm:2026-10-12:1036",
+                "osm:2026-10-12:1685"
+              ]
+            },
+            {
+              "id": "tfl-heathrow-4",
+              "text": "Elizabeth line transfers between Heathrow Terminals 2 & 3, Terminal 4 and Terminal 5 are free: use contactless or obtain a free inter-terminal ticket. Keep luggage close and aisles clear.",
+              "source_ids": [
+                "tfl-heathrow"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2197",
+                "osm:2026-10-12:415",
+                "osm:2026-10-12:2198",
+                "osm:2026-10-12:1036",
+                "osm:2026-10-12:1685"
+              ]
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "tfl-guide",
+              "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-topology",
+              "url": "https://api.tfl.gov.uk/stationdata/tfl-stationdata-detailed.zip",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-night-lines",
+              "url": "https://madeby.tfl.gov.uk/2026/09/07/london-life-as-a-student/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-heathrow",
+              "url": "https://tfl.gov.uk/modes/elizabeth-line/getting-to-and-from-heathrow-on-the-elizabeth-line",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "e14599d47ec4c415135fc1ce190974c3c49702b286070b63c7d180e24f508da0",
+      "started_at": "2026-10-24T15:44:06.900Z",
+      "finished_at": "2026-10-24T15:46:19.918Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"No. The interchange at Bank between the Waterloo & City and DLR lines is not all-inside. It involves 290 metres of street and lifts. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free.\",\"source_ids\":[\"tfl-guide\",\"tfl-topology\"],\"scene\":{\"camera\":\"focus\",\"places\":[{\"id\":\"station:bank\",\"role\":\"context\"}]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "No. The interchange at Bank between the Waterloo & City and DLR lines is not all-inside. It involves 290 metres of street and lifts. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free.",
+        "source_ids": [
+          "tfl-guide",
+          "tfl-topology"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "station:bank",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "ui_latency_ms": 3831,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"No. The interchange at Bank between the Waterloo & City and DLR lines is not all-inside. It involves 290 metres of street and lifts. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free. The Waterloo & City line’s Bank station has a step-free interchange with the Northern and DLR lines, but the DLR’s Bank station has a staff-operated lift at King William Street, which is not step-free.\",\"source_ids\":[\"tfl-guide\",\"tfl-topology\"],\"scene\":{\"camera\":\"focus\",\"places\":[{\"id\":\"station:bank\",\"role\":\"context\"}]}}\n\t\t\t\t\t158 text 3831 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    },
+    {
+      "case_id": "cg-dev-02-explicit-venue-endpoints",
+      "input": {
+        "date": "2026-10-24",
+        "question": "Our day starts at the Natural History Museum and ends by the National Gallery. Can you show both endpoints on a map?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:18306",
+            "name": "Natural History Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:180962",
+            "name": "British Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:180927",
+            "name": "Victoria and Albert Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2199",
+            "name": "Knightsbridge",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:48952",
+            "name": "Nelson's Column",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:60145",
+            "name": "National Maritime Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:182736",
+            "name": "Queen's House",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:19126",
+            "name": "Cutty Sark",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:9188",
+            "name": "Greenwich Park",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "british-museum-1",
+              "text": "The British Museum’s permanent collection is free. Book a free timed ticket for priority entry; walk-ups depend on capacity and can queue. Exhibitions may require separate paid tickets.",
+              "source_ids": [
+                "british-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180962"
+              ]
+            },
+            {
+              "id": "british-museum-2",
+              "text": "The museum is on Great Russell Street; Tottenham Court Road, Holborn, Russell Square and Goodge Street are nearby stations. Larger bags and wheeled suitcases are not permitted. Do not recommend it as luggage storage.",
+              "source_ids": [
+                "british-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180962"
+              ]
+            },
+            {
+              "id": "british-museum-3",
+              "text": "The collection covers human history, art and culture, including Egyptian material. It is an indoor option for history interests; a suggested duration is a planning choice, not an opening-time guarantee.",
+              "source_ids": [
+                "british-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180962"
+              ]
+            },
+            {
+              "id": "natural-history-1",
+              "text": "Natural History Museum galleries in South Kensington are free. Booking a free entry ticket guarantees entry under its published policy; busy weekends and school holidays can mean queues without one. Some exhibitions/events have separate tickets.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "natural-history-2",
+              "text": "The museum on Cromwell Road is a good choice for natural history and dinosaur interests. Its nearby Science Museum and V&A form a practical museum cluster, but a multi-museum afternoon should allow travel and visits rather than promise seeing everything.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "va-museum-1",
+              "text": "V&A South Kensington general admission is free and does not need booking; some exhibitions/events cost extra. It is a choice for art and design interests, not the same subject focus as the neighbouring science or natural-history museums.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-2",
+              "text": "Cromwell Road and Exhibition Road museum entrances are step-free. The museum lists Knightsbridge and Earl’s Court as nearby step-free Tube options. South Kensington being the nearest station does not imply a step-free station route; verify the specific journey.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-3",
+              "text": "The V&A Fashion Gallery is closed for redevelopment until autumn 2028 according to the visit page checked 23 October 2026. Do not recommend seeing that gallery during this closure. Ask/check which galleries meet the visitor’s interest.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "national-gallery-1",
+              "text": "The National Gallery is on Trafalgar Square. General admission is free; some exhibitions charge. A free booked ticket offers fast-track entry; walk-up entry is also available.",
+              "source_ids": [
+                "national-gallery"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:48952"
+              ]
+            },
+            {
+              "id": "national-gallery-2",
+              "text": "The usual published hours are 10:00–18:00, Friday until 21:00, with listed holiday exceptions. On 23 October 2026 the east wing closes at 18:00 while the rest remains open until 21:00. Check the actual date/wing, not just a generic Friday rule. The map uses the square as an area anchor when no exact gallery feature exists.",
+              "source_ids": [
+                "national-gallery"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:48952"
+              ]
+            },
+            {
+              "id": "greenwich-museums-1",
+              "text": "Royal Museums Greenwich comprises National Maritime Museum, Queen’s House, Cutty Sark and Royal Observatory. National Maritime Museum and Queen’s House have free general entry; Cutty Sark and Royal Observatory are ticketed attractions. Book ahead where possible, and check availability for the date.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "greenwich-museums-2",
+              "text": "Greenwich can combine maritime history with the park as a suggested day out. Walking uphill to the Observatory is not equivalent to an audited step-free route; ask about mobility needs and consult the venue’s access guidance.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "british-museum",
+              "url": "https://www.britishmuseum.org/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "natural-history",
+              "url": "https://www.nhm.ac.uk/visit.html",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "va-museum",
+              "url": "https://www.vam.ac.uk/south-kensington/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "national-gallery",
+              "url": "https://www.nationalgallery.org.uk/visiting/plan-your-visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "greenwich-museums",
+              "url": "https://www.rmg.co.uk/plan-your-visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "2159c80e7b5d20fae2a7008d600b8427662dfd3af0462c3f1c3e278cd765161e",
+      "started_at": "2026-10-24T15:46:19.919Z",
+      "finished_at": "2026-10-24T15:46:41.145Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The Natural History Museum and the National Gallery are both on the map. The Natural History Museum is on Cromwell Road in South Kensington; the National Gallery is on Trafalgar Square. The Natural History Museum’s galleries are free, but some exhibitions and events require separate tickets. The National Gallery’s general admission is free, but some exhibitions charge; a booked ticket offers fast-track entry. The National Gallery’s published hours are 10:00–18:00 on weekdays, until 21:00 on Fridays, with holiday exceptions; on 23 October 2026, its east wing closes at 18:00 while the rest remains open until 21:00. Check the actual date and wing before visiting.\",\"source_ids\":[\"natural-history\",\"national-gallery\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:18306\",\"role\":\"origin\"},{\"id\":\"osm:2026-10-12:48952\",\"role\":\"destination\"}]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The Natural History Museum and the National Gallery are both on the map. The Natural History Museum is on Cromwell Road in South Kensington; the National Gallery is on Trafalgar Square. The Natural History Museum’s galleries are free, but some exhibitions and events require separate tickets. The National Gallery’s general admission is free, but some exhibitions charge; a booked ticket offers fast-track entry. The National Gallery’s published hours are 10:00–18:00 on weekdays, until 21:00 on Fridays, with holiday exceptions; on 23 October 2026, its east wing closes at 18:00 while the rest remains open until 21:00. Check the actual date and wing before visiting.",
+        "source_ids": [
+          "natural-history",
+          "national-gallery"
+        ],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "osm:2026-10-12:18306",
+              "role": "origin"
+            },
+            {
+              "id": "osm:2026-10-12:48952",
+              "role": "destination"
+            }
+          ]
+        }
+      },
+      "ui_latency_ms": 3531,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The Natural History Museum and the National Gallery are both on the map. The Natural History Museum is on Cromwell Road in South Kensington; the National Gallery is on Trafalgar Square. The Natural History Museum’s galleries are free, but some exhibitions and events require separate tickets. The National Gallery’s general admission is free, but some exhibitions charge; a booked ticket offers fast-track entry. The National Gallery’s published hours are 10:00–18:00 on weekdays, until 21:00 on Fridays, with holiday exceptions; on 23 October 2026, its east wing closes at 18:00 while the rest remains open until 21:00. Check the actual date and wing before visiting.\",\"source_ids\":[\"natural-history\",\"national-gallery\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:18306\",\"role\":\"origin\"},{\"id\":\"osm:2026-10-12:48952\",\"role\":\"destination\"}]}}\n\t\t\t\t\t158 text 3531 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    },
+    {
+      "case_id": "cg-dev-03-context-only-park-comparison",
+      "input": {
+        "date": "2026-10-24",
+        "question": "I’m deciding between Greenwich Park and Hyde Park for a future visit. Could you place both on one map so I can compare their locations?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:9188",
+            "name": "Greenwich Park",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:179",
+            "name": "Greenwich",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:84173",
+            "name": "Hyde Park",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:60145",
+            "name": "National Maritime Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:182736",
+            "name": "Queen's House",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:19126",
+            "name": "Cutty Sark",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:5156",
+            "name": "Kensington Gardens",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          },
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "osm:2026-10-12:62731",
+            "name": "Sky Garden",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "gatwick-rail-1",
+              "text": "Gatwick’s rail station is at the South Terminal. Airport guidance allows Oyster (excluding the 60+ Oyster photocard) or contactless for travel between the airport and London by touching in and out. Advance tickets are another option; compare the actual journey and date rather than declaring one payment method always cheapest.",
+              "source_ids": [
+                "gatwick-rail"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "greenwich-museums-1",
+              "text": "Royal Museums Greenwich comprises National Maritime Museum, Queen’s House, Cutty Sark and Royal Observatory. National Maritime Museum and Queen’s House have free general entry; Cutty Sark and Royal Observatory are ticketed attractions. Book ahead where possible, and check availability for the date.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "greenwich-museums-2",
+              "text": "Greenwich can combine maritime history with the park as a suggested day out. Walking uphill to the Observatory is not equivalent to an audited step-free route; ask about mobility needs and consult the venue’s access guidance.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "royal-parks-1",
+              "text": "London’s Royal Parks are free to explore. Hyde Park and Kensington Gardens are central options for outdoor time, gardens and a quieter change from indoor attractions. Attractions, events and facilities inside parks can have separate charges and opening policies. Free park entry does not make every attraction free.",
+              "source_ids": [
+                "royal-parks"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:84173",
+                "osm:2026-10-12:5156",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "sky-garden-1",
+              "text": "Sky Garden offers free public access tickets, bookable up to three weeks ahead. Tickets specify a date/time and a one-hour visit. Booking is recommended, particularly at weekends; walk-ins depend on capacity and are not guaranteed. Do not invent availability or claim to have made a reservation.",
+              "source_ids": [
+                "sky-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:62731"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "gatwick-rail",
+              "url": "https://www.gatwickairport.com/transport-options/train.html",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "greenwich-museums",
+              "url": "https://www.rmg.co.uk/plan-your-visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "royal-parks",
+              "url": "https://www.royalparks.org.uk/visit/parks",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "sky-garden",
+              "url": "https://skygarden.london/booking/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "c604680578b8bdda7a1876b403f75553efab63e495509e99ab1ad219c4eff201",
+      "started_at": "2026-10-24T15:46:41.145Z",
+      "finished_at": "2026-10-24T15:47:04.985Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"Here’s a comparison of Greenwich Park and Hyde Park: both are free to explore, but they offer different experiences. Hyde Park is central and offers a quieter change from indoor attractions, with gardens and outdoor space. Greenwich Park combines maritime history with the park, including the National Maritime Museum, Queen’s House, and Cutty Sark, which have free general entry but require booking ahead. The park also has a steep uphill walk to the Royal Observatory, which is not equivalent to an audited step-free route; check access guidance if mobility is a concern.\",\"source_ids\":[\"royal-parks\",\"greenwich-museums\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:9188\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:84173\",\"role\":\"context\"}]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Here’s a comparison of Greenwich Park and Hyde Park: both are free to explore, but they offer different experiences. Hyde Park is central and offers a quieter change from indoor attractions, with gardens and outdoor space. Greenwich Park combines maritime history with the park, including the National Maritime Museum, Queen’s House, and Cutty Sark, which have free general entry but require booking ahead. The park also has a steep uphill walk to the Royal Observatory, which is not equivalent to an audited step-free route; check access guidance if mobility is a concern.",
+        "source_ids": [
+          "royal-parks",
+          "greenwich-museums"
+        ],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "osm:2026-10-12:9188",
+              "role": "context"
+            },
+            {
+              "id": "osm:2026-10-12:84173",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "ui_latency_ms": 3412,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"Here’s a comparison of Greenwich Park and Hyde Park: both are free to explore, but they offer different experiences. Hyde Park is central and offers a quieter change from indoor attractions, with gardens and outdoor space. Greenwich Park combines maritime history with the park, including the National Maritime Museum, Queen’s House, and Cutty Sark, which have free general entry but require booking ahead. The park also has a steep uphill walk to the Royal Observatory, which is not equivalent to an audited step-free route; check access guidance if mobility is a concern.\",\"source_ids\":[\"royal-parks\",\"greenwich-museums\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:9188\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:84173\",\"role\":\"context\"}]}}\n\t\t\t\t\t158 text 3412 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    },
+    {
+      "case_id": "cg-dev-04-south-bank-duration-scope",
+      "input": {
+        "date": "2026-10-24",
+        "question": "I’m setting aside a couple of hours for the National Theatre, OXO Tower Wharf, and Tate Modern. What does the published walking-time estimate for a riverside stroll tell me?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:19002",
+            "name": "OXO Tower Wharf",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:19126",
+            "name": "Cutty Sark",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1350",
+            "name": "Tower Bridge",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2630",
+            "name": "Covent Garden",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1708",
+            "name": "Leicester Square",
+            "lines": []
+          },
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "river-tickets-1",
+              "text": "Uber Boat by Thames Clippers accepts contactless and Oyster pay-as-you-go; each passenger needs a separate card. Touch in and out with the same card, including at interchanges. River services do not count towards the TfL daily cap.",
+              "source_ids": [
+                "river-tickets"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:1350"
+              ]
+            },
+            {
+              "id": "river-tickets-2",
+              "text": "River Bus has West, Central and East fare zones, which are not Tube zones. A qualifying TfL Travelcard on paper or Oyster gives a one-third discount on standard fares, not free river travel. Sightseeing cruises and River Bus tickets are different products.",
+              "source_ids": [
+                "river-tickets"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:1350"
+              ]
+            },
+            {
+              "id": "tate-modern-1",
+              "text": "Tate Modern on Bankside shows modern and contemporary art. Entry to the collection is free; paid exhibitions are separate and booking is recommended for them. The Turbine Hall is a distinctive part of the building. Do not claim all exhibitions are free or that a particular exhibition is currently available.",
+              "source_ids": [
+                "tate-modern"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18520"
+              ]
+            },
+            {
+              "id": "covent-garden-1",
+              "text": "Covent Garden Piazza and Market Building are public spaces free to walk around; individual shops/markets have their own hours. Covent Garden station is on the Piccadilly line. Leicester Square is a short walk away and an alternative when the station is busy.",
+              "source_ids": [
+                "covent-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2630",
+                "osm:2026-10-12:1708"
+              ]
+            },
+            {
+              "id": "covent-garden-2",
+              "text": "The station’s lifts do not establish a fully step-free route to the trains. Avoid treating lift access and wheelchair accessibility as synonyms. Ask the required destination/route if accessibility matters.",
+              "source_ids": [
+                "covent-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2630",
+                "osm:2026-10-12:1708"
+              ]
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "tower-bridge-1",
+              "text": "Crossing Tower Bridge on the public pedestrian route is free. Visiting its interior/high-level exhibition is separately ticketed. Bridge lifts can interrupt crossing; check the published schedule for a specific visit. Tower Bridge and London Bridge are different bridges.",
+              "source_ids": [
+                "tower-bridge"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:1350"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "river-tickets",
+              "url": "https://www.thamesclippers.com/plan-your-journey/ticket-information",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tate-modern",
+              "url": "https://www.tate.org.uk/visit/tate-modern",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "covent-garden",
+              "url": "https://www.coventgarden.london/about/faqs",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tower-bridge",
+              "url": "https://www.visitlondon.com/things-to-do/place/3901803-tower-bridge",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "ff603b7a2c8853880051725733a6e33a64a5e1c89ca7dff346226303db12eb5a",
+      "started_at": "2026-10-24T15:47:04.989Z",
+      "finished_at": "2026-10-24T15:47:24.413Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The published estimate is a suggested sequence, not verified turn-by-turn directions or a guaranteed accessible route. Your pace will vary, and it doesn’t guarantee a step-free journey or a specific time. The tourism body says about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops, but that’s not your exact route.\",\"source_ids\":[\"south-bank\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:181208\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:19002\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:18520\",\"role\":\"context\"}]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The published estimate is a suggested sequence, not verified turn-by-turn directions or a guaranteed accessible route. Your pace will vary, and it doesn’t guarantee a step-free journey or a specific time. The tourism body says about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops, but that’s not your exact route.",
+        "source_ids": [
+          "south-bank"
+        ],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "osm:2026-10-12:181208",
+              "role": "context"
+            },
+            {
+              "id": "osm:2026-10-12:19002",
+              "role": "context"
+            },
+            {
+              "id": "osm:2026-10-12:18520",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "ui_latency_ms": 2961,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The published estimate is a suggested sequence, not verified turn-by-turn directions or a guaranteed accessible route. Your pace will vary, and it doesn’t guarantee a step-free journey or a specific time. The tourism body says about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops, but that’s not your exact route.\",\"source_ids\":[\"south-bank\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:181208\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:19002\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:18520\",\"role\":\"context\"}]}}\n\t\t\t\t\t158 text 2961 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    },
+    {
+      "case_id": "cg-dev-05-payment-identity-no-map",
+      "input": {
+        "date": "2026-10-24",
+        "question": "I tapped into the Tube with a physical contactless card but touched out with its linked phone, then used the phone on a bus. Did I use the right touches, and could the rail fare be affected?",
+        "map_context": [],
+        "map_candidates": [],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "tfl-payment-1",
+              "text": "Touch in and out on rail journeys even when gates are open. On buses and trams touch in only.",
+              "source_ids": [
+                "tfl-payment"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-payment-2",
+              "text": "Use the same card or device throughout a journey. A phone, watch and physical bank card are separate payment identities even when linked to the same bank account.",
+              "source_ids": [
+                "tfl-payment"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-payment-3",
+              "text": "Keep cards separate to avoid card clash. A pink reader can record an interchange avoiding Zone 1; check the single fare finder for the correct route. Missing touches can cause a maximum fare.",
+              "source_ids": [
+                "tfl-payment"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-bus-fares-1",
+              "text": "As of 23 October 2026 the adult bus/tram pay-as-you-go single fare is £1.75 and daily cap £5.25. TfL announces £1.85 and £5.55 respectively from 1 November 2026. State the applicable date; do not apply November prices to October.",
+              "source_ids": [
+                "tfl-bus-fares"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-bus-fares-2",
+              "text": "Hopper provides unlimited bus/tram journeys within one hour of the first touch-in, using the same card or device. It is automatic. A negative Oyster balance needs topping up within the hour to qualify.",
+              "source_ids": [
+                "tfl-bus-fares"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-bus-fares-3",
+              "text": "Children aged 5–10 travel free on buses and trams without a Zip card unless they look older than 10. Older-child discounts need the appropriate eligibility/card; do not treat every child as free.",
+              "source_ids": [
+                "tfl-bus-fares"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-night-1",
+              "text": "Night Tube and Night London Overground operate on Friday and Saturday nights, not every night. Night buses provide additional overnight options. Use the current journey planner for the actual date and destination; never promise that an individual service is running now.",
+              "source_ids": [
+                "tfl-night"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-night-2",
+              "text": "Only licensed black taxis may be hailed or hired at a rank without a prior booking. Minicabs/private hire must be booked through a licensed operator. Booking or an app does not establish that a route or neighbourhood is risk-free.",
+              "source_ids": [
+                "tfl-night"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "gatwick-rail-1",
+              "text": "Gatwick’s rail station is at the South Terminal. Airport guidance allows Oyster (excluding the 60+ Oyster photocard) or contactless for travel between the airport and London by touching in and out. Advance tickets are another option; compare the actual journey and date rather than declaring one payment method always cheapest.",
+              "source_ids": [
+                "gatwick-rail"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "gatwick-tickets-1",
+              "text": "Oyster or contactless can be used between Gatwick and central London, but London Travelcards are not valid for the Gatwick leg. Do not infer that a London travel pass covers an airport merely because Oyster is accepted.",
+              "source_ids": [
+                "gatwick-tickets"
+              ],
+              "place_ids": []
+            }
+          ],
+          "sources": [
+            {
+              "id": "tfl-payment",
+              "url": "https://tfl.gov.uk/fares/pay-the-right-fare",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-bus-fares",
+              "url": "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-night",
+              "url": "https://tfl.gov.uk/travel-information/safety/safer-travel-at-night",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "gatwick-rail",
+              "url": "https://www.gatwickairport.com/transport-options/train.html",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "gatwick-tickets",
+              "url": "https://www.gatwickairport.com/To_and_From_the_Airport",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "460ebaa80a8a6eb7ff28a094efd859039bf3e045d2691499ba3f1e1436f55196",
+      "started_at": "2026-10-24T15:47:24.414Z",
+      "finished_at": "2026-10-24T15:47:37.991Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"No. You used the wrong touch. On the Tube, touch in and out even when gates are open. On buses and trams, touch in only. You also used different payment identities: your physical card and your phone. TfL says these are separate identities even when linked to the same bank account. A missing touch can cause a maximum fare.\",\"source_ids\":[\"tfl-payment\"],\"scene\":{\"camera\":\"keep\",\"places\":[]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "No. You used the wrong touch. On the Tube, touch in and out even when gates are open. On buses and trams, touch in only. You also used different payment identities: your physical card and your phone. TfL says these are separate identities even when linked to the same bank account. A missing touch can cause a maximum fare.",
+        "source_ids": [
+          "tfl-payment"
+        ],
+        "scene": {
+          "camera": "keep",
+          "places": []
+        }
+      },
+      "ui_latency_ms": 2564,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"No. You used the wrong touch. On the Tube, touch in and out even when gates are open. On buses and trams, touch in only. You also used different payment identities: your physical card and your phone. TfL says these are separate identities even when linked to the same bank account. A missing touch can cause a maximum fare.\",\"source_ids\":[\"tfl-payment\"],\"scene\":{\"camera\":\"keep\",\"places\":[]}}\n\t\t\t\t\t158 text 2564 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    },
+    {
+      "case_id": "cg-dev-06-museum-free-booking-contrast",
+      "input": {
+        "date": "2026-10-24",
+        "question": "For an indoor afternoon, can you compare the V&A and the Science Museum on free general admission and whether I should book?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:20531",
+            "name": "Science Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18306",
+            "name": "Natural History Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:180927",
+            "name": "Victoria and Albert Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2199",
+            "name": "Knightsbridge",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:48952",
+            "name": "Nelson's Column",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "natural-history-1",
+              "text": "Natural History Museum galleries in South Kensington are free. Booking a free entry ticket guarantees entry under its published policy; busy weekends and school holidays can mean queues without one. Some exhibitions/events have separate tickets.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "natural-history-2",
+              "text": "The museum on Cromwell Road is a good choice for natural history and dinosaur interests. Its nearby Science Museum and V&A form a practical museum cluster, but a multi-museum afternoon should allow travel and visits rather than promise seeing everything.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "science-museum-1",
+              "text": "The Science Museum on Exhibition Road has free general admission but asks visitors to pre-book a free ticket. Free admission does not mean no booking. Some experiences/exhibitions are separately ticketed.",
+              "source_ids": [
+                "science-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:20531"
+              ]
+            },
+            {
+              "id": "science-museum-2",
+              "text": "The usual published opening is 10:00–18:00. For 24–30 October 2026 the published half-term opening is 09:00. The museum lists a full closure on 11 November 2026. Check the visit page for the actual date; do not state it is open right now without a fresh check.",
+              "source_ids": [
+                "science-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:20531"
+              ]
+            },
+            {
+              "id": "va-museum-1",
+              "text": "V&A South Kensington general admission is free and does not need booking; some exhibitions/events cost extra. It is a choice for art and design interests, not the same subject focus as the neighbouring science or natural-history museums.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-2",
+              "text": "Cromwell Road and Exhibition Road museum entrances are step-free. The museum lists Knightsbridge and Earl’s Court as nearby step-free Tube options. South Kensington being the nearest station does not imply a step-free station route; verify the specific journey.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-3",
+              "text": "The V&A Fashion Gallery is closed for redevelopment until autumn 2028 according to the visit page checked 23 October 2026. Do not recommend seeing that gallery during this closure. Ask/check which galleries meet the visitor’s interest.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "national-gallery-1",
+              "text": "The National Gallery is on Trafalgar Square. General admission is free; some exhibitions charge. A free booked ticket offers fast-track entry; walk-up entry is also available.",
+              "source_ids": [
+                "national-gallery"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:48952"
+              ]
+            },
+            {
+              "id": "national-gallery-2",
+              "text": "The usual published hours are 10:00–18:00, Friday until 21:00, with listed holiday exceptions. On 23 October 2026 the east wing closes at 18:00 while the rest remains open until 21:00. Check the actual date/wing, not just a generic Friday rule. The map uses the square as an area anchor when no exact gallery feature exists.",
+              "source_ids": [
+                "national-gallery"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:48952"
+              ]
+            },
+            {
+              "id": "tate-modern-1",
+              "text": "Tate Modern on Bankside shows modern and contemporary art. Entry to the collection is free; paid exhibitions are separate and booking is recommended for them. The Turbine Hall is a distinctive part of the building. Do not claim all exhibitions are free or that a particular exhibition is currently available.",
+              "source_ids": [
+                "tate-modern"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18520"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "natural-history",
+              "url": "https://www.nhm.ac.uk/visit.html",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "science-museum",
+              "url": "https://www.sciencemuseum.org.uk/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "va-museum",
+              "url": "https://www.vam.ac.uk/south-kensington/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "national-gallery",
+              "url": "https://www.nationalgallery.org.uk/visiting/plan-your-visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tate-modern",
+              "url": "https://www.tate.org.uk/visit/tate-modern",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        }
+      },
+      "input_sha256": "7ea453ed7451902c858db3d5474cca0c79651dd3f395300782175547bfdeba7a",
+      "started_at": "2026-10-24T15:47:37.992Z",
+      "finished_at": "2026-10-24T15:47:55.584Z",
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The Science Museum has free general admission but asks visitors to pre-book a free ticket; some exhibitions are separately ticketed. The V&A has free general admission without booking, but some exhibitions cost extra. For an indoor afternoon, the V&A is a better choice for free general admission without booking, while the Science Museum requires pre-booking. The Science Museum’s published opening on 24–30 October 2026 is 09:00; check its visit page for the actual date. The V&A’s Fashion Gallery is closed until autumn 2028; ask which galleries meet your interest.\",\"source_ids\":[\"science-museum\",\"va-museum\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:20531\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:180927\",\"role\":\"context\"}]}}",
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The Science Museum has free general admission but asks visitors to pre-book a free ticket; some exhibitions are separately ticketed. The V&A has free general admission without booking, but some exhibitions cost extra. For an indoor afternoon, the V&A is a better choice for free general admission without booking, while the Science Museum requires pre-booking. The Science Museum’s published opening on 24–30 October 2026 is 09:00; check its visit page for the actual date. The V&A’s Fashion Gallery is closed until autumn 2028; ask which galleries meet your interest.",
+        "source_ids": [
+          "science-museum",
+          "va-museum"
+        ],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "osm:2026-10-12:20531",
+              "role": "context"
+            },
+            {
+              "id": "osm:2026-10-12:180927",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "ui_latency_ms": 3284,
+      "ui_model": "Homeward corrected guide lab v1",
+      "ui_evidence": "container Compare replies\n\t\t\t\t138 heading Compare replies, Value: 2, ID: stage-v-19\n\t\t\t\t\t139 text Compare replies\n\t\t\t\t140 container Reply from Homeward corrected guide lab v1\n\t\t\t\t\t141 pop up button (collapsed) Description: Model: Homeward corrected guide lab v1, ID: try-a-v-19, Secondary Actions: Expand\n\t\t\t\t\t155 text Your adapter\n\t\t\t\t\t157 text {\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The Science Museum has free general admission but asks visitors to pre-book a free ticket; some exhibitions are separately ticketed. The V&A has free general admission without booking, but some exhibitions cost extra. For an indoor afternoon, the V&A is a better choice for free general admission without booking, while the Science Museum requires pre-booking. The Science Museum’s published opening on 24–30 October 2026 is 09:00; check its visit page for the actual date. The V&A’s Fashion Gallery is closed until autumn 2028; ask which galleries meet your interest.\",\"source_ids\":[\"science-museum\",\"va-museum\"],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"osm:2026-10-12:20531\",\"role\":\"context\"},{\"id\":\"osm:2026-10-12:180927\",\"role\":\"context\"}]}}\n\t\t\t\t\t158 text 3284 ms · Answered with Homeward corrected guide lab's setup prompt.\n\t\t\t\t156 text Homeward corrected guide lab's adapter does one task. Send a message like the ones Homeward corrected guide lab gets, or choose a sample.\n\t\t\t\t144 "
+    }
+  ],
+  "finished_at": "2026-10-24T15:47:55.585Z"
+}

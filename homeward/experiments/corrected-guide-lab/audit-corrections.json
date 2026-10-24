@@ -1,0 +1,123 @@
+{
+  "auditor": "gpt-6-luna",
+  "source_results": "homeward/experiments/corrected-guide-lab/results/teach.json",
+  "audit_basis": "Reviewed each captured question, structured output, and the research facts supplied in that request. The model prompts did not include the training targets. This audit is grounded in the actual saved run, not a later on-disk curriculum revision.",
+  "provenance_note": "The curriculum file changed after the run began; the saved teach.json request payloads are the record of the questions actually sent. No frozen training data or result file was edited for this audit.",
+  "rating_policy": "Scene and rubric differences were reviewed semantically. No automatic exact-match scoring is used here.",
+  "proposed_corrections": [
+    {
+      "case_id": "cgl-001-bank-wc-rain",
+      "issue": "The answer starts with Yes, then says the transfer is not indoors. It also fails to qualify the 290-metre street-and-lift evidence as describing the step-free interchange; the question itself leaves open whether an ordinary stair route differs.",
+      "supporting_fact_ids": ["bank-wc"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "If you mean the step-free interchange, no: the Waterloo & City to Northern change at Bank involves about 290 metres via street and lifts, so that step-free route is not entirely indoors. The saved guidance does not establish whether a different, non-step-free route can stay inside. Rain does not change the published route description; current lift status needs a fresh check.",
+        "source_ids": ["tfl-guide", "tfl-topology"],
+        "scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] }
+      }
+    },
+    {
+      "case_id": "cgl-009-waterloo-origin-bank-end",
+      "issue": "Bank is named as an intermediate interchange, not the final destination. The map should preserve Waterloo as origin and use Bank as context. The recorded answer's wording is otherwise suitable.",
+      "supporting_fact_ids": ["bank-wc", "waterloo"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Your start is Waterloo station and Bank is the intermediate interchange. This marks those places, not a verified route.",
+        "source_ids": [],
+        "scene": { "camera": "fit", "places": [{ "id": "station:waterloo", "role": "origin" }, { "id": "station:bank", "role": "context" }] }
+      }
+    },
+    {
+      "case_id": "cgl-017-euston-direction",
+      "issue": "The opening No could be read as a factual claim that opposite-direction transfers are not step-free. The supplied fact confirms only the same-direction case and does not establish the opposite-direction result.",
+      "supporting_fact_ids": ["euston"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The saved guidance only confirms a same-direction step-free interchange between the Victoria line and the Northern line’s Bank branch at Euston. It does not establish the opposite-direction route, so I can’t confirm that it is step-free; check the exact platforms and journey with TfL. Euston also has no step-free street route to either Tube line’s platforms.",
+        "source_ids": ["tfl-guide", "tfl-topology"],
+        "scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] }
+      }
+    },
+    {
+      "case_id": "cgl-029-southbank-duration-pace",
+      "issue": "The answer handles the estimate correctly, but adds optional stops and the scene pins those extra venues even though the question only asks how to use the duration estimate. Keep the answer on the bounded estimate and omit unrelated map pins.",
+      "supporting_fact_ids": ["south-bank-1"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Treat it as approximate, not exact. The published roughly 30-minute estimate is for the stretch from Lambeth Bridge to Blackfriars Bridge without extended stops; your pace and pauses will affect the time.",
+        "source_ids": ["south-bank"],
+        "scene": { "camera": "keep", "places": [] }
+      }
+    },
+    {
+      "case_id": "cgl-031-science-booking",
+      "issue": "The user says they are going to the museum, so the named venue is their destination; the recorded context role understates that intent.",
+      "supporting_fact_ids": ["science-museum-1", "science-museum-2"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Yes. The Science Museum has free general admission, but visitors are asked to pre-book a free ticket. Some exhibitions and experiences require separate tickets. Its published opening time for 24–30 October 2026 is 09:00; check the visit page for details for your date.",
+        "source_ids": ["science-museum"],
+        "scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] }
+      }
+    },
+    {
+      "case_id": "cgl-032-science-experience",
+      "issue": "The user explicitly intends to see a Science Museum experience, making the museum the visit destination; the recorded context role does not reflect that intent.",
+      "supporting_fact_ids": ["science-museum-1"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "No. Science Museum general admission is free, but you should pre-book its free general ticket; some special experiences and exhibitions are separately ticketed, so check the specific experience’s page for its ticket and booking requirements.",
+        "source_ids": ["science-museum"],
+        "scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] }
+      }
+    },
+    {
+      "case_id": "cgl-033-science-dated-hours",
+      "issue": "The question explicitly concerns a planned visit; the Science Museum is the destination, while the response uses context.",
+      "supporting_fact_ids": ["science-museum-2"],
+      "corrected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Plan around the published half-term opening time of 09:00 on 29 October 2026. The museum asks visitors to pre-book a free general-admission ticket; some experiences and exhibitions have separate tickets. Check the visit page for your date.",
+        "source_ids": ["science-museum"],
+        "scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] }
+      }
+    }
+  ],
+  "review_notes": [
+    {
+      "case_id": "cgl-005-bank-central",
+      "finding": "The destination role is defensible: the question asks about getting from street level to the Central line at Bank, which establishes Bank as the target location. The access answer is supported."
+    },
+    {
+      "case_id": "cgl-006-bank-northern",
+      "finding": "The destination role is supported by the explicit street-to-Northern-line goal. The answer stays within the street-to-platform evidence and distinguishes boarding and live lift status."
+    },
+    {
+      "case_id": "cgl-021-southbank-bounded-time",
+      "finding": "The single South Bank context pin is relevant to the named area and not an unrelated candidate. The answer preserves the Lambeth Bridge–Blackfriars Bridge bounds and approximate duration."
+    },
+    {
+      "case_id": "cgl-028-southbank-queen-walk",
+      "finding": "The three requested landmarks are mapped as context. The suggested sequence and duration are accurately distinguished from a verified route."
+    },
+    {
+      "case_id": "cgl-034-natural-history-entry",
+      "finding": "Context is acceptable for this admission-policy question, which does not explicitly establish a planned visit. The free-entry, ticket, queue, and separate-exhibition details are supported."
+    },
+    {
+      "case_id": "cgl-035-va-no-booking",
+      "finding": "Context is appropriate for a general admission-policy question with no stated travel plan. The answer matches the V&A source."
+    },
+    {
+      "case_id": "cgl-036-british-museum-ticket",
+      "finding": "Context is appropriate for this general ticket-policy question. Free permanent collection, priority entry, capacity-limited walk-ups, and separate paid exhibitions are supported."
+    }
+  ]
+}

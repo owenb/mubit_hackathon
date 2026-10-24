@@ -1,0 +1,89 @@
+{
+  "author_model": "gpt-6-luna",
+  "cases": [
+    {
+      "id": "luna-travel-wave4-01-payment-identities",
+      "question": "I use my phone on the Tube and a contactless card on the bus. Do I need to do anything differently when I change between them?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "essential_points": ["Use the same card or device for the whole rail journey; a phone and its linked physical card count as different payment identities.", "Touch in and out on rail, but touch in only on a bus."],
+      "rationale": "Tests a concise explanation of payment identity and the different rail/bus touch rules without an unnecessary map pin. Grounded in tfl-payment-1 and tfl-payment-2."
+    },
+    {
+      "id": "luna-travel-wave4-02-bus-hopper-date",
+      "question": "We will make two bus journeys in London on 31 October 2026, about 40 minutes apart. What fare rule should I know, and is the announced November change already in effect?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "essential_points": ["The Hopper gives unlimited bus and tram journeys within one hour of the first touch-in using the same card or device; it is automatic.", "On 31 October the adult single is £1.75 and daily cap £5.25; announced £1.85 and £5.55 fares start 1 November, not in October."],
+      "rationale": "Checks date-sensitive fare advice and the automatic one-hour transfer rule without mapping a non-place question. Grounded in tfl-bus-fares-1 and tfl-bus-fares-2."
+    },
+    {
+      "id": "luna-travel-wave4-03-family-child-fares",
+      "question": "I'm visiting with an 8-year-old and a 13-year-old. How do their London bus and Tube fares differ, and what should I arrange for the older child?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "essential_points": ["Under-11s travel free on buses and trams, and up to four under-11s can travel free with each fare-paying adult on specified TfL rail services; do not generalise this to all airport or National Rail services.", "A visitor aged 11–15 can get half-price travel with the Young Visitor discount added to a Visitor Oyster by staff or a Visitor Centre while the child is present; it is not automatic on ordinary contactless."],
+      "rationale": "Tests age-specific family advice with a useful next step and the scope limit on free child rail travel. Grounded in tfl-children-1 and tfl-children-2."
+    },
+    {
+      "id": "luna-travel-wave4-04-night-travel",
+      "question": "After a show, can I count on the Night Tube to get home on a Tuesday, and what is the rule for booking a minicab?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "essential_points": ["Night Tube and Night Overground operate on Friday and Saturday nights, not every night; night buses are another overnight option, and the actual service for the date and destination needs checking.", "A minicab/private-hire vehicle must be booked through a licensed operator; only licensed black taxis can be hailed or taken from a rank without a prior booking."],
+      "rationale": "Combines a night-service schedule rule with a practical licensed-vehicle distinction, with no location needing a pin. Grounded in tfl-night-1 and tfl-night-2."
+    },
+    {
+      "id": "luna-travel-wave4-05-science-museum-half-term",
+      "question": "I'm taking a space-loving child to the Science Museum on 27 October 2026. What should I plan for admission and the published opening time?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] },
+      "essential_points": ["General admission is free, but visitors are asked to pre-book a free ticket; some experiences or exhibitions have separate tickets.", "The published half-term opening for 24–30 October 2026 is 09:00; this is dated published information, not a live check."],
+      "rationale": "Tests date-bounded museum hours, free admission versus booking, and one correct venue anchor. Grounded in science-museum-1 and science-museum-2."
+    },
+    {
+      "id": "luna-travel-wave4-06-rainy-family-museums",
+      "question": "It's forecast to rain and I have a dinosaur-mad child; should we spend our short afternoon at the Natural History Museum or the Science Museum?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:18306", "role": "destination" }, { "id": "osm:2026-10-12:20531", "role": "context" }] },
+      "essential_points": ["The Natural History Museum is the better match for dinosaur interests and is an indoor option; its galleries have free admission, but busy periods can queue without a free entry ticket.", "The nearby Science Museum also has free general admission but asks visitors to pre-book; some experiences are separately ticketed.", "Suggest prioritising one museum for a short afternoon rather than promising time to see both."],
+      "rationale": "Tests interest-led choice under a time constraint, concise booking nuance, and relevant multi-venue pins. Grounded in natural-history-1, natural-history-2, and science-museum-1."
+    },
+    {
+      "id": "luna-travel-wave4-07-va-visit",
+      "question": "I like art and design and want an easy indoor stop in South Kensington. Does the V&A need a general-entry booking, and is its Fashion Gallery open?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:180927", "role": "destination" }] },
+      "essential_points": ["V&A South Kensington general admission is free and does not need booking; some exhibitions or events cost extra.", "The Fashion Gallery is closed for redevelopment until autumn 2028 according to the visit page checked 23 October 2026."],
+      "rationale": "Tests a practical venue recommendation with a dated closure and the distinction between general entry and paid exhibitions. Grounded in va-museum-1 and va-museum-3."
+    },
+    {
+      "id": "luna-travel-wave4-08-sunday-market",
+      "question": "Would Borough Market work for a Sunday lunch, and what should I expect to pay for entry versus the food?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:3958", "role": "destination" }] },
+      "essential_points": ["Borough Market is free to enter, while food and purchases cost money.", "Its regular Sunday hours are 10:00–16:00, subject to holiday or festive exceptions; do not claim live opening has been checked."],
+      "rationale": "Tests concise day-specific market advice and separates free entry from purchase costs, with a single venue pin. Grounded in borough-market-1 and borough-market-2."
+    },
+    {
+      "id": "luna-travel-wave4-09-parks-outdoor",
+      "question": "We want a free, relaxed outdoor break between indoor sightseeing stops. Which central parks would suit a quiet walk or picnic?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:84173", "role": "destination" }, { "id": "osm:2026-10-12:5156", "role": "destination" }] },
+      "essential_points": ["Hyde Park and Kensington Gardens are central Royal Park options for outdoor time, gardens, and a quieter change from indoor attractions.", "The parks are free to explore; attractions, events, and facilities inside them may have separate charges or opening policies."],
+      "rationale": "Tests a simple preference-led recommendation for two relevant outdoor places and the boundary around charges inside parks. Grounded in royal-parks-1."
+    },
+    {
+      "id": "luna-travel-wave4-10-south-bank-stroll",
+      "question": "Suggest a riverside stroll for a visitor with a couple of hours who wants to see the National Theatre and finish near Tate Modern.",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:704", "role": "context" }, { "id": "osm:2026-10-12:181208", "role": "destination" }, { "id": "osm:2026-10-12:18520", "role": "destination" }] },
+      "essential_points": ["Queen’s Walk is the pedestrian promenade along the South Bank; a suggested sequence can include the National Theatre and continue toward Bankside/Tate Modern.", "The roughly 30-minute published estimate applies from Lambeth Bridge to Blackfriars Bridge without extended stops, and individual pace varies.", "Present this as a suggested itinerary, not turn-by-turn directions or a guaranteed accessible route."],
+      "rationale": "Tests a short multi-stop itinerary, map selection for requested places, and careful use of a bounded walking-time estimate. Grounded in south-bank-1 and south-bank-2."
+    },
+    {
+      "id": "luna-travel-wave4-11-greenwich-day",
+      "question": "My family is interested in ships and maritime history. How could we spend a day around Greenwich, and which parts have free general entry?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:60145", "role": "destination" }, { "id": "osm:2026-10-12:182736", "role": "destination" }, { "id": "osm:2026-10-12:19126", "role": "destination" }, { "id": "osm:2026-10-12:9188", "role": "context" }] },
+      "essential_points": ["Royal Museums Greenwich includes the National Maritime Museum, Queen’s House, Cutty Sark, and Royal Observatory.", "National Maritime Museum and Queen’s House have free general entry; Cutty Sark and Royal Observatory are ticketed attractions. Suggest booking ahead where possible and checking date availability.", "Greenwich Park can complement a suggested day out; walking uphill to the Observatory is not an audited step-free route."],
+      "rationale": "Tests a family-interest itinerary with mixed admission types and four relevant destination/context pins, without inventing current ticket availability. Grounded in greenwich-museums-1 and greenwich-museums-2."
+    },
+    {
+      "id": "luna-travel-wave4-12-free-city-views",
+      "question": "I want a free view in the City and might also walk across Tower Bridge. Which of those can I do without buying an attraction ticket, and what needs booking?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:62731", "role": "destination" }, { "id": "osm:2026-10-12:1350", "role": "destination" }] },
+      "essential_points": ["Sky Garden offers free public access tickets bookable up to three weeks ahead, specifying a date/time and one-hour visit; weekend booking is recommended and walk-ins depend on capacity.", "The public pedestrian crossing of Tower Bridge is free; its interior/high-level exhibition is separately ticketed.", "Do not claim ticket availability or a live bridge-lift schedule."],
+      "rationale": "Tests contrasting two kinds of free access, booking nuance, and multiple venue anchors while avoiding unsupported claims of availability. Grounded in sky-garden-1 and tower-bridge-1."
+    }
+  ]
+}

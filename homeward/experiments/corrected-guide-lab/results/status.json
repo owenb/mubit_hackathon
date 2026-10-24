@@ -1,0 +1,75 @@
+{
+  "observed_at": "2026-10-24T15:43:01.515Z",
+  "task_name": "Homeward corrected guide lab",
+  "task_id": "ln_cd244c7ae58bc8483b16fb6b",
+  "task_key": "lk1_c0eb50451e86efc937b7119240b1e613",
+  "training_job": "ftjob_be8160c9",
+  "training_status": "completed",
+  "version": "v1 of new isolated task",
+  "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "task_dashboard": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/workloads/ln_cd244c7ae58bc8483b16fb6b",
+  "dashboard_counts": {
+    "calls": 45,
+    "kept": 36,
+    "rejected": 8,
+    "waiting_review": 1
+  },
+  "manual_reviews": {
+    "checked_at": "2026-10-24T15:38:29.181Z",
+    "unique_reviewed": 44,
+    "good_verified": 36,
+    "bad_verified": 8,
+    "unverified": [],
+    "deferred": [
+      {
+        "case_id": "cgl-020-euston-access-clarify",
+        "reason": "Broad Euston question may refer to National Rail rather than Tube. Do not approve the categorical opening without clarification."
+      }
+    ]
+  },
+  "adapter_serving_verified": true,
+  "fresh_development": {
+    "luna_complete": 6,
+    "adapter_complete": 6,
+    "comparison": "complete development diagnostic; not final benchmark",
+    "adapter": {
+      "pass": 3,
+      "uncertain": 1,
+      "fail": 2
+    },
+    "luna": {
+      "pass": 5,
+      "uncertain": 1,
+      "fail": 0
+    },
+    "report": "paired-development-report.md",
+    "identical_input_evidence_verified": true,
+    "identical_generation_settings_verified": false,
+    "review": "Luna-agent assessment, non-blinded and non-independent"
+  },
+  "final20_used": false,
+  "app_route_changed": false,
+  "training_lineage_limit": "All five correction demonstrations were reviewed before first training began at 29 kept examples. Later dashboard showed 36 kept; no per-example training manifest or exact snapshot was exposed, so inclusion of each accepted example cannot be proven.",
+  "adapter_id": "ad_lane_a190986c",
+  "version_created_at": "2026-10-24T15:39:09Z",
+  "training_started_at": "2026-10-24T15:33:08Z",
+  "platform_gate": {
+    "passed": 4,
+    "total": 12,
+    "quality_percent": 33.3,
+    "threshold_percent": 95,
+    "advisory": true,
+    "test_set": "gs_r4_ck472a1e7d6502ec0c",
+    "comparable_to_original_homeward_gate": false
+  },
+  "reported_at": "2026-10-24T15:53:16.286Z",
+  "adapter_serving_verified_scope": "Fixed v1 in Mubit console playground only; no normal API serving proof",
+  "normal_api_adapter_serving_verified": false,
+  "playground_adapter_serving_verified": true,
+  "rollout": {
+    "mode": "silent_test",
+    "share_percent": 10,
+    "scope": "ln_cd244c7ae58bc8483b16fb6b only",
+    "production_promotion": false
+  }
+}

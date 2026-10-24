@@ -97,7 +97,7 @@ The initial screen contains the full map, three example questions and the ask ba
 
 A real Greville Street correction removed Canary Wharf DLR and kept Farringdon and Chancery Lane. The corrected teaching reply was retained in Mubit under the original Homeward task, marked trainable, and positively reviewed. Its task pool rose from 149 to **150 kept examples**. A per-row kept flag and weight inclusion are not exposed, so the UI distinguishes that progress from a completed model update.
 
-**Only v1 is visible; no trained improvement is proved yet.** Six fresh development questions were frozen and tested without an operator target. V1 produced five retained replies; only **1/6** passed the answer/map contract, with one interrupted call kept as a failure. These playground diagnostics do not establish a general accuracy score or a controlled Luna comparison. Inputs remain private and out of teaching for an eventual matched old/new run. The final 20 questions remain untouched.
+**Only v1 is visible for the original app task; no trained improvement is proved yet.** Six fresh development questions were frozen and tested without an operator target. V1 produced five retained replies; only **1/6** passed the answer/map contract, with one interrupted call kept as a failure. These playground diagnostics do not establish a general accuracy score or a controlled Luna comparison. Inputs remain private and out of teaching for an eventual matched old/new run. The final 20 questions remain untouched.
 
 See [the learning workflow](homeward/LEARNING.md), [timestamped Mubit observations](homeward/data/feedback-observations.json) and [development summary](homeward/data/development-learning.json). The updated UI shows the last verified check; it does not invent a trained state or trigger retraining.
 
@@ -109,7 +109,7 @@ Corrections persist under ignored `homeward/results/feedback/`, scoped to the br
 
 All backend Mubit calls now retain a private, redacted journal of response headers, including errors and newly introduced model/version fields. Inspect it with `npm run homeward:headers`; this makes no API call. The files live in ignored `homeward/results/mubit-headers/` and contain no prompt/answer bodies or outbound credentials. New identity headers remain unverified until their meaning is confirmed. The latest isolated metadata-only check returned Luna and no new Mubit serving-model header.
 
-See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-learns-about-the-map) and [the preserved scene comparison](homeward/data/spatial-learning-evidence.json). The saved Greville Street correction and recorded teacher output have identical pin, role and camera hashes. Updated-model transfer remains pending.
+See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-learns-about-the-map) and [the preserved scene comparison](homeward/data/spatial-learning-evidence.json). The saved Greville Street correction and recorded teacher output have identical pin, role and camera hashes. Updated-model transfer for that original app correction remains pending. The separate corrected-guide experiment below now has its own trained adapter and six development results.
 
 ## The WebGPU city
 
@@ -117,7 +117,7 @@ The complete London map contains **183,550 source features**, producing **5,121,
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,343,340 bytes**.
+- Gzip WebAssembly engine: **2,351,981 bytes**.
 - Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
@@ -131,8 +131,8 @@ This is a working product prototype with an unfinished adaptation experiment. **
 
 | Observation | Result |
 | --- | --- |
-| Recorded Homeward task calls | 185 |
-| Kept examples | 150 |
+| Original Homeward task calls, last console check 15:59 BST | 210 headline / 211 seven-day chart |
+| Kept examples in original task | 153 |
 | Real trained adapter | Qwen3-4B PEFT v1 |
 | Mubit recorded-reference gate | 1/12, or 8.3% |
 | Latest observed rollout | 10% silent testing; zero graded pairs |
@@ -152,6 +152,29 @@ These are known development cases, assessed without blinding. Playground/API gen
 The task History records a separate refresh policy of every 24 hours after 25 new rated-up rows. The scheduler cursor and exact next training time are unknown. No supported self-service early-refresh action was found. Manual rollout controls affect all calls in a task, so they were not applied under the requirement to isolate tests from the app. See the [backend investigation](docs/evidence/v2-self-service-investigation-2026-10-24.json).
 
 The isolated [decision lab](homeward/experiments/decision-lab/manifest.json) prepares 40 compact evidence/place-selection examples around observed failures. It has **not been submitted or integrated into the app**. It would create a separate task whose first adapter starts at v1, not v2 of the original model.
+
+## New isolated model — 24 October, 16:39 BST
+
+The **Homeward corrected guide lab** trained a new Qwen3-4B adapter without waiting for the original task's daily refresh. This is **v1 of a separate task**, not v2 of the app model. The app's instructions and routing remain unchanged.
+
+Luna supplied 40 teaching replies and five corrective demonstrations. Console review reached **36 kept, 8 rejected and 1 pending**; training began earlier when 29 examples were kept. All five corrective demonstrations were reviewed before training, but Mubit did not expose a per-example training snapshot. We cannot prove each correction's weight inclusion.
+
+- Task: `ln_cd244c7ae58bc8483b16fb6b`
+- Adapter: `ad_lane_a190986c`, version 1; job `ftjob_be8160c9`
+- Internal gate: **4/12 (33.3%)**, below its 95% target. This differs from the original task's gate and is not a controlled improvement from 8.3%.
+- A 10% silent test affects only this isolated task. No production promotion or app rollout was applied.
+- Six direct playground replies visibly identified the fixed lab adapter. Normal adapter API serving remains unverified.
+
+Six fresh development inputs were frozen before teaching and supplied to both this adapter and Luna without target answers, rubrics, answer caching or repair:
+
+| Complete-answer assessment | Pass | Uncertain | Fail |
+| --- | ---: | ---: | ---: |
+| New isolated Mubit adapter v1 | 3 | 1 | 2 |
+| Luna | 5 | 1 | 0 |
+
+Map intent was acceptable on all six adapter responses, allowing an optional area-pin omission. The two clear failures were an unsupported Bank lift-accessibility claim and saying Cutty Sark has free general entry. **The new model does not outperform Luna overall in this diagnostic.** Partial correction transfer is visible, but this does not establish causal improvement over an older model. A Luna agent performed the non-blinded assessment; playground/API decoding settings are not proven identical. No cost or latency saving is claimed.
+
+The [experiment README](homeward/experiments/corrected-guide-lab/README.md), [paired report](homeward/experiments/corrected-guide-lab/results/paired-development-report.md) and [captured replies](homeward/experiments/corrected-guide-lab/results/adapter-dev.json) preserve the evidence and limitations. All 51 API responses in this experiment have recorded safe headers and positive Luna identity. Playground HTTP headers were unavailable through the supported UI. The six questions are now used development cases and must stay out of subsequent teaching. The final 20 remain private and untouched.
 
 ## Evaluation and tests
 
@@ -179,7 +202,9 @@ A valid final run requires attributable fixed-version adapter inference and an i
 | `homeward/src/evaluation*.mjs` | Paired collection, serving gates and review |
 | `homeward/src/demo-evidence.mjs` | Judging-criteria evidence and honest demo status |
 | `homeward/data/` | Research snapshot, place catalogue, teaching/development data and status |
-| `homeward/experiments/decision-lab/` | Prepared isolated successor experiment |
+| `homeward/experiments/decision-lab/` | Prepared compact-decision experiment, not submitted |
+| `homeward/experiments/corrected-guide-lab/` | Completed isolated training and six-case development evidence |
+| `homeward/experiments/spatial-wave4/` | Additional Luna-authored spatial teaching curriculum |
 | `docs/evidence/` | Selected development results and backend investigation |
 | `scripts/experiment.mjs` | Original synthetic gateway experiments and optional direct baseline |
 
@@ -198,4 +223,4 @@ The container runs Node as a non-root user and uses the bundled browser assets. 
 
 Map data is **© OpenStreetMap contributors**, distributed under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Attribution remains visible. The complete derived map and its notice are served at `/maps/london.ael` and `/maps/README.txt`; see [the format documentation](docs/LONDON_DATA.md). The place catalogue is derived from the same database. Travel facts link to their original sources and retain their retrieval dates.
 
-Only an empty `.env.example` is included. Real `.env` files, credentials, caches, raw private logs, private final questions and native build products are excluded. API keys remain on the server; the browser never receives them.
+Only an empty `.env.example` is included. Real `.env` files, credentials, caches, raw private logs, private final questions and native build products are excluded. The corrected-guide lab includes reviewed synthetic teaching/test records; these are distinct from private app correction stores. API keys remain on the server; the browser never receives them.

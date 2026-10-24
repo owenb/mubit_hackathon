@@ -1,0 +1,1700 @@
+{
+  "task_hash": "deb13fa888a79a32e598e08d1442bce1c2817b8f51ecdb412267505ddb64fbf7",
+  "recording": "full",
+  "mode": "target_in_context_demonstration",
+  "not_transfer_evidence": true,
+  "selection_basis": "Only teacher-batch errors, selected before reviewing development answers. cgl031 accepted as a defensible context-role alternative.",
+  "source_audit_hash": "1a3594e25d05141d2058ccfcf92c2a1d24f99361ee163051de040d4c601f0f35",
+  "started_at": "2026-10-24T15:18:05.763Z",
+  "status": "stopped",
+  "results": [
+    {
+      "case_id": "cgl-001-bank-wc-rain",
+      "original_receipt": "mreq_01a16e75cbba714082d16fbef93768f9",
+      "input": {
+        "date": "2026-10-24",
+        "question": "If it is pouring, can I change from the Waterloo & City line to the Northern line at Bank without going outside?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:bank",
+            "name": "Bank",
+            "lines": [
+              "Northern",
+              "Central",
+              "DLR",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:euston",
+            "name": "Euston",
+            "lines": [
+              "Northern",
+              "Victoria"
+            ]
+          },
+          {
+            "id": "station:canada-water",
+            "name": "Canada Water",
+            "lines": [
+              "Jubilee",
+              "Windrush"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-dlr",
+            "name": "Canary Wharf · DLR",
+            "lines": [
+              "DLR"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-jubilee",
+            "name": "Canary Wharf · Jubilee",
+            "lines": [
+              "Jubilee"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-elizabeth",
+            "name": "Canary Wharf · Elizabeth",
+            "lines": [
+              "Elizabeth"
+            ]
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "bank",
+              "text": "Bank is partly step-free. Northern and DLR have street-to-platform lift routes; Central does not. Ask which line when the question is general.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-entrance",
+              "text": "For Northern or DLR lifts use the Cannon Street/Nicholas Lane ticket hall. The additional King William Street DLR lift is staff-operated on request.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-wc",
+              "text": "Waterloo & City lifts at Bank use Walbrook, Monday–Friday. Its step-free interchange with Northern/DLR involves 290 metres via street and lifts.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "waterloo",
+              "text": "Jubilee has step-free access. Northern and Bakerloo do not. Waterloo & City exit uses the National Rail lift; check availability before travel.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "euston",
+              "text": "Euston has no step-free street route to the Victoria or Northern Tube platforms. Same-direction interchange between Victoria and Northern (Bank branch) is step-free. Northern Charing Cross branch platforms are not step-free.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:euston"
+              ]
+            },
+            {
+              "id": "canada-water",
+              "text": "No step-free access between street and ticket hall until spring 2027 during lift replacement. Do not describe current street access as available.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canada-water"
+              ]
+            },
+            {
+              "id": "canary-wharf",
+              "text": "Jubilee, Elizabeth line and DLR are separate stations with lift routes. Changing stations needs travel via street or shopping centre.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canary-wharf-dlr",
+                "station:canary-wharf-jubilee",
+                "station:canary-wharf-elizabeth"
+              ]
+            },
+            {
+              "id": "tfl-night-lines-1",
+              "text": "Night Tube runs on the Central, Jubilee, Northern, Piccadilly and Victoria lines on Friday and Saturday nights, with branch/station limitations. Night Overground uses the Windrush line between Highbury & Islington and New Cross Gate. Night buses operate every night. Check exact coverage and disruptions for a journey.",
+              "source_ids": [
+                "tfl-night-lines"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-assistance-policy-1",
+              "text": "Turn-up-and-go assistance is available on the Underground, Overground and Elizabeth line without advance booking. Ask staff in the ticket hall or use a Help Point information button. Passenger Assist is a separate bookable option. Assistance does not make a station without lifts step-free.",
+              "source_ids": [
+                "tfl-assistance-policy"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "tfl-guide",
+              "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-topology",
+              "url": "https://api.tfl.gov.uk/stationdata/tfl-stationdata-detailed.zip",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-night-lines",
+              "url": "https://madeby.tfl.gov.uk/2026/09/07/london-life-as-a-student/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-assistance-policy",
+              "url": "https://content.tfl.gov.uk/lu-accessible-travel-policy.pdf",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        },
+        "editor_correction": {
+          "note": "The answer starts with Yes, then says the transfer is not indoors. It also fails to qualify the 290-metre street-and-lift evidence as describing the step-free interchange; the question itself leaves open whether an ordinary stair route differs.",
+          "reviewed_response": {
+            "static_access": "not_applicable",
+            "response_kind": "answer",
+            "answer": "If you mean the step-free interchange, no: the Waterloo & City to Northern change at Bank involves about 290 metres via street and lifts, so that step-free route is not entirely indoors. The saved guidance does not establish whether a different, non-step-free route can stay inside. Rain does not change the published route description; current lift status needs a fresh check.",
+            "source_ids": [
+              "tfl-guide",
+              "tfl-topology"
+            ],
+            "scene": {
+              "camera": "focus",
+              "places": [
+                {
+                  "id": "station:bank",
+                  "role": "context"
+                }
+              ]
+            }
+          },
+          "instruction": "This is an editorial teaching demonstration. Return this reviewed response faithfully; do not add unsupported claims."
+        }
+      },
+      "expected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "If you mean the step-free interchange, no: the Waterloo & City to Northern change at Bank involves about 290 metres via street and lifts, so that step-free route is not entirely indoors. The saved guidance does not establish whether a different, non-step-free route can stay inside. Rain does not change the published route description; current lift status needs a fresh check.",
+        "source_ids": [
+          "tfl-guide",
+          "tfl-topology"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "station:bank",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "started_at": "2026-10-24T15:18:05.765Z",
+      "finished_at": "2026-10-24T15:18:07.988Z",
+      "request_id": "mreq_01a16e7d936c73c0bd1e4985d1cd3006",
+      "completion_model": "gpt-6-luna",
+      "response_headers": {
+        "access-control-expose-headers": "X-Request-ID,CF-Ray,CF-Ray",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a4f9f3bf5837fba6-AMS",
+        "content-length": "1403",
+        "content-type": "application/json",
+        "date": "Sat, 24 Oct 2026 15:18:07 GMT",
+        "openai-organization": "mubit-khbhk3",
+        "openai-processing-ms": "1819",
+        "openai-project": "proj_Ejaal6Thfo0bsUZYY2LkBTzx",
+        "openai-version": "2020-10-01",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "via": "1.1 google",
+        "x-content-type-options": "nosniff",
+        "x-middleware-request-id": "mreq_01a16e7d936c73c0bd1e4985d1cd3006",
+        "x-openai-proxy-wasm": "v0.1",
+        "x-ratelimit-limit-requests": "30000",
+        "x-ratelimit-limit-tokens": "[REDACTED]",
+        "x-ratelimit-remaining-requests": "29999",
+        "x-ratelimit-remaining-tokens": "[REDACTED]",
+        "x-ratelimit-reset-requests": "2ms",
+        "x-ratelimit-reset-tokens": "[REDACTED]",
+        "x-request-id": "req_02ac86db8f71477f9a57de53e84bf0f9"
+      },
+      "usage": {
+        "prompt_tokens": 2898,
+        "completion_tokens": 135,
+        "total_tokens": 3033,
+        "prompt_tokens_details": {
+          "cached_tokens": 1292,
+          "cache_write_tokens": 1603,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"If you mean the step-free interchange, no: the Waterloo & City to Northern change at Bank involves about 290 metres via street and lifts, so that step-free route is not entirely indoors. The saved guidance does not establish whether a different, non-step-free route can stay inside. Rain does not change the published route description; current lift status needs a fresh check.\",\"source_ids\":[\"tfl-guide\",\"tfl-topology\"],\"scene\":{\"camera\":\"focus\",\"places\":[{\"id\":\"station:bank\",\"role\":\"context\"}]}}",
+      "inference": {
+        "route": "luna",
+        "label": "Luna via Mubit",
+        "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+        "requested_model": "gpt-6-luna",
+        "response_model": "gpt-6-luna",
+        "request_id": "mreq_01a16e7d936c73c0bd1e4985d1cd3006",
+        "original_request_id": null,
+        "recording": "full",
+        "adapter_id": null,
+        "uninterpreted_identity_headers": [],
+        "evidence": [
+          "Mubit gateway receipt: mreq_01a16e7d936c73c0bd1e4985d1cd3006",
+          "Completion model gpt-6-luna",
+          "OpenAI request ID and processing-time response headers"
+        ]
+      },
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "If you mean the step-free interchange, no: the Waterloo & City to Northern change at Bank involves about 290 metres via street and lifts, so that step-free route is not entirely indoors. The saved guidance does not establish whether a different, non-step-free route can stay inside. Rain does not change the published route description; current lift status needs a fresh check.",
+        "source_ids": [
+          "tfl-guide",
+          "tfl-topology"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "station:bank",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "exact_target_match": true
+    },
+    {
+      "case_id": "cgl-009-waterloo-origin-bank-end",
+      "original_receipt": "mreq_01a16e7612ab734082b83d8ffd9c14d3",
+      "input": {
+        "date": "2026-10-24",
+        "question": "I’ll start at Waterloo station, take the Waterloo & City line, and change to the DLR at Bank. Mark my start and interchange.",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:bank",
+            "name": "Bank",
+            "lines": [
+              "Northern",
+              "Central",
+              "DLR",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:euston",
+            "name": "Euston",
+            "lines": [
+              "Northern",
+              "Victoria"
+            ]
+          },
+          {
+            "id": "station:canada-water",
+            "name": "Canada Water",
+            "lines": [
+              "Jubilee",
+              "Windrush"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-dlr",
+            "name": "Canary Wharf · DLR",
+            "lines": [
+              "DLR"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-jubilee",
+            "name": "Canary Wharf · Jubilee",
+            "lines": [
+              "Jubilee"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-elizabeth",
+            "name": "Canary Wharf · Elizabeth",
+            "lines": [
+              "Elizabeth"
+            ]
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:3012",
+            "name": "Hatton Garden",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1685",
+            "name": "Farringdon",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1621",
+            "name": "Chancery Lane",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "bank",
+              "text": "Bank is partly step-free. Northern and DLR have street-to-platform lift routes; Central does not. Ask which line when the question is general.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-entrance",
+              "text": "For Northern or DLR lifts use the Cannon Street/Nicholas Lane ticket hall. The additional King William Street DLR lift is staff-operated on request.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-wc",
+              "text": "Waterloo & City lifts at Bank use Walbrook, Monday–Friday. Its step-free interchange with Northern/DLR involves 290 metres via street and lifts.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "waterloo",
+              "text": "Jubilee has step-free access. Northern and Bakerloo do not. Waterloo & City exit uses the National Rail lift; check availability before travel.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "euston",
+              "text": "Euston has no step-free street route to the Victoria or Northern Tube platforms. Same-direction interchange between Victoria and Northern (Bank branch) is step-free. Northern Charing Cross branch platforms are not step-free.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:euston"
+              ]
+            },
+            {
+              "id": "canada-water",
+              "text": "No step-free access between street and ticket hall until spring 2027 during lift replacement. Do not describe current street access as available.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canada-water"
+              ]
+            },
+            {
+              "id": "canary-wharf",
+              "text": "Jubilee, Elizabeth line and DLR are separate stations with lift routes. Changing stations needs travel via street or shopping centre.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canary-wharf-dlr",
+                "station:canary-wharf-jubilee",
+                "station:canary-wharf-elizabeth"
+              ]
+            },
+            {
+              "id": "tfl-night-lines-1",
+              "text": "Night Tube runs on the Central, Jubilee, Northern, Piccadilly and Victoria lines on Friday and Saturday nights, with branch/station limitations. Night Overground uses the Windrush line between Highbury & Islington and New Cross Gate. Night buses operate every night. Check exact coverage and disruptions for a journey.",
+              "source_ids": [
+                "tfl-night-lines"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "hatton-arrival-1",
+              "text": "A local Hatton Garden jeweller on Greville Street identifies Farringdon and Chancery Lane as nearby stations. This is evidence for local arrival options, not a universal accessible entrance or the same walking time for every shop. Farringdon’s Elizabeth line street-to-platform access can be considered alongside the separate TfL evidence; verify the onward pavement/shop route.",
+              "source_ids": [
+                "hatton-arrival"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:3012",
+                "osm:2026-10-12:1685",
+                "osm:2026-10-12:1621"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "tfl-guide",
+              "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-topology",
+              "url": "https://api.tfl.gov.uk/stationdata/tfl-stationdata-detailed.zip",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-night-lines",
+              "url": "https://madeby.tfl.gov.uk/2026/09/07/london-life-as-a-student/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "hatton-arrival",
+              "url": "https://www.hattongardenjeweller.com/contact/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        },
+        "editor_correction": {
+          "note": "Bank is named as an intermediate interchange, not the final destination. The map should preserve Waterloo as origin and use Bank as context. The recorded answer's wording is otherwise suitable.",
+          "reviewed_response": {
+            "static_access": "not_applicable",
+            "response_kind": "answer",
+            "answer": "Your start is Waterloo station and Bank is the intermediate interchange. This marks those places, not a verified route.",
+            "source_ids": [],
+            "scene": {
+              "camera": "fit",
+              "places": [
+                {
+                  "id": "station:waterloo",
+                  "role": "origin"
+                },
+                {
+                  "id": "station:bank",
+                  "role": "context"
+                }
+              ]
+            }
+          },
+          "instruction": "This is an editorial teaching demonstration. Return this reviewed response faithfully; do not add unsupported claims."
+        }
+      },
+      "expected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Your start is Waterloo station and Bank is the intermediate interchange. This marks those places, not a verified route.",
+        "source_ids": [],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "station:waterloo",
+              "role": "origin"
+            },
+            {
+              "id": "station:bank",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "started_at": "2026-10-24T15:18:07.990Z",
+      "finished_at": "2026-10-24T15:18:10.509Z",
+      "request_id": "mreq_01a16e7d9b8773c0be2d5990ed30429f",
+      "completion_model": "gpt-6-luna",
+      "response_headers": {
+        "access-control-expose-headers": "X-Request-ID,CF-Ray,CF-Ray",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a4f9f3cc2bb2fba6-AMS",
+        "content-length": "1162",
+        "content-type": "application/json",
+        "date": "Sat, 24 Oct 2026 15:18:10 GMT",
+        "openai-organization": "mubit-khbhk3",
+        "openai-processing-ms": "2280",
+        "openai-project": "proj_Ejaal6Thfo0bsUZYY2LkBTzx",
+        "openai-version": "2020-10-01",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "via": "1.1 google",
+        "x-content-type-options": "nosniff",
+        "x-middleware-request-id": "mreq_01a16e7d9b8773c0be2d5990ed30429f",
+        "x-openai-proxy-wasm": "v0.1",
+        "x-ratelimit-limit-requests": "30000",
+        "x-ratelimit-limit-tokens": "[REDACTED]",
+        "x-ratelimit-remaining-requests": "29999",
+        "x-ratelimit-remaining-tokens": "[REDACTED]",
+        "x-ratelimit-reset-requests": "2ms",
+        "x-ratelimit-reset-tokens": "[REDACTED]",
+        "x-request-id": "req_4c7eec4edbe441ff8b5f89ea794532bf"
+      },
+      "usage": {
+        "prompt_tokens": 2959,
+        "completion_tokens": 85,
+        "total_tokens": 3044,
+        "prompt_tokens_details": {
+          "cached_tokens": 1292,
+          "cache_write_tokens": 1664,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"Your start is Waterloo station and Bank is the intermediate interchange. This marks those places, not a verified route.\",\"source_ids\":[],\"scene\":{\"camera\":\"fit\",\"places\":[{\"id\":\"station:waterloo\",\"role\":\"origin\"},{\"id\":\"station:bank\",\"role\":\"context\"}]}}",
+      "inference": {
+        "route": "luna",
+        "label": "Luna via Mubit",
+        "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+        "requested_model": "gpt-6-luna",
+        "response_model": "gpt-6-luna",
+        "request_id": "mreq_01a16e7d9b8773c0be2d5990ed30429f",
+        "original_request_id": null,
+        "recording": "full",
+        "adapter_id": null,
+        "uninterpreted_identity_headers": [],
+        "evidence": [
+          "Mubit gateway receipt: mreq_01a16e7d9b8773c0be2d5990ed30429f",
+          "Completion model gpt-6-luna",
+          "OpenAI request ID and processing-time response headers"
+        ]
+      },
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Your start is Waterloo station and Bank is the intermediate interchange. This marks those places, not a verified route.",
+        "source_ids": [],
+        "scene": {
+          "camera": "fit",
+          "places": [
+            {
+              "id": "station:waterloo",
+              "role": "origin"
+            },
+            {
+              "id": "station:bank",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "exact_target_match": true
+    },
+    {
+      "case_id": "cgl-017-euston-direction",
+      "original_receipt": "mreq_01a16e7656227b42a7b5994750a7f786",
+      "input": {
+        "date": "2026-10-24",
+        "question": "Does the Euston step-free Northern-to-Victoria interchange apply if I’m going in opposite directions?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:691",
+            "name": "Victoria",
+            "lines": []
+          },
+          {
+            "id": "station:euston",
+            "name": "Euston",
+            "lines": [
+              "Northern",
+              "Victoria"
+            ]
+          },
+          {
+            "id": "station:bank",
+            "name": "Bank",
+            "lines": [
+              "Northern",
+              "Central",
+              "DLR",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "station:canada-water",
+            "name": "Canada Water",
+            "lines": [
+              "Jubilee",
+              "Windrush"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-dlr",
+            "name": "Canary Wharf · DLR",
+            "lines": [
+              "DLR"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-jubilee",
+            "name": "Canary Wharf · Jubilee",
+            "lines": [
+              "Jubilee"
+            ]
+          },
+          {
+            "id": "station:canary-wharf-elizabeth",
+            "name": "Canary Wharf · Elizabeth",
+            "lines": [
+              "Elizabeth"
+            ]
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "bank",
+              "text": "Bank is partly step-free. Northern and DLR have street-to-platform lift routes; Central does not. Ask which line when the question is general.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-entrance",
+              "text": "For Northern or DLR lifts use the Cannon Street/Nicholas Lane ticket hall. The additional King William Street DLR lift is staff-operated on request.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "bank-wc",
+              "text": "Waterloo & City lifts at Bank use Walbrook, Monday–Friday. Its step-free interchange with Northern/DLR involves 290 metres via street and lifts.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:bank"
+              ]
+            },
+            {
+              "id": "waterloo",
+              "text": "Jubilee has step-free access. Northern and Bakerloo do not. Waterloo & City exit uses the National Rail lift; check availability before travel.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "euston",
+              "text": "Euston has no step-free street route to the Victoria or Northern Tube platforms. Same-direction interchange between Victoria and Northern (Bank branch) is step-free. Northern Charing Cross branch platforms are not step-free.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:euston"
+              ]
+            },
+            {
+              "id": "canada-water",
+              "text": "No step-free access between street and ticket hall until spring 2027 during lift replacement. Do not describe current street access as available.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canada-water"
+              ]
+            },
+            {
+              "id": "canary-wharf",
+              "text": "Jubilee, Elizabeth line and DLR are separate stations with lift routes. Changing stations needs travel via street or shopping centre.",
+              "source_ids": [
+                "tfl-guide",
+                "tfl-topology"
+              ],
+              "place_ids": [
+                "station:canary-wharf-dlr",
+                "station:canary-wharf-jubilee",
+                "station:canary-wharf-elizabeth"
+              ]
+            },
+            {
+              "id": "tfl-night-lines-1",
+              "text": "Night Tube runs on the Central, Jubilee, Northern, Piccadilly and Victoria lines on Friday and Saturday nights, with branch/station limitations. Night Overground uses the Windrush line between Highbury & Islington and New Cross Gate. Night buses operate every night. Check exact coverage and disruptions for a journey.",
+              "source_ids": [
+                "tfl-night-lines"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-access-help-1",
+              "text": "Ask station staff to check the planned step-free journey for disruption. Turn-up-and-go staff can arrange accompaniment to the train, meeting at interchanges/destination, and boarding ramps or mini ramps where available.",
+              "source_ids": [
+                "tfl-access-help"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-access-help-2",
+              "text": "Street-to-platform access, boarding the train, and interchange are different questions. A lift symbol does not prove a gap-free journey. Neither a neighbourhood pin nor a generally flat promenade certifies an accessible door-to-door route.",
+              "source_ids": [
+                "tfl-access-help"
+              ],
+              "place_ids": []
+            },
+            {
+              "id": "tfl-assistance-policy-1",
+              "text": "Turn-up-and-go assistance is available on the Underground, Overground and Elizabeth line without advance booking. Ask staff in the ticket hall or use a Help Point information button. Passenger Assist is a separate bookable option. Assistance does not make a station without lifts step-free.",
+              "source_ids": [
+                "tfl-assistance-policy"
+              ],
+              "place_ids": []
+            }
+          ],
+          "sources": [
+            {
+              "id": "tfl-guide",
+              "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-topology",
+              "url": "https://api.tfl.gov.uk/stationdata/tfl-stationdata-detailed.zip",
+              "retrieved_at": "2026-10-23T20:07:35.437323+00:00"
+            },
+            {
+              "id": "tfl-night-lines",
+              "url": "https://madeby.tfl.gov.uk/2026/09/07/london-life-as-a-student/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-access-help",
+              "url": "https://tfl.gov.uk/transport-accessibility/wheelchair-access-and-avoiding-stairs",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tfl-assistance-policy",
+              "url": "https://content.tfl.gov.uk/lu-accessible-travel-policy.pdf",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        },
+        "editor_correction": {
+          "note": "The opening No could be read as a factual claim that opposite-direction transfers are not step-free. The supplied fact confirms only the same-direction case and does not establish the opposite-direction result.",
+          "reviewed_response": {
+            "static_access": "not_applicable",
+            "response_kind": "answer",
+            "answer": "The saved guidance only confirms a same-direction step-free interchange between the Victoria line and the Northern line’s Bank branch at Euston. It does not establish the opposite-direction route, so I can’t confirm that it is step-free; check the exact platforms and journey with TfL. Euston also has no step-free street route to either Tube line’s platforms.",
+            "source_ids": [
+              "tfl-guide",
+              "tfl-topology"
+            ],
+            "scene": {
+              "camera": "focus",
+              "places": [
+                {
+                  "id": "station:euston",
+                  "role": "context"
+                }
+              ]
+            }
+          },
+          "instruction": "This is an editorial teaching demonstration. Return this reviewed response faithfully; do not add unsupported claims."
+        }
+      },
+      "expected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The saved guidance only confirms a same-direction step-free interchange between the Victoria line and the Northern line’s Bank branch at Euston. It does not establish the opposite-direction route, so I can’t confirm that it is step-free; check the exact platforms and journey with TfL. Euston also has no step-free street route to either Tube line’s platforms.",
+        "source_ids": [
+          "tfl-guide",
+          "tfl-topology"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "station:euston",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "started_at": "2026-10-24T15:18:10.510Z",
+      "finished_at": "2026-10-24T15:18:13.254Z",
+      "request_id": "mreq_01a16e7da5b677c3bf50d86e7b976716",
+      "completion_model": "gpt-6-luna",
+      "response_headers": {
+        "access-control-expose-headers": "X-Request-ID,CF-Ray,CF-Ray",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a4f9f3dc6cf2fba6-AMS",
+        "content-length": "1394",
+        "content-type": "application/json",
+        "date": "Sat, 24 Oct 2026 15:18:13 GMT",
+        "openai-organization": "mubit-khbhk3",
+        "openai-processing-ms": "2414",
+        "openai-project": "proj_Ejaal6Thfo0bsUZYY2LkBTzx",
+        "openai-version": "2020-10-01",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "via": "1.1 google",
+        "x-content-type-options": "nosniff",
+        "x-middleware-request-id": "mreq_01a16e7da5b677c3bf50d86e7b976716",
+        "x-openai-proxy-wasm": "v0.1",
+        "x-ratelimit-limit-requests": "30000",
+        "x-ratelimit-limit-tokens": "[REDACTED]",
+        "x-ratelimit-remaining-requests": "29999",
+        "x-ratelimit-remaining-tokens": "[REDACTED]",
+        "x-ratelimit-reset-requests": "2ms",
+        "x-ratelimit-reset-tokens": "[REDACTED]",
+        "x-request-id": "req_e8a65b339abc4a46b4120d26b9fb2970"
+      },
+      "usage": {
+        "prompt_tokens": 2760,
+        "completion_tokens": 136,
+        "total_tokens": 2896,
+        "prompt_tokens_details": {
+          "cached_tokens": 1292,
+          "cache_write_tokens": 1465,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"The saved guidance only confirms a same-direction step-free interchange between the Victoria line and the Northern line’s Bank branch at Euston. It does not establish the opposite-direction route, so I can’t confirm that it is step-free; check the exact platforms and journey with TfL. Euston also has no step-free street route to either Tube line’s platforms.\",\"source_ids\":[\"tfl-guide\",\"tfl-topology\"],\"scene\":{\"camera\":\"focus\",\"places\":[{\"id\":\"station:euston\",\"role\":\"context\"}]}}",
+      "inference": {
+        "route": "luna",
+        "label": "Luna via Mubit",
+        "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+        "requested_model": "gpt-6-luna",
+        "response_model": "gpt-6-luna",
+        "request_id": "mreq_01a16e7da5b677c3bf50d86e7b976716",
+        "original_request_id": null,
+        "recording": "full",
+        "adapter_id": null,
+        "uninterpreted_identity_headers": [],
+        "evidence": [
+          "Mubit gateway receipt: mreq_01a16e7da5b677c3bf50d86e7b976716",
+          "Completion model gpt-6-luna",
+          "OpenAI request ID and processing-time response headers"
+        ]
+      },
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "The saved guidance only confirms a same-direction step-free interchange between the Victoria line and the Northern line’s Bank branch at Euston. It does not establish the opposite-direction route, so I can’t confirm that it is step-free; check the exact platforms and journey with TfL. Euston also has no step-free street route to either Tube line’s platforms.",
+        "source_ids": [
+          "tfl-guide",
+          "tfl-topology"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "station:euston",
+              "role": "context"
+            }
+          ]
+        }
+      },
+      "exact_target_match": true
+    },
+    {
+      "case_id": "cgl-029-southbank-duration-pace",
+      "original_receipt": "mreq_01a16e76bb447af0ad0cd85a56c47ee6",
+      "input": {
+        "date": "2026-10-24",
+        "question": "The bridge-to-bridge riverside walk is listed at about half an hour. Should I plan on exactly that time?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:19126",
+            "name": "Cutty Sark",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:704",
+            "name": "South Bank",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1350",
+            "name": "Tower Bridge",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2630",
+            "name": "Covent Garden",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:1708",
+            "name": "Leicester Square",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:181208",
+            "name": "National Theatre",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18520",
+            "name": "Tate Modern",
+            "lines": []
+          },
+          {
+            "id": "station:waterloo",
+            "name": "Waterloo",
+            "lines": [
+              "Jubilee",
+              "Northern",
+              "Bakerloo",
+              "Waterloo & City"
+            ]
+          },
+          {
+            "id": "osm:2026-10-12:62731",
+            "name": "Sky Garden",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "river-tickets-1",
+              "text": "Uber Boat by Thames Clippers accepts contactless and Oyster pay-as-you-go; each passenger needs a separate card. Touch in and out with the same card, including at interchanges. River services do not count towards the TfL daily cap.",
+              "source_ids": [
+                "river-tickets"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:1350"
+              ]
+            },
+            {
+              "id": "river-tickets-2",
+              "text": "River Bus has West, Central and East fare zones, which are not Tube zones. A qualifying TfL Travelcard on paper or Oyster gives a one-third discount on standard fares, not free river travel. Sightseeing cruises and River Bus tickets are different products.",
+              "source_ids": [
+                "river-tickets"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:1350"
+              ]
+            },
+            {
+              "id": "covent-garden-1",
+              "text": "Covent Garden Piazza and Market Building are public spaces free to walk around; individual shops/markets have their own hours. Covent Garden station is on the Piccadilly line. Leicester Square is a short walk away and an alternative when the station is busy.",
+              "source_ids": [
+                "covent-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2630",
+                "osm:2026-10-12:1708"
+              ]
+            },
+            {
+              "id": "covent-garden-2",
+              "text": "The station’s lifts do not establish a fully step-free route to the trains. Avoid treating lift access and wheelchair accessibility as synonyms. Ask the required destination/route if accessibility matters.",
+              "source_ids": [
+                "covent-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:2630",
+                "osm:2026-10-12:1708"
+              ]
+            },
+            {
+              "id": "south-bank-1",
+              "text": "Queen’s Walk is the pedestrian promenade along South Bank. A suggested stroll can include the National Theatre, Waterloo Bridge, Oxo Tower Wharf and continuing toward Bankside/Tate Modern. The tourism body gives about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "south-bank-2",
+              "text": "A riverside itinerary is a suggested sequence of destinations, not verified turn-by-turn directions or a guaranteed accessible route. Do not generate a route line or certify ramps/lifts from map anchor locations.",
+              "source_ids": [
+                "south-bank"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:704",
+                "osm:2026-10-12:181208",
+                "osm:2026-10-12:18520",
+                "station:waterloo"
+              ]
+            },
+            {
+              "id": "sky-garden-1",
+              "text": "Sky Garden offers free public access tickets, bookable up to three weeks ahead. Tickets specify a date/time and a one-hour visit. Booking is recommended, particularly at weekends; walk-ins depend on capacity and are not guaranteed. Do not invent availability or claim to have made a reservation.",
+              "source_ids": [
+                "sky-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:62731"
+              ]
+            },
+            {
+              "id": "tower-bridge-1",
+              "text": "Crossing Tower Bridge on the public pedestrian route is free. Visiting its interior/high-level exhibition is separately ticketed. Bridge lifts can interrupt crossing; check the published schedule for a specific visit. Tower Bridge and London Bridge are different bridges.",
+              "source_ids": [
+                "tower-bridge"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:1350"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "river-tickets",
+              "url": "https://www.thamesclippers.com/plan-your-journey/ticket-information",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "covent-garden",
+              "url": "https://www.coventgarden.london/about/faqs",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "south-bank",
+              "url": "https://southbank.london/see-and-do/queens-walk",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "sky-garden",
+              "url": "https://skygarden.london/booking/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "tower-bridge",
+              "url": "https://www.visitlondon.com/things-to-do/place/3901803-tower-bridge",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        },
+        "editor_correction": {
+          "note": "The answer handles the estimate correctly, but adds optional stops and the scene pins those extra venues even though the question only asks how to use the duration estimate. Keep the answer on the bounded estimate and omit unrelated map pins.",
+          "reviewed_response": {
+            "static_access": "not_applicable",
+            "response_kind": "answer",
+            "answer": "Treat it as approximate, not exact. The published roughly 30-minute estimate is for the stretch from Lambeth Bridge to Blackfriars Bridge without extended stops; your pace and pauses will affect the time.",
+            "source_ids": [
+              "south-bank"
+            ],
+            "scene": {
+              "camera": "keep",
+              "places": []
+            }
+          },
+          "instruction": "This is an editorial teaching demonstration. Return this reviewed response faithfully; do not add unsupported claims."
+        }
+      },
+      "expected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Treat it as approximate, not exact. The published roughly 30-minute estimate is for the stretch from Lambeth Bridge to Blackfriars Bridge without extended stops; your pace and pauses will affect the time.",
+        "source_ids": [
+          "south-bank"
+        ],
+        "scene": {
+          "camera": "keep",
+          "places": []
+        }
+      },
+      "started_at": "2026-10-24T15:18:13.255Z",
+      "finished_at": "2026-10-24T15:18:14.839Z",
+      "request_id": "mreq_01a16e7db01d78b1bc4d86187b70fd55",
+      "completion_model": "gpt-6-luna",
+      "response_headers": {
+        "access-control-expose-headers": "X-Request-ID,CF-Ray,CF-Ray",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a4f9f3ed0e02fba6-AMS",
+        "content-length": "1166",
+        "content-type": "application/json",
+        "date": "Sat, 24 Oct 2026 15:18:14 GMT",
+        "openai-organization": "mubit-khbhk3",
+        "openai-processing-ms": "1372",
+        "openai-project": "proj_Ejaal6Thfo0bsUZYY2LkBTzx",
+        "openai-version": "2020-10-01",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "via": "1.1 google",
+        "x-content-type-options": "nosniff",
+        "x-middleware-request-id": "mreq_01a16e7db01d78b1bc4d86187b70fd55",
+        "x-openai-proxy-wasm": "v0.1",
+        "x-ratelimit-limit-requests": "30000",
+        "x-ratelimit-limit-tokens": "[REDACTED]",
+        "x-ratelimit-remaining-requests": "29999",
+        "x-ratelimit-remaining-tokens": "[REDACTED]",
+        "x-ratelimit-reset-requests": "2ms",
+        "x-ratelimit-reset-tokens": "[REDACTED]",
+        "x-request-id": "req_bf6fc5b5799b48cfb77fe6766a473d16"
+      },
+      "usage": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 84,
+        "total_tokens": 2826,
+        "prompt_tokens_details": {
+          "cached_tokens": 1292,
+          "cache_write_tokens": 1447,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"Treat it as approximate, not exact. The published roughly 30-minute estimate is for the stretch from Lambeth Bridge to Blackfriars Bridge without extended stops; your pace and pauses will affect the time.\",\"source_ids\":[\"south-bank\"],\"scene\":{\"camera\":\"keep\",\"places\":[]}}",
+      "inference": {
+        "route": "luna",
+        "label": "Luna via Mubit",
+        "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+        "requested_model": "gpt-6-luna",
+        "response_model": "gpt-6-luna",
+        "request_id": "mreq_01a16e7db01d78b1bc4d86187b70fd55",
+        "original_request_id": null,
+        "recording": "full",
+        "adapter_id": null,
+        "uninterpreted_identity_headers": [],
+        "evidence": [
+          "Mubit gateway receipt: mreq_01a16e7db01d78b1bc4d86187b70fd55",
+          "Completion model gpt-6-luna",
+          "OpenAI request ID and processing-time response headers"
+        ]
+      },
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "Treat it as approximate, not exact. The published roughly 30-minute estimate is for the stretch from Lambeth Bridge to Blackfriars Bridge without extended stops; your pace and pauses will affect the time.",
+        "source_ids": [
+          "south-bank"
+        ],
+        "scene": {
+          "camera": "keep",
+          "places": []
+        }
+      },
+      "exact_target_match": true
+    },
+    {
+      "case_id": "cgl-032-science-experience",
+      "original_receipt": "mreq_01a16e76d6ef7e03915626b0171dc325",
+      "input": {
+        "date": "2026-10-24",
+        "question": "I only want to see one special experience at the Science Museum. Does the free general ticket cover it automatically?",
+        "map_context": [],
+        "map_candidates": [
+          {
+            "id": "osm:2026-10-12:20531",
+            "name": "Science Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:18306",
+            "name": "Natural History Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:180927",
+            "name": "Victoria and Albert Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:2199",
+            "name": "Knightsbridge",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:60145",
+            "name": "National Maritime Museum",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:182736",
+            "name": "Queen's House",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:19126",
+            "name": "Cutty Sark",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:9188",
+            "name": "Greenwich Park",
+            "lines": []
+          },
+          {
+            "id": "osm:2026-10-12:62731",
+            "name": "Sky Garden",
+            "lines": []
+          }
+        ],
+        "research": {
+          "version": "homeward-london-travel-2026-10-23-v3.2",
+          "facts": [
+            {
+              "id": "natural-history-1",
+              "text": "Natural History Museum galleries in South Kensington are free. Booking a free entry ticket guarantees entry under its published policy; busy weekends and school holidays can mean queues without one. Some exhibitions/events have separate tickets.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "natural-history-2",
+              "text": "The museum on Cromwell Road is a good choice for natural history and dinosaur interests. Its nearby Science Museum and V&A form a practical museum cluster, but a multi-museum afternoon should allow travel and visits rather than promise seeing everything.",
+              "source_ids": [
+                "natural-history"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:18306"
+              ]
+            },
+            {
+              "id": "science-museum-1",
+              "text": "The Science Museum on Exhibition Road has free general admission but asks visitors to pre-book a free ticket. Free admission does not mean no booking. Some experiences/exhibitions are separately ticketed.",
+              "source_ids": [
+                "science-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:20531"
+              ]
+            },
+            {
+              "id": "science-museum-2",
+              "text": "The usual published opening is 10:00–18:00. For 24–30 October 2026 the published half-term opening is 09:00. The museum lists a full closure on 11 November 2026. Check the visit page for the actual date; do not state it is open right now without a fresh check.",
+              "source_ids": [
+                "science-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:20531"
+              ]
+            },
+            {
+              "id": "va-museum-1",
+              "text": "V&A South Kensington general admission is free and does not need booking; some exhibitions/events cost extra. It is a choice for art and design interests, not the same subject focus as the neighbouring science or natural-history museums.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-2",
+              "text": "Cromwell Road and Exhibition Road museum entrances are step-free. The museum lists Knightsbridge and Earl’s Court as nearby step-free Tube options. South Kensington being the nearest station does not imply a step-free station route; verify the specific journey.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "va-museum-3",
+              "text": "The V&A Fashion Gallery is closed for redevelopment until autumn 2028 according to the visit page checked 23 October 2026. Do not recommend seeing that gallery during this closure. Ask/check which galleries meet the visitor’s interest.",
+              "source_ids": [
+                "va-museum"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:180927",
+                "osm:2026-10-12:2199"
+              ]
+            },
+            {
+              "id": "greenwich-museums-1",
+              "text": "Royal Museums Greenwich comprises National Maritime Museum, Queen’s House, Cutty Sark and Royal Observatory. National Maritime Museum and Queen’s House have free general entry; Cutty Sark and Royal Observatory are ticketed attractions. Book ahead where possible, and check availability for the date.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "greenwich-museums-2",
+              "text": "Greenwich can combine maritime history with the park as a suggested day out. Walking uphill to the Observatory is not equivalent to an audited step-free route; ask about mobility needs and consult the venue’s access guidance.",
+              "source_ids": [
+                "greenwich-museums"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:60145",
+                "osm:2026-10-12:182736",
+                "osm:2026-10-12:19126",
+                "osm:2026-10-12:9188"
+              ]
+            },
+            {
+              "id": "sky-garden-1",
+              "text": "Sky Garden offers free public access tickets, bookable up to three weeks ahead. Tickets specify a date/time and a one-hour visit. Booking is recommended, particularly at weekends; walk-ins depend on capacity and are not guaranteed. Do not invent availability or claim to have made a reservation.",
+              "source_ids": [
+                "sky-garden"
+              ],
+              "place_ids": [
+                "osm:2026-10-12:62731"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "natural-history",
+              "url": "https://www.nhm.ac.uk/visit.html",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "science-museum",
+              "url": "https://www.sciencemuseum.org.uk/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "va-museum",
+              "url": "https://www.vam.ac.uk/south-kensington/visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "greenwich-museums",
+              "url": "https://www.rmg.co.uk/plan-your-visit",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            },
+            {
+              "id": "sky-garden",
+              "url": "https://skygarden.london/booking/",
+              "retrieved_at": "2026-10-23T21:07:05.725Z"
+            }
+          ]
+        },
+        "editor_correction": {
+          "note": "The user explicitly intends to see a Science Museum experience, making the museum the visit destination; the recorded context role does not reflect that intent.",
+          "reviewed_response": {
+            "static_access": "not_applicable",
+            "response_kind": "answer",
+            "answer": "No. Science Museum general admission is free, but you should pre-book its free general ticket; some special experiences and exhibitions are separately ticketed, so check the specific experience’s page for its ticket and booking requirements.",
+            "source_ids": [
+              "science-museum"
+            ],
+            "scene": {
+              "camera": "focus",
+              "places": [
+                {
+                  "id": "osm:2026-10-12:20531",
+                  "role": "destination"
+                }
+              ]
+            }
+          },
+          "instruction": "This is an editorial teaching demonstration. Return this reviewed response faithfully; do not add unsupported claims."
+        }
+      },
+      "expected_output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "No. Science Museum general admission is free, but you should pre-book its free general ticket; some special experiences and exhibitions are separately ticketed, so check the specific experience’s page for its ticket and booking requirements.",
+        "source_ids": [
+          "science-museum"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "osm:2026-10-12:20531",
+              "role": "destination"
+            }
+          ]
+        }
+      },
+      "started_at": "2026-10-24T15:18:14.843Z",
+      "finished_at": "2026-10-24T15:18:16.760Z",
+      "request_id": "mreq_01a16e7db6557a40ae45f20288301a85",
+      "completion_model": "gpt-6-luna",
+      "response_headers": {
+        "access-control-expose-headers": "X-Request-ID,CF-Ray,CF-Ray",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a4f9f3f71bb8291a-AMS",
+        "content-length": "1269",
+        "content-type": "application/json",
+        "date": "Sat, 24 Oct 2026 15:18:16 GMT",
+        "openai-organization": "mubit-khbhk3",
+        "openai-processing-ms": "1684",
+        "openai-project": "proj_Ejaal6Thfo0bsUZYY2LkBTzx",
+        "openai-version": "2020-10-01",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "via": "1.1 google",
+        "x-content-type-options": "nosniff",
+        "x-middleware-request-id": "mreq_01a16e7db6557a40ae45f20288301a85",
+        "x-openai-proxy-wasm": "v0.1",
+        "x-ratelimit-limit-requests": "30000",
+        "x-ratelimit-limit-tokens": "[REDACTED]",
+        "x-ratelimit-remaining-requests": "29999",
+        "x-ratelimit-remaining-tokens": "[REDACTED]",
+        "x-ratelimit-reset-requests": "2ms",
+        "x-ratelimit-reset-tokens": "[REDACTED]",
+        "x-request-id": "req_3e1c8f14547a46bd8fa63d915cb1a142"
+      },
+      "usage": {
+        "prompt_tokens": 2878,
+        "completion_tokens": 107,
+        "total_tokens": 2985,
+        "prompt_tokens_details": {
+          "cached_tokens": 1292,
+          "cache_write_tokens": 1583,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw": "{\"static_access\":\"not_applicable\",\"response_kind\":\"answer\",\"answer\":\"No. Science Museum general admission is free, but you should pre-book its free general ticket. Some special experiences and exhibitions are separately ticketed, so check the specific experience’s page for its ticket and booking requirements.\",\"source_ids\":[\"science-museum\"],\"scene\":{\"camera\":\"focus\",\"places\":[{\"id\":\"osm:2026-10-12:20531\",\"role\":\"destination\"}]}}",
+      "inference": {
+        "route": "luna",
+        "label": "Luna via Mubit",
+        "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+        "requested_model": "gpt-6-luna",
+        "response_model": "gpt-6-luna",
+        "request_id": "mreq_01a16e7db6557a40ae45f20288301a85",
+        "original_request_id": null,
+        "recording": "full",
+        "adapter_id": null,
+        "uninterpreted_identity_headers": [],
+        "evidence": [
+          "Mubit gateway receipt: mreq_01a16e7db6557a40ae45f20288301a85",
+          "Completion model gpt-6-luna",
+          "OpenAI request ID and processing-time response headers"
+        ]
+      },
+      "output": {
+        "static_access": "not_applicable",
+        "response_kind": "answer",
+        "answer": "No. Science Museum general admission is free, but you should pre-book its free general ticket. Some special experiences and exhibitions are separately ticketed, so check the specific experience’s page for its ticket and booking requirements.",
+        "source_ids": [
+          "science-museum"
+        ],
+        "scene": {
+          "camera": "focus",
+          "places": [
+            {
+              "id": "osm:2026-10-12:20531",
+              "role": "destination"
+            }
+          ]
+        }
+      },
+      "exact_target_match": false
+    }
+  ],
+  "error": "Correction differs from reviewed target; inspect without retry",
+  "finished_at": "2026-10-24T15:18:16.760Z"
+}

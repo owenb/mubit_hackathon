@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-24T15:26:28.402Z",
+  "task_id": "ln_cd244c7ae58bc8483b16fb6b",
+  "task_key": "lk1_c0eb50451e86efc937b7119240b1e613",
+  "app_task_unchanged": true,
+  "correction_batch": {
+    "attempted": 5,
+    "planned": 6,
+    "exact_matches": 4,
+    "semantically_accepted": 5,
+    "stop_reason": "Fifth reply replaces a semicolon with a period and capitalization; answer, sources and destination pin unchanged. No retry. Sixth correction was not sent."
+  },
+  "additional_bad_examples": [
+    {
+      "case_id": "cgl-003-bank-northern-dlr",
+      "reason": "Moves W&C 290 m street/lift evidence to Northern–DLR interchange; unsupported."
+    },
+    {
+      "case_id": "cgl-008-wc-is-line",
+      "reason": "Overgeneralizes step-free route evidence to all connections; asserts unestablished below-ground segment."
+    }
+  ],
+  "assessment_scope": "Only teaching responses; final 20 unread and six fresh development questions not used to select corrections."
+}

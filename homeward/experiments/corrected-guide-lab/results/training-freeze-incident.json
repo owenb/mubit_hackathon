@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-24T15:13:35.005Z",
+  "type": "training_author_file_changed_after_submission",
+  "original_training_cases_sha256": "0d6b5a7b3ce071917e51fd24b111de0c707621b5cebb565faf6a95721431cb1c",
+  "current_training_cases_sha256": "b6eabf541217044184c8d9e0dbd2792cdfb8fc0f5483decffa7364540882ef4d",
+  "reported_changes": [
+    "cgl009 expected Bank role/rubric revised after submission",
+    "cgl010 bank-walbrook replaced by a Hopper case after submission"
+  ],
+  "submitted_inputs_match_frozen_manifest": true,
+  "development_cases_unchanged": true,
+  "development_calls_before_detection": 0,
+  "action": "Preserve original manifest and all40 submitted inputs. Do not re-run teaching from altered file. Evaluate only frozen development input snapshots and unchanged task contract.",
+  "actual_model_inputs": "manifest.json packets first40 and results/teach.json input",
+  "not_an_evaluation_change": true
+}

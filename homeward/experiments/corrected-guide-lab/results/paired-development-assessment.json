@@ -1,0 +1,188 @@
+{
+  "reviewer": "Luna-agent self-assessment; non-independent, non-blinded, not expert review",
+  "scope": "Six captured adapter replies only, judged against frozen development-cases.json and the evidence/candidates included in each captured input. Final20 was not used.",
+  "adapter_capture": {
+    "task_id": "ln_cd244c7ae58bc8483b16fb6b",
+    "adapter_id": "ad_lane_a190986c",
+    "version": 1,
+    "training_job": "ftjob_be8160c9",
+    "surface": "Mubit console Try models",
+    "serving_caveat": "UI displayed the fixed adapter v1; HTTP headers and normal API serving were not verified."
+  },
+  "cases": [
+    {
+      "case_id": "cg-dev-01-bank-wc-dlr-interchange",
+      "adapter": {
+        "complete_answer_acceptance": "fail",
+        "required_points": {
+          "bank_is_pin_and_waterloo_city_is_line": "met",
+          "not_all_inside_about_290m_street_and_lifts": "met",
+          "walbrook_weekday_lift_context_and_no_live_status_claim": "not_met"
+        },
+        "factual_errors_or_unsupported_claims": [
+          "Says the DLR's Bank station has a King William Street staff-operated lift 'which is not step-free'. The supplied evidence says DLR has a street-to-platform lift route and that the additional King William Street DLR lift is staff-operated on request; it does not say this lift is not step-free. The answer creates a materially misleading accessibility claim.",
+          "Omits that Waterloo & City lifts use Walbrook Monday–Friday, a required wayfinding detail."
+        ],
+        "scene": {
+          "assessment": "pass",
+          "camera": "focus",
+          "places": [{ "id": "station:bank", "role": "context" }],
+          "note": "Bank is the correct interchange anchor; Waterloo station is not incorrectly pinned."
+        },
+        "repetition_and_relevance": "The Northern/DLR step-free interchange sentence is repeated verbatim."
+      },
+      "luna_comparator": "Pass in the saved Luna assessment: correct Bank anchor and line/station distinction; the comparator supplied a concise sourced answer."
+    },
+    {
+      "case_id": "cg-dev-02-explicit-venue-endpoints",
+      "adapter": {
+        "complete_answer_acceptance": "pass",
+        "required_points": {
+          "both_stated_endpoints": "met",
+          "origin_destination_roles_follow_wording": "met",
+          "no_invented_route_or_verified_journey": "met"
+        },
+        "factual_errors_or_unsupported_claims": [],
+        "scene": {
+          "assessment": "pass",
+          "camera": "fit",
+          "places": [
+            { "id": "osm:2026-10-12:18306", "role": "origin" },
+            { "id": "osm:2026-10-12:48952", "role": "destination" }
+          ],
+          "note": "Both candidate IDs are valid and roles match explicit start/end wording; no route is drawn."
+        },
+        "repetition_and_relevance": "The answer adds admission information and a prior-day National Gallery opening detail to a map-only endpoint request. These claims are present in the supplied research, but are unnecessary and the prior-day detail is distracting; not a correctness failure."
+      },
+      "luna_comparator": "Pass in the saved Luna assessment; it kept the map-only answer concise and did not add irrelevant visit details."
+    },
+    {
+      "case_id": "cg-dev-03-context-only-park-comparison",
+      "adapter": {
+        "complete_answer_acceptance": "fail",
+        "required_points": {
+          "show_both_as_context_not_selected_destination": "met",
+          "brief_without_invented_distance_or_time": "not_met"
+        },
+        "factual_errors_or_unsupported_claims": [
+          "Says the National Maritime Museum, Queen's House, and Cutty Sark 'have free general entry'. The supplied Greenwich Museums evidence states the National Maritime Museum and Queen's House have free general entry, while Cutty Sark is ticketed; this is a clear contradiction.",
+          "Says the listed venues 'require booking ahead'. The evidence says to book ahead where possible and check availability, not that booking is required for all the named venues. This overstates the policy."
+        ],
+        "scene": {
+          "assessment": "pass",
+          "camera": "fit",
+          "places": [
+            { "id": "osm:2026-10-12:9188", "role": "context" },
+            { "id": "osm:2026-10-12:84173", "role": "context" }
+          ],
+          "note": "Correct contextual comparison pair and roles."
+        },
+        "repetition_and_relevance": "Answer expands well beyond the requested location comparison; it introduces a false free-admission assertion about Cutty Sark and unnecessary access advice."
+      },
+      "luna_comparator": "Uncertain in the saved Luna assessment: it also used destination roles against the context rubric and added directional claims not in the park evidence, but did not make the adapter's Cutty Sark/free-admission contradiction. Case03 role ambiguity remains disclosed; the adapter's factual error is independently sufficient for failure."
+    },
+    {
+      "case_id": "cg-dev-04-south-bank-duration-scope",
+      "adapter": {
+        "complete_answer_acceptance": "uncertain",
+        "required_points": {
+          "30_minutes_bounded_to_lambeth_bridge_blackfriars_no_extended_stops_and_pace_varies": "met",
+          "do_not_transfer_to_named_venue_segment_or_visits": "met",
+          "describe_itinerary_as_suggested_not_verified_or_accessibility_certified": "partially_met"
+        },
+        "factual_errors_or_unsupported_claims": [],
+        "scene": {
+          "assessment": "pass_with_alternative_scene",
+          "camera": "fit",
+          "places": [
+            { "id": "osm:2026-10-12:181208", "role": "context" },
+            { "id": "osm:2026-10-12:19002", "role": "context" },
+            { "id": "osm:2026-10-12:18520", "role": "context" }
+          ],
+          "note": "All three explicitly named venues have valid context pins. It omits the expected optional South Bank area anchor; this is a useful alternative and not a map failure."
+        },
+        "repetition_and_relevance": "The timing boundary and no-route/accessibility caveats are useful. 'The published estimate is a suggested sequence' conflates the estimate with the itinerary, and it does not actually offer the itinerary sequence, so retain uncertainty rather than a clear pass."
+      },
+      "luna_comparator": "Pass in the saved Luna assessment: it explicitly described a proposed stroll and separated the venue leg from the published bridge-to-bridge estimate. Both outputs correctly avoid turning the 30-minute estimate into the requested venue-to-venue travel time."
+    },
+    {
+      "case_id": "cg-dev-05-payment-identity-no-map",
+      "adapter": {
+        "complete_answer_acceptance": "pass",
+        "required_points": {
+          "phone_and_physical_card_are_separate_and_rail_touches_must_match": "met",
+          "mismatch_can_lead_to_maximum_fare_without_exact_charge_claim": "met",
+          "bus_touch_in_only_and_no_map": "met"
+        },
+        "factual_errors_or_unsupported_claims": [],
+        "scene": {
+          "assessment": "pass",
+          "camera": "keep",
+          "places": [],
+          "note": "Appropriate no-pin behavior for general payment guidance."
+        },
+        "repetition_and_relevance": "Clear and compact; it says a maximum fare can result without predicting an actual charge."
+      },
+      "luna_comparator": "Pass in the saved Luna assessment; it also correctly kept the scene empty. Its extra account-adjustment advice was not source-backed, while the adapter does not add that claim."
+    },
+    {
+      "case_id": "cg-dev-06-museum-free-booking-contrast",
+      "adapter": {
+        "complete_answer_acceptance": "pass",
+        "required_points": {
+          "both_free_general_admission_with_some_extras_paid": "met",
+          "va_no_booking_science_museum_free_ticket_booking": "met",
+          "both_contextual_comparison_pins": "met"
+        },
+        "factual_errors_or_unsupported_claims": [],
+        "scene": {
+          "assessment": "pass",
+          "camera": "fit",
+          "places": [
+            { "id": "osm:2026-10-12:20531", "role": "context" },
+            { "id": "osm:2026-10-12:180927", "role": "context" }
+          ],
+          "note": "Correct candidate IDs and contextual roles."
+        },
+        "repetition_and_relevance": "The booking distinction is repeated. The date-bound half-term opening detail and Fashion Gallery closure are supported by supplied research but unsolicited; they add avoidable length without changing the comparison."
+      },
+      "luna_comparator": "Pass in the saved Luna assessment; it stated the admission distinction and contextual pins without unsolicited date/closure details."
+    }
+  ],
+  "aggregate": {
+    "adapter": {
+      "clear_pass": 3,
+      "uncertain": 1,
+      "fail": 2,
+      "denominator": 6,
+      "factual_failure_cases": 2,
+      "material_incorrect_or_overstated_claims": 2,
+      "map_scene_intent_passes": 6,
+      "exact_scene_mismatches": 1,
+      "exact_scene_mismatch_note": "Case04 omitted the optional South Bank area anchor but pinned every explicitly requested venue; accepted as relevant alternative."
+    },
+    "luna_comparator_from_saved_assessment": {
+      "clear_pass": 5,
+      "uncertain": 1,
+      "fail": 0,
+      "denominator": 6,
+      "clear_factual_or_required_place_failures": 0,
+      "exact_scene_matches": 4,
+      "exact_scene_mismatches": 2
+    },
+    "interpretation": "These conservative counts are per-case complete-answer judgments out of six, not token-level or statistical estimates. The adapter has two clear evidence errors, one material Bank lift/accessibility claim and one Greenwich free-admission/booking overstatement in case03. Its map intent is good across the six: no clear wrong or missing requested pin/role, with one accepted alternative scene. Compared with the saved Luna assessment, the adapter is weaker on case01 and case03, stronger on case05's extra-claim restraint, and uncertain on case04's itinerary phrasing."
+  },
+  "transfer_and_regression": {
+    "bank_correction_case01": "Partial evidence of transfer: it distinguishes Waterloo & City as a line from Bank station and maps only Bank, and it gives the 290 m street/lift boundary. It fails the complete-answer rubric by omitting Walbrook weekdays and adding a materially misleading claim that the King William Street lift is not step-free. Do not call this a clean correction transfer.",
+    "south_bank_duration_case04": "Positive but incomplete evidence: it preserves the bridge-to-bridge scope, no-extended-stops qualifier, pace variation, and does not transplant 30 minutes to the named venues. The suggested-itinerary wording is imprecise and no sequence is supplied, so acceptance remains uncertain.",
+    "regressions": "The case03 Cutty Sark/free-entry contradiction and booking-policy overstatement are clear evidence-grounding regressions relative to the saved Luna assessment. Case01 also adds an unsupported accessibility interpretation absent from the Luna comparator."
+  },
+  "limitations": [
+    "This is a Luna-agent assessment of six responses, not an independent or blinded review; the same model family authored the cases and rubric and performed the review.",
+    "The comparator is the existing saved Luna assessment, not a new matched run under independently verified identical settings.",
+    "Playground/API settings may differ; the UI capture does not establish normal API serving or identical decoding/system-prompt conditions.",
+    "This six-case development set cannot establish a general frontier-model win, controlled old-v1 improvement, broad generalization, or cost/latency savings.",
+    "Exact scene matching is a diagnostic rather than a blanket quality criterion; case03's role ambiguity remains disclosed, and case04's omitted optional area anchor is accepted based on user intent.",
+    "No result is reported for cases outside these six. The target rubric was not present in adapter inputs, as recorded in the capture."
+  ]
+}

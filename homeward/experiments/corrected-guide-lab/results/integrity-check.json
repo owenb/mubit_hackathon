@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-24T15:53:16.286Z",
+  "isolated_task_hash": "deb13fa888a79a32e598e08d1442bce1c2817b8f51ecdb412267505ddb64fbf7",
+  "app_task_hash": "0771930a0dd626b64fe9a0ed80dcf628b2da46b38cd1ff34ca440dc064b774c4",
+  "separate_fingerprint": true,
+  "app_contract_unchanged": true,
+  "frozen_contract_unchanged": true,
+  "submitted_training_inputs_match_freeze": true,
+  "submitted_dev_inputs_match_freeze": true,
+  "all_api_replies_identified_luna": true,
+  "dev_metadata_only": true,
+  "no_dev_target_fields": true,
+  "final20_sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+  "final20_unchanged": true,
+  "counts": {
+    "teacher": 40,
+    "corrections": 5,
+    "fresh_dev_luna": 6,
+    "fresh_dev_adapter": 6,
+    "api_responses_with_headers": 51
+  },
+  "paired_inputs_identical": true,
+  "adapter_schema_and_pin_ids_valid": true,
+  "all_api_response_headers_recorded": true,
+  "playground_identity_per_response": true,
+  "playground_http_headers_available": false
+}

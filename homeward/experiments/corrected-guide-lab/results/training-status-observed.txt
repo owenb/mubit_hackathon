@@ -1,0 +1,38 @@
+Browser tab: 1, Title: "Task — Middleware console", URL: "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/workloads/ln_cd244c7ae58bc8483b16fb6b".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 90-91
++			132 container
++				133 button (expanded) Details, Secondary Actions: Collapse
++					134 text Details
++				135 definition list
++					136 container Usable for training
++						137 text Usable for training
++					138 text 45 calls
++					139 container Examples
++						140 text Examples
++					141 text 36 kept · 8 rejected · 1 waiting for review
++					142 container Sessions
++						143 text Sessions
++					144 text 36 with kept examples
++					145 container Review today
++						146 text Review today
++					147 text 43 queued · 0 over today's limit · 3 running
++					148 container First training
++						149 text First training
++					150 text started 5 min ago
++					151 container Routes
++						152 text Routes
++					153 text none
++					154 container Progress
++						155 text Progress
++					156 text not measured
++					157 container Regression check
++						158 text Regression check
++					159 text not measured
++					160 container Match cut-off
++						161 text Match cut-off
++					162 text not measured
++					163 container Ids
++						164 text Ids
++					165 text ln_cd244c7ae58bc8483b16fb6b · task key lk1_c0eb50451e86efc937b7119240b1e613 · ftjob_be8160c9
+The focused UI element is 133 button (expanded) Details, Secondary Actions: Collapse

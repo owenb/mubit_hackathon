@@ -1,0 +1,162 @@
+{
+  "reviewer": "Luna self-assessment; non-independent and not expert/blinded review",
+  "source_batch": "luna-dev.json",
+  "executed_contract": "The frozen isolated contract recorded in corrected-guide-lab/manifest.json; this assessment does not use the proposed prefix in development-manifest.json.",
+  "scope": "Qualitative check of required points, forbidden claims, answer usefulness/evidence, and scene roles. Exact-scene mismatch is diagnostic and is not by itself a failure.",
+  "limitations": [
+    "The responses identify as gpt-6-luna via Mubit, with no adapter_id; this assesses the Luna comparator under the frozen prompt, not adapter behavior or improvement.",
+    "This is a six-case development sample, with the same Luna author/reviewer, and is not independent verification or a final benchmark.",
+    "A source can support the core recommendation without supporting every extra geographic or procedural detail; such details are called out below.",
+    "Alternative map-role interpretations are disclosed rather than silently treated as exact-scene matches."
+  ],
+  "aggregate": {
+    "cases": 6,
+    "clear_complete_pass": 5,
+    "uncertain_cases": 1,
+    "clear_factual_or_required-place_failure": 0,
+    "exact_scene_matches": 4,
+    "exact_scene_mismatches": 2,
+    "note": "Case 3 has both requested park pins and a useful answer but assigns destination roles where the frozen rubric asks for context; treat as uncertain because they are possible future visit choices. Case 4 omits only an optional South Bank area anchor while retaining all three named stops, so it passes on intent despite the exact-scene diagnostic."
+  },
+  "cases": [
+    {
+      "case_id": "cg-dev-01-bank-wc-dlr-interchange",
+      "status": "pass",
+      "complete_answer_pass": true,
+      "required_points": [
+        { "point": "Identify Bank as the mapped station; do not make Waterloo a destination from the line name.", "met": true, "note": "Names Bank as the interchange location and pins only station:bank." },
+        { "point": "Explain the step-free interchange involves about 290 metres via street and lifts, rather than being fully inside.", "met": true, "note": "States about 290 metres via street and lifts; does not call it all-inside." },
+        { "point": "Mention the weekday Walbrook access detail without implying current status or a guaranteed gap-free journey.", "met": true, "note": "Says Walbrook Monday to Friday; makes no live-status or gap-free claim." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Pin Waterloo station merely because Waterloo & City is named.", "avoided": true },
+        { "claim": "Describe the interchange as entirely inside or promise current lift availability.", "avoided": true }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": true,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": true,
+        "actual": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+        "note": "Correctly treats Bank as the location of an interchange and Waterloo & City as a line."
+      },
+      "evidence_assessment": "Claims align with bank and bank-wc; citations are tfl-guide and tfl-topology, which were supplied."
+    },
+    {
+      "case_id": "cg-dev-02-explicit-venue-endpoints",
+      "status": "pass",
+      "complete_answer_pass": true,
+      "required_points": [
+        { "point": "Show Natural History Museum as the stated start and National Gallery anchor as the stated end.", "met": true, "note": "Restates both endpoints and scene pins the catalogue anchors in the correct order." },
+        { "point": "Use roles that follow explicit start/end wording.", "met": true, "note": "Natural History Museum is origin; National Gallery anchor is destination." },
+        { "point": "Do not invent a route line or claim a verified journey.", "met": true, "note": "No route or journey claim." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Reverse endpoints or add unrelated museums as stops.", "avoided": true },
+        { "claim": "Imply pins are exact entrances.", "avoided": true }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": true,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": true,
+        "actual": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:18306", "role": "origin" }, { "id": "osm:2026-10-12:48952", "role": "destination" }] },
+        "note": "The National Gallery catalogue anchor is Nelson's Column; the answer does not call it an entrance."
+      },
+      "evidence_assessment": "This map-only endpoint request can correctly use no source_ids; venue anchors and the National Gallery area-anchor note are supplied in map/research context."
+    },
+    {
+      "case_id": "cg-dev-03-context-only-park-comparison",
+      "status": "uncertain",
+      "complete_answer_pass": false,
+      "required_points": [
+        { "point": "Show both named parks together as contextual locations.", "met": true, "note": "Both park IDs are present in a fit scene." },
+        { "point": "Neither park is an origin or chosen destination yet.", "met": false, "note": "Both are assigned destination, although the user is still deciding between them." },
+        { "point": "Keep the answer brief and avoid invented distance/time claims.", "met": true, "note": "No distance or travel-time estimate is given." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Assign origin or destination roles to either park.", "avoided": false, "note": "Both roles are destination." },
+        { "claim": "Add unrelated Greenwich venues or other parks as requested pins.", "avoided": true, "note": "Only the two requested parks are pinned." }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": false,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": false,
+        "actual": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:9188", "role": "destination" }, { "id": "osm:2026-10-12:84173", "role": "destination" }] },
+        "alternative_acceptance": "The locations are explicitly named as possible future visit choices, so destination roles could be defended if destination means an intended place to visit. Under the frozen context-only wording and map rule, context is the better reading; retain as an uncertain diagnostic rather than a clear factual failure."
+      },
+      "evidence_assessment": "Free park entry is supported by royal-parks-1. The added directional descriptions (Greenwich Park southeast of central London; Hyde Park west-central) are not stated in the supplied park fact. They may be geographically correct, but the response should omit or separately ground them in this closed evidence task.",
+      "unsupported_extra_claims": ["Greenwich Park is southeast of central London.", "Hyde Park is in the west-central area."]
+    },
+    {
+      "case_id": "cg-dev-04-south-bank-duration-scope",
+      "status": "pass",
+      "complete_answer_pass": true,
+      "required_points": [
+        { "point": "Bound about 30 minutes to Lambeth Bridge–Blackfriars without extended stops and acknowledge pace variation.", "met": true, "note": "States the exact endpoints and no-extended-stops condition; advises allowing for stops and pace." },
+        { "point": "Do not transfer the time to National Theatre–OXO–Tate or claim it includes stops/visits.", "met": true, "note": "Explicitly says the estimate is not for the requested venue segment." },
+        { "point": "Present a suggested itinerary, not verified routing or an audited accessible route.", "met": true, "note": "Calls it a proposed stroll and disclaims verified directions/accessibility audit." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Call the whole requested venue sequence a 30-minute walk.", "avoided": true },
+        { "claim": "Certify an accessible route, entrance, ramp, or journey from map anchors.", "avoided": true }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": false,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": true,
+        "actual": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:181208", "role": "context" }, { "id": "osm:2026-10-12:19002", "role": "context" }, { "id": "osm:2026-10-12:18520", "role": "context" }] },
+        "note": "All three requested stops are pinned with context roles. The expected South Bank area anchor is omitted, but it was not named by the user and is not necessary to understand the requested stops; accept this relevant alternative scene."
+      },
+      "evidence_assessment": "Timing and itinerary scope align with south-bank-1 and south-bank-2; Tate admission details align with tate-modern-1. Supplied citations are south-bank and tate-modern."
+    },
+    {
+      "case_id": "cg-dev-05-payment-identity-no-map",
+      "status": "pass",
+      "complete_answer_pass": true,
+      "required_points": [
+        { "point": "Explain linked phone and physical card are separate payment identities and rail entry/exit must use the same one.", "met": true, "note": "States the identities differ and advises one device/card for both rail touches." },
+        { "point": "Explain a mismatch can lead to maximum fare without claiming the exact charge.", "met": true, "note": "Says potentially a maximum fare and gives no specific charge." },
+        { "point": "Bus touch-in only and no map pins.", "met": true, "note": "Says the single phone touch-in on the bus was correct; scene is keep with no places." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Treat the phone and physical card as interchangeable because of their shared account.", "avoided": true },
+        { "claim": "Promise a particular charge or adjustment.", "avoided": true }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": true,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": true,
+        "actual": { "camera": "keep", "places": [] },
+        "note": "Correct no-location map behavior for general payment advice."
+      },
+      "evidence_assessment": "Core payment and maximum-fare claims align with tfl-payment-1 through tfl-payment-3; bus touch guidance is supported. The extra October fare/date statement is supported by tfl-bus-fares-1. The advice to check payment history/TfL account for an adjustment is plausible but not stated in the supplied facts, so do not treat it as verified source-backed policy."
+    },
+    {
+      "case_id": "cg-dev-06-museum-free-booking-contrast",
+      "status": "pass",
+      "complete_answer_pass": true,
+      "required_points": [
+        { "point": "Both have free general admission, with some separately charged exhibitions/events/experiences.", "met": true, "note": "States free admission and says some exhibitions/events may cost extra." },
+        { "point": "V&A general entry needs no booking; Science Museum asks visitors to pre-book a free ticket.", "met": true, "note": "States both policies distinctly." },
+        { "point": "Show both as contextual comparison options.", "met": true, "note": "Both museums are pinned as context in a fit scene." }
+      ],
+      "forbidden_claims": [
+        { "claim": "Say both require booking or guarantee current opening.", "avoided": true },
+        { "claim": "Imply all exhibitions/experiences are free.", "avoided": true }
+      ],
+      "scene": {
+        "diagnostic_exact_scene": true,
+        "camera_correct": true,
+        "required_places_present": true,
+        "roles_correct": true,
+        "actual": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:180927", "role": "context" }, { "id": "osm:2026-10-12:20531", "role": "context" }] },
+        "note": "Exact relevant pair and context roles." 
+      },
+      "evidence_assessment": "Admission/booking distinctions align with va-museum-1 and science-museum-1. The conditional 24 October half-term opening detail aligns with science-museum-2 and is dated rather than presented as a live check."
+    }
+  ]
+}

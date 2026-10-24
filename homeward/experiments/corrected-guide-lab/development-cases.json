@@ -1,0 +1,142 @@
+{
+  "author": "Luna agent",
+  "label": "Development set; not a final benchmark",
+  "cases": [
+    {
+      "id": "cg-dev-01-bank-wc-dlr-interchange",
+      "question": "At Bank, I want to switch between the Waterloo & City and DLR lines. Is that an all-inside interchange, and can you show the interchange location?",
+      "context_ids": [],
+      "expected_scene": {
+        "camera": "focus",
+        "places": [{ "id": "station:bank", "role": "context" }]
+      },
+      "required_points": [
+        "Identify Bank as the station being mapped; Waterloo & City is a line name here, not a separate destination pin.",
+        "The step-free Waterloo & City interchange with Northern/DLR uses about 290 metres via street and lifts, so it is not entirely inside the station.",
+        "The Waterloo & City lifts at Bank use Walbrook on weekdays; do not imply current lift status or a guaranteed gap-free journey."
+      ],
+      "forbidden_claims": [
+        "Do not pin Waterloo station merely because Waterloo & City is named.",
+        "Do not describe the interchange as entirely within the station or promise present lift availability."
+      ],
+      "source_fact_ids": ["bank", "bank-wc"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    },
+    {
+      "id": "cg-dev-02-explicit-venue-endpoints",
+      "question": "Our day starts at the Natural History Museum and ends by the National Gallery. Can you show both endpoints on a map?",
+      "context_ids": [],
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:18306", "role": "origin" },
+          { "id": "osm:2026-10-12:48952", "role": "destination" }
+        ]
+      },
+      "required_points": [
+        "Include the Natural History Museum as the stated start and the National Gallery anchor as the stated end.",
+        "Use origin and destination roles that follow the user's explicit wording.",
+        "Do not invent a route line or claim a verified journey."
+      ],
+      "forbidden_claims": [
+        "Do not reverse the stated endpoints or add unrelated museums as stops.",
+        "Do not imply that the map pins show exact entrances."
+      ],
+      "source_fact_ids": ["natural-history-1", "national-gallery-1"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    },
+    {
+      "id": "cg-dev-03-context-only-park-comparison",
+      "question": "I’m deciding between Greenwich Park and Hyde Park for a future visit. Could you place both on one map so I can compare their locations?",
+      "context_ids": [],
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:9188", "role": "context" },
+          { "id": "osm:2026-10-12:84173", "role": "context" }
+        ]
+      },
+      "required_points": [
+        "Show both named parks together as contextual locations; neither is an origin or a chosen destination yet.",
+        "Keep the answer brief and do not invent distances or travel times."
+      ],
+      "forbidden_claims": [
+        "Do not assign an origin or destination role to either park.",
+        "Do not add unrelated Greenwich venues or other parks as if the user requested them."
+      ],
+      "source_fact_ids": ["royal-parks-1"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    },
+    {
+      "id": "cg-dev-04-south-bank-duration-scope",
+      "question": "I’m setting aside a couple of hours for the National Theatre, OXO Tower Wharf, and Tate Modern. What does the published walking-time estimate for a riverside stroll tell me?",
+      "context_ids": [],
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:704", "role": "context" },
+          { "id": "osm:2026-10-12:181208", "role": "context" },
+          { "id": "osm:2026-10-12:19002", "role": "context" },
+          { "id": "osm:2026-10-12:18520", "role": "context" }
+        ]
+      },
+      "required_points": [
+        "The published estimate is about 30 minutes from Lambeth Bridge to Blackfriars Bridge without extended stops; individual pace varies.",
+        "Do not transfer that estimate to the National Theatre–Tate Modern leg or claim it covers visits and stops.",
+        "Describe the itinerary as a suggestion, not verified turn-by-turn directions or an audited accessible route."
+      ],
+      "forbidden_claims": [
+        "Do not call the entire requested venue sequence a 30-minute walk.",
+        "Do not certify an accessible route, entrance, ramp, or journey from the map anchors."
+      ],
+      "source_fact_ids": ["south-bank-1", "south-bank-2", "tate-modern-1"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    },
+    {
+      "id": "cg-dev-05-payment-identity-no-map",
+      "question": "I tapped into the Tube with a physical contactless card but touched out with its linked phone, then used the phone on a bus. Did I use the right touches, and could the rail fare be affected?",
+      "context_ids": [],
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": [
+        "A phone and its linked physical card are separate payment identities; rail entry and exit need the same card or device.",
+        "A missing or mismatched rail touch can lead to a maximum fare; do not claim the exact fare charged.",
+        "On a bus, touch in only. This general payment question needs no map pin."
+      ],
+      "forbidden_claims": [
+        "Do not treat the physical card and phone as interchangeable because they share a bank account.",
+        "Do not promise that a particular charge was or will be applied."
+      ],
+      "source_fact_ids": ["tfl-payment-1", "tfl-payment-2", "tfl-payment-3"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    },
+    {
+      "id": "cg-dev-06-museum-free-booking-contrast",
+      "question": "For an indoor afternoon, can you compare the V&A and the Science Museum on free general admission and whether I should book?",
+      "context_ids": [],
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:180927", "role": "context" },
+          { "id": "osm:2026-10-12:20531", "role": "context" }
+        ]
+      },
+      "required_points": [
+        "Both museums offer free general admission, with separate charges possible for some exhibitions, events, or experiences.",
+        "V&A South Kensington general admission does not need booking; Science Museum asks visitors to pre-book a free ticket.",
+        "Show both as contextual options because the user is comparing them and has not selected one."
+      ],
+      "forbidden_claims": [
+        "Do not say that both general admissions require booking or that either is guaranteed open now.",
+        "Do not imply all exhibitions or experiences are free."
+      ],
+      "source_fact_ids": ["va-museum-1", "science-museum-1"],
+      "expected_response_kind": "answer",
+      "expected_static_access": "not_applicable"
+    }
+  ]
+}

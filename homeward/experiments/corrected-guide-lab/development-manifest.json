@@ -1,0 +1,71 @@
+{
+  "label": "Six-case development set; not a final benchmark",
+  "author": {
+    "model": "gpt-6-luna",
+    "review_status": "Luna-agent-authored; not independent expert review"
+  },
+  "created_at": "2026-10-24T15:08:30.544Z",
+  "artifacts": {
+    "cases_file": "development-cases.json",
+    "cases_sha256": "149f6d808830add0d6c88523b6dcd038bad30666526bdff6760df7dc37d10c10"
+  },
+  "development_only": true,
+  "intended_use": "Isolated full-answer-plus-map development diagnostic using the unchanged Homeward schema and generic corrected task rules.",
+  "model_input_policy": {
+    "send_fields": [
+      "question",
+      "context_ids",
+      "map_candidates",
+      "research"
+    ],
+    "never_send_fields": [
+      "expected_scene",
+      "required_points",
+      "forbidden_claims",
+      "source_fact_ids",
+      "expected_response_kind",
+      "expected_static_access"
+    ],
+    "oracle_is_separate": true
+  },
+  "behavior_basis": {
+    "core": "homeward/src/core.mjs and homeward/src/map-contract.mjs, read unchanged",
+    "evidence": "homeward/data/knowledge.json, read unchanged",
+    "prior_corrections": "homeward/results/spatial-wave4/corrections.json (Luna-agent examples; not human-reviewed)"
+  },
+  "case_count": 6,
+  "scope": [
+    "Bank line-versus-station distinction, context pin, and street/lift interchange",
+    "Explicit origin and destination roles across two supported venues",
+    "Context-only comparison",
+    "South Bank duration estimate scope",
+    "General payment identity with no map pins",
+    "Museum free-entry and booking contrast"
+  ],
+  "validation": {
+    "offline_only": true,
+    "live_model_calls": 0,
+    "checks": [
+      "exactly six cases",
+      "expected place IDs in mapCandidates(question, context_ids)",
+      "expected_scene passes validateScene",
+      "source_fact_ids present in researchFor(question, context_ids)",
+      "research fresh under current static TTL",
+      "reserved old dev terms absent from authored questions"
+    ]
+  },
+  "author_proposed_prompt_not_executed": {
+    "system_prompt_prefix": "Development-only Homeward diagnostic. Answer the user’s travel question using the supplied research and map candidates. The unchanged generic Homeward rules follow this prefix and remain in force. Return the standard homeward_access JSON object only. Do not refer to a rubric, expected answer, or evaluation.",
+    "append_unchanged_core_instructions": true,
+    "core_instruction_sha256": "deb0720aa6350ad49cd3257a22cb8c1af10815a1c1996d6809f397646cc28b06",
+    "schema_name": "homeward_access",
+    "schema_sha256": "bd1e889786b46d3a3d9b47c2d3eb440dfa17557000f5a07227fbda46168910f6",
+    "task_fingerprint_sha256": "0771930a0dd626b64fe9a0ed80dcf628b2da46b38cd1ff34ca440dc064b774c4"
+  },
+  "executed_contract": {
+    "source": "manifest.json",
+    "task_hash": "deb13fa888a79a32e598e08d1442bce1c2817b8f51ecdb412267505ddb64fbf7",
+    "instructions": "Identical isolated task instructions and schema used for training and development. No development-specific prefix.",
+    "input_policy": "Frozen manifest packets; no oracle fields."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "protocol_version": 1,
+  "purpose": "Compare future actual adapter responses with the frozen six-case development set and the saved Luna comparator assessment. This is a development diagnostic, not a final benchmark.",
+  "candidate": {
+    "task_id": "ln_cd244c7ae58bc8483b16fb6b",
+    "training_job": "ftjob_be8160c9",
+    "model": "Qwen3-4B",
+    "training_version": "v1",
+    "response_state": "awaiting_actual_adapter_responses"
+  },
+  "frozen_references": [
+    {
+      "path": "homeward/experiments/corrected-guide-lab/development-cases.json",
+      "sha256": "149f6d808830add0d6c88523b6dcd038bad30666526bdff6760df7dc37d10c10"
+    },
+    {
+      "path": "homeward/experiments/corrected-guide-lab/results/luna-dev-assessment.json",
+      "sha256": "fedf5a50b83db2a7bf07b54bd51d05473728cfb6d072c56c615eef01d8f17c22"
+    }
+  ],
+  "case_ids": [
+    "cg-dev-01-bank-wc-dlr-interchange",
+    "cg-dev-02-explicit-venue-endpoints",
+    "cg-dev-03-context-only-park-comparison",
+    "cg-dev-04-south-bank-duration-scope",
+    "cg-dev-05-payment-identity-no-map",
+    "cg-dev-06-museum-free-booking-contrast"
+  ],
+  "review_method": [
+    "For each response, assess whether the complete answer addresses the request, supports factual claims with the case's supplied evidence, covers required points, and avoids forbidden or materially unsupported claims.",
+    "Review the returned scene separately: verify explicitly requested or necessary places, no-pin behavior where specified, and roles/camera against user wording and map contract. A scene mismatch is a diagnostic; do not treat exact set equality as a blanket quality rule when a relevant alternative scene satisfies intent.",
+    "Record case-level outcome as pass, fail, or uncertain with a concise reason. Keep answer quality and scene diagnostics separately visible. Do not infer an outcome before the actual adapter response exists.",
+    "Use the Luna assessment as a comparison reference only; it is not ground truth. Reassess against the frozen case requirements and source evidence rather than copying its labels."
+  ],
+  "case03_uncertainty": {
+    "case_id": "cg-dev-03-context-only-park-comparison",
+    "disclosure": "The frozen rubric asks for context roles because the user is comparing future options and has chosen neither. The saved Luna assessment marks the Luna output uncertain: destination roles are defensible if interpreted as candidate visit destinations, but context is the stronger contract reading. Preserve this ambiguity in adapter review; report roles explicitly and do not silently relax or convert the frozen rubric."
+  },
+  "limitations": [
+    "The comparator assessment was written by Luna and is non-blinded, non-independent, and not expert review.",
+    "Playground and API settings may differ, so observed differences cannot be attributed solely to training.",
+    "The case targets/rubrics were not included in the adapter input; they are evaluator-only references.",
+    "Exact scene matching is diagnostic, not a blanket measure of answer or task quality; relevant alternatives require intent-based review.",
+    "This is a six-case development sample, not a final benchmark or evidence of generalization."
+  ],
+  "results": null
+}

@@ -1,0 +1,405 @@
+{
+  "author_model": "gpt-6-luna",
+  "cases": [
+    {
+      "id": "cgl-001-bank-wc-rain",
+      "family": "bank-access",
+      "question": "If it is pouring, can I change from the Waterloo & City line to the Northern line at Bank without going outside?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["No: the step-free interchange uses about 290 metres via street and lifts.", "The answer is about the interchange, not current lift operation or train boarding."],
+      "forbidden_claims": ["The transfer stays entirely underground or indoors.", "Current lifts or gap-free boarding are guaranteed."],
+      "source_fact_ids": ["bank-wc"],
+      "correction_basis": "Generalized from the corrected Bank interchange answer; weather does not change the described street segment."
+    },
+    {
+      "id": "cgl-002-bank-wc-dlr",
+      "family": "bank-access",
+      "question": "I use a wheelchair. Is the step-free change from Waterloo & City to DLR at Bank an indoor transfer?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["The step-free interchange includes about 290 metres via street and lifts.", "Do not infer current lift status or a gap-free route to the train."],
+      "forbidden_claims": ["It is all indoors.", "Every part of the journey is guaranteed accessible."],
+      "source_fact_ids": ["bank-wc"],
+      "correction_basis": "Corrected Bank access distinction applied to a different user phrasing and DLR branch."
+    },
+    {
+      "id": "cgl-003-bank-northern-dlr",
+      "family": "bank-access",
+      "question": "At Bank, could I swap between the Northern and DLR step-free routes without leaving the station building?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["The step-free interchange uses a street-level segment and lifts, around 290 metres.", "Separate step-free platform access from a fully indoor transfer."],
+      "forbidden_claims": ["A step-free transfer at Bank is wholly indoors.", "No street section is involved."],
+      "source_fact_ids": ["bank-wc", "bank"],
+      "correction_basis": "Tests the same corrected street-transfer fact across another Bank line pairing."
+    },
+    {
+      "id": "cgl-004-bank-line-specific",
+      "family": "bank-access",
+      "question": "Are all Tube platforms at Bank reachable step-free from street level?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["Bank is partly step-free.", "Northern and DLR have street-to-platform lift routes; Central does not."],
+      "forbidden_claims": ["All lines at Bank are step-free.", "A lift symbol proves boarding or interchange is step-free."],
+      "source_fact_ids": ["bank"],
+      "correction_basis": "Uses the corrected rule to state line-specific access rather than overgeneralizing a station label."
+    },
+    {
+      "id": "cgl-005-bank-central",
+      "family": "bank-access",
+      "question": "Can I use a lift from the street to get to the Central line at Bank?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["Bank's Central line does not have a street-to-platform step-free route.", "Distinguish the Central line from the Northern and DLR routes."],
+      "forbidden_claims": ["The Central line is street-to-platform step-free at Bank.", "A different line's lift route proves Central access."],
+      "source_fact_ids": ["bank"],
+      "correction_basis": "Tests that partial station access is explained by requested line."
+    },
+    {
+      "id": "cgl-006-bank-northern",
+      "family": "bank-access",
+      "question": "I need a step-free way from street level to the Northern line at Bank. Is that listed?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["A street-to-platform lift route is listed for the Northern line at Bank.", "Do not extend that fact to current lift operation, train boarding, or the whole onward journey."],
+      "forbidden_claims": ["Current service is guaranteed.", "The route has level boarding or is gap-free."],
+      "source_fact_ids": ["bank"],
+      "correction_basis": "Keeps the access answer bounded to the precise line and access segment."
+    },
+    {
+      "id": "cgl-007-bank-dlr",
+      "family": "bank-access",
+      "question": "Does the DLR at Bank have a lift route between the street and platform?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["The DLR has a street-to-platform lift route at Bank.", "This does not establish current lift status or boarding conditions."],
+      "forbidden_claims": ["Every line at Bank has the same access.", "A lift route guarantees a fully accessible journey."],
+      "source_fact_ids": ["bank"],
+      "correction_basis": "Teaches line-specific access and the boundary of the evidence."
+    },
+    {
+      "id": "cgl-008-wc-is-line",
+      "family": "line-versus-station",
+      "question": "I’m taking the Waterloo & City line to change to the DLR at Bank. Is that connection entirely below ground?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["The Bank interchange includes about 290 metres via street and lifts.", "Waterloo & City is mentioned as a line; map Bank as the interchange, without adding Waterloo as a destination."],
+      "forbidden_claims": ["The transfer is entirely underground.", "Pin Waterloo solely because the line name contains Waterloo."],
+      "source_fact_ids": ["bank-wc"],
+      "correction_basis": "Combines the corrected interchange answer with the map contract's line-name ambiguity rule."
+    },
+    {
+      "id": "cgl-009-waterloo-origin-bank-end",
+      "family": "place-roles",
+      "question": "I’ll start at Waterloo station, take the Waterloo & City line, and change to the DLR at Bank. Mark my start and interchange.",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "station:waterloo", "role": "origin" }, { "id": "station:bank", "role": "context" }] },
+      "required_points": ["Waterloo station is explicitly the origin; Bank is the intermediate interchange and therefore context.", "Explain that the Bank step-free interchange to DLR includes a street segment if access is discussed.", "Do not treat the line name alone as a separate destination."],
+      "forbidden_claims": ["A verified turn-by-turn route or journey time.", "A wholly indoor Bank interchange."],
+      "source_fact_ids": ["bank-wc", "south-bank-1"],
+      "correction_basis": "Tests when Waterloo is a real origin explicitly named as a station, distinct from the line-name case."
+    },
+    {
+      "id": "cgl-010-general-hopper-fare",
+      "family": "general-advice-no-pin",
+      "question": "If I take two London buses within an hour using the same payment device, how does the Hopper fare work?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["Hopper allows unlimited bus and tram journeys within one hour of the first touch-in using the same card or device.", "It is automatic.", "This general fare question does not need a map pin."],
+      "forbidden_claims": ["A particular route or station is required to answer.", "A Hopper transfer lasts longer than the stated one-hour window."],
+      "source_fact_ids": ["tfl-bus-fares-2"],
+      "correction_basis": "Tests general fare advice with no location and the map contract's no-pin behavior."
+    },
+    {
+      "id": "cgl-011-bank-boarding",
+      "family": "bank-access",
+      "question": "If there is a step-free lift route to a Bank platform, does that also prove level boarding onto the train?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["Street-to-platform access, platform-to-train boarding, and interchange are different questions.", "The supplied Bank facts do not establish level boarding."],
+      "forbidden_claims": ["A lift symbol guarantees level boarding.", "A gap-free journey is verified."],
+      "source_fact_ids": ["bank", "bank-wc"],
+      "correction_basis": "Preserves the corrected answer's distinction between interchange access and boarding."
+    },
+    {
+      "id": "cgl-012-bank-current-lifts",
+      "family": "bank-access",
+      "question": "Do the saved Bank access notes tell me whether the Waterloo & City lifts are working right now?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:bank", "role": "context" }] },
+      "required_points": ["Current lift status needs a fresh live check and cannot be inferred from the saved guide.", "The known interchange description includes about 290 metres via street and lifts."],
+      "forbidden_claims": ["The lifts are definitely working or broken based only on static evidence.", "The transfer is fully indoors."],
+      "source_fact_ids": ["bank-wc"],
+      "correction_basis": "Extends the corrected static route distinction to a genuinely live-status question."
+    },
+    {
+      "id": "cgl-013-euston-interchange",
+      "family": "euston-access",
+      "question": "At Euston, can I change step-free from the northbound Northern Bank branch to the northbound Victoria line?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["The same-direction interchange between Victoria and the Northern Bank branch is listed as step-free.", "That interchange fact does not mean the street exit is step-free."],
+      "forbidden_claims": ["Every Euston platform is step-free from street.", "Interchange accessibility proves the full journey is step-free."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Generalizes the Euston correction by preserving direction and the separation between interchange and street access."
+    },
+    {
+      "id": "cgl-014-euston-exit",
+      "family": "euston-access",
+      "question": "Can I get from street level to Euston’s Victoria line platform without stairs?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["Euston has no step-free street route to the Victoria Tube platform."],
+      "forbidden_claims": ["A same-direction line interchange makes the street route step-free.", "Street-to-platform access is listed as step-free."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Tests the street-exit side of the corrected Euston distinction."
+    },
+    {
+      "id": "cgl-015-euston-northern-street",
+      "family": "euston-access",
+      "question": "Is there a step-free street entrance to the Northern line platforms at Euston?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["Euston has no step-free street route to the Northern Tube platforms."],
+      "forbidden_claims": ["The station as a whole is step-free from street.", "The interchange fact answers street access."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Tests the negative street access fact for the other named Euston line."
+    },
+    {
+      "id": "cgl-016-euston-distinction",
+      "family": "euston-access",
+      "question": "How can a change between two lines be step-free at Euston if the station has no step-free street entrance?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["The same-direction Victoria/Northern Bank-branch interchange is step-free.", "The Victoria and Northern Tube platforms have no step-free street route.", "Interchange and street-to-platform access describe different parts of travel."],
+      "forbidden_claims": ["The interchange contradicts the street-access limitation.", "All Northern branches share the same access status."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Directly practices the corrected distinction rather than relying on a single yes/no label."
+    },
+    {
+      "id": "cgl-017-euston-direction",
+      "family": "euston-access",
+      "question": "Does the Euston step-free Northern-to-Victoria interchange apply if I’m going in opposite directions?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["The saved fact specifies same-direction interchange.", "The evidence does not establish the opposite-direction route; ask which platforms or explain the limitation."],
+      "forbidden_claims": ["Opposite-direction interchange is confirmed step-free.", "All directions and branches are covered."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Guards against stretching the corrected same-direction fact beyond its stated scope."
+    },
+    {
+      "id": "cgl-018-euston-charing-cross",
+      "family": "euston-access",
+      "question": "Can I reach the Charing Cross branch of the Northern line step-free at Euston?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["The Northern Charing Cross branch platforms at Euston are not step-free.", "Do not conflate them with the Northern Bank branch same-direction interchange fact."],
+      "forbidden_claims": ["The Charing Cross branch is covered by the Bank branch interchange statement.", "Every Northern platform is step-free."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Tests the branch qualification that limits the corrected Euston guidance."
+    },
+    {
+      "id": "cgl-019-euston-map-roles",
+      "family": "place-roles",
+      "question": "I’m at Euston and want to change to the Victoria line in the same direction. Can you show the station I’m changing at?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["Euston is the requested interchange location and should be shown as context.", "The supported same-direction Victoria/Northern Bank-branch interchange is step-free."],
+      "forbidden_claims": ["Euston is a journey destination or origin when only the interchange is requested.", "Step-free street access is implied."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Practices context role assignment for a named interchange rather than a trip endpoint."
+    },
+    {
+      "id": "cgl-020-euston-access-clarify",
+      "family": "euston-access",
+      "question": "Is Euston step-free?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "station:euston", "role": "context" }] },
+      "required_points": ["Give a concise qualified answer: street access to Victoria and Northern Tube platforms is not step-free, while a same-direction Victoria/Northern Bank-branch interchange is listed step-free.", "Ask which part of the journey matters if more detail is needed."],
+      "forbidden_claims": ["A blanket yes or no that erases the access distinction.", "A claim that all platforms and exits have the same status."],
+      "source_fact_ids": ["euston"],
+      "correction_basis": "Tests useful qualification when the user's access question lacks a segment."
+    },
+    {
+      "id": "cgl-021-southbank-bounded-time",
+      "family": "south-bank-time",
+      "question": "How long does the published South Bank estimate cover, and can I use it for any riverside leg?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["About 30 minutes applies to the segment from Lambeth Bridge to Blackfriars Bridge without extended stops.", "It is not an estimate for every leg; individual pace varies."],
+      "forbidden_claims": ["The 30-minute estimate applies to every South Bank walk.", "Treating the figure as a guaranteed duration."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Generalizes the corrected evidence boundary for the published duration."
+    },
+    {
+      "id": "cgl-022-southbank-theatre-to-tate",
+      "family": "south-bank-time",
+      "question": "I want to walk from the National Theatre to Tate Modern. Is the published half-hour figure for that exact leg?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:181208", "role": "origin" }, { "id": "osm:2026-10-12:18520", "role": "destination" }] },
+      "required_points": ["The user explicitly sets National Theatre as origin and Tate Modern as destination.", "The published roughly 30-minute estimate is for Lambeth Bridge to Blackfriars Bridge, so do not assign it to this leg.", "A suggested walk is not verified turn-by-turn routing."],
+      "forbidden_claims": ["The specific National Theatre–Tate Modern leg is 30 minutes based on this source.", "A verified route or accessibility guarantee."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Separates the specified bounds of the source estimate from a different requested leg."
+    },
+    {
+      "id": "cgl-023-southbank-oxo-to-theatre",
+      "family": "south-bank-time",
+      "question": "Would the 30-minute walking estimate also describe a stroll from OXO Tower Wharf to the National Theatre?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:19002", "role": "origin" }, { "id": "osm:2026-10-12:181208", "role": "destination" }] },
+      "required_points": ["The estimate is specifically for Lambeth Bridge to Blackfriars Bridge, with no extended stops.", "It should not be generalized to OXO Tower Wharf–National Theatre.", "Individual walking pace varies."],
+      "forbidden_claims": ["This exact leg takes 30 minutes according to the supplied evidence."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Uses a different pair of named South Bank places to test the estimate's geographic limits."
+    },
+    {
+      "id": "cgl-024-southbank-bridges",
+      "family": "south-bank-time",
+      "question": "For the Lambeth Bridge to Blackfriars Bridge stretch, what is the approximate published walking time if we do not stop for long?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["The published estimate is about 30 minutes without extended stops.", "Individual pace varies."],
+      "forbidden_claims": ["A guaranteed time for every pace or condition.", "Extending the estimate to other legs."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Positive control: the same estimate can be used when the exact endpoints match."
+    },
+    {
+      "id": "cgl-025-southbank-places-context",
+      "family": "place-roles",
+      "question": "Could you show the National Theatre, OXO Tower Wharf and Tate Modern together for a South Bank visit?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:181208", "role": "context" }, { "id": "osm:2026-10-12:19002", "role": "context" }, { "id": "osm:2026-10-12:18520", "role": "context" }] },
+      "required_points": ["Include the three requested places and use context roles because no trip endpoints are specified.", "A suggested stroll is not a verified route."],
+      "forbidden_claims": ["Treating all listed places as a defined route or endpoints."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Practices context roles for a set of relevant but unordered places."
+    },
+    {
+      "id": "cgl-026-southbank-clear-endpoints",
+      "family": "place-roles",
+      "question": "Start at the National Theatre and finish at Tate Modern; please mark those two places.",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:181208", "role": "origin" }, { "id": "osm:2026-10-12:18520", "role": "destination" }] },
+      "required_points": ["Assign National Theatre as origin and Tate Modern as destination.", "Do not infer a verified route or exact duration from the place sequence."],
+      "forbidden_claims": ["Reversing origin and destination.", "Claiming the published bridge-to-bridge estimate is for this exact leg."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Tests explicit endpoint language against the context-only case."
+    },
+    {
+      "id": "cgl-027-southbank-reversed-endpoints",
+      "family": "place-roles",
+      "question": "I’ll begin at Tate Modern and head toward the National Theatre. Can you mark start and finish?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:18520", "role": "origin" }, { "id": "osm:2026-10-12:181208", "role": "destination" }] },
+      "required_points": ["Tate Modern is the origin and National Theatre the destination.", "Do not replace the user's direction with a default itinerary order."],
+      "forbidden_claims": ["Reversing the explicitly stated endpoints.", "Promising a verified walk duration."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Ensures origin/destination follow wording, not a memorized landmark sequence."
+    },
+    {
+      "id": "cgl-028-southbank-queen-walk",
+      "family": "place-roles",
+      "question": "What is Queen’s Walk? Could you show the area with possible stops at the National Theatre, OXO Tower Wharf and Tate Modern?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:704", "role": "context" }, { "id": "osm:2026-10-12:181208", "role": "context" }, { "id": "osm:2026-10-12:19002", "role": "context" }, { "id": "osm:2026-10-12:18520", "role": "context" }] },
+      "required_points": ["Queen’s Walk is a pedestrian promenade along South Bank.", "A suggested stroll may include National Theatre, OXO Tower Wharf, and continue toward Bankside/Tate Modern.", "These are suggested stops, not a verified route."],
+      "forbidden_claims": ["A mandatory sequence or certified access route."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Grounds a flexible place recommendation in the source without asserting endpoints."
+    },
+    {
+      "id": "cgl-029-southbank-duration-pace",
+      "family": "south-bank-time",
+      "question": "The bridge-to-bridge riverside walk is listed at about half an hour. Should I plan on exactly that time?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["The estimate concerns Lambeth Bridge to Blackfriars Bridge without extended stops.", "It is approximate and individual pace varies."],
+      "forbidden_claims": ["The time is exact or guaranteed.", "It describes a different South Bank leg."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Tests both the boundary and uncertainty of the source's walking estimate."
+    },
+    {
+      "id": "cgl-030-southbank-simple-map",
+      "family": "place-roles",
+      "question": "I have no fixed route yet, but I’m considering a South Bank afternoon around Tate Modern and OXO Tower Wharf. Show the area and both places.",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:704", "role": "context" }, { "id": "osm:2026-10-12:18520", "role": "context" }, { "id": "osm:2026-10-12:19002", "role": "context" }] },
+      "required_points": ["Map the named area and two places as context, not origin/destination.", "Do not invent a route or exact duration."],
+      "forbidden_claims": ["A fixed route or trip endpoints are established."],
+      "source_fact_ids": ["south-bank-1"],
+      "correction_basis": "Tests whether the model distinguishes an area plus candidate places from a journey."
+    },
+    {
+      "id": "cgl-031-science-booking",
+      "family": "museum-planning",
+      "question": "Is the Science Museum free to enter, and should I reserve anything before going?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] },
+      "required_points": ["General admission is free, but visitors are asked to pre-book a free ticket.", "Some experiences or exhibitions have separate tickets."],
+      "forbidden_claims": ["Free admission means no booking is needed.", "All experiences are free."],
+      "source_fact_ids": ["science-museum-1"],
+      "correction_basis": "Tests the museum-specific booking rule and free-entry distinction."
+    },
+    {
+      "id": "cgl-032-science-experience",
+      "family": "museum-planning",
+      "question": "I only want to see one special experience at the Science Museum. Does the free general ticket cover it automatically?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] },
+      "required_points": ["Free general admission does not establish that a separately ticketed experience is included.", "Some experiences and exhibitions have separate tickets."],
+      "forbidden_claims": ["Every experience is included in general admission.", "A specific ticket is currently available."],
+      "source_fact_ids": ["science-museum-1"],
+      "correction_basis": "Extends the booking distinction to an individual paid experience without claiming availability."
+    },
+    {
+      "id": "cgl-033-science-dated-hours",
+      "family": "museum-planning",
+      "question": "For a visit on 29 October 2026, what published opening time should I plan around at the Science Museum?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:20531", "role": "destination" }] },
+      "required_points": ["The published half-term opening for 24–30 October 2026 is 09:00.", "State this as dated published information, not a live confirmation."],
+      "forbidden_claims": ["The museum is confirmed open right now.", "Usual 10:00 opening applies unchanged to this dated period."],
+      "source_fact_ids": ["science-museum-2"],
+      "correction_basis": "Tests date-bounded venue information with the booking-aware museum rules."
+    },
+    {
+      "id": "cgl-034-natural-history-entry",
+      "family": "museum-planning",
+      "question": "Do I need a ticket for the Natural History Museum’s free galleries, especially on a busy weekend?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:18306", "role": "destination" }] },
+      "required_points": ["The galleries are free.", "Booking a free entry ticket guarantees entry under the published policy; busy periods may mean queues without one.", "Some events or exhibitions have separate tickets."],
+      "forbidden_claims": ["Free means a reservation is never useful.", "All exhibitions are included."],
+      "source_fact_ids": ["natural-history-1"],
+      "correction_basis": "Contrasts the Natural History Museum's published free-ticket policy with other venues' booking rules."
+    },
+    {
+      "id": "cgl-035-va-no-booking",
+      "family": "museum-planning",
+      "question": "For the V&A in South Kensington, is a booking needed just for general admission?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:180927", "role": "destination" }] },
+      "required_points": ["General admission is free and does not need booking.", "Some exhibitions and events cost extra."],
+      "forbidden_claims": ["A booking is required for ordinary general admission.", "All exhibitions are free."],
+      "source_fact_ids": ["va-museum-1"],
+      "correction_basis": "Teaches that free admission policies differ by venue."
+    },
+    {
+      "id": "cgl-036-british-museum-ticket",
+      "family": "museum-planning",
+      "question": "Does the British Museum charge for its permanent collection, and what does a free timed ticket do?",
+      "expected_scene": { "camera": "focus", "places": [{ "id": "osm:2026-10-12:180962", "role": "destination" }] },
+      "required_points": ["The permanent collection is free.", "A free timed ticket offers priority entry; walk-ups depend on capacity and may queue.", "Exhibitions may require separate paid tickets."],
+      "forbidden_claims": ["Every exhibition is free.", "A walk-up guarantees immediate entry."],
+      "source_fact_ids": ["british-museum-1"],
+      "correction_basis": "Adds a contrasting venue-specific admission model to the training set."
+    },
+    {
+      "id": "cgl-037-museum-choice",
+      "family": "museum-planning",
+      "question": "My child loves dinosaurs, but we also like science. Which museum would you prioritise for a short afternoon, and what should I know about entry?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:18306", "role": "destination" }, { "id": "osm:2026-10-12:20531", "role": "context" }] },
+      "required_points": ["The Natural History Museum is the closer interest match for dinosaurs.", "Both venues have free general admission but distinct booking guidance: Natural History Museum recommends a free entry ticket for busy periods; Science Museum asks visitors to pre-book.", "Do not promise time to see both in a short afternoon."],
+      "forbidden_claims": ["All museums have the same reservation policy.", "A guaranteed itinerary or current ticket availability."],
+      "source_fact_ids": ["natural-history-1", "natural-history-2", "science-museum-1"],
+      "correction_basis": "Combines interest-led advice with the corrected venue-specific booking distinction."
+    },
+    {
+      "id": "cgl-038-museum-cluster-map",
+      "family": "museum-planning",
+      "question": "I’m choosing between science, natural history and design in South Kensington. Could you show the Science Museum, Natural History Museum and V&A together?",
+      "expected_scene": { "camera": "fit", "places": [{ "id": "osm:2026-10-12:20531", "role": "context" }, { "id": "osm:2026-10-12:18306", "role": "context" }, { "id": "osm:2026-10-12:180927", "role": "context" }] },
+      "required_points": ["Show the three named museums together as context because no route endpoints are specified.", "Explain briefly that booking rules differ by venue if admission is discussed."],
+      "forbidden_claims": ["Assigning an origin/destination without user wording.", "Saying every museum requires or waives booking."],
+      "source_fact_ids": ["science-museum-1", "natural-history-2", "va-museum-1"],
+      "correction_basis": "Practices map context roles while contrasting venue-specific free-entry rules."
+    },
+    {
+      "id": "cgl-039-payment-device",
+      "family": "payment-identity",
+      "question": "I tapped in with my phone but only have the physical card linked to it when I leave. Will TfL treat them as the same payment?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["A phone and its linked physical bank card are separate payment identities.", "Use the same card or device for the whole journey."],
+      "forbidden_claims": ["Linked to the same bank account means interchangeable at exit.", "Any station pin is needed for this general payment rule."],
+      "source_fact_ids": ["tfl-payment-2"],
+      "correction_basis": "Tests payment identity in a concrete device switch with no place requiring a map pin."
+    },
+    {
+      "id": "cgl-040-night-no-location",
+      "family": "general-advice-no-pin",
+      "question": "Does the Night Tube run every night, and what should I check before relying on an overnight service?",
+      "expected_scene": { "camera": "keep", "places": [] },
+      "required_points": ["Night Tube and Night London Overground run on Friday and Saturday nights, not every night; night buses are an additional option.", "Check the journey planner for the actual date and destination.", "General night-travel advice with no named place needs no map pin."],
+      "forbidden_claims": ["Night Tube runs every night.", "An individual service is promised to be running now.", "Pinning an unrelated station."],
+      "source_fact_ids": ["tfl-night-1"],
+      "correction_basis": "Checks general night-travel guidance and the no-pin behavior for an unlocated question."
+    }
+  ]
+}

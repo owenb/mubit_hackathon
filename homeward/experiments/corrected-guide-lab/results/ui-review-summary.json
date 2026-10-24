@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-24T15:38:29.181Z",
+  "unique_reviewed": 44,
+  "good_verified": 36,
+  "bad_verified": 8,
+  "unverified": [],
+  "deferred": [
+    {
+      "case_id": "cgl-020-euston-access-clarify",
+      "reason": "Broad Euston question may refer to National Rail rather than Tube. Do not approve the categorical opening without clarification."
+    }
+  ]
+}

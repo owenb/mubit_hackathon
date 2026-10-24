@@ -1,0 +1,196 @@
+{
+  "author_model": "gpt-6-luna",
+  "cases": [
+    {
+      "id": "luna-wave4-map-01",
+      "question": "I’m visiting Tower Bridge this afternoon. Could you point it out on the map?",
+      "expected_scene": {
+        "camera": "focus",
+        "places": [
+          { "id": "osm:2026-10-12:1350", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Show Tower Bridge as the single requested place.",
+        "Use a close focus view rather than a city or multi-place fit view."
+      ],
+      "rationale": "A plain landmark lookup should focus the named bridge; Visit London’s Tower Bridge visitor information supplies public travel context without implying an itinerary."
+    },
+    {
+      "id": "luna-wave4-map-02",
+      "question": "I’d like to see both the Natural History Museum and the V&A on a map so I can compare where they are.",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:18306", "role": "context" },
+          { "id": "osm:2026-10-12:180927", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Include both named museums, with neither promoted to an origin or destination.",
+        "Fit the two places together instead of focusing on only one."
+      ],
+      "rationale": "The Natural History Museum and V&A visitor sources establish these as separate visit locations; the user asks for a comparison, not a journey."
+    },
+    {
+      "id": "luna-wave4-map-03",
+      "question": "Can you put the British Museum and Borough Market on one map? I’m trying to understand how far apart the two visits are.",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:180962", "role": "context" },
+          { "id": "osm:2026-10-12:3958", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Show the British Museum and Borough Market together.",
+        "Treat both as context because no starting point or destination is specified.",
+        "Do not add unrelated candidate places."
+      ],
+      "rationale": "British Museum and Borough Market visitor information establishes the two distinct London visit locations; the user asks to compare their positions rather than specify a travel leg."
+    },
+    {
+      "id": "luna-wave4-map-04",
+      "question": "Which station is beside Borough Market? Please mark the market and the station you mean.",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:3958", "role": "context" },
+          { "id": "osm:2026-10-12:1958", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Show Borough Market and London Bridge station together.",
+        "Do not substitute Borough station for the station identified beside the market.",
+        "Use context roles because this is a location relationship, not a stated trip."
+      ],
+      "rationale": "Borough Market’s public visitor guidance identifies London Bridge as the nearby station; the TfL travel context supports naming the relevant station rather than a similar nearby name."
+    },
+    {
+      "id": "luna-wave4-map-05",
+      "question": "For a South Bank walk, I want to stop at the National Theatre, OXO Tower Wharf and Tate Modern. Can you show those stops together?",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:181208", "role": "context" },
+          { "id": "osm:2026-10-12:19002", "role": "context" },
+          { "id": "osm:2026-10-12:18520", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Include exactly the three requested landmarks.",
+        "Fit the landmarks together and keep their roles as context; a suggested walk does not establish a verified route."
+      ],
+      "rationale": "The South Bank Queen’s Walk public tourism guidance names these as possible stroll landmarks; it describes a suggested sequence rather than an audited route."
+    },
+    {
+      "id": "luna-wave4-map-06",
+      "question": "At Bank I’m changing from the Waterloo & City line to the DLR. Show me the interchange station.",
+      "expected_scene": {
+        "camera": "focus",
+        "places": [
+          { "id": "station:bank", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Pin Bank as the interchange location.",
+        "Do not pin Waterloo just because Waterloo & City is named as a line.",
+        "Use context because Bank is neither a trip origin nor destination here."
+      ],
+      "rationale": "TfL station topology distinguishes the Bank interchange from the Waterloo & City line name; the query asks to locate the interchange, not the line’s terminal."
+    },
+    {
+      "id": "luna-wave4-map-07",
+      "question": "I’m taking the Victoria line from King’s Cross to Brixton. Mark where I start and where I get off.",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:1861", "role": "origin" },
+          { "id": "osm:2026-10-12:120", "role": "destination" }
+        ]
+      },
+      "essential_points": [
+        "Mark King’s Cross as the origin and Brixton as the destination.",
+        "Do not add Victoria station merely because the Victoria line is mentioned.",
+        "Fit the endpoints together."
+      ],
+      "rationale": "TfL topology lists King’s Cross and Brixton on the Victoria line; the wording assigns endpoints and uses Victoria only as a line name."
+    },
+    {
+      "id": "luna-wave4-map-08",
+      "question": "I’m walking from Covent Garden station over to Leicester Square station. Could you mark the two ends?",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:2630", "role": "origin" },
+          { "id": "osm:2026-10-12:1708", "role": "destination" }
+        ]
+      },
+      "essential_points": [
+        "Mark Covent Garden as the origin and Leicester Square as the destination.",
+        "Show both station locations even though the transfer is described as a walk."
+      ],
+      "rationale": "Covent Garden visitor information identifies Leicester Square as a nearby alternative station; the user explicitly describes a start and end."
+    },
+    {
+      "id": "luna-wave4-map-09",
+      "question": "I’m planning a Greenwich visit that includes the National Maritime Museum and Queen’s House. Please show both venues.",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:60145", "role": "context" },
+          { "id": "osm:2026-10-12:182736", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Include the National Maritime Museum and Queen’s House, and no extra Greenwich attractions.",
+        "Keep both as context because no origin or destination is given."
+      ],
+      "rationale": "Royal Museums Greenwich visitor information describes both venues as sites in a Greenwich day out; the request is for the two named venues only."
+    },
+    {
+      "id": "luna-wave4-map-10",
+      "question": "Give me a broad overview of London on the map.",
+      "expected_scene": {
+        "camera": "city",
+        "places": []
+      },
+      "essential_points": [
+        "Use the city overview camera with no individual place pins.",
+        "Do not choose a featured landmark just because it appears among map candidates."
+      ],
+      "rationale": "This is a city-level map request without a selected venue; the map contract calls for a city view without pins."
+    },
+    {
+      "id": "luna-wave4-map-11",
+      "question": "Where is Hampstead Heath? I’d like to orient myself before choosing an entrance.",
+      "expected_scene": {
+        "camera": "focus",
+        "places": [
+          { "id": "osm:2026-10-12:183301", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Focus on Hampstead Heath alone.",
+        "Do not invent or pin a particular entrance."
+      ],
+      "rationale": "The map catalogue has a public place anchor for Hampstead Heath; the user requests orientation and has not identified an entrance."
+    },
+    {
+      "id": "luna-wave4-map-12",
+      "question": "I’m going to Borough Market and then crossing Tower Bridge. Could you place both on the map so I can see the area?",
+      "expected_scene": {
+        "camera": "fit",
+        "places": [
+          { "id": "osm:2026-10-12:3958", "role": "context" },
+          { "id": "osm:2026-10-12:1350", "role": "context" }
+        ]
+      },
+      "essential_points": [
+        "Show Borough Market and Tower Bridge, with no incidental stations or attractions.",
+        "Fit the two places; the sequence does not establish a specified route."
+      ],
+      "rationale": "Borough Market and Tower Bridge have public visitor information and catalogue anchors; this tests selecting only the two places in a simple planned sequence."
+    }
+  ]
+}

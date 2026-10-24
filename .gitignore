@@ -20,3 +20,7 @@ homeward/Homeward.app/
 homeward/web/.wasm/
 homeward/web/.cache/
 homeward/web/.tools/
+
+# Reviewed synthetic isolated experiment; no private session stores.
+!homeward/experiments/corrected-guide-lab/results/
+!homeward/experiments/corrected-guide-lab/results/*
