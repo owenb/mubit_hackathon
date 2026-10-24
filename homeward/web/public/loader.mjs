@@ -73,6 +73,9 @@ async function boot(){
     worker.postMessage({module,bindings:manifest.bindings,map:mapBytes.buffer},[mapBytes.buffer]);
   });
   worker.terminate();
+  // Browser-only enterprise layer reuses the exact prepared city buffers.
+  globalThis.enterpriseCity={vertices:prepared.vertices,indices:prepared.indices,metadata:JSON.parse(prepared.metadata)};
+  window.dispatchEvent(new Event('london:geometry'));
   const metadata=JSON.parse(prepared.metadata);
   globalThis.homewardDiagnostics={status:'initializing',map:metadata,source_sha256:manifest.map.source_sha256,download_bytes:total,history};
   const {default:init,start,preview_answer,ui_command}=await import(manifest.bindings);await init({module_or_path:module});
