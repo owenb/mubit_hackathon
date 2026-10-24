@@ -15,6 +15,10 @@ Six card photos are local Wikimedia thumbnails, with creator, source, licence UR
 - `GET /api/enterprise/corrections/:id`: durable session-owned correction/receipt.
 - `GET /api/enterprise/status`: manually observed evidence; never equates a receipt with kept review, training or a quality gain.
 
+Businesses is a mode of the main app, using the same toolbar, question capsule, suggestion row, answer card, correction editor and Evidence panel. There is no separate branded sidebar, directory landing screen or independent controls. Business browsing lives in Evidence → Businesses, and training results in Evidence → Evaluation. Travel and business editor/Evidence contents are retained separately when switching modes. The question draft is not cleared by an answer.
+
+The browser question capsule reuses the unchanged native `ask.wgsl` shader and the same captured-backdrop, five-level blur, aura, bloom and presentation graph in `map-ask.mjs`. `city-composite.wgsl` likewise preserves the existing HDR bloom/tone-map presentation. A direct enterprise submit path avoids depending on the hidden travel renderer to deliver business responses; the hidden travel fetch guard remains in place.
+
 The existing loader exposes the exact full prepared London vertex/index buffers. `enterprise-gpu.mjs` renders those buffers with the same city WGSL shader in a separate browser WebGPU canvas. Its own camera matrix projects the company pins exactly. Each visible office keeps its name: the overview camera fits office extents to the available map width, and a bounded collision layout moves only the screen label and draws a leader back to the exact projected office dot, rather than reducing nearby offices to anonymous dots. No approximate CSS latitude projection, synthetic office coordinates, partial city replacement, native-source edit or travel ID injection is used. The Light dial drives both views. Switching back preserves the travel canvas and its typed draft. A mode-aware fetch guard prevents the hidden travel canvas from submitting into travel teaching while enterprise mode is active. Enterprise has its own composer and explicit endpoint, so it cannot accidentally send an enterprise question into travel teaching.
 
 For local inference use a dedicated `ENTERPRISE_MUBIT_API_KEY`, or the already-authorized isolated project environment `.env.bank-demo`. There is deliberately no fallback to the old app’s `MUBIT_API_KEY`. Credentials stay in Node and must never be committed. Example local start from the source workspace:
@@ -41,16 +45,16 @@ All Mubit HTTP attempts, including errors, use `createMubitFetch` and the safe p
 
 ## Rehearse in under three minutes
 
-1. Open the business overview. Select Unilever or Morgan Stanley on the map.
+1. Open the main app and choose Businesses. Select Unilever or Morgan Stanley on the map, or browse them in Evidence.
 2. Point out the source-backed fact, the explicitly hypothetical recurring workload and the tailored pitch.
-3. Choose **Teach better judgement**. Narrow the proposed first pilot; save the correction locally, then explicitly **Teach this judgement**.
-4. Show the real Mubit receipt, then choose **Training evidence**.
+3. Choose **Fix this** in the main answer card. Narrow the proposed first pilot; save the correction locally in the main editor, then explicitly **Teach this judgement**.
+4. Show the real Mubit receipt, then open **Evidence → Evaluation**.
 5. Show the trained adapter, its 11/12 internal score and all six fresh development results. Explain the observed weaknesses and why live assessments remain on Luna. The revised teacher answer is not substituted for the adapter result.
 
 No business outreach is performed. Nothing is auto-pushed or deployed by this workstream.
 
 ## Verification
 
-The source suite passes 77 backend/browser contract tests; the distribution passes 76 with one expected private checksum skip, including fourteen enterprise checks covering exact OSM identity/bounds, frozen-set separation, strict company/source validation, matrix projection, session ownership, persistence, and paid-call idempotence. The full map source SHA remains `b6739ab69cad7b75b5a3f8341519c60dcf8640babf8380da57e54749ba3b2719`. The existing compiled WASM engine is unchanged. Live browser checks cover company selection, camera focus, real Luna assessment, photo attribution, local correction save and a real Mubit teaching receipt.
+The source suite passes 78 backend/browser contract tests; the distribution passes 77 with one expected private checksum skip, including fifteen enterprise checks covering exact OSM identity/bounds, frozen-set separation, strict company/source validation, matrix projection, session ownership, persistence, and paid-call idempotence. The full map source SHA remains `b6739ab69cad7b75b5a3f8341519c60dcf8640babf8380da57e54749ba3b2719`. The existing compiled WASM engine is unchanged. Live browser checks cover company selection, camera focus, real Luna assessment, photo attribution, local correction save and a real Mubit teaching receipt.
 
 For the original combined preview, restart after backend route changes so the current enterprise data endpoint is loaded. Start with `PORT=3000 node --env-file-if-exists=.env --env-file-if-exists=.env.bank-demo homeward/web/server.mjs` to preserve existing travel settings and add the isolated enterprise credential when that local file exists. A previously running server cannot acquire newly added routes merely because the browser JavaScript was rebuilt. No credentials are packaged or committed.

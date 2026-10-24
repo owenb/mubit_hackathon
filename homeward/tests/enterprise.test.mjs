@@ -8,7 +8,7 @@ import {createEnterpriseService,enterpriseData} from '../src/enterprise-service.
 import {enterpriseRoutes} from '../src/enterprise-routes.mjs';
 import {packet,taskHash,hash,validate} from '../experiments/enterprise-prospecting/contract.mjs';
 import {createModeFetch,companyForQuestion,initialEnterpriseMode,enterpriseModeUrl,layoutCompanyLabels} from '../web/public/enterprise-state.mjs';
-import {cameraMatrix,project,overviewCamera} from '../web/public/enterprise-gpu.mjs';
+import {cameraMatrix,project,overviewCamera,inverseMatrix,multiply} from '../web/public/enterprise-gpu.mjs';
 const c=enterpriseData.companies[0];
 const output=input=>({company_id:input.company.id,fit:'conditional',llm_usage:'unknown',public_fact:'Office address is public.',source_ids:[input.company.sources[0].id],workload_hypothesis:'A repeated document classification task could be evaluated.',fit_reason:'Conditional on data rights and reviewable examples.',unknowns:'Private LLM use and spend are unknown.',discovery_question:'Who reviews the repeated task?',pitch:'Test an owned task-adapted model, subject to validation.',pilot_measure:'Use fresh frozen questions and measure quality and latency.'});
 async function setup(model){return createEnterpriseService({directory:pathToFileURL((await mkdtemp(tmpdir()+'/enterprise-test-'))+'/'),model:model||(async input=>({output:output(input),request_id:'mreq_test',inference:{route:'luna',label:'Luna via Mubit'},elapsed_ms:1}))});}
@@ -40,3 +40,5 @@ test('business mode survives reload, explicit travel links override it, and link
 test('business overview fits every actual office in wide and narrow desktop map panels',()=>{
  for(const width of [1280,960,800,620]){const height=720,side=width>900?392:324,camera=overviewCamera(enterpriseData.companies,width,height,side),matrix=cameraMatrix(camera,width/height,side/width).matrix;for(const c of enterpriseData.companies){const p=project(matrix,[c.east,c.height+12,-c.north],width,height);assert.ok(p.x>side+30&&p.x<width-30,c.name+' outside usable map at '+width);assert.ok(p.y>145&&p.y<height-130,c.name+' outside vertical map bounds');}}
 });
+
+test('shared sky receives the real inverse of the reversed-depth company camera',()=>{const matrix=cameraMatrix({x:3000,z:-700,yaw:-.36,tilt:.78,range:4700},1280/720).matrix,identity=multiply(matrix,inverseMatrix(matrix));for(let i=0;i<16;i++)assert.ok(Math.abs(identity[i]-(i%5===0?1:0))<.001);});

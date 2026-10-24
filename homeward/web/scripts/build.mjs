@@ -17,7 +17,7 @@ await readFile(new URL('.'+manifest.bindings,dist));
 const source=await readFile(new URL('maps/london.ael',dist));
 if(hash(source)!==manifest.map.source_sha256)throw Error('Downloadable source map differs from packed map');
 await cp(new URL('public/',web),dist,{recursive:true});
-for(const name of ['index.html','style.css','loader.mjs','worker.mjs','evaluation.mjs','corrections.mjs','experience.mjs','correction-state.mjs','ui.mjs','appearance.mjs','appearance-state.mjs','enterprise.mjs','enterprise-gpu.mjs','enterprise-state.mjs','enterprise.css','enterprise-city.wgsl']){
+for(const name of ['index.html','style.css','loader.mjs','worker.mjs','evaluation.mjs','corrections.mjs','experience.mjs','correction-state.mjs','ui.mjs','appearance.mjs','appearance-state.mjs','enterprise.mjs','enterprise-gpu.mjs','enterprise-state.mjs','enterprise.css','enterprise-city.wgsl','city-composite.wgsl','map-ask.mjs','map-ask.wgsl']){
  await writeFile(new URL(name+'.br',dist),brotliCompressSync(await readFile(new URL(name,dist)),{params:{[constants.BROTLI_PARAM_QUALITY]:9}}));
 }
 console.log(JSON.stringify({status:'built',renderer:'precompiled WebAssembly / WebGPU',map_transfer_bytes:manifest.map.bytes,engine_transfer_bytes:manifest.engine.bytes,source_sha256:manifest.map.source_sha256}));
