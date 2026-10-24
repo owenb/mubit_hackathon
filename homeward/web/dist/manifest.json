@@ -9,9 +9,9 @@
     "codec": "brotli"
   },
   "engine": {
-    "url": "/assets/homeward-036dc4850e1fae6c.wasm.gz",
-    "bytes": 2376871,
-    "sha256": "036dc4850e1fae6ca325d12136e256c3839ade4942e32d783b6996e98e945285",
+    "url": "/assets/homeward-8b57f3710d8748ef.wasm.gz",
+    "bytes": 2376832,
+    "sha256": "8b57f3710d8748ef639698e8f09eea6b955e8a7f70994374fdb28bc6714b2e52",
     "raw_bytes": 7026405,
     "codec": "gzip"
   },

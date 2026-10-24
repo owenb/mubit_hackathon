@@ -1,56 +1,48 @@
-# Correcting Homeward answers and map pins
+# Helping Homeward learn
 
-The WebGPU interface has a **Correct & teach** panel. It preserves the original answer and lets an operator edit the answer, remove or add verified catalogue places, and set each pin’s role. Coordinates cannot be invented. A corrected preview changes the visible camera, pins and answer, with an **Operator preview · not learned** badge.
+Open **Fix an answer** in the WebGPU app. The flow has three steps:
 
-## Use the correction flow
+1. **Fix:** edit what Homeward should say, remove the wrong map places and add missing ones. Explain the mistake in a few words. Tick **Help Homeward answer this better for everyone** for a reusable correction; leave it off for a personal trip edit.
+2. **Check:** **Preview my changes** saves the edit and draws it on the real map. Check the answer, places and travel sources. Choose **Send correction** for shared teaching, or **Keep for this trip** for a personal edit.
+3. **Follow:** see whether Mubit received and reviewed it, whether a new model exists, and whether that model does better on different questions. Detailed receipts and raw replies are under **How we know**.
 
-1. Ask a travel question, then open **Correct & teach**. Alternatively, **Replay a real map mistake** loads the recorded Greville Street development failure without a model call.
-2. Inspect **Original model reply** and **Source evidence for this correction**. Edit the answer and pins; explain what should change. The answer remains within the 140-word task contract.
-3. Choose **Only this trip or person** for personal preferences. These are saved locally and cannot become shared teaching. Choose **Reusable travel correction** for supported task-level mistakes.
-4. **Save correction** makes no inference call. **Preview corrected map** draws the saved edit without replacing the original model output. **Restore original** returns to the original map and answer.
-5. Check the reviewed box, then **Check & teach with Luna**. This uses up to two paid Luna calls through Mubit: a source-grounded audit with recording off, then a full-recording teaching request if the audit accepts.
-6. Inspect **Where your correction stands**. It shows the actual receipt and teacher reply, not an invented “learned” state. Saved corrections and their receipts remain available in the same browser session after a server restart.
+The map labels edited previews **Your correction · preview**. That is your edit, not an answer learned by a model. Saved originals remain unchanged. Sending an identical saved correction twice is blocked, including across server restarts.
 
-![Corrected map and the actual Mubit teaching receipt, with model inclusion unverified](../docs/images/homeward-correction.png)
+## What actually happened
 
-## What the teaching request does
+The Greville Street development example incorrectly included Canary Wharf DLR. A real UI correction removed that pin, kept Farringdon and Chancery Lane, and preserved the warning that station lifts do not prove an accessible pavement or shop entrance.
 
-The recorded completion uses the ordinary Homeward system instructions, strict JSON schema, model (`gpt-6-luna`) and generation limits. The operator target and reason are included in its user context, alongside dated research and catalogue candidates. The complete teacher answer, labels and map must match the reviewed edit; citation IDs may differ if they remain supplied and non-empty where factual citations are required. Stable instructions and schema preserve the intended task contract, but Mubit’s actual task assignment still needs verification.
+Luna checked the correction and returned a matching teaching reply through Mubit. The console then confirmed that its request and answer were stored, grouped under the original Homeward task, and trainable. A Good rating and its explanation were saved and re-read. Homeward’s pool rose from **149 to 150 kept examples**, with the other counts unchanged. The console has no per-row kept flag, so that aggregate increase is not treated as confirmed per-row lineage.
 
-This is a corrected demonstration recorded through the gateway. It is **not an undocumented edited-target upload API**, a rating of the original reply, or proof of learned transfer. Use **Copy correction for Mubit review** and the console link if manually rating the original request. Trip preferences are never passed to this teacher.
+**Only v1 is visible. No post-correction model improvement is proved yet.** The recorded task policy refreshes every 24 hours after enough new examples; its exact next-run time is not exposed. The available version actions control rollout, not retraining. App routing was not changed.
 
-The audit is Luna checking Luna-style output against supplied evidence, not independent expert review. Unsupported edits are rejected before full recording. Edits to a new venue or fact may require a research update before they can pass. Live lift status and other changing facts still require current evidence; the system does not silently refresh source dates.
+See [the console observations](data/feedback-observations.json) and [the original live teaching evidence](data/learning-flow-evidence.json). These are timestamped observations, not live queries. Refreshing the progress panel reads the latest saved check; use its Mubit link for the live console.
 
-## Receipt, review and model update are different
+## Fresh development test
 
-| Stage | Evidence |
-| --- | --- |
-| Saved in Homeward | Durable local record with immutable original and edited target |
-| Luna audit accepted | Actual structured audit reply, with a receipt and provider evidence |
-| Teacher preserved answer and pins | Validated actual completion; target was included in context |
-| Call reached Mubit | `x-middleware-request-id` from the gateway |
-| Mubit retained the full teaching content | **Unverified** until inspected in Mubit |
-| Mubit kept this example | **Unverified** until its review is observed |
-| This correction entered a model version | **Unverified** without attributable row/version lineage |
-| Fresh-question improvement | **Not tested** without verified adapter inference and a separate comparison |
+Six new questions were frozen before collecting model replies: four Greville Street variants and two Canary Wharf controls. No operator target or answer was included. Mubit Try models explicitly marks these calls **not stored · trains nothing**. They do not enter teaching or the final evaluation set.
 
-**Refresh evidence** reloads the saved training snapshot. It does not query Mubit directly, trigger training, keep a console session alive, or infer inclusion from the existence of a newer version. A new version can be observed while this correction’s inclusion remains unknown. The public API documentation currently provides no verified per-correction inclusion endpoint in this project.
+V1 returned five retained outputs; the sixth call was interrupted by a console reset and remains a failure in the six-case denominator. Only **1/6** returned a usable validated answer and map scene. Several replies named reasonable stations but used invented roles or the wrong camera mode; another added a wrong place. This is a development baseline using a selected playground version, with generation controls not fully exposed. It is not a general accuracy estimate or a controlled Luna comparison.
 
-The [live development evidence](data/learning-flow-evidence.json) preserves one real UI submission: Luna accepted the Greville Street correction, removed the unrelated Canary Wharf pin, and returned the corrected target through Mubit. It does not prove an adapter update. One initial citation-only mismatch was reassessed offline, with the original attempt and receipt retained and no extra paid request.
+The same frozen inputs and source evidence are saved privately for the next model. Their questions and rubrics stay out of teaching. [The public summary](data/development-learning.json) has no question payloads. The final 20 questions and rubrics remain untouched.
+
+## Teaching and its limits
+
+For a reusable correction, Homeward makes up to two paid calls to **gpt-6-luna through Mubit**: a source-grounded audit with recording off, then a full-recording teaching completion if accepted. Normal task instructions, schema and generation limits remain fixed. The operator target is in the teaching request’s user context. Matching that target proves submission fidelity, not weight learning or generalisation. Luna’s self-audit is not independent expert review.
+
+A call receipt, stored content, positive review, kept training example, trained model version and improvement on fresh questions are distinct. The UI never turns a newer version or a positive rating into proof that this particular correction caused improvement. Platform observations must match the exact teaching receipt and Homeward task. There is no invented feedback-upload endpoint or force-adapter model ID.
 
 ## Storage and API
 
-`src/feedback.mjs` owns correction validation, storage and submission; `web/public/corrections.mjs` renders the panel. Records live under ignored `homeward/results/feedback/` with restricted filesystem permissions. Persist that directory on a writable volume if deploying the container. The HttpOnly, SameSite browser-session cookie controls access to those records; it is not a multi-user authentication system. Lost cookies mean lost browser access to that session’s history. Do not publish raw correction records or put personal travel data into reusable teaching.
+`src/feedback.mjs` validates corrections and owns the teacher flow. `web/public/corrections.mjs` renders the three steps. Records live under ignored `homeward/results/feedback/`, restricted to the browser-session cookie. Persist that directory on a writable volume for deployment. This session ownership is not a multi-user authentication system; losing the cookie loses browser access to that session’s history. Original questions still pass through Mubit under the app’s normal recording policy; only trip-specific correction submissions stay local.
 
-- `GET /api/places?q=…`: search verified map places.
+- `GET /api/places?q=…`: verified catalogue search.
 - `GET /api/learning`: this session’s saved corrections.
 - `GET /api/learning/interactions/:id`: original answer and dated review evidence.
-- `POST /api/learning/replay`: load the genuine historical failure.
+- `POST /api/learning/replay`: recorded development example, no inference.
 - `POST /api/learning/corrections`: validate and save an edit.
-- `GET /api/learning/corrections/:id`: current saved evidence.
-- `POST /api/learning/corrections/:id/preview`: resolve the saved scene, no inference.
-- `POST /api/learning/corrections/:id/teach`: explicitly reviewed reusable target only.
+- `GET /api/learning/corrections/:id`: current saved observations.
+- `POST /api/learning/corrections/:id/preview`: draw the edit, no inference.
+- `POST /api/learning/corrections/:id/teach`: reviewed reusable correction only.
 
-Saving identical edits is idempotent. An exclusive attempt file prevents concurrent or repeated teaching of one saved correction, including across server processes. Network failures are retained for inspection rather than automatically retried. Changing an edit creates a new correction; review its need before spending again. API keys stay on the server.
-
-The final 20 questions and rubrics are untouched and are never loaded by this feature. There are no rollout changes, training-policy changes, automatic batches or scheduled keepalive jobs.
+Network failures are retained rather than automatically retried. The final questions are never loaded by this feature. API keys and raw session stores are not published. No rollout or training policy was changed.

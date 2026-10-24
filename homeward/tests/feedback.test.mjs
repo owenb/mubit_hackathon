@@ -53,3 +53,12 @@ test('citation changes are assessed separately from the edited answer and pins',
  assert.equal(teachingChecks({...reply,source_ids:['invented']},target,input).citations_supplied,false);
  assert.equal(teachingChecks({...reply,source_ids:[]},target,input).citations_supplied,false);
 });
+test('signed-in console observations must match the receipt and task, and cannot imply weight inclusion',async()=>{
+ const x=await setup(async(_r,checkpoint)=>checkpoint({receipt:'mreq_observed',matched:true,audit:{accepted:true}}));try{
+ const saved=await x.store.save('one',correction(x.original));await x.store.submit('one',saved.id,{reviewed:true});
+ const observations=async()=>[{receipt:'mreq_other',source:'signed_in_console',task_id:'ln_445191829380864c541213cd',content_retained:true,review_state:'kept'}];
+ const unrelated=createFeedbackStore({directory:x.directory,observations,training:async()=>({version:3})});const noMatch=await unrelated.get('one',saved.id);assert.equal(noMatch.stages.mubit_recording.content_stored_verified,false);
+ const observed=createFeedbackStore({directory:x.directory,observations:async()=>[{receipt:'mreq_observed',source:'signed_in_console',task_id:'ln_445191829380864c541213cd',content_retained:true,review_state:'rated_good',operator_rating:'good'}],training:async()=>({version:3})});
+ const matched=await observed.get('one',saved.id);assert.equal(matched.stages.mubit_recording.content_stored_verified,true);assert.equal(matched.stages.mubit_review.state,'rated_good');assert.equal(matched.stages.model_update.correction_inclusion_verified,false);assert.equal(matched.stages.transfer_test.state,'not_run');
+ }finally{await x.done();}
+});

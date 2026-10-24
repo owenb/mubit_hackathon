@@ -67,13 +67,17 @@ flowchart LR
 
 ## Correct answers and map pins
 
-Open **Correct & teach** after an answer. Edit the text, remove or add verified map places, explain the mistake, and save. Previewing draws the correction on the real map with an **Operator preview · not learned** badge; the original remains available.
+Open **Fix an answer**. The three steps are **Fix → Check → Follow**: edit what Homeward should say, choose the right places, preview your changes on the real map, then send a reusable correction or keep a personal trip edit local. Receipts and raw replies sit under **How we know**.
 
-Personal trip preferences stay local. Reusable corrections can be explicitly reviewed and sent through up to two **Luna** calls: an evidence audit, then a recorded teaching completion. The panel displays the actual gateway receipt and teacher reply, and keeps **Mubit retention, kept review, model inclusion and unseen improvement unverified** until evidence exists. Refreshing loads the saved training observation; it does not trigger training or query Mubit directly.
+A real Greville Street correction removed Canary Wharf DLR and kept Farringdon and Chancery Lane. The corrected teaching reply was retained in Mubit under the original Homeward task, marked trainable, and positively reviewed. Its task pool rose from 149 to **150 kept examples**. A per-row kept flag and weight inclusion are not exposed, so the UI distinguishes that progress from a completed model update.
 
-A live UI test corrected the recorded Greville Street mistake by removing Canary Wharf DLR. Luna preserved the edited answer and two intended pins through Mubit. The target was supplied in its context, so this proves submission fidelity, not learned behaviour. No final evaluation question was sent. See [the complete workflow](homeward/LEARNING.md) and [real submission evidence](homeward/data/learning-flow-evidence.json).
+**Only v1 is visible; no trained improvement is proved yet.** Six fresh development questions were frozen and tested without an operator target. V1 produced five retained replies; only **1/6** passed the answer/map contract, with one interrupted call kept as a failure. These playground diagnostics do not establish a general accuracy score or a controlled Luna comparison. Inputs remain private and out of teaching for an eventual matched old/new run. The final 20 questions remain untouched.
 
-Corrections persist under ignored `homeward/results/feedback/`, scoped to the browser session. Persist that directory when deploying. No API key or raw personal correction store is included in this repository.
+See [the learning workflow](homeward/LEARNING.md), [timestamped Mubit observations](homeward/data/feedback-observations.json) and [development summary](homeward/data/development-learning.json). The updated UI shows the last verified check; it does not invent a trained state or trigger retraining.
+
+Corrections persist under ignored `homeward/results/feedback/`, scoped to the browser session. Persist that directory when deploying. Real API keys, raw personal correction stores and development test payloads are excluded.
+
+![Homeward’s correction flow: saved, reviewed in Mubit, waiting for the next model](docs/images/homeward-correction.png)
 
 ## The WebGPU city
 
@@ -81,7 +85,7 @@ The complete London map contains **183,550 source features**, producing **5,121,
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,376,871 bytes**.
+- Gzip WebAssembly engine: **2,376,832 bytes**.
 - Combined map/engine transfer: about **10.37 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
@@ -95,8 +99,8 @@ This is a working product prototype with an unfinished adaptation experiment. **
 
 | Observation | Result |
 | --- | --- |
-| Recorded Homeward task calls | 181 |
-| Kept examples | 149 |
+| Recorded Homeward task calls | 183 |
+| Kept examples | 150 |
 | Real trained adapter | Qwen3-4B PEFT v1 |
 | Mubit recorded-reference gate | 1/12, or 8.3% |
 | Latest observed rollout | 10% silent testing; zero graded pairs |

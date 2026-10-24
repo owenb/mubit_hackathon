@@ -7,6 +7,7 @@ import { evaluationReport, demoEvidence } from '../src/demo-evidence.mjs';
 import {getCookie,setCookie} from 'hono/cookie';
 import {randomUUID} from 'node:crypto';
 import {createFeedbackStore,searchPlaces} from '../src/feedback.mjs';
+import {readFile} from 'node:fs/promises';
 
 const defaultRoot=fileURLToPath(new URL('./dist/',import.meta.url));
 export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrainingStatus,feedback=createFeedbackStore({training:trainingFn})}={}) {
@@ -60,6 +61,13 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
   // Explicit packed assets carry their actual byte length. The browser's loader
   // counts compressed bytes itself, so HTTP decoding cannot distort progress.
   app.all('/api/*',c=>c.json({error:'Unknown endpoint'},404));
+  // The editable shell changes independently of the immutable map/engine. Serve
+  // it without date-based 304s, which can retain an old correction UI after a
+  // rebuild or when a deployment's file timestamps move backwards.
+  for(const [path,type] of [['/','text/html'],['/index.html','text/html'],['/style.css','text/css'],['/loader.mjs','text/javascript'],['/worker.mjs','text/javascript'],['/evaluation.mjs','text/javascript'],['/corrections.mjs','text/javascript']])app.get(path,async c=>{
+    c.header('Cache-Control','no-store');c.header('Content-Type',type+'; charset=utf-8');
+    return c.body(await readFile(root+(path==='/'?'index.html':path.slice(1))));
+  });
   app.use('/assets/*',async(c,next)=>{await next();if(c.res.status===200)c.header('Cache-Control','public,max-age=31536000,immutable');});
   app.use('/assets/*',serveStatic({root,precompressed:false}));
   app.all('/assets/*',c=>c.notFound());

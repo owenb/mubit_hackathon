@@ -14,8 +14,9 @@ export async function evaluationReport(){
  const training=await read('../results/travel/mubit-status.json',await read('../data/training-status-snapshot.json',null));
  const probe=await read('../results/travel/latest-serving-probe.json',null);
  const backend_readiness=await read('../data/backend-readiness.json',null);
+ const development=await read('../data/development-learning.json',null);
  return {...report,checked_at:report.checked_at||training?.checked_at||probe?.checked_at||null,training:training||report.training||null,latest_serving_probe:probe?{checked_at:probe.checked_at,inference:probe.inference,latency_ms:probe.elapsed_ms}:report.latest_serving_probe||null,
-  backend_readiness,pending_reason:evaluationPendingReason(report,backend_readiness)};
+  backend_readiness,development,pending_reason:evaluationPendingReason(report,backend_readiness)};
 }
 export async function demoEvidence(){
  const evaluation=await evaluationReport();

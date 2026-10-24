@@ -84,15 +84,16 @@
     "map_preview_verified": true,
     "luna_audit_accepted": true,
     "gateway_receipt_received": true,
-    "teacher_preserved_answer_labels_and_pins": true
+    "teacher_preserved_answer_labels_and_pins": true,
+    "content_retained_in_console": true,
+    "assigned_to_original_homeward_task": true,
+    "positive_rating_persisted": true
   },
   "not_verified": [
-    "Mubit content retention",
-    "Teaching request grouped into the original Homeward task",
-    "Kept-example review",
+    "Per-row kept flag (task total rose by one; this is aggregate evidence)",
     "Inclusion in a trained version",
     "Serving of an updated adapter",
-    "Improvement on unseen questions"
+    "Improvement on fresh questions"
   ],
   "limitations": [
     "The target was supplied in the teacher context; reproducing it is not learned transfer.",
@@ -105,5 +106,39 @@
   "model_calls": 2,
   "app_rollout_or_training_settings_changed": false,
   "final_heldout_questions_sent": 0,
-  "final_heldout_sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91"
+  "final_heldout_sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91",
+  "mubit_followup": {
+    "receipt": "mreq_01a16d9f5f057443a15d1f84712d71c6",
+    "checked_at": "2026-10-24T12:47:33.413252+00:00",
+    "source": "signed_in_console",
+    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16d9f-5f0c-7731-b3ec-2065debc28c7",
+    "console_request_id": "01a16d9f-5f0c-7731-b3ec-2065debc28c7",
+    "task_id": "ln_445191829380864c541213cd",
+    "lane_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+    "content_retained": true,
+    "trainable": true,
+    "operator_rating": "good",
+    "review_state": "rated_good",
+    "review_note": "The corrected request has a persisted Good rating with the correction comment. Task totals changed from 149 to 150 kept, still 26 rejected and 6 unable to review, with 182 calls and no running review. The console does not expose a per-row kept flag; membership inferred from totals is not treated as confirmed lineage.",
+    "model_version": null,
+    "inclusion_verified": false,
+    "fresh_test_verified": false,
+    "correlation": "Matched unique question, exact corrected reply and request time. Gateway receipt and console row IDs differ; no undocumented ID conversion is assumed.",
+    "usage": {
+      "input_tokens": 3275,
+      "output_tokens": 147
+    },
+    "console_total_ms": 1800,
+    "console_upstream_ms": 1790,
+    "task_kept_examples": 150,
+    "task_calls": 182,
+    "fresh_development_baseline": {
+      "version": 1,
+      "cases": 6,
+      "valid_answer_and_map": 1,
+      "outputs_retained": 5,
+      "interrupted_calls": 1,
+      "updated_model_compared": false
+    }
+  }
 }

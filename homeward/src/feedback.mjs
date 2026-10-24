@@ -21,7 +21,7 @@ export function searchPlaces(query){
 }
 export function correctionPreview(interaction,target){
  return {...interaction.result,...target,scene:resolvedScene(target.scene),recovery:null,cache_hit:false,model_calls_this_request:0,
-  inference:{route:'operator_preview',label:'Operator correction · preview',detail:'Edited by a person. No model call or model update.',request_id:null,evidence:['Local correction preview; original model reply preserved']},
+  inference:{route:'operator_preview',label:'Your correction · preview',detail:'Edited by a person. No model call or model update.',request_id:null,evidence:['Local correction preview; original model reply preserved']},
   provenance:'Operator-authored preview. This is not a learned answer.',total_ms:0,elapsed_ms:0};
 }
 export function teachingChecks(output,target,input){
@@ -32,7 +32,7 @@ export function teachingChecks(output,target,input){
   citation_ids_changed:hash(output.source_ids)!==hash(target.source_ids)};
 }
 
-export function createFeedbackStore({directory=new URL('../results/feedback/',import.meta.url),teach=teachCorrection,training=currentTrainingStatus,now=()=>new Date().toISOString()}={}){
+export function createFeedbackStore({directory=new URL('../results/feedback/',import.meta.url),teach=teachCorrection,training=currentTrainingStatus,observations=async()=>{try{return JSON.parse(await readFile(new URL('../data/feedback-observations.json',import.meta.url),'utf8')).observations||[];}catch{return [];}},now=()=>new Date().toISOString()}={}){
  const interactions=new Map(),busy=new Set();
  const owner=session=>hash(session);
  const file=id=>{if(!/^[a-f0-9-]{36}$/.test(id))throw Error('Unknown correction');return new URL(id+'.json',directory);};
@@ -48,11 +48,12 @@ export function createFeedbackStore({directory=new URL('../results/feedback/',im
  }
  async function view(row){
   const snapshot=await training(),baseline=Number(row.baseline_version||0),latest=Number(snapshot.version||0);
+  const observed=(await observations()).find(o=>o.receipt===row.teaching?.receipt&&o.source==='signed_in_console'&&o.task_id==='ln_445191829380864c541213cd')||null;
   return {id:row.id,interaction_id:row.interaction_id,created_at:row.created_at,scope:row.scope,reason:row.reason,note:row.note,target:row.target,
    original:{question:row.original.question,answer:row.original.result.answer,scene:cleanScene(row.original.result.scene),result:row.original.result,evidence:row.original.input.research,request_id:row.original.result.request_id||row.original.result.inference?.request_id||null,replay:row.original.replay},resolved_target_scene:resolvedScene(row.target.scene),
-   status:row.status,error:row.error||null,teaching:row.teaching||null,
-   console_url:row.original.console_url||projectConsole,
-   stages:{saved:{state:'confirmed',at:row.created_at},teacher_audit:{state:row.teaching?.audit?.accepted?'accepted':row.teaching?.audit?'rejected':'not_run'},mubit_recording:{state:row.teaching?.receipt?'receipt_received':'not_sent',receipt:row.teaching?.receipt||null,content_stored_verified:false},mubit_review:{state:'unverified'},model_update:{state:'unverified',newer_version_observed:latest>baseline,baseline_version:baseline||null,latest_observed_version:latest||null,observation_at:snapshot.adapter_checked_at||snapshot.checked_at||null,correction_inclusion_verified:false},transfer_test:{state:'not_run'}},
+   status:row.status,error:row.error||null,teaching:row.teaching||null,platform_observation:observed,
+   console_url:observed?.console_url||row.original.console_url||projectConsole,
+   stages:{saved:{state:'confirmed',at:row.created_at},teacher_audit:{state:row.teaching?.audit?.accepted?'accepted':row.teaching?.audit?'rejected':'not_run'},mubit_recording:{state:observed?.content_retained?'content_verified':row.teaching?.receipt?'receipt_received':'not_sent',receipt:row.teaching?.receipt||null,content_stored_verified:observed?.content_retained===true},mubit_review:{state:['kept','rejected','pending','rated_good'].includes(observed?.review_state)?observed.review_state:'unverified',operator_rating:observed?.operator_rating||null},model_update:{state:'unverified',newer_version_observed:latest>baseline,baseline_version:baseline||null,latest_observed_version:latest||null,observation_at:snapshot.adapter_checked_at||snapshot.checked_at||null,correction_inclusion_verified:false},transfer_test:{state:'not_run'}},
    next_step:row.scope==='trip'?'Saved for this trip. Personal preferences are not submitted as shared teaching.':['recorded','submitted'].includes(row.status)?'Teaching call reached Mubit. Content retention, kept-example review, correction inclusion and model improvement are not yet verified.':row.status==='saved'?'Review this correction, then check and teach with Luna.':'Inspect the teaching evidence before continuing.'};
  }
  return {

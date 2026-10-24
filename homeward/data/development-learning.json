@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-24T12:47:33.413252+00:00",
+  "status": "waiting_for_updated_model",
+  "test": "Fresh development questions about Greville Street and Canary Wharf station selection",
+  "cases": 6,
+  "version_before": 1,
+  "version_after": null,
+  "before": {
+    "total": 6,
+    "outputs_retained": 5,
+    "valid_answer_and_scene": 1,
+    "exact_expected_pin_sets": 4,
+    "interrupted_calls": 1,
+    "new_model_compared": false,
+    "claim": "Baseline only. No weight-update improvement demonstrated.",
+    "limitations": [
+      "Selected v1 in Mubit UI, not per-response API identity",
+      "Playground generation controls are not fully exposed",
+      "Known topics but fresh wording/combinations",
+      "Sixth call interrupted; included as failure, no retry",
+      "No answer repair, target hints or operator correction in model inputs"
+    ]
+  },
+  "after": null,
+  "recording": "not stored; trains nothing",
+  "fresh_questions_sent_to_training": false,
+  "final_twenty_used": false,
+  "cases_public": false
+}

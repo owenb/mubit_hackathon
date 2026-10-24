@@ -16,7 +16,7 @@
   "training": {
     "visible_version": 1,
     "v1_created_at": "2026-10-23T21:31:28Z",
-    "kept": 149,
+    "kept": 150,
     "rejected": 26,
     "unable_to_review": 6,
     "running_reviews": 0,
@@ -56,7 +56,7 @@
     "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16b24-1df0-7660-928d-b6308ba10cc2",
     "route": "fallback",
     "reason": "the primary deployment is not serving",
-    "answered_on": "gpt-6-luna \u00b7 openai",
+    "answered_on": "gpt-6-luna · openai",
     "trainable": true,
     "match": "no match ran",
     "guard": "no guard ran",
@@ -134,5 +134,68 @@
     "new_inference_calls": 0,
     "successor_prepared": true,
     "successor_submitted": false
+  },
+  "correction_followup": {
+    "receipt": "mreq_01a16d9f5f057443a15d1f84712d71c6",
+    "checked_at": "2026-10-24T12:47:33.413252+00:00",
+    "source": "signed_in_console",
+    "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16d9f-5f0c-7731-b3ec-2065debc28c7",
+    "console_request_id": "01a16d9f-5f0c-7731-b3ec-2065debc28c7",
+    "task_id": "ln_445191829380864c541213cd",
+    "lane_key": "lk1_372af8b5834a257eb60d59933c9dc9ff",
+    "content_retained": true,
+    "trainable": true,
+    "operator_rating": "good",
+    "review_state": "rated_good",
+    "review_note": "The corrected request has a persisted Good rating with the correction comment. Task totals changed from 149 to 150 kept, still 26 rejected and 6 unable to review, with 182 calls and no running review. The console does not expose a per-row kept flag; membership inferred from totals is not treated as confirmed lineage.",
+    "model_version": null,
+    "inclusion_verified": false,
+    "fresh_test_verified": false,
+    "correlation": "Matched unique question, exact corrected reply and request time. Gateway receipt and console row IDs differ; no undocumented ID conversion is assumed.",
+    "usage": {
+      "input_tokens": 3275,
+      "output_tokens": 147
+    },
+    "console_total_ms": 1800,
+    "console_upstream_ms": 1790,
+    "task_kept_examples": 150,
+    "task_calls": 182,
+    "fresh_development_baseline": {
+      "version": 1,
+      "cases": 6,
+      "valid_answer_and_map": 1,
+      "outputs_retained": 5,
+      "interrupted_calls": 1,
+      "updated_model_compared": false
+    }
+  },
+  "latest_development_baseline": {
+    "checked_at": "2026-10-24T12:47:33.413252+00:00",
+    "status": "waiting_for_updated_model",
+    "test": "Fresh development questions about Greville Street and Canary Wharf station selection",
+    "cases": 6,
+    "version_before": 1,
+    "version_after": null,
+    "before": {
+      "total": 6,
+      "outputs_retained": 5,
+      "valid_answer_and_scene": 1,
+      "exact_expected_pin_sets": 4,
+      "interrupted_calls": 1,
+      "new_model_compared": false,
+      "claim": "Baseline only. No weight-update improvement demonstrated.",
+      "limitations": [
+        "Selected v1 in Mubit UI, not per-response API identity",
+        "Playground generation controls are not fully exposed",
+        "Known topics but fresh wording/combinations",
+        "Sixth call interrupted; included as failure, no retry",
+        "No answer repair, target hints or operator correction in model inputs"
+      ]
+    },
+    "after": null,
+    "recording": "not stored; trains nothing",
+    "fresh_questions_sent_to_training": false,
+    "final_twenty_used": false,
+    "cases_public": false
   }
 }
