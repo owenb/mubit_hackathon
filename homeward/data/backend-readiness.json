@@ -56,7 +56,7 @@
     "console_url": "https://app.mubit.ai/console/projects/ws-1ac8e778cff912a3/requests/01a16b24-1df0-7660-928d-b6308ba10cc2",
     "route": "fallback",
     "reason": "the primary deployment is not serving",
-    "answered_on": "gpt-6-luna · openai",
+    "answered_on": "gpt-6-luna \u00b7 openai",
     "trainable": true,
     "match": "no match ran",
     "guard": "no guard ran",
@@ -90,14 +90,17 @@
   "heldout_questions_sent": 0,
   "training_settings_changed": false,
   "policy_observed_at": "2026-10-23T23:47:00Z",
-  "adapter_observed_at": "2026-10-24T10:10:45Z",
+  "adapter_observed_at": "2026-10-24T14:12:50.102309+00:00",
   "latest_adapter_observation": {
+    "checked_at": "2026-10-24T14:12:50.102309+00:00",
     "visible_versions": [
       1
     ],
     "state": "silent_test",
+    "shadow_percent": 10,
+    "exam_quality_percent": 8.3,
     "new_serving_proof": false,
-    "scope": "Refreshed signed-in adapter Overview. Detailed pair counts, percentage and exam score not freshly re-read."
+    "scope": "Signed-in Versions and Activity checked; no v2 or new training job shown. Task shows 150 kept / 185 calls."
   },
   "latest_development_comparison": {
     "checked_at": "2026-10-24T09:08:07Z",
@@ -197,5 +200,15 @@
     "fresh_questions_sent_to_training": false,
     "final_twenty_used": false,
     "cases_public": false
+  },
+  "header_instrumentation": {
+    "active": true,
+    "checked_at": "2026-10-24T14:12:50.102309+00:00",
+    "journal": "homeward/results/mubit-headers/YYYY-MM-DD.jsonl",
+    "probe_receipt": "mreq_01a16e3aa3ea7cc385b5c8e580f79c9d",
+    "probe_recording": "metadata",
+    "probe_served_by": "Luna",
+    "new_mubit_identity_header_observed": false,
+    "final_questions_used": false
   }
 }

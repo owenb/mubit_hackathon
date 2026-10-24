@@ -129,7 +129,7 @@ This is a working product prototype with an unfinished adaptation experiment. **
 
 | Observation | Result |
 | --- | --- |
-| Recorded Homeward task calls | 183 |
+| Recorded Homeward task calls | 185 |
 | Kept examples | 150 |
 | Real trained adapter | Qwen3-4B PEFT v1 |
 | Mubit recorded-reference gate | 1/12, or 8.3% |

@@ -40,5 +40,6 @@
   "review_state": "rated_good",
   "weight_inclusion_verified": false,
   "updated_version_tested": false,
-  "final_twenty_used": false
+  "final_twenty_used": false,
+  "console_reverified_at": "2026-10-24T14:12:50.102309+00:00"
 }

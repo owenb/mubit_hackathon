@@ -34,7 +34,9 @@
         "interrupted_calls": 1,
         "updated_model_compared": false
       },
-      "operator_rating_by": "Codex agent acting on the user\u2019s instruction; not an independent travel reviewer"
+      "operator_rating_by": "Codex agent acting on the user\u2019s instruction; not an independent travel reviewer",
+      "last_reverified_at": "2026-10-24T14:12:50.102309+00:00",
+      "last_reverified_note": "Signed-in request Details still shows trainable yes and original lane; retained response exactly matches corrected scene; persisted Good rating remains. No update-version or row-inclusion proof."
     }
   ]
 }
