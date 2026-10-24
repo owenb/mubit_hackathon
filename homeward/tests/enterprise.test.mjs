@@ -7,7 +7,7 @@ import {Hono} from 'hono';
 import {createEnterpriseService,enterpriseData} from '../src/enterprise-service.mjs';
 import {enterpriseRoutes} from '../src/enterprise-routes.mjs';
 import {packet,taskHash,hash,validate} from '../experiments/enterprise-prospecting/contract.mjs';
-import {createModeFetch,companyForQuestion,initialEnterpriseMode,enterpriseModeUrl,layoutCompanyLabels} from '../web/public/enterprise-state.mjs';
+import {createModeFetch,companyForQuestion,initialEnterpriseMode,enterpriseModeUrl,layoutCompanyLabels,createPendingActions} from '../web/public/enterprise-state.mjs';
 import {cameraMatrix,project,overviewCamera,inverseMatrix,multiply} from '../web/public/enterprise-gpu.mjs';
 const c=enterpriseData.companies[0];
 const output=input=>({company_id:input.company.id,fit:'conditional',llm_usage:'unknown',public_fact:'Office address is public.',source_ids:[input.company.sources[0].id],workload_hypothesis:'A repeated document classification task could be evaluated.',fit_reason:'Conditional on data rights and reviewable examples.',unknowns:'Private LLM use and spend are unknown.',discovery_question:'Who reviews the repeated task?',pitch:'Test an owned task-adapted model, subject to validation.',pilot_measure:'Use fresh frozen questions and measure quality and latency.'});
@@ -42,3 +42,14 @@ test('business overview fits every actual office in wide and narrow desktop map 
 });
 
 test('shared sky receives the real inverse of the reversed-depth company camera',()=>{const matrix=cameraMatrix({x:3000,z:-700,yaw:-.36,tilt:.78,range:4700},1280/720).matrix,identity=multiply(matrix,inverseMatrix(matrix));for(let i=0;i<16;i++)assert.ok(Math.abs(identity[i]-(i%5===0?1:0))<.001);});
+
+test('pending correction actions block repeated activation and release after success or failure',async()=>{
+ let finish,calls=0;const states=[],actions=createPendingActions(()=>states.push(actions.has('teach:one')));
+ const operation=()=>{calls++;return new Promise(resolve=>{finish=resolve;});};
+ const first=actions.run('teach:one',operation),second=actions.run('teach:one',operation);
+ assert.equal(first,second);assert.equal(actions.has('teach:one'),true);
+ await Promise.resolve();assert.equal(calls,1);finish({receipt:'mreq_one'});
+ assert.deepEqual(await first,{receipt:'mreq_one'});assert.equal(actions.has('teach:one'),false);assert.deepEqual(states,[true,false]);
+ await assert.rejects(actions.run('save:two',async()=>{throw Error('Not saved');}),/Not saved/);
+ assert.equal(actions.has('save:two'),false);assert.equal(await actions.run('save:two',async()=>'saved'),'saved');
+});

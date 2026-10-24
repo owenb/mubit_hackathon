@@ -38,3 +38,16 @@ export function layoutCompanyLabels(points,bounds,gap=8){
  }
  return result;
 }
+
+// A pending save/teach is one action even if its control is activated again.
+export function createPendingActions(onChange=()=>{}){
+ const pending=new Map();
+ return {
+  has:key=>pending.has(key),
+  run(key,operation){
+   if(pending.has(key))return pending.get(key);
+   const promise=Promise.resolve().then(operation).finally(()=>{pending.delete(key);onChange();});
+   pending.set(key,promise);onChange();return promise;
+  },
+ };
+}
