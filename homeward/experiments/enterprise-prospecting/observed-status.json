@@ -1,0 +1,19 @@
+{
+  "state": "37_receipts_review_unverified",
+  "checked_at": "2026-10-24T17:13:49.729Z",
+  "submitted": 37,
+  "unique_receipts": 37,
+  "kept": null,
+  "task_id": null,
+  "adapter": null,
+  "detail": "36 batch examples and one browser-tested correction produced 37 unique Mubit teaching receipts. Luna provider identity was verified. Console sign-in is required to observe kept review and any enterprise adapter. No adapter or fresh quality improvement is verified.",
+  "batch_teaching": 36,
+  "browser_corrections": 1,
+  "baseline": {
+    "cases": 6,
+    "responses": 5,
+    "transport_failures": 1,
+    "manual_full_task_passes": 3,
+    "scope": "DEVELOPMENT diagnostic; no trained adapter comparison"
+  }
+}

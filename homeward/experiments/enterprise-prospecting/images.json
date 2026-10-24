@@ -1,0 +1,74 @@
+{
+  "unilever": {
+    "url": "/enterprise-images/unilever.jpg",
+    "alt": "Unilever House on Victoria Embankment",
+    "author": "Arild Vågen",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Unilever_House_Mars_2014_02.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Unilever_House_Mars_2014_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Unilever_House_Mars_2014_02.jpg/960px-Unilever_House_Mars_2014_02.jpg",
+    "checked_at": "2026-10-24T17:03:16.182Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  },
+  "shell": {
+    "url": "/enterprise-images/shell.jpg",
+    "alt": "Shell Centre tower in London",
+    "author": "Richard Rogerson",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:The_Shell_Centre_Tower_South_Bank_London_-_geograph.org.uk_-_1374314.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/The_Shell_Centre_Tower_South_Bank_London_-_geograph.org.uk_-_1374314.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/The_Shell_Centre_Tower_South_Bank_London_-_geograph.org.uk_-_1374314.jpg",
+    "checked_at": "2026-10-24T17:03:16.402Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  },
+  "barclays": {
+    "url": "/enterprise-images/barclays.jpg",
+    "alt": "Barclays office at One Churchill Place",
+    "author": "mattbuck",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:London_MMB_%C2%BB013_1_Churchill_Place.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/London_MMB_%C2%BB013_1_Churchill_Place.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/London_MMB_%C2%BB013_1_Churchill_Place.jpg/960px-London_MMB_%C2%BB013_1_Churchill_Place.jpg",
+    "checked_at": "2026-10-24T17:03:16.894Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  },
+  "hsbc": {
+    "url": "/enterprise-images/hsbc.jpg",
+    "alt": "HSBC Tower with neighbouring Canary Wharf office buildings",
+    "author": "mattbuck",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:London_MMB_%C2%AB77_Cabot_Square.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/London_MMB_%C2%AB77_Cabot_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/London_MMB_%C2%AB77_Cabot_Square.jpg/960px-London_MMB_%C2%AB77_Cabot_Square.jpg",
+    "checked_at": "2026-10-24T17:03:17.304Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  },
+  "google": {
+    "url": "/enterprise-images/google.jpg",
+    "alt": "Google office at 6 Pancras Square",
+    "author": "ClemRutter",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:6_Pancras_Square_Google_0765.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/6_Pancras_Square_Google_0765.jpg/960px-6_Pancras_Square_Google_0765.jpg",
+    "checked_at": "2026-10-24T17:03:17.538Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  },
+  "morgan-stanley": {
+    "url": "/enterprise-images/morgan-stanley.jpg",
+    "alt": "Morgan Stanley office at 25 Cabot Square",
+    "author": "Danny Robinson",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Morgan_Stanley,_25_Cabot_Square,_Canary_Wharf_-_geograph.org.uk_-_440760.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Morgan_Stanley%2C_25_Cabot_Square%2C_Canary_Wharf_-_geograph.org.uk_-_440760.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Morgan_Stanley%2C_25_Cabot_Square%2C_Canary_Wharf_-_geograph.org.uk_-_440760.jpg",
+    "checked_at": "2026-10-24T17:03:17.771Z",
+    "modifications": "None; Wikimedia-provided thumbnail displayed with CSS cropping."
+  }
+}

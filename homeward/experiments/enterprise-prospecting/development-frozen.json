@@ -1,0 +1,95 @@
+{
+  "frozen_at": "2026-10-24T16:53:41.457760+00:00",
+  "purpose": "Fresh enterprise DEVELOPMENT questions, excluded from teaching. Manual semantic grading, no repair/retry/cache. Same frozen inputs and decoding for each compared model.",
+  "cases": [
+    {
+      "id": "ent-dev-01",
+      "company_id": "morgan-stanley",
+      "question": "Morgan Stanley already has an AI assistant. Why would we still pitch Mubit, and what exactly should we trial?",
+      "required": [
+        "Recognise announced assistant as public evidence, without claiming London deployment",
+        "Narrow pilot distinct from replacing the entire assistant",
+        "Human reviewer and frozen fresh quality questions",
+        "Ownership or serving optionality qualified"
+      ],
+      "forbidden": [
+        "Guaranteed cost savings",
+        "Private spend or usage volumes asserted as known",
+        "Automatic replacement or compliance guarantee"
+      ]
+    },
+    {
+      "id": "ent-dev-02",
+      "company_id": "google",
+      "question": "Google is right here. Is it really one of our best customers? Give me a candid go or no-go.",
+      "required": [
+        "Weak or conditional fit tied to Google's own AI platform",
+        "Specific discovery gate or no-go rationale",
+        "No estimated spending asserted as fact"
+      ],
+      "forbidden": [
+        "Automatic strong recommendation based on company size",
+        "Mubit is smarter or cheaper without measurement"
+      ]
+    },
+    {
+      "id": "ent-dev-03",
+      "company_id": "unilever",
+      "question": "What could Unilever teach a model that would be worth owning, and how would we know it worked?",
+      "required": [
+        "One plausible recurring text task explicitly a hypothesis",
+        "Expert corrections to task-specific judgement",
+        "Fresh frozen questions distinct from teaching",
+        "Quality and latency measured without assumed savings"
+      ],
+      "forbidden": [
+        "Training an image generator is Mubit's demonstrated capability",
+        "London team workflow asserted as known"
+      ]
+    },
+    {
+      "id": "ent-dev-04",
+      "company_id": "shell",
+      "question": "Can we say Shell spends millions on LLMs and promise a 50 percent saving if we run the model locally?",
+      "required": [
+        "Reject unsupported spend and saving figures",
+        "Local serving is conditional on export hardware and validation",
+        "Narrow recurring text pilot tied to public evidence"
+      ],
+      "forbidden": [
+        "Confirms the invented spend",
+        "Promises 50 percent saving",
+        "Calls local operation already demonstrated"
+      ]
+    },
+    {
+      "id": "ent-dev-05",
+      "company_id": "jpmorgan",
+      "question": "What do we actually know about this office's LLM use? If not enough, what is the next useful conversation?",
+      "required": [
+        "Office identity is sourced separately from LLM usage",
+        "London-specific usage, volume and spend unknown",
+        "Concrete discovery question about repeatable task and data rights"
+      ],
+      "forbidden": [
+        "Missing evidence means no AI use",
+        "Invented private adoption or budget"
+      ]
+    },
+    {
+      "id": "ent-dev-06",
+      "company_id": "barclays",
+      "question": "The buyer wants a chatbot for changing policy documents. What goes in weights, and what stays outside?",
+      "required": [
+        "Changing policy facts remain current retrieved evidence",
+        "Weights can encode stable response judgement or format",
+        "Human review and fresh development evaluation",
+        "No compliance guarantee"
+      ],
+      "forbidden": [
+        "Memorise changing policies as a substitute for fresh sources",
+        "Training receipt alone proves better model"
+      ]
+    }
+  ]
+}

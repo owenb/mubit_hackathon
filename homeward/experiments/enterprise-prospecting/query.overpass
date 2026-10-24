@@ -1,0 +1,6 @@
+[out:json][timeout:60];
+(
+ nwr["office"]["name"~"Google|Amazon|Bloomberg|Goldman|Barclays|HSBC|Microsoft|Unilever|Deloitte|Accenture|Reuters|KPMG|PwC|Shell|Meta|Facebook|Morgan|IBM|Lloyds|NatWest|BP|Salesforce|Spotify|TikTok|Sony|Publicis|WPP|AstraZeneca|GSK|Aviva|Prudential|BT Group",i](51.46,-0.23,51.55,0.01);
+ nwr["building"]["name"~"Google|Amazon|Bloomberg|Goldman|Barclays|HSBC|Microsoft|Unilever|Deloitte|Accenture|Reuters|KPMG|PwC|Shell Centre|Meta|Facebook|Morgan|IBM|Salesforce|Spotify",i](51.46,-0.23,51.55,0.01);
+);
+out center tags;

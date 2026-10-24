@@ -1,0 +1,1390 @@
+{
+  "task_hash": "32d6df5258fb8811245e3bb48e3591b748b5963c67abf2ed5c93649b50164b58",
+  "rows": [
+    {
+      "id": "ent-teach-01",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "4f6b176caa441080d9ba9a8b7403432c57b6184a30aa509e17bb73301682b611"
+    },
+    {
+      "id": "ent-teach-02",
+      "input": {
+        "company": {
+          "id": "barclays",
+          "name": "Barclays",
+          "sector": "Banking",
+          "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+          "facts": [
+            {
+              "text": "Barclays lists a London contact address at 1 Churchill Place.",
+              "source_ids": [
+                "barclays-office"
+              ]
+            },
+            {
+              "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+              "source_ids": [
+                "barclays-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "barclays-office",
+              "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "barclays-ai",
+              "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "e509fa6d2b687ce5ef0214011466cd3a5aff58c62301078de822feb00aaee3f2"
+    },
+    {
+      "id": "ent-teach-03",
+      "input": {
+        "company": {
+          "id": "hsbc",
+          "name": "HSBC",
+          "sector": "Banking",
+          "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+          "facts": [
+            {
+              "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+              "source_ids": [
+                "hsbc-office"
+              ]
+            },
+            {
+              "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+              "source_ids": [
+                "hsbc-business"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "hsbc-office",
+              "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "hsbc-business",
+              "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "ef7c47105cc4eeb2fdf2f243565d3de8b2198f9f417c71367d6b2bff1129c761"
+    },
+    {
+      "id": "ent-teach-04",
+      "input": {
+        "company": {
+          "id": "jpmorgan",
+          "name": "J.P. Morgan",
+          "sector": "Financial services",
+          "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+          "facts": [
+            {
+              "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+              "source_ids": [
+                "jpmorgan-office"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "jpmorgan-office",
+              "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "e8f2e22fd13903e3d806d5d6a8bd0e8dfd026f14a2dd6e5ed43fba4d2ce47225"
+    },
+    {
+      "id": "ent-teach-05",
+      "input": {
+        "company": {
+          "id": "unilever",
+          "name": "Unilever",
+          "sector": "Consumer goods",
+          "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+          "facts": [
+            {
+              "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+              "source_ids": [
+                "unilever-office"
+              ]
+            },
+            {
+              "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+              "source_ids": [
+                "unilever-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "unilever-office",
+              "url": "https://www.unilever.com/contact/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "unilever-ai",
+              "url": "https://www.unilever.com/our-company/our-strategy/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "d7bfc233bfaed4d6074214c9d7670457530e6ef16f9ce3c1edefa01ba8d47e75"
+    },
+    {
+      "id": "ent-teach-06",
+      "input": {
+        "company": {
+          "id": "shell",
+          "name": "Shell",
+          "sector": "Energy",
+          "address": "Shell Centre, London SE1 7NA",
+          "facts": [
+            {
+              "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+              "source_ids": [
+                "shell-office"
+              ]
+            },
+            {
+              "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+              "source_ids": [
+                "shell-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "shell-office",
+              "url": "https://www.shell.com/who-we-are/contact-us.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "shell-ai",
+              "url": "https://www.shell.com/what-we-do/digitalisation.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "056ae1abf36e09c9f30e2ee81a48440037b15ce4d8798eb0ae28d35305c6a77b"
+    },
+    {
+      "id": "ent-teach-07",
+      "input": {
+        "company": {
+          "id": "google",
+          "name": "Google",
+          "sector": "AI and technology",
+          "address": "6 Pancras Square, London N1C 4AG",
+          "facts": [
+            {
+              "text": "Google lists a London office at 6 Pancras Square.",
+              "source_ids": [
+                "google-office"
+              ]
+            },
+            {
+              "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+              "source_ids": [
+                "google-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "google-office",
+              "url": "https://about.google/company-info/locations/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "google-ai",
+              "url": "https://deepmind.google/models/model-cards/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Identify a repeatable internal writing or classification pilot with an accountable reviewer.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "f7c92c6590c4c79feb1e34475677589d967d0bfa03db12f0302fe0586d56efd3"
+    },
+    {
+      "id": "ent-teach-08",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "7c74a0915bfe618fae5683374f62e5fe07f843df2773849ec2b2b3f559a97a3e"
+    },
+    {
+      "id": "ent-teach-09",
+      "input": {
+        "company": {
+          "id": "barclays",
+          "name": "Barclays",
+          "sector": "Banking",
+          "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+          "facts": [
+            {
+              "text": "Barclays lists a London contact address at 1 Churchill Place.",
+              "source_ids": [
+                "barclays-office"
+              ]
+            },
+            {
+              "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+              "source_ids": [
+                "barclays-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "barclays-office",
+              "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "barclays-ai",
+              "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "960db1ddbdeacbbacef1d5c8fd67289385751e9b38190a4ba5ce3ff6024302a2"
+    },
+    {
+      "id": "ent-teach-10",
+      "input": {
+        "company": {
+          "id": "hsbc",
+          "name": "HSBC",
+          "sector": "Banking",
+          "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+          "facts": [
+            {
+              "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+              "source_ids": [
+                "hsbc-office"
+              ]
+            },
+            {
+              "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+              "source_ids": [
+                "hsbc-business"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "hsbc-office",
+              "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "hsbc-business",
+              "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "7c22bc24ee5fedcb3d7512ae46020bcc2d68623780496fc3a94fb353018eea77"
+    },
+    {
+      "id": "ent-teach-11",
+      "input": {
+        "company": {
+          "id": "jpmorgan",
+          "name": "J.P. Morgan",
+          "sector": "Financial services",
+          "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+          "facts": [
+            {
+              "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+              "source_ids": [
+                "jpmorgan-office"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "jpmorgan-office",
+              "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "ebecab635a018f5c41fe6bd6ee53ae6e843e530f84d2a01b76a5c69cb20b5e51"
+    },
+    {
+      "id": "ent-teach-12",
+      "input": {
+        "company": {
+          "id": "unilever",
+          "name": "Unilever",
+          "sector": "Consumer goods",
+          "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+          "facts": [
+            {
+              "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+              "source_ids": [
+                "unilever-office"
+              ]
+            },
+            {
+              "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+              "source_ids": [
+                "unilever-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "unilever-office",
+              "url": "https://www.unilever.com/contact/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "unilever-ai",
+              "url": "https://www.unilever.com/our-company/our-strategy/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "6e9c2b75fbf29d9a063a8cc2d50756b3684d8194d7fea14874bae86b3b685596"
+    },
+    {
+      "id": "ent-teach-13",
+      "input": {
+        "company": {
+          "id": "shell",
+          "name": "Shell",
+          "sector": "Energy",
+          "address": "Shell Centre, London SE1 7NA",
+          "facts": [
+            {
+              "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+              "source_ids": [
+                "shell-office"
+              ]
+            },
+            {
+              "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+              "source_ids": [
+                "shell-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "shell-office",
+              "url": "https://www.shell.com/who-we-are/contact-us.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "shell-ai",
+              "url": "https://www.shell.com/what-we-do/digitalisation.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "6bc05fd28fcb25133177dc3aa8b4ce894b18aa19aad5bc9699301221a00c539e"
+    },
+    {
+      "id": "ent-teach-14",
+      "input": {
+        "company": {
+          "id": "google",
+          "name": "Google",
+          "sector": "AI and technology",
+          "address": "6 Pancras Square, London N1C 4AG",
+          "facts": [
+            {
+              "text": "Google lists a London office at 6 Pancras Square.",
+              "source_ids": [
+                "google-office"
+              ]
+            },
+            {
+              "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+              "source_ids": [
+                "google-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "google-office",
+              "url": "https://about.google/company-info/locations/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "google-ai",
+              "url": "https://deepmind.google/models/model-cards/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How could an operations expert make the output more consistent over time?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "1fd62a430a4acc15476a050827d251ab493d19b03a582ad6129e1dfcf0a3d950"
+    },
+    {
+      "id": "ent-teach-15",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "e08a6229c70e821ff91e1b98874d95ce4f65768f8625bba18a64f64fced3de37"
+    },
+    {
+      "id": "ent-teach-16",
+      "input": {
+        "company": {
+          "id": "barclays",
+          "name": "Barclays",
+          "sector": "Banking",
+          "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+          "facts": [
+            {
+              "text": "Barclays lists a London contact address at 1 Churchill Place.",
+              "source_ids": [
+                "barclays-office"
+              ]
+            },
+            {
+              "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+              "source_ids": [
+                "barclays-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "barclays-office",
+              "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "barclays-ai",
+              "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "e481a18b94125e5a46e2b6b6402124658d9f3bad8a6d85abf90f5e226bac442d"
+    },
+    {
+      "id": "ent-teach-17",
+      "input": {
+        "company": {
+          "id": "hsbc",
+          "name": "HSBC",
+          "sector": "Banking",
+          "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+          "facts": [
+            {
+              "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+              "source_ids": [
+                "hsbc-office"
+              ]
+            },
+            {
+              "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+              "source_ids": [
+                "hsbc-business"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "hsbc-office",
+              "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "hsbc-business",
+              "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "05bd38e9b40902ee167b14ef5654a78ebff26329bf6bee4eb791d9709f7a3eae"
+    },
+    {
+      "id": "ent-teach-18",
+      "input": {
+        "company": {
+          "id": "jpmorgan",
+          "name": "J.P. Morgan",
+          "sector": "Financial services",
+          "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+          "facts": [
+            {
+              "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+              "source_ids": [
+                "jpmorgan-office"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "jpmorgan-office",
+              "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "2a326a0a945e2ecc6b5ace2f3793837106f8b75507ecb5afde87dfbd71d3814e"
+    },
+    {
+      "id": "ent-teach-19",
+      "input": {
+        "company": {
+          "id": "unilever",
+          "name": "Unilever",
+          "sector": "Consumer goods",
+          "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+          "facts": [
+            {
+              "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+              "source_ids": [
+                "unilever-office"
+              ]
+            },
+            {
+              "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+              "source_ids": [
+                "unilever-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "unilever-office",
+              "url": "https://www.unilever.com/contact/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "unilever-ai",
+              "url": "https://www.unilever.com/our-company/our-strategy/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "29de6b0779109fadfb418c21378fb4c7f94c734dce50b9f88cd87dda9c2272de"
+    },
+    {
+      "id": "ent-teach-20",
+      "input": {
+        "company": {
+          "id": "shell",
+          "name": "Shell",
+          "sector": "Energy",
+          "address": "Shell Centre, London SE1 7NA",
+          "facts": [
+            {
+              "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+              "source_ids": [
+                "shell-office"
+              ]
+            },
+            {
+              "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+              "source_ids": [
+                "shell-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "shell-office",
+              "url": "https://www.shell.com/who-we-are/contact-us.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "shell-ai",
+              "url": "https://www.shell.com/what-we-do/digitalisation.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "d96a276c47012cead67cf976c270b11a10439f5a3d5fcaadd8f0d231e2fce9f8"
+    },
+    {
+      "id": "ent-teach-21",
+      "input": {
+        "company": {
+          "id": "google",
+          "name": "Google",
+          "sector": "AI and technology",
+          "address": "6 Pancras Square, London N1C 4AG",
+          "facts": [
+            {
+              "text": "Google lists a London office at 6 Pancras Square.",
+              "source_ids": [
+                "google-office"
+              ]
+            },
+            {
+              "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+              "source_ids": [
+                "google-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "google-office",
+              "url": "https://about.google/company-info/locations/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "google-ai",
+              "url": "https://deepmind.google/models/model-cards/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "What would prevent this company from being a sensible first customer?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "0c47ae2a862e34885cf56ded290b48f9b1e172ee02a98dff8af456cf3371ef88"
+    },
+    {
+      "id": "ent-teach-22",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "89b9aecf355b14644e75b11ceb806f931d7f1636d3bacbdad34784d28be6c6ad"
+    },
+    {
+      "id": "ent-teach-23",
+      "input": {
+        "company": {
+          "id": "barclays",
+          "name": "Barclays",
+          "sector": "Banking",
+          "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+          "facts": [
+            {
+              "text": "Barclays lists a London contact address at 1 Churchill Place.",
+              "source_ids": [
+                "barclays-office"
+              ]
+            },
+            {
+              "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+              "source_ids": [
+                "barclays-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "barclays-office",
+              "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "barclays-ai",
+              "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "2740d999984ae66047b61bbbc5634bd3b49a594d3bc7a1816bec8a7b03055276"
+    },
+    {
+      "id": "ent-teach-24",
+      "input": {
+        "company": {
+          "id": "hsbc",
+          "name": "HSBC",
+          "sector": "Banking",
+          "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+          "facts": [
+            {
+              "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+              "source_ids": [
+                "hsbc-office"
+              ]
+            },
+            {
+              "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+              "source_ids": [
+                "hsbc-business"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "hsbc-office",
+              "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "hsbc-business",
+              "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "4d0b51937743903621e8f2b7a7d867e727ca7627eca58db0181488bf5d766914"
+    },
+    {
+      "id": "ent-teach-25",
+      "input": {
+        "company": {
+          "id": "jpmorgan",
+          "name": "J.P. Morgan",
+          "sector": "Financial services",
+          "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+          "facts": [
+            {
+              "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+              "source_ids": [
+                "jpmorgan-office"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "jpmorgan-office",
+              "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "8dfab7bdd3420c754dd1e0571f2e9a69968142d100553470c00cefd6ce7389a4"
+    },
+    {
+      "id": "ent-teach-26",
+      "input": {
+        "company": {
+          "id": "unilever",
+          "name": "Unilever",
+          "sector": "Consumer goods",
+          "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+          "facts": [
+            {
+              "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+              "source_ids": [
+                "unilever-office"
+              ]
+            },
+            {
+              "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+              "source_ids": [
+                "unilever-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "unilever-office",
+              "url": "https://www.unilever.com/contact/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "unilever-ai",
+              "url": "https://www.unilever.com/our-company/our-strategy/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "3a92812e315c7c3ce217647f0281330aff19924ca726b3ff1eabd1eeb33ea711"
+    },
+    {
+      "id": "ent-teach-27",
+      "input": {
+        "company": {
+          "id": "shell",
+          "name": "Shell",
+          "sector": "Energy",
+          "address": "Shell Centre, London SE1 7NA",
+          "facts": [
+            {
+              "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+              "source_ids": [
+                "shell-office"
+              ]
+            },
+            {
+              "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+              "source_ids": [
+                "shell-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "shell-office",
+              "url": "https://www.shell.com/who-we-are/contact-us.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "shell-ai",
+              "url": "https://www.shell.com/what-we-do/digitalisation.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "89a9ec40993404667d38b25e96de1f763373c42683e0667460dc3dea6dce7e27"
+    },
+    {
+      "id": "ent-teach-28",
+      "input": {
+        "company": {
+          "id": "google",
+          "name": "Google",
+          "sector": "AI and technology",
+          "address": "6 Pancras Square, London N1C 4AG",
+          "facts": [
+            {
+              "text": "Google lists a London office at 6 Pancras Square.",
+              "source_ids": [
+                "google-office"
+              ]
+            },
+            {
+              "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+              "source_ids": [
+                "google-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "google-office",
+              "url": "https://about.google/company-info/locations/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "google-ai",
+              "url": "https://deepmind.google/models/model-cards/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Draft a short pilot proposal around staff knowledge and reliable citations.",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "d5e229e12165a6478c13effe7c0c26c7e7fc999f1bcce6b773194d7f7fd556e4"
+    },
+    {
+      "id": "ent-teach-29",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "1f59a199394752d3f9c77617b32ecd5f90d5d17ed5e04bb7d3ddf5e2af90c800"
+    },
+    {
+      "id": "ent-teach-30",
+      "input": {
+        "company": {
+          "id": "barclays",
+          "name": "Barclays",
+          "sector": "Banking",
+          "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+          "facts": [
+            {
+              "text": "Barclays lists a London contact address at 1 Churchill Place.",
+              "source_ids": [
+                "barclays-office"
+              ]
+            },
+            {
+              "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+              "source_ids": [
+                "barclays-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "barclays-office",
+              "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "barclays-ai",
+              "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "edc052658af231a9ea65c7b7b942414f4c9f109da8c785252f0b0626d6b36688"
+    },
+    {
+      "id": "ent-teach-31",
+      "input": {
+        "company": {
+          "id": "hsbc",
+          "name": "HSBC",
+          "sector": "Banking",
+          "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+          "facts": [
+            {
+              "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+              "source_ids": [
+                "hsbc-office"
+              ]
+            },
+            {
+              "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+              "source_ids": [
+                "hsbc-business"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "hsbc-office",
+              "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "hsbc-business",
+              "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "bede0888afa2316f28109f8f54a0263cfd73c61be391aa6792ef79d76d24a40a"
+    },
+    {
+      "id": "ent-teach-32",
+      "input": {
+        "company": {
+          "id": "jpmorgan",
+          "name": "J.P. Morgan",
+          "sector": "Financial services",
+          "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+          "facts": [
+            {
+              "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+              "source_ids": [
+                "jpmorgan-office"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "jpmorgan-office",
+              "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "5bd22c5fa4dee68b75c4df87ecb9b696bb01ad0815f6e84dc41969130c5ceb07"
+    },
+    {
+      "id": "ent-teach-33",
+      "input": {
+        "company": {
+          "id": "unilever",
+          "name": "Unilever",
+          "sector": "Consumer goods",
+          "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+          "facts": [
+            {
+              "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+              "source_ids": [
+                "unilever-office"
+              ]
+            },
+            {
+              "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+              "source_ids": [
+                "unilever-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "unilever-office",
+              "url": "https://www.unilever.com/contact/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "unilever-ai",
+              "url": "https://www.unilever.com/our-company/our-strategy/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "508d9b2d55d735e3c9ee702e5f77cf1ede0004d767e09a55c601d8bf56231e97"
+    },
+    {
+      "id": "ent-teach-34",
+      "input": {
+        "company": {
+          "id": "shell",
+          "name": "Shell",
+          "sector": "Energy",
+          "address": "Shell Centre, London SE1 7NA",
+          "facts": [
+            {
+              "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+              "source_ids": [
+                "shell-office"
+              ]
+            },
+            {
+              "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+              "source_ids": [
+                "shell-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "shell-office",
+              "url": "https://www.shell.com/who-we-are/contact-us.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "shell-ai",
+              "url": "https://www.shell.com/what-we-do/digitalisation.html",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "af2f1bd8c049730130664726972eb95bed8f5653f696f23f8c16a5bcbb4d50d0"
+    },
+    {
+      "id": "ent-teach-35",
+      "input": {
+        "company": {
+          "id": "google",
+          "name": "Google",
+          "sector": "AI and technology",
+          "address": "6 Pancras Square, London N1C 4AG",
+          "facts": [
+            {
+              "text": "Google lists a London office at 6 Pancras Square.",
+              "source_ids": [
+                "google-office"
+              ]
+            },
+            {
+              "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+              "source_ids": [
+                "google-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "google-office",
+              "url": "https://about.google/company-info/locations/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "google-ai",
+              "url": "https://deepmind.google/models/model-cards/",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "Which buying signal is evidenced, and which assumptions should we validate first?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "3b22673719df1c1f2f483362da70d769d711f752d0612ac19102e5f1c3ceb1ab"
+    },
+    {
+      "id": "ent-teach-36",
+      "input": {
+        "company": {
+          "id": "morgan-stanley",
+          "name": "Morgan Stanley",
+          "sector": "Financial services",
+          "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+          "facts": [
+            {
+              "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+              "source_ids": [
+                "morgan-stanley-office"
+              ]
+            },
+            {
+              "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+              "source_ids": [
+                "morgan-stanley-ai"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "morgan-stanley-office",
+              "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            },
+            {
+              "id": "morgan-stanley-ai",
+              "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+              "checked_at": "2026-10-24T16:55:42.533Z"
+            }
+          ]
+        },
+        "question": "How should we handle a request to estimate this office’s private AI budget?",
+        "expert_note": "Suggested operator lesson, authored by the coding assistant for this demo: qualify one narrow recurring text task before pitching. Keep changing facts in retrieval and stable reviewer judgement in weights. A large company is not automatically a strong fit; existing model builders may be weak fits. Private spend, traffic and London adoption are unknown unless specifically sourced. Propose corrected examples and separate fresh questions, then measure quality and latency. Receipt, kept review, trained adapter and successful evaluation are four different states. Ownership and serving optionality are conditional benefits; do not promise savings, compliance or intelligence gains."
+      },
+      "input_sha256": "1603fee30bfb9049cc41fd6168dfb80473b5b1cdc58f1c8efe85347883b16d29"
+    }
+  ]
+}

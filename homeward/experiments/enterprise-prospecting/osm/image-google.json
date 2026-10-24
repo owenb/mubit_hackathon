@@ -1,0 +1,230 @@
+{
+  "batchcomplete": "",
+  "continue": {
+    "gsroffset": 2,
+    "continue": "gsroffset||"
+  },
+  "query": {
+    "pages": {
+      "73490858": {
+        "pageid": 73490858,
+        "ns": 6,
+        "title": "File:Google-Deep Mind headquarters in London, 6 Pancras Square.jpg",
+        "index": 2,
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg/960px-Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumbwidth": 900,
+            "thumbheight": 1200,
+            "responsiveUrls": {
+              "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg/1920px-Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+            },
+            "thumbattribs": {
+              "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg/960px-Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "decoding": "async",
+              "loading": "lazy",
+              "width": 900,
+              "height": 1200,
+              "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg/1920px-Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+            },
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Google-Deep_Mind_headquarters_in_London%2C_6_Pancras_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:Google-Deep_Mind_headquarters_in_London,_6_Pancras_Square.jpg",
+            "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=73490858",
+            "extmetadata": {
+              "DateTime": {
+                "value": "2018-10-09 12:28:06",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "Google-Deep Mind headquarters in London, 6 Pancras Square",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "DeepMind|Self-published work|6 Pancras Square",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Entrance of building where Google and its subsidiary Deep Mind are located at 6 Pancras Square, London, UK.",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2017-12-21 11:47:54",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:Gciriani\" title=\"User:Gciriani\">Gciriani</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 4.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 4.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/4.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-4.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "74630289": {
+        "pageid": 74630289,
+        "ns": 6,
+        "title": "File:6 Pancras Square Google 0765.jpg",
+        "index": 1,
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/6_Pancras_Square_Google_0765.jpg/960px-6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "thumbwidth": 900,
+            "thumbheight": 675,
+            "responsiveUrls": {
+              "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/6_Pancras_Square_Google_0765.jpg/1920px-6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+            },
+            "thumbattribs": {
+              "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/6_Pancras_Square_Google_0765.jpg/960px-6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "decoding": "async",
+              "loading": "lazy",
+              "width": 900,
+              "height": 675,
+              "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/6_Pancras_Square_Google_0765.jpg/1920px-6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+            },
+            "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/6_Pancras_Square_Google_0765.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:6_Pancras_Square_Google_0765.jpg",
+            "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74630289",
+            "extmetadata": {
+              "DateTime": {
+                "value": "2018-11-24 17:46:51",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "6 Pancras Square Google 0765",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Self-published work|Files with coordinates missing SDC location of creation (51° N, 1° W)|6 Pancras Square",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "51.536743",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-0.126186",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "The interior of the Google Building, 6 Pancras Square, King's Cross, London. Designed in 2016 by Allford, Hall, Monaghan and Morris. The building is designed with a 50 year + life span, the features such as the recording studios, the restaurants and gym with 10 and the office modules with five.",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2018-11-21 15:04:13",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:ClemRutter\" title=\"User:ClemRutter\">ClemRutter</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 4.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 4.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/4.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-4.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

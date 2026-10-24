@@ -1,0 +1,362 @@
+{
+  "version": "enterprise-london-v1",
+  "downloaded_at": "2026-10-24T16:55:42.533Z",
+  "selection": "Seven distinct large enterprises with exact mapped London offices. OSM identities cross-checked against primary company contact sources. Meta/Rathbone Square rejected because occupancy was not currently verified. Small retail branches excluded.",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "license_url": "https://www.openstreetmap.org/copyright",
+  "query": {
+    "method": "Official OSM API exact object download plus all geometry nodes",
+    "bounded_selection": [
+      51.46,
+      -0.23,
+      51.55,
+      0.01
+    ],
+    "endpoints": [
+      "https://www.openstreetmap.org/api/0.6/ways.json?ways=159590822,46250966,5986805,5986929,172886760,140144145,648622768",
+      "https://www.openstreetmap.org/api/0.6/node/4428875257.json"
+    ],
+    "overpass_attempts": "Bounded query retained in query.overpass. overpass-api.de returned HTTP 406; kumi.systems and private.coffee timed out. Official OSM API succeeded."
+  },
+  "companies": [
+    {
+      "id": "morgan-stanley",
+      "name": "Morgan Stanley",
+      "sector": "Financial services",
+      "address": "25 Cabot Square, Canary Wharf, London E14 4QA",
+      "color": "#9ac9ed",
+      "lat": 51.504861000000005,
+      "lon": -0.0238078,
+      "east": 7205.2825944205615,
+      "north": -282.64018712319,
+      "height": 12.8,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 172886760,
+        "url": "https://www.openstreetmap.org/way/172886760",
+        "object_timestamp": "2026-03-20T05:43:23Z",
+        "version": 16,
+        "name": "Morgan Stanley"
+      },
+      "facts": [
+        {
+          "text": "Morgan Stanley lists its London office at 25 Cabot Square.",
+          "source_ids": [
+            "morgan-stanley-office"
+          ]
+        },
+        {
+          "text": "In June 2024 Morgan Stanley Wealth Management announced an OpenAI-powered meeting notes and draft follow-up tool with client consent and advisor review. This announcement does not establish London office deployment.",
+          "source_ids": [
+            "morgan-stanley-ai"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "morgan-stanley-office",
+          "title": "London offices",
+          "url": "https://www.morganstanley.com/about-us/global-offices/europe-middle-east-africa/united-kingdom",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "morgan-stanley-ai",
+          "title": "Debrief launch · 26 June 2024",
+          "url": "https://www.morganstanley.com/press-releases/ai-at-morgan-stanley-debrief-launch",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "barclays",
+      "name": "Barclays",
+      "sector": "Banking",
+      "address": "1 Churchill Place, Canary Wharf, London E14 5HP",
+      "color": "#43c6ec",
+      "lat": 51.50512195,
+      "lon": -0.0143549,
+      "east": 7860.243407219966,
+      "north": -253.59136600094064,
+      "height": 156,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 5986929,
+        "url": "https://www.openstreetmap.org/way/5986929",
+        "object_timestamp": "2026-02-13T21:45:31Z",
+        "version": 23,
+        "name": "Barclays"
+      },
+      "facts": [
+        {
+          "text": "Barclays lists a London contact address at 1 Churchill Place.",
+          "source_ids": [
+            "barclays-office"
+          ]
+        },
+        {
+          "text": "Microsoft announced a planned global rollout of Microsoft 365 Copilot to 100,000 Barclays colleagues in June 2025. This is a public rollout announcement, not measured London adoption or spend.",
+          "source_ids": [
+            "barclays-ai"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "barclays-office",
+          "title": "Barclays London contact",
+          "url": "https://privatebank.barclays.com/international-banking/help-with-my-account/banking/international-client-contact-information/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "barclays-ai",
+          "title": "Microsoft announcement · 9 June 2025",
+          "url": "https://ukstories.microsoft.com/features/barclays-rolls-out-microsoft-365-copilot-to-100000-colleagues/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "hsbc",
+      "name": "HSBC",
+      "sector": "Banking",
+      "address": "8 Canada Square, Canary Wharf, London E14 5HQ",
+      "color": "#ed6e72",
+      "lat": 51.5054352,
+      "lon": -0.017438500000000003,
+      "east": 7646.590754346433,
+      "north": -218.72053551019008,
+      "height": 199.5,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 5986805,
+        "url": "https://www.openstreetmap.org/way/5986805",
+        "object_timestamp": "2025-01-30T14:55:02Z",
+        "version": 21,
+        "name": "HSBC UK"
+      },
+      "facts": [
+        {
+          "text": "HSBC Asset Management lists its contact address at 8 Canada Square, Canary Wharf. The OSM building label is HSBC UK; this pin represents the HSBC group office building, not the Birmingham headquarters of HSBC UK.",
+          "source_ids": [
+            "hsbc-office"
+          ]
+        },
+        {
+          "text": "HSBC describes banking services across its UK, Hong Kong, Corporate and Institutional Banking, and International Wealth and Premier Banking businesses. No office-specific LLM usage is established by this source.",
+          "source_ids": [
+            "hsbc-business"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "hsbc-office",
+          "title": "HSBC Asset Management contact",
+          "url": "https://www.assetmanagement.hsbc.co.uk/en/contact-us",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "hsbc-business",
+          "title": "HSBC at a glance",
+          "url": "https://www.hsbc.com/who-we-are/hsbc-at-a-glance",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "jpmorgan",
+      "name": "J.P. Morgan",
+      "sector": "Financial services",
+      "address": "25 Bank Street, Canary Wharf, London E14 5JP",
+      "color": "#c2b49b",
+      "lat": 51.502899299999996,
+      "lon": -0.020808,
+      "east": 7413.129016813231,
+      "north": -501.01563221342496,
+      "height": 153,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 140144145,
+        "url": "https://www.openstreetmap.org/way/140144145",
+        "object_timestamp": "2022-08-26T06:48:43Z",
+        "version": 16,
+        "name": "JP Morgan"
+      },
+      "facts": [
+        {
+          "text": "JPMorgan Chase Bank, N.A., London Branch and J.P. Morgan SE London Branch list 25 Bank Street. The source describes private banking and treasury/securities services; it does not establish this office’s LLM usage.",
+          "source_ids": [
+            "jpmorgan-office"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "jpmorgan-office",
+          "title": "J.P. Morgan entity information",
+          "url": "https://cws-main-ndc.jpmorgan.com/disclosures/legal-entity-information",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "unilever",
+      "name": "Unilever",
+      "sector": "Consumer goods",
+      "address": "Unilever House, 100 Victoria Embankment, London EC4Y 0DY",
+      "color": "#a3a1ff",
+      "lat": 51.5117255,
+      "lon": -0.10501245000000001,
+      "east": 1578.875505898406,
+      "north": 481.51245742632756,
+      "height": 25.6,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 159590822,
+        "url": "https://www.openstreetmap.org/way/159590822",
+        "object_timestamp": "2026-08-20T15:39:00Z",
+        "version": 12,
+        "name": "Unilever"
+      },
+      "facts": [
+        {
+          "text": "Unilever lists Unilever House at 100 Victoria Embankment as a London contact office. Its registered office is Port Sunlight; this pin is not labelled the registered office.",
+          "source_ids": [
+            "unilever-office"
+          ]
+        },
+        {
+          "text": "Unilever describes AI-enabled marketing production and a Beauty AI studio. This does not establish a particular London text workflow or a private LLM budget.",
+          "source_ids": [
+            "unilever-ai"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "unilever-office",
+          "title": "Unilever contact",
+          "url": "https://www.unilever.com/contact/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "unilever-ai",
+          "title": "Unilever strategy",
+          "url": "https://www.unilever.com/our-company/our-strategy/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "shell",
+      "name": "Shell",
+      "sector": "Energy",
+      "address": "Shell Centre, London SE1 7NA",
+      "color": "#ffd266",
+      "lat": 51.503784350000004,
+      "lon": -0.11681164999999999,
+      "east": 761.3471683107123,
+      "north": -402.4923168859547,
+      "height": 107,
+      "location_precision": "Centre of mapped office footprint; not an entrance",
+      "osm": {
+        "type": "way",
+        "id": 46250966,
+        "url": "https://www.openstreetmap.org/way/46250966",
+        "object_timestamp": "2025-12-03T23:04:39Z",
+        "version": 17,
+        "name": "Shell Centre"
+      },
+      "facts": [
+        {
+          "text": "Shell lists Shell Centre, London SE1 7NA as its headquarters.",
+          "source_ids": [
+            "shell-office"
+          ]
+        },
+        {
+          "text": "Shell describes work with NVIDIA on generative AI and large language models for research documents and experimentation with custom models and retrieval. This does not establish current spend or London team deployment.",
+          "source_ids": [
+            "shell-ai"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "shell-office",
+          "title": "Shell headquarters",
+          "url": "https://www.shell.com/who-we-are/contact-us.html",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "shell-ai",
+          "title": "Shell digitalisation",
+          "url": "https://www.shell.com/what-we-do/digitalisation.html",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "sector": "AI and technology",
+      "address": "6 Pancras Square, London N1C 4AG",
+      "color": "#a8cf8c",
+      "lat": 51.5333771,
+      "lon": -0.1258455,
+      "east": 135.42097225363992,
+      "north": 2891.757544286587,
+      "height": 12.8,
+      "location_precision": "Mapped office node; not an entrance",
+      "osm": {
+        "type": "node",
+        "id": 4428875257,
+        "url": "https://www.openstreetmap.org/node/4428875257",
+        "object_timestamp": "2025-01-29T04:42:51Z",
+        "version": 6,
+        "name": "Google"
+      },
+      "facts": [
+        {
+          "text": "Google lists a London office at 6 Pancras Square.",
+          "source_ids": [
+            "google-office"
+          ]
+        },
+        {
+          "text": "Google DeepMind publishes model cards for its Gemini and Gemma models. Its own model platform is a potential build-versus-buy barrier for a Mubit pitch. Private office usage and spend remain unknown.",
+          "source_ids": [
+            "google-ai"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "google-office",
+          "title": "Google office locations",
+          "url": "https://about.google/company-info/locations/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        },
+        {
+          "id": "google-ai",
+          "title": "Google DeepMind model cards",
+          "url": "https://deepmind.google/models/model-cards/",
+          "checked_at": "2026-10-24T16:55:42.533Z"
+        }
+      ],
+      "image": null
+    }
+  ]
+}
