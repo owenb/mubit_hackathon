@@ -108,7 +108,11 @@
     "latency_ms": 3482,
     "request_id": "mreq_01a16ac9e1aa7020831e1c66be19dccf",
     "source_record_sha256": "a14b2386806c5a738c6543baad748fe60dc2a437e1f31192fb5b6ec1dd2f4183",
-    "failure": "The text names Farringdon and Chancery Lane, but the map also pins Canary Wharf DLR. Valid IDs did not make this a correct map."
+    "failure": "The text names Farringdon and Chancery Lane, but the map also pins Canary Wharf DLR. Valid IDs did not make this a correct map.",
+    "source_ids": [
+      "hatton-arrival"
+    ],
+    "citation_provenance": "Restored from the preserved request in luna-map-wave3-resume-2026-10-23T22-02-57.705Z.json, matching the recorded request receipt."
   },
   "operator_target": {
     "label": "Operator correction — expected scene, not a model result",

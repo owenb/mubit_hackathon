@@ -1,4 +1,5 @@
 const $=id=>document.getElementById(id);
+globalThis.homeward_answered=encoded=>window.dispatchEvent(new CustomEvent('homeward:answer',{detail:JSON.parse(encoded)}));
 const stages={unpack:['Unpacking the whole city',1,'Opening the lossless London package.'],verify:['Checking every corner',1,'Validating the complete map before it reaches the screen.'],build:['Putting London together',1,'Building the original geometry, district by district.'],transfer:['Passing the city to your browser',1,'The map is ready. Moving its geometry into the renderer.'],gpu:['Switching on the lights',2,'Connecting WebGPU and preparing the glass, streets and skyline.'],upload:['Lighting up London',2,'Sending the complete city to your graphics card.'],present:['All aboard',2,'Waiting for the first completed map frame.']};
 const loadStarted=performance.now(),history=[];
 const mb=n=>(n/1e6).toFixed(1)+' MB';
@@ -61,7 +62,7 @@ async function boot(){
   $('package-note').textContent=`Full London · ${mb(manifest.map.bytes)} lossless package · ${mb(manifest.map.raw_bytes)} unpacked`;
   function update(name,bytes,cached){loaded[name]=bytes;const done=loaded.engine+loaded.map;status(cached?'Finding London in your browser':'Bringing London to you',0,`${mb(done)} / ${mb(total)} received${cached?' · verified browser cache':''}.`,done,total);}
   const [engineBytes,mapBytes]=await Promise.all([fetchAsset(manifest.engine,cache,(n,c)=>update('engine',n,c)),fetchAsset(manifest.map,cache,(n,c)=>update('map',n,c))]);
-  status('Preparing the route',1,'Compiling the Rust renderer and opening the London package.');
+  status('Preparing the route',1,'Starting the map renderer and opening the London package.');
   const rawEngine=await new Response(new Blob([engineBytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
   const module=await WebAssembly.compile(rawEngine);
   worker=new Worker('/worker.mjs',{type:'module',name:'Homeward full London builder'});
@@ -73,7 +74,8 @@ async function boot(){
   worker.terminate();
   const metadata=JSON.parse(prepared.metadata);
   globalThis.homewardDiagnostics={status:'initializing',map:metadata,source_sha256:manifest.map.source_sha256,download_bytes:total,history};
-  const {default:init,start}=await import(manifest.bindings);await init({module_or_path:module});
+  const {default:init,start,preview_answer}=await import(manifest.bindings);await init({module_or_path:module});
+  globalThis.homewardPreviewAnswer=value=>{if(!preview_answer)throw Error('This renderer needs the correction bridge build.');preview_answer(JSON.stringify(value));};
   await start($('homeward'),new Uint8Array(prepared.vertices),new Uint8Array(prepared.indices),prepared.metadata);
 }
 boot().catch(fail);

@@ -65,14 +65,24 @@ flowchart LR
 
 **Learning.** Normal app calls use full Mubit recording and may become kept training examples after Mubit review. Stable instructions, model and output schema keep examples grouped into one task. Feedback and corrections are evidence for an update, but saved feedback alone does not establish that an adapter learned it. Metadata-only evaluation calls keep question/answer content out of Mubit teaching records.
 
+## Correct answers and map pins
+
+Open **Correct & teach** after an answer. Edit the text, remove or add verified map places, explain the mistake, and save. Previewing draws the correction on the real map with an **Operator preview · not learned** badge; the original remains available.
+
+Personal trip preferences stay local. Reusable corrections can be explicitly reviewed and sent through up to two **Luna** calls: an evidence audit, then a recorded teaching completion. The panel displays the actual gateway receipt and teacher reply, and keeps **Mubit retention, kept review, model inclusion and unseen improvement unverified** until evidence exists. Refreshing loads the saved training observation; it does not trigger training or query Mubit directly.
+
+A live UI test corrected the recorded Greville Street mistake by removing Canary Wharf DLR. Luna preserved the edited answer and two intended pins through Mubit. The target was supplied in its context, so this proves submission fidelity, not learned behaviour. No final evaluation question was sent. See [the complete workflow](homeward/LEARNING.md) and [real submission evidence](homeward/data/learning-flow-evidence.json).
+
+Corrections persist under ignored `homeward/results/feedback/`, scoped to the browser session. Persist that directory when deploying. No API key or raw personal correction store is included in this repository.
+
 ## The WebGPU city
 
 The complete London map contains **183,550 source features**, producing **5,121,079 vertices** and **8,813,310 indices**. No map geometry was simplified for the browser.
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,372,889 bytes**.
-- Combined map/engine transfer: about **10.36 MB**, before the small page and bindings.
+- Gzip WebAssembly engine: **2,376,871 bytes**.
+- Combined map/engine transfer: about **10.37 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
 A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading stages report actual download bytes, completed geometry layers and GPU upload bytes, with indeterminate progress where measurement is unavailable. Content-hashed assets are verified before use and cached in the browser.
@@ -123,11 +133,12 @@ A valid final run requires attributable fixed-version adapter inference and an i
 
 | Path | Purpose |
 | --- | --- |
-| `homeward/web/public/` | Editable browser shell, loader, worker and evaluation overlay |
+| `homeward/web/public/` | Editable browser shell, loader, worker and evaluation/correction overlays |
 | `homeward/web/dist/` | Runnable browser distribution, compiled renderer and complete map |
 | `homeward/web/app.mjs` | Hono routes and static-asset serving |
 | `homeward/src/core.mjs` | Grounding, Luna calls, validation, cache and live lifts |
 | `homeward/src/map-contract.mjs` | Place catalogue lookup and validated scene contract |
+| `homeward/src/feedback.mjs` | Session-owned corrections, validation, Luna audit and teaching receipts |
 | `homeward/src/inference.mjs` | Conservative serving identity and metrics |
 | `homeward/src/evaluation*.mjs` | Paired collection, serving gates and review |
 | `homeward/src/demo-evidence.mjs` | Judging-criteria evidence and honest demo status |
@@ -136,7 +147,7 @@ A valid final run requires attributable fixed-version adapter inference and an i
 | `docs/evidence/` | Selected development results and backend investigation |
 | `scripts/experiment.mjs` | Original synthetic gateway experiments and optional direct baseline |
 
-Useful endpoints: `GET /health`, `POST /api/ask`, `GET /api/metrics`, `GET /api/evals`, and `GET /api/demo-evidence`.
+Correction endpoints are documented in [the learning workflow](homeward/LEARNING.md). Useful endpoints: `GET /health`, `POST /api/ask`, `GET /api/metrics`, `GET /api/evals`, and `GET /api/demo-evidence`.
 
 ## Container deployment
 

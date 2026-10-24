@@ -1,0 +1,109 @@
+{
+  "checked_at": "2026-10-24T11:15:25.269Z",
+  "scope": "One real historical development correction, submitted from the WebGPU interface; not an adapter benchmark",
+  "original_receipt": "mreq_01a16ac9e1aa7020831e1c66be19dccf",
+  "question": "I’m meeting someone who’s travelling to a jeweller on Greville Street. Which stations could I suggest, and what shouldn’t I assume about their onward route?",
+  "original_failure": "The text names Farringdon and Chancery Lane, but the map also pins Canary Wharf DLR. Valid IDs did not make this a correct map.",
+  "corrected_answer": "Farringdon or Chancery Lane are nearby options, depending on the exact Greville Street shop. Check the address and onward route before choosing. Farringdon’s step-free Elizabeth line access does not establish an accessible pavement or shop entrance. If accessibility matters, verify that specific onward route.",
+  "corrected_scene": {
+    "camera": "fit",
+    "places": [
+      {
+        "id": "osm:2026-10-12:1685",
+        "role": "context"
+      },
+      {
+        "id": "osm:2026-10-12:1621",
+        "role": "context"
+      }
+    ]
+  },
+  "operator_reason": "The question is about Greville Street. Keep Farringdon and Chancery Lane, remove unrelated Canary Wharf DLR, and preserve the caveat that station access does not certify the onward route.",
+  "audit": {
+    "accepted": true,
+    "reason": "The correction answers the question with the two stations supported as nearby options, retains the caveat that the onward route depends on the exact shop, and does not overstate Farringdon’s step-free access. Its map pins are relevant to Greville Street; the unrelated Canary Wharf pin has been removed.",
+    "request_id": "mreq_01a16d9f591a78338217ed4b619982fe",
+    "label": "Luna evidence check; not independent review"
+  },
+  "teaching_receipt": "mreq_01a16d9f5f057443a15d1f84712d71c6",
+  "requested_recording": "full",
+  "provider": {
+    "route": "luna",
+    "label": "Luna via Mubit",
+    "detail": "OpenAI provider response received through Mubit. Luna is the configured upstream; this is not evidence of an adapter answer.",
+    "requested_model": "gpt-6-luna",
+    "response_model": "gpt-6-luna",
+    "request_id": "mreq_01a16d9f5f057443a15d1f84712d71c6",
+    "original_request_id": null,
+    "recording": "unknown",
+    "adapter_id": null,
+    "evidence": [
+      "Mubit gateway receipt: mreq_01a16d9f5f057443a15d1f84712d71c6",
+      "Completion model gpt-6-luna",
+      "OpenAI request ID and processing-time response headers"
+    ]
+  },
+  "teacher_output": {
+    "static_access": "not_applicable",
+    "response_kind": "answer",
+    "answer": "Farringdon or Chancery Lane are nearby options, depending on the exact Greville Street shop. Check the address and onward route before choosing. Farringdon’s step-free Elizabeth line access does not establish an accessible pavement or shop entrance. If accessibility matters, verify that specific onward route.",
+    "source_ids": [
+      "tfl-guide",
+      "tfl-topology",
+      "hatton-arrival"
+    ],
+    "scene": {
+      "camera": "fit",
+      "places": [
+        {
+          "id": "osm:2026-10-12:1685",
+          "role": "context"
+        },
+        {
+          "id": "osm:2026-10-12:1621",
+          "role": "context"
+        }
+      ]
+    }
+  },
+  "target_checks": {
+    "answer_exact": true,
+    "labels_exact": true,
+    "pins_exact": true,
+    "citations_supplied": true,
+    "citation_ids_changed": true
+  },
+  "local_reassessment": {
+    "at": "2026-10-24T11:17:04.740Z",
+    "previous_status": "needs_review",
+    "previous_error": "Recorded teacher reply differs from the reviewed target. Inspect it and rate it in Mubit; no automatic retry.",
+    "reason": "Only citation IDs differed. The original UI did not edit citations. Exact edited answer, labels and pins match; all returned citations were supplied. Original attempt and receipt retained; no model request repeated."
+  },
+  "facts_verified": {
+    "local_correction_saved": true,
+    "map_preview_verified": true,
+    "luna_audit_accepted": true,
+    "gateway_receipt_received": true,
+    "teacher_preserved_answer_labels_and_pins": true
+  },
+  "not_verified": [
+    "Mubit content retention",
+    "Teaching request grouped into the original Homeward task",
+    "Kept-example review",
+    "Inclusion in a trained version",
+    "Serving of an updated adapter",
+    "Improvement on unseen questions"
+  ],
+  "limitations": [
+    "The target was supplied in the teacher context; reproducing it is not learned transfer.",
+    "Luna self-audit is not independent review.",
+    "The evidence packet was assembled for this historical replay; it is not its original request payload.",
+    "An early replay reconstruction used all five retrieved source IDs, rather than the original response’s single hatton-arrival citation. The replay fixture now preserves the original citation. This submission is retained unchanged; its teacher selected three supplied sources.",
+    "Usage and latency were not retained by the first live implementation. Later submissions record them.",
+    "The initial whole-object comparison flagged a citation-list difference. The preserved output was re-assessed offline against the edited answer, labels and map; no model call was retried."
+  ],
+  "model_calls": 2,
+  "app_rollout_or_training_settings_changed": false,
+  "final_heldout_questions_sent": 0,
+  "final_heldout_sha256": "a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91"
+}

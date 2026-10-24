@@ -4,9 +4,12 @@ import { serveStatic } from '@hono/node-server/serve-static';
 import { fileURLToPath } from 'node:url';
 import { ask, knowledge, redact, inferenceMetrics, currentTrainingStatus } from '../src/core.mjs';
 import { evaluationReport, demoEvidence } from '../src/demo-evidence.mjs';
+import {getCookie,setCookie} from 'hono/cookie';
+import {randomUUID} from 'node:crypto';
+import {createFeedbackStore,searchPlaces} from '../src/feedback.mjs';
 
 const defaultRoot=fileURLToPath(new URL('./dist/',import.meta.url));
-export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrainingStatus}={}) {
+export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrainingStatus,feedback=createFeedbackStore({training:trainingFn})}={}) {
   const app=new Hono();
   app.use('*',async(c,next)=>{
     c.header('X-Content-Type-Options','nosniff');
@@ -15,6 +18,24 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
     await next();
   });
   const health=c=>c.json({status:'ok',app:'homeward-webgpu',knowledge_version:knowledge.version,scope:knowledge.scope});
+  app.use('/api/*',async(c,next)=>{
+    let session=getCookie(c,'homeward_session');
+    if(!/^[a-f0-9-]{36}$/.test(session||'')){session=randomUUID();setCookie(c,'homeward_session',session,{httpOnly:true,sameSite:'Strict',secure:c.req.url.startsWith('https:'),path:'/',maxAge:86400});}
+    c.set('session',session);await next();
+  });
+  const jsonRequest=async c=>{
+    if(c.req.header('content-type')?.split(';')[0]!=='application/json')throw Error('Send JSON');
+    const origin=c.req.header('origin');if(origin){const u=new URL(origin);if(!['http:','https:'].includes(u.protocol)||u.host!==c.req.header('host'))throw Error('Use the Homeward page');}
+    return c.req.json();
+  };
+  app.get('/api/places',c=>c.json({places:searchPlaces(c.req.query('q'))}));
+  app.get('/api/learning',async c=>{c.header('Cache-Control','no-store');return c.json({corrections:await feedback.list(c.get('session'))});});
+  app.get('/api/learning/interactions/:id',async c=>{c.header('Cache-Control','no-store');try{return c.json(await feedback.getInteraction(c.req.param('id'),c.get('session')));}catch(e){return c.json({error:redact(e.message)},404);}});
+  app.use('/api/learning/*',bodyLimit({maxSize:16_000,onError:c=>c.json({error:'Correction is too large'},413)}));
+  app.post('/api/learning/replay',async c=>{try{await jsonRequest(c);return c.json(await feedback.replay(c.get('session')));}catch(e){return c.json({error:redact(e.message)},400);}});
+  app.post('/api/learning/corrections',async c=>{c.header('Cache-Control','no-store');try{return c.json(await feedback.save(c.get('session'),await jsonRequest(c)),201);}catch(e){return c.json({error:redact(e.message)},400);}});
+  app.get('/api/learning/corrections/:id',async c=>{c.header('Cache-Control','no-store');try{return c.json(await feedback.get(c.get('session'),c.req.param('id')));}catch(e){return c.json({error:redact(e.message)},404);}});
+  for(const action of ['preview','teach'])app.post('/api/learning/corrections/:id/'+action,async c=>{c.header('Cache-Control','no-store');try{const body=await jsonRequest(c);return c.json(action==='preview'?await feedback.preview(c.get('session'),c.req.param('id')):await feedback.submit(c.get('session'),c.req.param('id'),body));}catch(e){return c.json({error:redact(e.message)},400);}});
   app.get('/health',health);app.get('/api/health',health);
   app.get('/api/metrics',async c=>{c.header('Cache-Control','no-store');return c.json({inference:inferenceMetrics(),training_status:await trainingFn()});});
   for(const path of ['/api/evals','/evals'])app.get(path,async c=>{c.header('Cache-Control','no-store');return c.json(await evaluationReport());});
@@ -32,7 +53,8 @@ export function createWebApp({root=defaultRoot,askFn=ask,trainingFn=currentTrain
       const {question,mode='grounded',context_ids=[],use_cache=false}=await c.req.json();
       if(typeof question!=='string'||!question.trim()||question.length>2000)return c.json({error:'Please ask a question of 1–2000 characters'},400);
       if(!['grounded','memory'].includes(mode)||!Array.isArray(context_ids)||context_ids.length>6||context_ids.some(v=>typeof v!=='string'))return c.json({error:'Invalid question context'},400);
-      return c.json(await askFn(question,{mode,context_ids,use_cache:use_cache===true}));
+      const options={mode,context_ids,use_cache:use_cache===true};
+      return c.json(feedback.record(c.get('session'),question,options,await askFn(question,options)));
     }catch(e){return c.json({error:redact(e.message)},400);}
   });
   // Explicit packed assets carry their actual byte length. The browser's loader
