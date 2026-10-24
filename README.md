@@ -113,9 +113,9 @@ See [how spatial corrections reach Mubit](homeward/LEARNING.md#what-the-model-le
 
 ## Light, from night to day
 
-**View → Light** is one continuous 0–3 dial: deep, night, day and clean. It follows the system appearance until you choose a value. The browser retains a bounded local choice history; **Undo light change** restores the previous choice, and **Follow system** removes the override. This is browser-local view history, separate from Mubit teaching.
+The circular **Light** dial beside **View** turns continuously through 270°: deep, night, day and clean. Drag around the ring, use arrow keys for fine adjustment, or Home/End for the extremes. All three sections of its travel change the map, glass and accent light: deep black to cosmic violet, night through daylight, then natural materials to a clean white city. It follows the system appearance until you choose a value. The browser retains a bounded local choice history; **Undo light change** restores the previous choice, and **Follow system** removes the override. This is browser-local view history, separate from Mubit teaching.
 
-![London Travel at night, mid-sunrise and by day](docs/images/london-travel-modes.png)
+![The circular Light dial across its full range](docs/images/london-travel-dial.png)
 
 Aether’s date-aware London sun path drives sky brightness, warmth and stars. One Rust frame value updates the WebGPU map, ask bar and HTML panels together. Hand changes settle with exponential easing; system changes take three seconds per unit. Surface colours blend in linear light; text switches RGB at one-quarter UI daylight instead of fading through grey. Reduced-motion preferences skip the transition. Map labels and raw evidence retain contrasting dark plates. The full map and typed ask-bar text remain intact.
 
@@ -125,7 +125,7 @@ The complete London map contains **183,550 source features**, producing **5,121,
 
 - Source database: **21,910,636 bytes**.
 - Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,352,747 bytes**.
+- Gzip WebAssembly engine: **2,353,454 bytes**.
 - Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
 - Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
 
