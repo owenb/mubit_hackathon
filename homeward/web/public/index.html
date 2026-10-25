@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07121d">
   <meta name="description" content="Ask about London travel. See the places on the map.">
-  <title>London Travel</title>
+  <title>London Guide</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2307121d'/%3E%3Cpath d='M10 7v18h14' stroke='%2370f0d3' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/intro.css">
@@ -83,8 +83,26 @@
       </svg>
     </button>
     <p id="loading-title" role="status">Loading London...</p>
-    <p id="failure" class="sr-only" role="alert" hidden></p>
+    <p id="failure" role="alert" hidden></p>
   </main>
+  <section id="no-webgpu" aria-labelledby="no-webgpu-title" hidden>
+    <div class="no-webgpu-panel">
+      <p class="no-webgpu-kicker">London Guide</p>
+      <h1 id="no-webgpu-title">This browser can’t draw the map</h1>
+      <p>London Guide draws the whole city, 183,550 map features, on your graphics card with WebGPU.</p>
+      <p id="no-webgpu-reason" class="no-webgpu-reason"></p>
+      <h2>It works in</h2>
+      <ul>
+        <li>Chrome or Edge 113 or later on Windows, macOS or ChromeOS</li>
+        <li>Safari 26 or later on macOS, iPadOS or iOS</li>
+        <li>Firefox 141 or later on Windows</li>
+      </ul>
+      <div class="no-webgpu-actions">
+        <button id="no-webgpu-retry" type="button">Try again</button>
+        <a href="https://github.com/owenb/mubit_hackathon#readme" target="_blank" rel="noopener noreferrer">How London Guide works ↗</a>
+      </div>
+    </div>
+  </section>
   <script type="module" src="/intro.mjs"></script>
   <script type="module" src="/loader.mjs"></script>
   <script type="module" src="/experience.mjs"></script>

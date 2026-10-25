@@ -1,5 +1,5 @@
 import './appearance.mjs';
-import {el,button,api,sourceList} from './ui.mjs';
+import {el,button,api,sourceList,friendlyMessage} from './ui.mjs';
 import {createEditor,correctionHistory,correctionProof} from './corrections.mjs';
 import {correctionStatus} from './correction-state.mjs';
 import {loadEvaluation} from './evaluation.mjs';
@@ -60,7 +60,7 @@ function onAnswer(value,{preview=false}={}){
 }
 window.addEventListener('homeward:answer',event=>onAnswer(event.detail));
 window.addEventListener('london:asking',event=>{pending=true;lastQuestion=event.detail.question;editing=false;learning.hidden=true;renderAnswer();});
-window.addEventListener('london:error',event=>{pending=false;editing=false;learning.hidden=true;card.hidden=false;view.hidden=false;view.replaceChildren();const heading=el('div',null,'answer-heading');heading.append(el('p',event.detail.question||lastQuestion,'question-text'),button('×',newQuestion,'icon-button'));view.append(heading,el('p','Could not get an answer.'),el('p',event.detail.message,'muted'),button('Try again',()=>command({type:'ask',question:event.detail.question||lastQuestion}),'quiet'));if(editor.hasDraft())view.append(button('Resume unfinished edit',resumeEdit,'text-button'));});
+window.addEventListener('london:error',event=>{pending=false;editing=false;learning.hidden=true;card.hidden=false;view.hidden=false;view.replaceChildren();const heading=el('div',null,'answer-heading');heading.append(el('p',event.detail.question||lastQuestion,'question-text'),button('×',newQuestion,'icon-button'));view.append(heading,el('p','Could not get an answer.'),el('p',friendlyMessage(event.detail.message),'muted'),button('Try again',()=>command({type:'ask',question:event.detail.question||lastQuestion}),'quiet'));if(editor.hasDraft())view.append(button('Resume unfinished edit',resumeEdit,'text-button'));});
 window.addEventListener('london:state',event=>{mapState=event.detail;if(businessActive())return;$('overview').hidden=mapState.at_home;if(mapState.explored)$('gesture-hint').hidden=true;if(!evidence.hidden&&selectedTab==='map')updateMapNumbers();});
 function renderAnswerEvidence(){const box=$('evidence-answer');box.replaceChildren();if(!answer){box.append(el('p','Ask a question to inspect its answer.','muted'));return;}box.append(el('h3',answer.inference?.label||'Serving identity unverified'));if(answer.inference?.detail)box.append(el('p',answer.inference.detail,'muted'));box.append(sourceList(answer.sources));const raw=el('details');raw.append(el('summary','Response and routing evidence'),el('pre',JSON.stringify(answer,(key,value)=>key.startsWith('_')?undefined:value,2)));box.append(raw);}
 function updateMapNumbers(){for(const n of document.querySelectorAll('[data-metric]')){const key=n.dataset.metric;n.textContent=String(mapState[key]??'Not available').replace(/\s*·\s*·\s*/g,' · ')+(key.endsWith('_ms')&&mapState[key]!=null?' ms':'');}const light=$('appearance-evidence');if(light)light.textContent=$('appearance-proof').textContent;const scene=$('scene-evidence');if(scene)scene.textContent=JSON.stringify(mapState.scene,null,2);}

@@ -54,5 +54,5 @@ test('editable shell bypasses date-based stale cache while immutable assets keep
   const response=await app.request('http://homeward.test/'+path,{headers:{'If-Modified-Since':'Wed, 01 Jan 2031 00:00:00 GMT'}});
   assert.equal(response.status,200);assert.equal(response.headers.get('cache-control'),'no-store');assert.match(response.headers.get('content-type'),/javascript/);assert.doesNotMatch(await response.text(),/<!doctype html>/i);
  }
- const page=await app.request('http://homeward.test/');assert.match(await page.text(),/<title>London Travel<\/title>/);
+ const page=await app.request('http://homeward.test/');assert.match(await page.text(),/<title>London Guide<\/title>/);
 });

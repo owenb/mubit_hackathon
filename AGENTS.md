@@ -2,7 +2,44 @@
 
 Updated 24 October 2026. **This copy is in the browser Git distribution. Private Bank experiment files referenced below exist only in the original source workspace; do not assume a fresh clone contains them.** Read this before making calls, changing routing or continuing training. This file is intended for any coding agent; it does not depend on Codex conversation history. All platform state below is a dated observation, not a live guarantee.
 
-## Start here
+## Final state — 25 October 2026 (hackathon submission)
+
+Read this first. Where it conflicts with the 24 October notes below, this section wins; those notes are kept as history.
+
+- **Live app:** https://london-guide-production.up.railway.app (Railway project `mubit`, Dockerfile build, healthcheck `/health`). Deploys are manual (`railway up` from the Git distribution); pushing to GitHub does not deploy. There is no login, so anyone with the URL spends Mubit credit.
+- **Demo videos** (source workspace `demo/`, not in Git):
+  - `london-guide-2min-captioned.mp4` (1:52): the earlier cut. Its ending tests the new London Guide travel model on frozen question `b2d-01`.
+  - `london-guide-v2-captioned.mp4` (1:42): the reviewer-driven cut, built by `demo/edit-v2.mjs`. It keeps the travel correction, shortens the business twist and ends on a **live before/after** of frozen question `bank-xfer-03-separate-access-facts`. The script is `demo/voiceover-v2.md`.
+- **Live before/after re-run (25 October):** the same frozen input, sent once to corrected-guide v1 (`ad_lane_a190986c`, original project) and once to Bank v1 (`ad_lane_dac58061`), in Try models. It was recorded on screen with no retries. Both replies matched the 24 October captures word for word: before stops at "The interchange station is Bank"; after adds "involves 290 metres via street and lifts". Evidence is in the source workspace at `homeward/experiments/bank-transfer-demo/results/live-rerun-2026-10-25.json`. Try quota afterwards: 39 of 50.
+- **Mubit availability:** the console and gateway had intermittent outages on the evening of 24 October (engine timeouts, later "could not check this key" 503s); both recovered. Console sign-in expires often: ask the user to sign in and never handle credentials.
+- **Bank task refresh rule** (task History): it retrains every 24 hours once 25 new rows are rated up, so a same-evening Bank v2 was impossible. The round-2 Bank ratings were never submitted.
+- **New Mubit project "London Guide"** (`ws-ba780961102d439b`; its key is only in the source workspace's private `.env.new-project`):
+  - 109 Luna teaching calls (73 travel, 36 business), reusing audited curriculum inputs with no development questions.
+  - 80 rated Good in the console with audited reasons.
+  - Two Qwen3-4B adapters trained automatically: travel v1 **50%** (target 95%) and business v1 **83.3%** (target 85%), both in silent test.
+  - Evidence is in the source workspace: `homeward/experiments/new-project/` (`status.json`, `ratings-applied.json`, `results/`).
+- **Fresh test of the new travel model** on the six frozen round-2 questions (one attempt each, strict rubric): **1 full pass** (`b2d-01`, step-free vs gap-free boarding), 2 near passes, 3 fails. Scoring is in `new-project/results/frozen-dev-scoring.json`. The demo video shows that full pass; the README reports all six. Never present it as representative.
+- **Enterprise v1** (`ad_lane_39642a41`) was promoted by Mubit itself from silent test to a 10% partial rollout. Which business answers it serves is unverified.
+- **Mubit Try models:** the Luna (provider) arm repeatedly failed with "provider answered 401" on Mubit's starter key, while adapter arms answered ("Runs on Mubit Cloud"). The daily quota is 50 calls.
+- **Shipped UI:**
+  - A simplified business card: photo, Mubit fit verdict, a one-line reason and a pilot idea, with details folded away.
+  - Correction panel status that tells "audit passed, sent to Mubit, reply needs review" apart from a refusal.
+  - A "Show all" overview button.
+  - Plain-language errors (`homeward/web/public/friendly.mjs`, shared by the server and the browser). Mubit/LLM failures show a readable message plus Try again. The server keeps the redacted original as `detail` and logs it.
+  - A no-WebGPU screen in place of a stalled loader, covering missing, blocked and lost GPU devices. Preview it with `?no-webgpu`. The page title is now London Guide.
+- **Live checks (25 October):**
+  - Fit verdicts: Shell promising; Google weak; Barclays, HSBC, J.P. Morgan and Unilever conditional.
+  - The evidence audit refused a wrong "90 m indoor" Bank correction and accepted an evidence-backed fix, with teaching receipts.
+  - The audit is model-based and not perfectly consistent; every attempt is recorded.
+- **Still not shown:**
+  - An overall win over Luna.
+  - Fixed-version adapter serving for normal app traffic.
+  - Weight export or self-hosting.
+  - Any cost or latency advantage.
+
+  The protected final 20 remain untouched (SHA-256 unchanged).
+
+## Start here (24 October handoff — historical where superseded above)
 
 The user is committed to this product. The priority is a convincing, truthful demonstration of **correction → trained model update → better answers on fresh questions**. A teacher copying a supplied target is not that demonstration. The current product works, but an overall quality win over Luna has not been established.
 
@@ -44,7 +81,7 @@ The user requested publication of the latest WebGPU app and this handoff to `owe
 
 ## Product and judging criteria
 
-Homeward is the project/task name; **London Travel — London, in your words** is the current UI branding. A full-screen London WebGPU map supports travel questions, dated source evidence, verified pins and human corrections. **Businesses** is a mode of the same UI: locate large London firms, assess a hypothetical recurring LLM workload, propose how Mubit might help, and teach an operator's correction.
+Homeward is the project/task name; the UI brand is **London Guide** (earlier: "London Travel — London, in your words"). A full-screen London WebGPU map supports travel questions, dated source evidence, verified pins and human corrections. **Businesses** is a mode of the same UI: locate large London firms, assess a hypothetical recurring LLM workload, propose how Mubit might help, and teach an operator's correction.
 
 Four equally weighted hackathon criteria: use of Mubit (correction becomes an update), usefulness (a real recurring task), technical execution (works and withstands questions), and a clear live demo. The bot recommended a three-minute story, one persona, dated sources, a real later answer changed by learning, a clean-clone path and smaller regular commits. Keep optional direct-OpenAI scripts out of the product/demo.
 
@@ -96,7 +133,7 @@ The distribution build verifies bundled WASM/map hashes and rebuilds the editabl
 
 Tests are local/injected and make no paid inference. The final-file test reads bytes only; distribution skips it when the private file is absent. Handoff verification on 24 October passed 79/79 tests in source and 78 with one expected private-file skip in the distribution, with zero failures. The protected final-set byte hash was unchanged. No build is needed for Markdown-only edits.
 
-**Deployment gap found during handoff:** both Dockerfiles omit the imported `homeward/experiments/enterprise-prospecting/` runtime files (contract/catalogue/photos/status). The integrated service imports them at startup. Enterprise durable storage defaults inside that directory's `results/`, while the image only creates/chowns `homeward/results/`. Repair packaging and writable storage, exclude private results, then smoke-test a container before claiming deployment works. No public deployment has been verified in this handoff.
+**Deployment (fixed 24–25 October):** the Dockerfile now copies the enterprise runtime files (contract, catalogue, images, status) and creates writable `homeward/results/` and `enterprise-prospecting/results/interactions/` directories. The Railway deployment at https://london-guide-production.up.railway.app builds from it and passes `/health`. Interaction stores in the container are not persistent across redeploys.
 
 ## Separate model/task identities — do not conflate versions
 
@@ -106,6 +143,7 @@ Tests are local/injected and make no paid inference. The final-file test reads b
 | Corrected guide lab | same original project | `ln_cd244c7ae58bc8483b16fb6b` | `ad_lane_a190986c` v1 / `ftjob_be8160c9` | internal 4/12; six-case adapter 3 pass / 1 uncertain / 2 fail vs Luna 5 / 1 / 0 |
 | Bank correction demo, active backend | `ws-f6fde7f8cb6510fa` | `ln_1c7c0a9b48c013cc4b2de67d` | `ad_lane_dac58061` v1 / `ftjob_1a88e264` | internal 5/12; first fresh comparison answers 2/6 before and after |
 | Enterprise Lens | same isolated Bank project | `ln_a45d95b39436e0f1ea9583d0` | `ad_lane_39642a41` v1 / `ftjob_89d5f355` | internal 11/12; fresh full-task 0/6, so app remains Luna |
+| London Guide travel + business (25 Oct) | `ws-ba780961102d439b` | two tasks (same contracts as corrected-guide and Enterprise Lens) | Qwen3-4B v1 each (IDs in console) | internal 50% travel / 83.3% business; travel fresh frozen set 1 full pass / 2 near / 3 fail |
 
 All these are real Qwen3-4B PEFT adapters observed in the console. Their internal exams differ; comparing 8.3%, 33.3%, 41.7% and 91.7% is not a controlled improvement curve. A new isolated task starts at v1, not v2 of the original app. No normal fixed-version adapter API serving has been established. Selected-version Try models replies provide preview-serving evidence only; decoding/schema setup is not fully exposed.
 

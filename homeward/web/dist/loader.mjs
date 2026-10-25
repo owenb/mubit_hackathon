@@ -9,13 +9,30 @@ function status(label,station,detail,completed=0,total=0){
   if(failed||ready)return;
   history.push({at_ms:Math.round(performance.now()-loadStarted),label,station,completed,total});
 }
+// Without WebGPU there is no map to show, so explain why and where it works instead of a stalled loader.
+const gpuReasons={
+  insecure:'WebGPU only runs on secure pages. Open London Guide over HTTPS.',
+  missing:'Your browser doesn’t offer WebGPU, or has it switched off.',
+  adapter:'WebGPU is there, but it couldn’t reach your graphics card. Check that hardware acceleration is on in your browser’s settings, then try again.',
+  device:'Your graphics card stopped responding while London was loading. Closing other heavy tabs and trying again often helps.'
+};
+const gpuProblem=(reason,message)=>Object.assign(Error(message),{gpu:reason});
+function showNoWebGPU(reason){
+  $('no-webgpu-reason').textContent=gpuReasons[reason]||gpuReasons.missing;
+  $('no-webgpu-retry').onclick=()=>location.reload();
+  $('loading').remove();$('no-webgpu').hidden=false;
+}
 function fail(error){
   if(failed)return;failed=true;worker?.terminate();
+  const message=error?.message||String(error);
+  const gpu=error?.gpu||(/webgpu|gpu ?adapter|requestDevice|device (?:was )?lost|wgpu/i.test(message)?'device':null);
+  globalThis.homewardDiagnostics={status:'error',error:String(error),gpu,history};console.error('London Guide startup:',error);
+  if(gpu){showNoWebGPU(gpu);return;}
   $('loading').dataset.failed='';$('loading').setAttribute('aria-busy','false');
-  $('failure').textContent=error?.message||String(error);$('failure').hidden=false;
+  $('loading-title').textContent='London didn’t load';
+  $('failure').textContent=message+' Click the London Eye to try again.';$('failure').hidden=false;
   $('retry').disabled=false;$('retry').setAttribute('aria-label','Retry loading London');$('retry').title='Retry loading London';
-  $('retry').onclick=()=>location.reload();console.error('London Travel startup:',error);
-  globalThis.homewardDiagnostics={status:'error',error:String(error),history};
+  $('retry').onclick=()=>location.reload();
 }
 globalThis.homeward_progress=(stage,completed,total)=>{
   const [label,station,detail]=stages[stage]||[stage,1,''];
@@ -44,11 +61,11 @@ async function fetchAsset(asset,cache,update){
   return bytes;
 }
 async function boot(){
-  if(!isSecureContext)throw Error('Open London Travel over HTTPS or localhost to use WebGPU.');
-  if(!navigator.gpu)throw Error('This desktop browser does not have WebGPU available. Try a current Chrome, Edge, Safari or supported Firefox version.');
+  if(!isSecureContext)throw gpuProblem('insecure','Open London Guide over HTTPS or localhost to use WebGPU.');
+  if(!navigator.gpu||new URLSearchParams(location.search).has('no-webgpu'))throw gpuProblem('missing','This browser does not have WebGPU available.');
   // The real adapter check happens before downloading the city.
-  const adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'});
-  if(!adapter)throw Error('Your browser could not connect to a WebGPU graphics adapter. Check that hardware acceleration is enabled.');
+  const adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'}).catch(()=>null);
+  if(!adapter)throw gpuProblem('adapter','Your browser could not connect to a WebGPU graphics adapter.');
   const manifest=await fetch('/manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('London Travel assets are not built yet.');return r.json();});
   let cache;try{cache=await caches.open('homeward-verified-assets-v1');}catch{}
   const loaded={engine:0,map:0},total=manifest.engine.bytes+manifest.map.bytes;

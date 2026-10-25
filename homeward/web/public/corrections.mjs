@@ -1,4 +1,4 @@
-import {el,button,api,sourceList} from './ui.mjs';
+import {el,button,api,sourceList,friendlyMessage} from './ui.mjs';
 import {draftFrom,changed,sceneFor,previewFor,correctionBody,correctionStatus} from './correction-state.mjs';
 export function createEditor({container,onPreview,onApply,onClose,onProgress,onChange}){
  let draft=null,working=false,wording=false,sharing=false,attempted=false,sent=null;
@@ -27,7 +27,7 @@ export function createEditor({container,onPreview,onApply,onClose,onProgress,onC
    sent=await api('/api/learning/corrections',body);attempted=true;say('Checking the correction…');
    sent=await api('/api/learning/corrections/'+sent.id+'/teach',{reviewed:true});
    onProgress(sent);
-   if(sent.status==='needs_review'){const audit=sent.teaching?.audit;if(audit?.accepted===true&&sent.teaching?.receipt&&sent.teaching?.matched===false)say(`Audit passed: ${audit.reason} Mubit received it as a teaching example (receipt ${sent.teaching.receipt}). Luna’s stored reply differs from your wording, so it needs review before training.`,'passed');else say(audit?.reason||sent.error||'The correction needs review. You can still use a personal edit.');}
+   if(sent.status==='needs_review'){const audit=sent.teaching?.audit;if(audit?.accepted===true&&sent.teaching?.receipt&&sent.teaching?.matched===false)say(`Audit passed: ${audit.reason} Mubit received it as a teaching example (receipt ${sent.teaching.receipt}). Luna’s stored reply differs from your wording, so it needs review before training.`,'passed');else say(audit?.reason||(sent.error&&friendlyMessage(sent.error)+' This correction wasn’t confirmed as a training example. You can still use a personal edit.')||'The correction needs review. You can still use a personal edit.');}
    else{draft=null;onClose({sent});}
   }catch(e){say(attempted?'Could not confirm the result. Check Evidence before sending another correction.':e.message);if(sent){try{sent=await api('/api/learning/corrections/'+sent.id);onProgress(sent);}catch{}}}
   finally{working=false;container.inert=false;if(draft){const submit=container.querySelector('[data-send]');if(submit)submit.disabled=attempted;}}
@@ -78,7 +78,7 @@ export function correctionProof(row,{onRefresh,onPreview,onEdit}){
  const stages=row.stages||{},observed=row.platform_observation;
  const facts=[['Saved',row.created_at],['Delivery',stages.mubit_recording?.content_stored_verified?'Content verified in Mubit':row.teaching?.receipt?'Receipt received':'Not sent'],['Review',stages.mubit_review?.state||'Unverified'],['Model update',stages.model_update?.newer_version_observed?'Newer version observed; inclusion unverified':'Not verified'],['Transfer test',stages.transfer_test?.state||'Not run']];
  const dl=el('dl');for(const [name,value]of facts)dl.append(el('dt',name),el('dd',value));box.append(dl,el('p','Delivery, review, a weight update and better answers are separate claims.','muted'));
- if(row.error)box.append(el('p',row.error,'form-message'));if(row.teaching?.audit)box.append(el('p','Luna check: '+row.teaching.audit.reason,'muted'));
+ if(row.error){box.append(el('p',friendlyMessage(row.error),'form-message'));if(friendlyMessage(row.error)!==row.error){const raw=el('details');raw.append(el('summary','Technical details'),el('pre',row.error));box.append(raw);}}if(row.teaching?.audit)box.append(el('p','Luna check: '+row.teaching.audit.reason,'muted'));
  const actions=el('div',null,'inline-actions');actions.append(button('Show edit',()=>onPreview(row),'quiet'),button('Edit',()=>onEdit(row),'quiet'),button('Refresh',()=>onRefresh(row.id),'quiet'));box.append(actions);
  const details=el('details');details.append(el('summary','Evidence'),el('pre',JSON.stringify({stages:row.stages,teaching:row.teaching,platform_observation:observed,source:row.original.evidence},null,2)));const link=el('a','Open in Mubit ↗');link.href=row.console_url;link.target='_blank';link.rel='noopener noreferrer';details.append(link);box.append(details);return box;
 }

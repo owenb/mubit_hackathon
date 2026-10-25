@@ -2,7 +2,7 @@
 
 ## 🔴 Live demo: [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app)
 
-Open in desktop Chrome or Edge (WebGPU required). The full city takes about 20 seconds to load the first time.
+Open in desktop Chrome or Edge (WebGPU required; other browsers get a screen saying where it works). The full city takes about 20 seconds to load the first time.
 
 ![London Guide: a full 3D map of London with an answer card](docs/images/london-travel-webgpu.png)
 
@@ -17,7 +17,7 @@ Open in desktop Chrome or Edge (WebGPU required). The full city takes about 20 s
 - **What actually happened (24–25 October 2026):**
   - **Bad corrections are refused.** An edit claiming Bank's Waterloo & City to DLR change is "a short indoor transfer of about 90 metres" was refused, because the sources say 290 metres via the street and lifts. An evidence-backed fix was accepted and sent to Mubit with a receipt.
   - **Mubit trains a model with no ML team.** Once 29 reviewed examples were kept, Mubit trained a **Qwen3-4B adapter on its own, in about 10 minutes**, with no training code.
-  - **A trained model answers a question it never saw.** On a question frozen before training, one of our new models answered correctly in about 3 seconds, labelled by Mubit as our adapter running on Mubit Cloud. The question was "does Bank's step-free interchange information say boarding the train is gap-free?" The model said no: the guidance covers a 290-metre street-and-lifts route, not boarding.
+  - **The retrained model gives a better answer.** We asked a Bank question that was frozen before training and never taught. Our earlier model said no, but left out the 290-metre street-and-lifts route, even though its sources included it. The model Mubit trained on 29 reviewed Bank examples added it. On 25 October we re-ran both live in Mubit for the demo video, one attempt each. Each gave the same reply, word for word, as on 24 October. This is one question, not an overall win.
   - **Mubit gates every release.** The business model scored 91.7% against an 85% target and Mubit **promoted it to 10% of traffic automatically**. Lower scorers stay in silent testing.
   - **The loop keeps running.** In a fresh project, 109 teaching calls and 80 audited examples produced **two new open models**, travel and business, now graded and held in testing.
 - **Honest status.** The trained models are **not yet better than Luna overall**. The numbers, including the losses, are below.
@@ -40,6 +40,8 @@ London Guide is built around one loop: **expert correction → evidence check �
 Ask a real question, such as *"I'm changing from the Waterloo & City line to the DLR at Bank with a wheelchair. Is that interchange step-free, and how far is it?"* The answer arrives in a few seconds. It cites dated TfL sources, and the camera flies to the verified station pin.
 
 Under any answer, **Fix this** lets you edit the wording or the pins. **Use on my map** keeps the edit private. **Share as a correction** sends it through the evidence check, and then, if it passes, to Mubit.
+
+If Mubit or the model fails, the app says so in plain words, such as *"Mubit, the service that runs our AI, didn't answer just now"*, and offers **Try again**. The raw error stays in the server log. Browsers without WebGPU get a screen that says which browsers can draw the map.
 
 ![Fixing an answer: edit the wording and the verified places](docs/images/london-travel-correction.png)
 
@@ -92,6 +94,8 @@ flowchart LR
 - Assessments are recorded as metadata only.
 - Only an explicit **Teach this judgement** records a full teaching example.
 
+**Every model call goes through Mubit.** Answers, audits, teaching calls and business assessments all use `https://api.mubit.ai/openai/v1`, and the travel client refuses any other host. The only direct-OpenAI path is an old, optional comparison script (`scripts/experiment.mjs --direct`, `npm run baseline`). The app and the demo never use it.
+
 **Every Mubit HTTP call** is journalled with safe response headers (no prompts, answers or keys), and the UI shows which model actually answered.
 
 ---
@@ -122,10 +126,13 @@ All results are dated development observations from 24–25 October 2026, not a 
 | First correction-trained model (Bank task) | 29 reviewed examples kept → Mubit **started training on its own**, adapter ready in about 10 minutes. Mubit exam: 41.7% (5/12). |
 | Same model, frozen Walbrook question it never saw | About 2 s in Mubit Try models: Walbrook for a Thursday, 290 m via street and lifts, Bank focused. Right for the question asked, but it didn't state the Monday–Friday limit our rubric asks for, so it's a **partial** pass. |
 | Before vs after training, six frozen questions | Fully correct (answer + classification + map): **0/6 → 2/6**. Answers alone: 2/6 → 2/6, with control questions regressing. A targeted gain, not an overall win. |
+| The clearest before/after: one frozen Bank question | Before: *"No. … The interchange station is Bank."* After: *"No. … That interchange is step-free but involves 290 metres via street and lifts."* **Re-run live on 25 October** in Mubit Try models, one attempt each, no retries: both replies matched the 24 October captures word for word. |
 | Business model (Enterprise v1) | Mubit exam **91.7%** (target 85%) → Mubit promoted it to 10% of traffic. Our fresh full-format test: 0/6, so the app still uses Luna for business answers. |
 | Fresh project, 24–25 Oct | 109 Luna teaching calls (73 travel, 36 business), 80 audited good examples → **two new Qwen3-4B models**: travel **50%**, business **83.3%**, both held in testing. |
-| New travel model, all six frozen questions (one attempt each, strict rubric) | **1 full pass**: *"does step-free mean boarding is gap-free?"* (correct, about 3 s, Bank focused). **2 near passes. 3 fails**: an invalid map role, a wrong access classification, and one payment answer that contradicts itself. The demo video's test is the full pass. |
+| New travel model, all six frozen questions (one attempt each, strict rubric) | **1 full pass**: *"does step-free mean boarding is gap-free?"* (correct, about 3 s, Bank focused). **2 near passes. 3 fails**: an invalid map role, a wrong access classification, and one payment answer that contradicts itself. If you saw this question in a demo video, it is that one full pass, not a typical result. |
 | Business fit verdicts | Shell **promising**; Google **weak**; Barclays, HSBC, J.P. Morgan, Unilever **conditional**. |
+
+![Before and after, run live on 25 October: the earlier model stops at "The interchange station is Bank"; the model Mubit trained on the Bank examples adds the 290-metre street-and-lifts route](docs/images/guide-before-after-live.jpg)
 
 ![Mubit: two new models trained from our corrections](docs/images/guide-mubit-new-models.jpg)
 
@@ -178,7 +185,7 @@ The Bank and fresh-project captures stay in the private source workspace; exact 
 
 ## Try it
 
-**Online:** [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app). Desktop Chrome or Edge, with WebGPU.
+**Online:** [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app). Desktop Chrome or Edge, with WebGPU. To see the screen that browsers without WebGPU get, add `?no-webgpu` to the address.
 
 Things to try:
 - *"I'm changing from the Waterloo & City line to the DLR at Bank with a wheelchair. Is that interchange step-free, and how far is it?"* Then **Fix this → Share as a correction**.
@@ -217,7 +224,8 @@ Open **http://localhost:3000/**, or **http://localhost:3000/enterprise** for Bus
 | `homeward/src/enterprise-*.mjs` | Business mode: verified offices, fit assessment, judgement corrections and teaching |
 | `homeward/src/mubit-telemetry.mjs` | Safe response-header journal for every Mubit call |
 | `homeward/src/evaluation*.mjs` | Serving-gated evaluation; fails closed without model-identity proof |
-| `homeward/web/public/` | Browser shell: map modes, answer cards, correction editor, Evidence panel |
+| `homeward/web/public/` | Browser shell: map modes, answer cards, correction editor, Evidence panel, the no-WebGPU screen |
+| `homeward/web/public/friendly.mjs` | Plain-language error messages, shared by the server and the browser |
 | `homeward/web/dist/` | Built shell, full London map and compiled WebGPU renderer |
 | `homeward/experiments/` | Isolated experiments: corrected-guide lab, business prospecting (contracts, data, results) |
 | `AGENTS.md` | Full handoff for coding agents: model and task IDs, constraints, evidence locations |

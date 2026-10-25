@@ -173,3 +173,16 @@ button:disabled { opacity:.35;cursor:not-allowed; }
 #evidence pre { background:#101923ee;color:#e0eaf4; }
 #gesture-hint { color:var(--caption);background:var(--raised);padding:1px 7px;border-radius:5px;text-shadow:none; }
 #evidence dd,.place-caption,.source-list small,.provenance,.state-label { color:var(--caption); }
+#failure { margin:-12px 0 0;max-width:420px;padding:0 16px;color:var(--hw-muted);font-size:14px;line-height:1.5;text-align:center; }
+#no-webgpu { position:fixed;inset:0;z-index:100;display:flex;padding:24px 16px;overflow:auto;background:linear-gradient(180deg,#0d101ccc,#0d101cf2),url('/media/london-night.jpg') center/cover no-repeat,var(--paper); }
+.no-webgpu-panel { margin:auto;width:min(560px,100%);padding:36px 36px 32px;border:1px solid var(--line-strong);border-radius:20px;background:var(--hw-glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 24px 80px #0005; }
+#no-webgpu .no-webgpu-kicker { margin:0 0 10px;color:var(--hw-mint);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase; }
+#no-webgpu h1 { margin:0 0 14px;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance; }
+#no-webgpu p { margin:0 0 12px;color:var(--hw-muted);font-size:16px;line-height:1.55; }
+#no-webgpu .no-webgpu-reason { color:var(--hw-ink); }
+#no-webgpu h2 { margin:22px 0 8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tertiary); }
+#no-webgpu ul { margin:0;padding:0 0 0 20px;color:var(--hw-muted);font-size:15px;line-height:1.7; }
+.no-webgpu-actions { display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:26px; }
+.no-webgpu-actions a { color:var(--hw-mint);font-size:15px;text-decoration:none; }
+.no-webgpu-actions a:hover { text-decoration:underline; }
+@media (max-width:480px) { .no-webgpu-panel { padding:26px 20px 24px; } #no-webgpu h1 { font-size:25px; } }
