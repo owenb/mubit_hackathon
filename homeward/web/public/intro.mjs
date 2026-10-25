@@ -14,6 +14,20 @@ if(intro){
   const source=()=>{if(!video.getAttribute('src')){streaming=true;download.abort();video.src=url;}};
   // Decode the prank screen up front so Play again shows it instantly.
   $('intro-prank-image').decode?.().catch(()=>{});
+  // Play again sound effect: fetched now, decoded once OK unlocks audio, then
+  // started from memory the instant Play again is pressed.
+  const sfxUrl=intro.dataset.sfx,sfxBytes=fetch(sfxUrl).then(r=>r.ok?r.arrayBuffer():null).catch(()=>null);
+  let sfxContext=null,sfxBuffer=null;
+  const primeSfx=()=>{
+    if(sfxContext)return;
+    const Context=window.AudioContext||window.webkitAudioContext;if(!Context)return;
+    sfxContext=new Context();
+    sfxBytes.then(bytes=>bytes&&sfxContext.decodeAudioData(bytes.slice(0))).then(buffer=>{if(buffer)sfxBuffer=buffer;}).catch(()=>{});
+  };
+  const playSfx=()=>{
+    if(sfxContext&&sfxBuffer){sfxContext.resume();const node=sfxContext.createBufferSource();node.buffer=sfxBuffer;node.connect(sfxContext.destination);node.start();return;}
+    new Audio(sfxUrl).play().catch(()=>{});
+  };
 
   // Our own controls, so play/pause/stop/seek/mute behave the same in every
   // browser and in full screen. They fade while playing and return on movement.
@@ -49,7 +63,7 @@ if(intro){
   };
   // Play again: a fake "session ended" screen, then JUST KIDDING, then the video.
   const playAgain=()=>{
-    clearTimers();fullscreen();video.pause();
+    playSfx();clearTimers();fullscreen();video.pause();
     end.hidden=true;skip.hidden=true;controls.hidden=true;kidding.hidden=true;prank.hidden=false;
     timers.push(setTimeout(()=>{kidding.hidden=false;},2000));
     timers.push(setTimeout(play,3000));
@@ -59,7 +73,7 @@ if(intro){
     clearTimers();clearTimeout(idleTimer);download.abort();video.pause();intro.classList.add('intro-leaving');
     setTimeout(()=>{intro.remove();document.getElementById('homeward')?.focus({preventScroll:true});},350);
   };
-  $('intro-ok').addEventListener('click',play);
+  $('intro-ok').addEventListener('click',()=>{primeSfx();play();});
   $('intro-again').addEventListener('click',playAgain);
   skip.addEventListener('click',close);
   $('intro-demo').addEventListener('click',close);
