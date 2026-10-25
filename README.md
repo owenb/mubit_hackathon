@@ -1,185 +1,247 @@
-# Homeward / London Travel — London, in your words
+# London Guide: a London assistant that learns from its experts, built on Mubit
 
 ## 🔴 Live demo: [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app)
 
-Open in desktop Chrome or Edge (WebGPU required). The full city map takes about 20 seconds on first load.
+Open in desktop Chrome or Edge (WebGPU required). The full city takes about 20 seconds to load the first time.
+
+![London Guide: a full 3D map of London with an answer card](docs/images/london-travel-webgpu.png)
 
 ---
 
-A conversational London assistant on a full-screen **WebGPU map**, with two modes in the same interface:
+## In one minute
 
-- **Travel:** ask about step-free access, museums, payment rules or getting home late; see dated sources and the relevant map places.
-- **Businesses:** explore seven verified London enterprise offices, assess a possible recurring LLM workload for Mubit, and correct the proposed fit or pitch. Public evidence, estimated uses and unknowns stay separate.
+- **What it is.** A conversational guide to London on a live 3D map of the whole city, with two jobs in one interface:
+  - **Travel** answers questions such as step-free routes, payment rules and getting home late.
+  - **Businesses** judges which London companies would be good Mubit customers.
+- **The idea.** A business's most valuable training data is its experts correcting the AI as they work: a concierge fixing an answer, an accessibility specialist moving a pin, a salesperson sharpening a pitch. London Guide captures those corrections inside the product, **checks each one against the evidence**, and sends only the good ones to **Mubit**. Mubit turns them into a small open model for that job.
+- **What actually happened (24–25 October 2026):**
+  - **Bad corrections are refused.** An edit claiming Bank's Waterloo & City to DLR change is "a short indoor transfer of about 90 metres" was refused, because the sources say 290 metres via the street and lifts. An evidence-backed fix was accepted and sent to Mubit with a receipt.
+  - **Mubit trains a model with no ML team.** Once 29 reviewed examples were kept, Mubit trained a **Qwen3-4B adapter on its own, in about 10 minutes**, with no training code.
+  - **That model answers a question it never trained on.** On a question written and frozen before training, it gave the right answer in about 2 seconds: Walbrook lift on weekdays, 290 metres via street and lifts, Bank pinned.
+  - **Mubit gates every release.** The business model scored 91.7% against an 85% target and Mubit **promoted it to 10% of traffic automatically**. Lower scorers stay in silent testing.
+  - **The loop keeps running.** In a fresh project, 109 teaching calls and 80 audited examples produced **two new open models**, travel and business, now graded and held in testing.
+- **Honest status.** The trained models are **not yet better than Luna overall**. The numbers, including the losses, are below.
 
-Built for the Mubit hackathon around **expert correction → reviewed example → task-adapted open model → fresh-question test**. The product and correction flows work. Several isolated models have trained, but **we have not demonstrated that Mubit beats Luna overall** or that an adapter serves ordinary app traffic. Current app assessments request Luna through Mubit.
+---
 
-For a new coding agent, read [AGENTS.md](AGENTS.md) first. It contains the exact model/task IDs, constraints, private evidence locations, completed work and next steps. The latest backend checkpoint is 24 October 2026, 20:14 BST; status files are observations, not live platform health.
+## The problem
 
-![London Travel WebGPU map](docs/images/london-travel-webgpu.png)
+The advantage of a great guide, concierge or transit team is **nuance built up over years**. At Bank station, "step-free" for a Waterloo & City to DLR change means **290 metres via the street and lifts, through the Walbrook entrance, Monday to Friday**. A generic AI either misses that detail or states it too confidently.
 
-## Why this matters to travel operators
+Experts notice and fix mistakes like this every day, but today those fixes are lost: a hosted model never learns from them. Naively "learning from feedback" is also dangerous, because one confident wrong correction can teach a model something false. For accessibility information that is a real harm.
 
-A great travel guide's advantage is the “secret knowledge” built over years: how the city really works, what visitors love, and which recommendation fits this particular person. That expertise lives in guides' heads and comes through in many small decisions every day.
+London Guide is built around one loop: **expert correction → evidence check → teaching example → trained model → tested on new questions**.
 
-London Travel gives operators a way to teach that judgement. A guide can correct an answer or move a map pin; Mubit can turn reviewed examples of this recurring task into updates to a task-adapted open model. The ambition is an intelligence layer that carries the operator's expertise and improves through their corrections.
+---
 
-For an operator, the reasons to pursue this are:
+## What you can do in the app
 
-- **Sovereignty of data.** With exported weights and self-hosted inference, operators could choose where traveller requests and their proprietary knowledge are processed, subject to their own retention and access policies.
-- **Ownership.** Build a model shaped by years of local expertise, with weights the operator can export and retain as a business asset.
-- **Reliability.** Use versioned models and repeatable evaluations to check that familiar travel questions receive useful answers and correct map pins. Keep changing facts, such as lift outages, in fresh evidence and live feeds.
-- **Optionality — including running locally.** Export provides a path to serving on suitable local hardware or a chosen hosting provider, and to changing infrastructure as requirements change.
-- **A degree of resistance to future censorship.** Retained, independently served open weights reduce dependence on a closed provider's future access restrictions, regional availability and refusal policies. They do not remove legal or infrastructure constraints.
+### Travel
+Ask a real question, such as *"I'm changing from the Waterloo & City line to the DLR at Bank with a wheelchair. Is that interchange step-free, and how far is it?"* The answer arrives in a few seconds. It cites dated TfL sources, and the camera flies to the verified station pin.
 
-The current prototype uses hosted Mubit for recorded teaching calls. Export and self-hosted inference remain unverified. A narrow Bank correction changed a later trained-model answer, but overall answer acceptance did not improve; the results below separate that observation from the longer-term ambition.
+Under any answer, **Fix this** lets you edit the wording or the pins. **Use on my map** keeps the edit private. **Share as a correction** sends it through the evidence check, and then, if it passes, to Mubit.
 
-## Potential customers
+![Fixing an answer: edit the wording and the verified places](docs/images/london-travel-correction.png)
 
-- **Citymapper:** conversational help inside a journey-planning app, combining transport knowledge with recommendations and the right map locations.
-- **London hotels and concierges:** a digital extension of the concierge team's local expertise, with staff corrections teaching the recommendations they want to give guests.
-- **Theatre websites:** practical advice around a visit, such as arrival stations, nearby places to eat and getting home after the show, grounded in current venue and transport information.
+![A wrong correction refused by the evidence check](docs/images/guide-correction-refused.jpg)
 
-These are prospective customer groups, not existing customers or partnerships.
+### Businesses (the twist)
+The same engine, a second job: **which London firms should buy Mubit?** Seven real London offices come from OpenStreetMap: Morgan Stanley, Barclays, HSBC, J.P. Morgan, Unilever, Shell and Google. Click one and Luna gives a **Mubit fit** verdict (promising, conditional, weak or unknown), a one-line reason and a pilot idea. Public evidence, hypotheses and unknowns are kept apart.
 
-## Run the browser distribution
+A sales expert can **Fix this judgement** and **Teach** it. The correction goes to Mubit as a training example for a separate business model. In our run, Shell came out **promising**: a narrow, repeatable task of extracting key fields from research documents, with a reviewer checking the citations. Google came out **weak**. Barclays, HSBC, J.P. Morgan and Unilever were **conditional**.
 
-This Git repository contains the browser/WebGPU version, Node backend and selected experiments. Its renderer is precompiled WebAssembly with JavaScript bindings. **No native application, Rust source or Rust toolchain is needed** to run this distribution.
+![Shell: Mubit fit promising](docs/images/guide-shell-promising.jpg)
 
-Requirements: Node.js 22+, a desktop browser with WebGPU/hardware acceleration, and localhost or HTTPS.
+![A sales judgement taught to Mubit, with Luna's revised verdict](docs/images/guide-judgement-taught.jpg)
+
+---
+
+## How it works, end to end
+
+```mermaid
+flowchart LR
+  Q[Question] --> G[Dated sources +<br/>verified places]
+  G --> L[Luna via Mubit gateway<br/>strict JSON answer + scene]
+  L --> V[Validator checks place IDs<br/>map resolves coordinates]
+  V --> U[Answer + pins]
+  U --> F[Expert: Fix this]
+  F --> A{Luna audit<br/>vs the same sources<br/>recording OFF}
+  A -- refused --> X[Never reaches training]
+  A -- accepted --> T[Teaching call through Mubit<br/>recording FULL + receipt]
+  T --> R[Mubit review:<br/>kept examples]
+  R --> M[Mubit trains a<br/>Qwen3-4B adapter]
+  M --> E[Mubit exam + silent test<br/>before any release]
+  E --> P[Our test: frozen questions<br/>never used for training]
+```
+
+1. **Grounded, structured answers.** Each question is sent with a dated research snapshot (TfL guidance with retrieval dates) and a catalogue of verified map places. Luna, called through **Mubit's OpenAI-compatible gateway**, must return strict JSON with these fields:
+   - `answer` and `response_kind`.
+   - `static_access`, the access classification.
+   - `source_ids`.
+   - `scene`: a camera command plus up to six catalogue place IDs with roles.
+
+   The backend validates every ID and the map resolves coordinates. **The model never invents a place or coordinate.** That makes every answer checkable, and the task learnable by a small model.
+2. **Corrections where the work happens.** Experts edit the answer text or add and remove verified places. A correction carries a reason ("what was wrong").
+3. **The evidence gate.** Before anything can teach the model, Luna audits the corrected answer against the same dated sources. **Mubit recording is off for the audit**, so the audit itself never becomes training data. Refused corrections stay out, and the UI explains why. Every attempt is kept.
+4. **Teaching through Mubit.** Each accepted correction is sent as a **fully recorded** teaching call, using the app's own task instructions and answer schema, so Mubit files it under the same task as normal traffic. The app shows the Mubit receipt (`mreq_…`).
+5. **Mubit reviews and trains.** Mubit groups calls into tasks and keeps reviewed examples. When enough are kept, it **starts training on its own**: we observed it needs 28 (at least 12 held out for its exam, plus at least 13 to train on). It produces a **Qwen3-4B PEFT adapter** for that task.
+6. **Mubit gates release.** Each version is graded on held-out examples, by agreement with the teacher's answers, then placed in a **silent test**. It is promoted only when it meets its target. Our business adapter passed (91.7% against 85%) and Mubit promoted it to 10% of traffic. The travel adapters have not passed yet, and stay in testing.
+7. **Our own test on new questions.** Development questions were written and frozen **before** training and never taught. A separate private 20-question final set has never been used. Its SHA-256 is checked in tests and the file is not in this repo.
+
+**Businesses uses the same loop** with its own system prompt, schema, task and adapter:
+- Assessments are recorded as metadata only.
+- Only an explicit **Teach this judgement** records a full teaching example.
+
+**Every Mubit HTTP call** is journalled with safe response headers (no prompts, answers or keys), and the UI shows which model actually answered.
+
+---
+
+## What's new here
+
+1. **Corrections are the training signal, captured in the product.** There's no separate labelling project. Training data is a by-product of experts doing their job.
+2. **Learning is evidence-gated.** An auditor checks every correction against sources before it can teach the model. We watched it refuse a confident wrong edit and accept a precise fix. That's what makes "learn from users" safe for accessibility information.
+3. **A small model can learn the answer format.** The model picks verified place IDs and a camera command, never geometry. The validator and renderer make every output checkable, and the task is narrow enough for a 4B model.
+4. **One engine, several learnable jobs.** Consumer travel answers and B2B sales judgement run as separate Mubit tasks and adapters on the same product. The second job **finds customers for Mubit itself** and learns the sales team's judgement.
+5. **Measured honestly.**
+   - Frozen development questions and a protected final set.
+   - Model identity recorded per call.
+   - Evaluation that fails closed without proof of which model served.
+   - Losses reported alongside wins.
+6. **The whole city, unsimplified, in the browser.** 183,550 map features (5.1 M vertices) render with WebGPU. The app shows answers in place on a real London map, which makes the corrections tangible.
+
+---
+
+## Evidence: what actually happened
+
+All results are dated development observations from 24–25 October 2026, not a final benchmark. Reviews were done by us (the coding assistant, with Luna's audit), not by independent experts.
+
+| What we tested | Result |
+| --- | --- |
+| Wrong correction | "A short indoor transfer of about 90 metres" **refused**: the sources say 290 m via the street and lifts. |
+| Evidence-backed correction | **Accepted**, sent to Mubit as a recorded teaching example, receipt returned. |
+| First correction-trained model (Bank task) | 29 reviewed examples kept → Mubit **started training on its own**, adapter ready in about 10 minutes. Mubit exam: 41.7% (5/12). |
+| Same model, frozen question it never saw | **Correct in about 2 s** in Mubit Try models: Walbrook lift on weekdays, 290 m via street and lifts, Bank focused. |
+| Before vs after training, six frozen questions | Fully correct (answer + classification + map): **0/6 → 2/6**. Answers alone: 2/6 → 2/6, with control questions regressing. A targeted gain, not an overall win. |
+| Business model (Enterprise v1) | Mubit exam **91.7%** (target 85%) → Mubit promoted it to 10% of traffic. Our fresh full-format test: 0/6, so the app still uses Luna for business answers. |
+| Fresh project, 24–25 Oct | 109 Luna teaching calls (73 travel, 36 business), 80 audited good examples → **two new Qwen3-4B models**: travel **50%**, business **83.3%**, both held in testing. |
+| New travel model, same frozen question | Facts right, but it used an invalid map role, so not a full pass. |
+| Business fit verdicts | Shell **promising**; Google **weak**; Barclays, HSBC, J.P. Morgan, Unilever **conditional**. |
+
+![Mubit: two new models trained from our corrections](docs/images/guide-mubit-new-models.jpg)
+
+![The trained model answering a frozen question it never saw](docs/images/guide-mubit-test-answer.jpg)
+
+Public evidence in this repo:
+- [Original travel diagnostic](docs/evidence/v1-development-report.json)
+- [Corrected-guide paired report](homeward/experiments/corrected-guide-lab/results/paired-development-report.md)
+- [Business model status and raw results](homeward/experiments/enterprise-prospecting/observed-status.json)
+- [Learning workflow](homeward/LEARNING.md)
+- [Business mode design and evidence](homeward/experiments/enterprise-prospecting/README.md)
+
+The Bank and fresh-project captures stay in the private source workspace; exact IDs are in [AGENTS.md](AGENTS.md).
+
+---
+
+## Why this is a good use case for Mubit
+
+- **A recurring, narrow task.** The same kinds of question arrive every day, with a fixed output format. This is exactly what a task-adapted small model is for.
+- **Training data arrives on its own.** Concierges, support and accessibility teams already correct answers as part of their jobs.
+- **Accuracy matters, so gating matters.** Mubit's held-out exams, silent tests and gradual rollout are what a business needs before letting a model answer accessibility questions.
+- **The right split between model and live data.** The model learns judgement and phrasing, such as what "step-free" really means at a given station. Fast-changing facts like today's lift outages stay in live feeds.
+- **It generalises.** The second job, B2B sales judgement, uses the identical loop. Any company with expert reviewers can adopt the same pattern.
+
+## Commercial viability
+
+- **Who would buy.** These are prospective customer groups; there are no partnerships:
+  - Journey-planning apps (Citymapper).
+  - Hotel groups and concierge services.
+  - Theatres and venues advising visitors.
+  - Tourism boards and accessibility services.
+- **Why they would pay:**
+  - Their years of local know-how become a model trained on their own corrections, and it keeps improving as their team works.
+  - Mubit's versioned, gated releases make that safe to deploy.
+  - Owning an open-weights model opens a path to self-hosting and data sovereignty. Mubit offers weight export; we have not tested it.
+- **How it makes money.** A per-operator subscription for the correction loop, plus Mubit per-task training and inference. A 4B model may cost far less to serve than a frontier model; **we have not measured this**.
+- **The moat.** Each operator's growing, audited corrections set is unique to them, and the model compounds with it.
+- **For Mubit itself.** Businesses mode is a working prospecting tool. In our run it flagged Shell's research-document extraction as a promising first pilot, and it learns the sales team's judgement as they correct it.
+
+## What we have not proven
+
+- **Not better than Luna overall yet.** Gains are targeted (the Bank interchange nuance), and some control questions regressed.
+- **Small samples:** six frozen development questions and Mubit's 12-check exams. Reviews were ours, not independent experts'.
+- **Where the trained models served:** we observed fixed-version answers in Mubit's Try models. The app requests Luna via Mubit. Mubit has since started its own 10% partial rollout of the business adapter, and we have not verified which business answers that rollout serves.
+- **Not tested:** weight export, self-hosting, and any cost or latency advantage.
+- **The audit is model-based** and not perfectly consistent: the same correction can pass one run and fail another. Every attempt is recorded.
+- **The live demo has no login** and runs on our Mubit credit.
+
+---
+
+## Try it
+
+**Online:** [london-guide-production.up.railway.app](https://london-guide-production.up.railway.app). Desktop Chrome or Edge, with WebGPU.
+
+Things to try:
+- *"I'm changing from the Waterloo & City line to the DLR at Bank with a wheelchair. Is that interchange step-free, and how far is it?"* Then **Fix this → Share as a correction**.
+- *"Can I touch in with my phone and touch out with my watch?"*
+- Switch to **Businesses** and click **Shell** or **Google**, then **Fix this → Teach this judgement**.
+
+**Locally:** you need Node.js 22+, a desktop browser with WebGPU, and localhost or HTTPS. The renderer ships precompiled, so no Rust is needed.
 
 ```sh
 git clone https://github.com/owenb/mubit_hackathon.git
 cd mubit_hackathon
 npm ci
-cp .env.example .env
-# Fill the keys privately, then:
+cp .env.example .env   # only if .env doesn't exist; fill keys privately
 npm run build
 npm start
 ```
 
-Do not replace an existing `.env`. Open **http://localhost:3000/**; choose **Businesses** or open **http://localhost:3000/enterprise**. The map loads without credentials. Questions require a working Mubit key and provider access. `PORT` overrides 3000.
+Open **http://localhost:3000/**, or **http://localhost:3000/enterprise** for Businesses. The map loads without keys; questions need Mubit access:
+- Travel uses `MUBIT_API_KEY`, with `MUBIT_BASE_URL=https://api.mubit.ai/openai/v1`.
+- Businesses needs its own `ENTERPRISE_MUBIT_API_KEY`. It deliberately never falls back to the travel key.
+- Both modes use `gpt-6-luna`. Secrets stay on the server.
 
-Travel uses `MUBIT_API_KEY` and `MUBIT_BASE_URL=https://api.mubit.ai/openai/v1`. Businesses requires a separate `ENTERPRISE_MUBIT_API_KEY`; the authorized local demo can instead use `BANK_DEMO_MUBIT_API_KEY` from the private `.env.bank-demo`. There is deliberately **no enterprise fallback to the travel key**. Add the enterprise variable privately to `.env` on a fresh setup, or start the existing local setup with:
+**Checks without paid calls:** run `npm test` and `npm run homeward:headers`. The tests use injected model responses and local assets.
 
-```sh
-PORT=3000 node --env-file-if-exists=.env --env-file-if-exists=.env.bank-demo homeward/web/server.mjs
-```
+**Deployment:** the live site runs on Railway from this repo's Dockerfile. Deploys are manual (`railway up`); pushing to GitHub does not deploy.
 
-Both modes explicitly use **gpt-6-luna**. Configure starter credit/provider access in the Mubit console. `OPENAI_API_KEY` is optional for historical direct-baseline scripts only; adding it locally does not configure Mubit's provider key. Direct OpenAI mode is not used by the product or demo. Secrets remain on the server.
+---
 
-Try “Is there step-free access at Bank station?”, “Can I touch in with my phone and touch out with my watch?”, or select a business and ask which narrow recurring task would make a useful Mubit pilot.
+## How the code is organised
 
-## How it works
-
-**Ground the answer.** The travel backend retrieves a local, dated research snapshot and verified map candidates. It does not search the web on every request. Expired evidence is not presented as current. Current lift questions use a separate TfL disruption feed; no notice is not a guarantee that a lift works. Complete accessible journeys, bookings and live departure times are not verified by this prototype.
-
-**Control the map.** The model returns a strict JSON answer and scene: a camera command plus up to six catalogue IDs and place roles. The backend validates them and the renderer resolves coordinates. A station pin does not establish an accessible entrance or route. The learned task is selecting places/actions from evidence, not learning the London geometry itself.
-
-**Keep enterprise claims honest.** Businesses uses actual OSM office objects for Morgan Stanley, Barclays, HSBC, J.P. Morgan, Unilever, Shell and Google. Six licensed Wikimedia photos accompany the cards; J.P. Morgan has a monogram fallback. The requested cap was 30, not a target. Public AI evidence does not prove private LLM usage, spend or adoption by a particular London office. No business outreach is performed.
-
-**Keep model identity visible.** The UI distinguishes positively identified Luna via Mubit, an unverified route and a saved answer. A gateway receipt is not adapter-serving proof. Normal travel calls use full recording; business assessments use metadata-only recording. Evaluation inputs must stay out of teaching.
-
-## Correct an answer or map pin
-
-Choose **Fix this** beneath an answer. Add/remove verified places and use **Edit wording** to correct the text. **Use on my map** saves a personal edit. **Share as a correction…** asks for a reason and explains the Luna audit and teaching calls before **Send correction**. A successful submission shows a receipt, not an automatic claim that the model learned.
-
-In Businesses, use the same answer card and editor to save a local correction, then explicitly **Teach this judgement**. This makes a full-recorded Luna teaching call under the separate enterprise task. Concurrent duplicate submissions coalesce; ambiguous failures are retained without automatic retry. The latest real Unilever and Shell flows produced teaching receipts, which remain inspectable after reload.
-
-The shared **Evidence** panel holds source dates, corrections, model results and renderer measurements. The ask bar retains your exact draft. Travel and business histories stay separate across mode changes. There is no separate enterprise app or sidebar.
-
-The travel correction pipeline audits with recording off, then supplies the accepted target in a recorded teacher request. **Luna reproducing that target is submission fidelity, not generalization.** Stored content, Good review, kept example, trained version and improved fresh answer are different stages. The original Greville Street pin correction reached stored/trainable content and a saved Good rating; exact per-row weight inclusion is not exposed.
-
-See [the learning workflow](homeward/LEARNING.md) and [enterprise implementation/evidence](homeward/experiments/enterprise-prospecting/README.md). Travel records live privately in `homeward/results/feedback/`; enterprise records in `homeward/experiments/enterprise-prospecting/results/interactions/`. Persist them on writable private storage. Session cookies provide ownership scoping, not full multi-user authentication.
-
-## What the trained models actually did
-
-All results below are dated development observations, not a final benchmark. Internal Mubit exams differ across tasks and must not be compared as one learning curve. Preview/API decoding and schema settings are not proven identical; reviews were non-blinded and not independent expert assessment.
-
-| Experiment | Internal Mubit check | Fresh development result |
-| --- | --- | --- |
-| Original travel v1 | 1/12 (8.3%) | Original pin-correction baseline: 1/6 valid full answers/maps, including one interrupted failure |
-| Corrected-guide isolated v1 | 4/12 (33.3%) | Adapter: 3 pass, 1 uncertain, 2 fail; Luna: 5 pass, 1 uncertain |
-| New isolated Bank v1 | 5/12 (41.7%) | Answers stayed 2/6 → 2/6; full answer/classification/map improved 0/6 → 2/6 |
-| Enterprise v1 | 11/12 (91.7%) | Semantic 2 pass, 1 uncertain, 3 fail; only 1/6 valid format; full task 0/6 |
-
-The Bank comparison did produce a useful learning moment: a fresh question about Waterloo & City to DLR interchange gained the supported 290-metre street-and-lifts detail and a correct Bank focus command. But control answers regressed, so the overall answer count did not improve. The old and new models had different training sets; no per-row inclusion manifest or matched retrain without the correction establishes causality. The capture-reconstruction limitation is recorded in the experiment evidence.
-
-Enterprise's strong internal score did not translate into six reliable app-format answers. A separate explicit-schema diagnostic improved format and is excluded from those six results. Its Luna diagnostic accepted 3/6 complete tasks, retaining one transport failure; it was not a controlled superiority test. The app continues to use Luna.
-
-Original travel still had only v1 at its last verified check (153 kept, 10% silent testing, zero verified normal adapter traffic). The separate guide, Bank and enterprise models are **v1 of different tasks/projects**, not v2 of the original app. Fixed-version serving has been observed in Mubit **Try models**, not verified for ordinary app API traffic. No cost, latency or self-hosted-inference advantage is claimed.
-
-Public supporting evidence: [original diagnostic](docs/evidence/v1-development-report.json), [corrected-guide report](homeward/experiments/corrected-guide-lab/results/paired-development-report.md), [enterprise raw results and status](homeward/experiments/enterprise-prospecting/observed-status.json). The Bank captures are private in the source workspace; exact locations and IDs are in [AGENTS.md](AGENTS.md).
-
-## The unfinished next step: Bank round 2
-
-**38 Luna teaching calls are already complete.** Audit recommends 26 Good and withholds 12. **None of those round-2 ratings has been submitted, no next version is verified, and no round-2 student test has run.** At the last check the console was signed out after an earlier engine outage; service recovery is unconfirmed. Gateway inference working did not establish that reviews/training worked.
-
-After normal sign-in and console recovery, the next agent must verify exact receipt/task membership, capture the planned fresh v1 baseline, submit the 26 reviewed examples through supported controls, and observe a new training job/version before the after test. Six development inputs are already frozen. Last preview quota was 11, so the recorded plan is five matched before/after pairs plus one after-only question; do not compare unequal denominators. Do not rerun the paid teaching batch or delete its completion locks.
-
-The first isolated Bank model trained automatically after 29 accepted examples. A nominal 25 was insufficient: Mubit exposed a calibration holdout minimum and a 28-accepted threshold. The old travel task separately recorded a 24-hour/25-new-rated-row refresh policy; the current Bank refresh cursor is unknown. [Mubit's first-adapter guide](https://docs.mubit.ai/guides/first-adapter), last checked 24 October, says there is no retry-training button. No supported force-refresh API was found. Rollout controls change serving, not training, and were not applied to the app.
-
-## Response headers and protected evaluation
-
-Every backend Mubit HTTP attempt, including errors, is journalled with redacted response headers under ignored `homeward/results/mubit-headers/`. No prompt/answer bodies or outbound credentials are stored in that journal. `npm run homeward:headers` reads it without an API call. New model-identity fields are preserved but must have a confirmed meaning before they establish adapter/version proof. No new adapter identity header was seen in Bank round 2.
-
-**The final 20 questions remain private and untouched.** Their SHA-256 is `a8a19175c5ec7b3b0309b897ef4c92ddf19f797634ad141f6f3b19e6b01abe91`. Do not read, teach, edit or run them during development. An eventual final run requires explicit authorization, attributable fixed-version inference, an identified Luna comparator, identical evidence/settings, metadata-only recording, no answer cache/recovery and retained failures. The harness fails closed without serving proof.
-
-## Light, from night to day
-
-The circular **Light** dial in the top-right corner turns continuously through 270°: deep, night, day and clean. Drag around the ring, use arrow keys for fine adjustment, or Home/End for the extremes. All three sections of its travel change the map, glass and accent light: deep black to cosmic violet, night through daylight, then natural materials to a clean white city. It follows the system appearance until you choose a value. The dial remembers your last choice locally. Lighting has no additional menu controls.
-
-![The circular Light dial across its full range](docs/images/london-travel-dial.png)
-
-Aether’s date-aware London sun path drives sky brightness, warmth and stars. One Rust frame value updates the WebGPU map, ask bar and HTML panels together. Hand changes settle with exponential easing; system changes take three seconds per unit. Surface colours blend in linear light; text switches RGB at one-quarter UI daylight instead of fading through grey. Reduced-motion preferences skip the transition. Map labels and raw evidence retain contrasting dark plates. The full map and typed ask-bar text remain intact.
-
-## The WebGPU city
-
-The complete London map contains **183,550 source features**, producing **5,121,079 vertices** and **8,813,310 indices**. No map geometry was simplified for the browser.
-
-- Source database: **21,910,636 bytes**.
-- Lossless Brotli map transfer: **7,992,181 bytes**.
-- Gzip WebAssembly engine: **2,353,454 bytes**.
-- Combined map/engine transfer: about **10.34 MB**, before the small page and bindings.
-- Expanded GPU geometry: about **199 MB**; this targets desktop hardware.
-
-A worker verifies and assembles map geometry; the renderer uploads buffers in bounded chunks. Loading shows a rotating London Eye and “Loading London...”. Actual download, geometry and GPU upload measurements remain available in Evidence. Content-hashed assets are verified before use and cached in the browser.
-
-`npm run build` verifies the bundled map/engine checksums and rebuilds the editable HTML/CSS/JavaScript shell. The compiled renderer is a supplied artifact; this distribution does not rebuild that engine from source.
-
-## Verify without model calls
-
-```sh
-npm test
-npm run homeward:headers
-```
-
-Handoff check on 24 October: **78 tests passed, one expected private-file checksum test skipped**, zero failures. The full source workspace passed 79/79 including that byte-checksum test. Tests use injected model/feed responses and local assets, with no paid inference. No teaching batch or benchmark runs at startup. The skipped test does not mean the private final questions are bundled here.
-
-## Repository guide
-
-| Path | Purpose |
+| Path | What it does |
 | --- | --- |
-| `AGENTS.md` | Complete cross-agent handoff, exact identities, evidence and resume order |
-| `homeward/web/public/` | Editable shared WebGPU shell, worker, map modes and correction UI |
-| `homeward/web/dist/` | Built shell, full map and compiled renderer |
-| `homeward/web/app.mjs` | Hono APIs and static serving |
-| `homeward/src/` | Grounding, validation, corrections, telemetry, enterprise service and evaluation |
-| `homeward/data/` | Dated research, verified place catalogue and observed evidence snapshots |
-| `homeward/experiments/corrected-guide-lab/` | Completed isolated model and development report |
-| `homeward/experiments/enterprise-prospecting/` | OSM company data, photos, contract, trained-model evidence and UI handoff |
-| `docs/mubit-notes.md` | Earlier gateway/documentation research |
-| `scripts/experiment.mjs` | Historical synthetic support-ticket experiments; optional direct baseline, outside the demo |
+| `homeward/web/app.mjs` | Hono server: ask, correction, evidence and business APIs, plus static serving |
+| `homeward/src/core.mjs`, `map-contract.mjs` | Dated grounding, strict answer schema, place-ID and camera validation |
+| `homeward/src/feedback.mjs` | Corrections: save, Luna audit (recording off), recorded teaching call, receipts |
+| `homeward/src/enterprise-*.mjs` | Business mode: verified offices, fit assessment, judgement corrections and teaching |
+| `homeward/src/mubit-telemetry.mjs` | Safe response-header journal for every Mubit call |
+| `homeward/src/evaluation*.mjs` | Serving-gated evaluation; fails closed without model-identity proof |
+| `homeward/web/public/` | Browser shell: map modes, answer cards, correction editor, Evidence panel |
+| `homeward/web/dist/` | Built shell, full London map and compiled WebGPU renderer |
+| `homeward/experiments/` | Isolated experiments: corrected-guide lab, business prospecting (contracts, data, results) |
+| `AGENTS.md` | Full handoff for coding agents: model and task IDs, constraints, evidence locations |
 
-Useful routes: `GET /health`, `POST /api/ask`, `GET /api/metrics`, `GET /api/evals`, `GET /api/demo-evidence`, `GET /api/enterprise/companies`, `POST /api/enterprise/assess`, `GET /api/enterprise/status`. See the learning/enterprise docs for correction routes.
+Useful routes:
+- `GET /health`
+- `POST /api/ask`
+- `GET /api/evals`
+- `GET /api/demo-evidence`
+- `GET /api/enterprise/companies`
+- `POST /api/enterprise/assess`
+- `GET /api/enterprise/status`
 
-## Deployment status
+### The map, in numbers
+- **Geometry:** 183,550 source features → 5,121,079 vertices and 8,813,310 indices. Nothing is simplified.
+- **Download:** about 10.3 MB for the map plus engine (Brotli map 7,992,181 bytes; gzip WebAssembly engine 2,353,454 bytes).
+- **GPU memory:** about 199 MB, so it targets desktop hardware.
+- **Loading:** a worker verifies the content hashes and builds the geometry, then the renderer uploads it in bounded chunks.
 
-Local Node execution is the verified path. **The existing Dockerfiles need a packaging fix before deploying the integrated app:** they omit the enterprise experiment's imported runtime contract/catalogue assets, and do not provision its default writable interaction directory. Copy only the required public runtime data/assets, provide private writable storage for both correction services, and smoke-test the built container before treating it as deployment-ready. Publishing this repository does not deploy a public app.
-
-The service listens on `0.0.0.0:$PORT`; `/health` is its healthcheck. Keep credentials as runtime secrets and add authentication/usage limits before exposing unrestricted paid inference.
+The circular **Light** dial (top right) moves the city from deep night to clean daylight.
 
 ## Data and attribution
 
-London map and office geometry: **© OpenStreetMap contributors**, [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Attribution remains visible. The complete derived map and notice are served at `/maps/london.ael` and `/maps/README.txt`; see [the map format](docs/LONDON_DATA.md). Company photo creators/licences are retained in `homeward/experiments/enterprise-prospecting/images.json`. Travel facts retain source URLs and retrieval dates.
-
-No API keys are documented or added by this handoff. Environment files, private logs, session stores and the final questions must remain outside Git. Selected reviewed synthetic evidence is included; Bank private captures and raw app corrections are not. The cancelled scheduled monitor stays cancelled: console checks occur only during active work, and stop when sign-in expires.
+- **Map and office geometry:** © OpenStreetMap contributors, [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See [the map format](docs/LONDON_DATA.md).
+- **Company photos:** creators and licences are in `homeward/experiments/enterprise-prospecting/images.json`.
+- **Travel facts:** each keeps its source URL and retrieval date.
+- **Kept out of Git:** API keys, environment files, private logs, session stores and the private final question set.

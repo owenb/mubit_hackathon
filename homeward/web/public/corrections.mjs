@@ -3,7 +3,7 @@ import {draftFrom,changed,sceneFor,previewFor,correctionBody,correctionStatus} f
 export function createEditor({container,onPreview,onApply,onClose,onProgress,onChange}){
  let draft=null,working=false,wording=false,sharing=false,attempted=false,sent=null;
  const message=el('p',null,'form-message');message.setAttribute('role','status');
- const say=text=>message.textContent=text;
+ const say=(text,tone)=>{message.textContent=text;if(tone)message.dataset.tone=tone;else delete message.dataset.tone;};
  const editChanged=()=>{if(!working){attempted=false;sent=null;const b=container.querySelector('[data-send]');if(b)b.disabled=!changed(draft)||!draft.note.trim();const use=container.querySelector('[data-use]');if(use)use.disabled=!changed(draft);const discard=container.querySelector('[data-discard]');if(discard)discard.hidden=!changed(draft);}onChange?.();};
  function preview(){if(draft)onPreview(previewFor(draft));}
  function sources(){const details=el('details',null,'sources');details.append(el('summary','Sources (dated)'),sourceList(draft.interaction.evidence?.sources));for(const fact of draft.interaction.evidence?.facts||[])details.append(el('p',fact.text,'source-fact'));return details;}
@@ -27,7 +27,7 @@ export function createEditor({container,onPreview,onApply,onClose,onProgress,onC
    sent=await api('/api/learning/corrections',body);attempted=true;say('Checking the correction…');
    sent=await api('/api/learning/corrections/'+sent.id+'/teach',{reviewed:true});
    onProgress(sent);
-   if(sent.status==='needs_review'){say(sent.teaching?.audit?.reason||sent.error||'The correction needs review. You can still use a personal edit.');}
+   if(sent.status==='needs_review'){const audit=sent.teaching?.audit;if(audit?.accepted===true&&sent.teaching?.receipt&&sent.teaching?.matched===false)say(`Audit passed: ${audit.reason} Mubit received it as a teaching example (receipt ${sent.teaching.receipt}). Luna’s stored reply differs from your wording, so it needs review before training.`,'passed');else say(audit?.reason||sent.error||'The correction needs review. You can still use a personal edit.');}
    else{draft=null;onClose({sent});}
   }catch(e){say(attempted?'Could not confirm the result. Check Evidence before sending another correction.':e.message);if(sent){try{sent=await api('/api/learning/corrections/'+sent.id);onProgress(sent);}catch{}}}
   finally{working=false;container.inert=false;if(draft){const submit=container.querySelector('[data-send]');if(submit)submit.disabled=attempted;}}

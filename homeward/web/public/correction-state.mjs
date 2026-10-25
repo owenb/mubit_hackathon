@@ -17,6 +17,7 @@ export function correctionBody(draft,scope){
 }
 export function correctionStatus(row){
  if(row.scope==='trip')return 'Saved for your map';
+ if(row.status==='needs_review'&&row.teaching?.audit?.accepted===true&&row.teaching?.receipt&&row.teaching?.matched===false)return 'Audit passed · sent to Mubit · reply needs review';
  if(row.error||row.status==='needs_review'||row.teaching?.audit?.accepted===false)return 'Needs review · not learned';
  const review=row.stages?.mubit_review?.state;
  if(review==='rejected')return 'Not accepted for training';

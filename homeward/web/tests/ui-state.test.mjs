@@ -20,3 +20,8 @@ test('edited wording and labels count as real changes; an explanation alone does
 test('delivery, good ratings and a newer observed model never masquerade as demonstrated learning',()=>{
  const base={scope:'reusable',stages:{mubit_review:{state:'rated_good'},model_update:{newer_version_observed:true}}};assert.match(correctionStatus(base),/unverified/);assert.doesNotMatch(correctionStatus(base),/learned|improved/);assert.match(correctionStatus({...base,stages:{mubit_review:{state:'kept'}}}),/unverified/);assert.equal(correctionStatus({scope:'trip'}),'Saved for your map');assert.match(correctionStatus({...base,error:'Unknown delivery state'}),/Needs review/);
 });
+test('an audited correction Mubit received, but whose stored reply differs, says so without claiming learning',()=>{
+ assert.equal(correctionStatus({scope:'reusable',status:'needs_review',error:'Recorded teacher reply differs from the reviewed target.',teaching:{audit:{accepted:true},receipt:'mreq_x',matched:false}}),'Audit passed · sent to Mubit · reply needs review');
+ assert.match(correctionStatus({scope:'reusable',status:'needs_review',teaching:{audit:{accepted:false}}}),/Needs review/);
+ assert.match(correctionStatus({scope:'reusable',status:'needs_review',error:'x',teaching:{audit:{accepted:true},receipt:'mreq_x'}}),/Needs review/);
+});

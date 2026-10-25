@@ -99,6 +99,7 @@ body:has(#evidence:not([hidden])) #open-evidence { background:var(--raised);bord
 #learning .share-confirm { border-top:1px solid var(--hw-line);margin-top:12px;padding-top:2px; }
 .muted,#learning .muted { color:var(--hw-muted);font-size:11px;line-height:1.65; }
 .form-message { color:var(--error);font-size:12px;line-height:1.6; }
+.form-message[data-tone=passed] { color:var(--hw-mint); }
 button:disabled { opacity:.35;cursor:not-allowed; }
 #evidence { position:fixed;top:88px;right:24px;width:420px;max-width:calc(100vw - 48px);max-height:calc(100dvh - 204px);overflow:auto;z-index:6;padding:24px;background:var(--hw-glass);border:1px solid var(--line-strong);border-radius:24px;backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);box-shadow:inset 0 1px var(--line-soft),0 16px 60px var(--shadow);scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent;overscroll-behavior:contain; }
 .evidence-heading { display:flex;justify-content:space-between;align-items:center;margin-bottom:20px; }
