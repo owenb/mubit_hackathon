@@ -9,8 +9,12 @@ if(intro){
   // instantly (iOS ignores preload). If OK comes first, stream it instead.
   const url=video.dataset.src,download=new AbortController();
   let streaming=false;
-  fetch(url,{signal:download.signal}).then(r=>{if(!r.ok)throw Error(String(r.status));return r.blob();})
+  const videoReady=fetch(url,{signal:download.signal,priority:'high'}).then(r=>{if(!r.ok)throw Error(String(r.status));return r.blob();})
     .then(blob=>{if(!streaming){video.src=URL.createObjectURL(blob);video.load();}}).catch(()=>{});
+  // The London map loads itself behind the intro (loader.mjs). Once the video
+  // is in, warm the business photos too, so Businesses mode shows them instantly.
+  const warmed=[];
+  videoReady.then(()=>{for(const name of ['morgan-stanley','barclays','hsbc','unilever','shell','google']){const img=new Image();img.fetchPriority='low';img.src=`/enterprise-images/${name}.jpg`;img.decode?.().catch(()=>{});warmed.push(img);}});
   const source=()=>{if(!video.getAttribute('src')){streaming=true;download.abort();video.src=url;}};
   // Decode the prank screen up front so Play again shows it instantly.
   $('intro-prank-image').decode?.().catch(()=>{});
