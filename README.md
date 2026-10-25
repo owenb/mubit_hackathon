@@ -50,7 +50,7 @@ If Mubit or the model fails, the app says so in plain words, such as *"Mubit, th
 ### Businesses (the twist)
 The same engine, a second job: **which London firms should buy Mubit?** Seven real London offices come from OpenStreetMap: Morgan Stanley, Barclays, HSBC, J.P. Morgan, Unilever, Shell and Google. Click one and Luna gives a **Mubit fit** verdict (promising, conditional, weak or unknown), a one-line reason and a pilot idea. Public evidence, hypotheses and unknowns are kept apart.
 
-A sales expert can **Fix this judgement** and **Teach** it. The correction goes to Mubit as a training example for a separate business model. In our run, Shell came out **promising**: a narrow, repeatable task of extracting key fields from research documents, with a reviewer checking the citations. Google came out **weak**. Barclays, HSBC, J.P. Morgan and Unilever were **conditional**.
+A sales expert can **Fix this judgement** and **Teach** it. The correction goes to Mubit as a training example for a separate business model. In our run, Shell came out **promising**: a narrow, repeatable task of extracting key fields from research documents, with a reviewer checking the citations. Google came out **weak**. Barclays, HSBC, J.P. Morgan and Unilever were **conditional**. Each verdict is a fresh Luna call, so it can change between runs. In a final live check after deploying on 25 October, Shell came out **conditional**, with the same document-extraction pilot idea.
 
 ![Shell: Mubit fit promising](docs/images/guide-shell-promising.jpg)
 
@@ -130,7 +130,7 @@ All results are dated development observations from 24–25 October 2026, not a 
 | Business model (Enterprise v1) | Mubit exam **91.7%** (target 85%) → Mubit promoted it to 10% of traffic. Our fresh full-format test: 0/6, so the app still uses Luna for business answers. |
 | Fresh project, 24–25 Oct | 109 Luna teaching calls (73 travel, 36 business), 80 audited good examples → **two new Qwen3-4B models**: travel **50%**, business **83.3%**, both held in testing. |
 | New travel model, all six frozen questions (one attempt each, strict rubric) | **1 full pass**: *"does step-free mean boarding is gap-free?"* (correct, about 3 s, Bank focused). **2 near passes. 3 fails**: an invalid map role, a wrong access classification, and one payment answer that contradicts itself. If you saw this question in a demo video, it is that one full pass, not a typical result. |
-| Business fit verdicts | Shell **promising**; Google **weak**; Barclays, HSBC, J.P. Morgan, Unilever **conditional**. |
+| Business fit verdicts | Shell **promising**; Google **weak**; Barclays, HSBC, J.P. Morgan, Unilever **conditional**. A later live run rated Shell **conditional**: verdicts are fresh Luna calls and can vary. |
 
 ![Before and after, run live on 25 October: the earlier model stops at "The interchange station is Bank"; the model Mubit trained on the Bank examples adds the 290-metre street-and-lifts route](docs/images/guide-before-after-live.jpg)
 

@@ -28,7 +28,7 @@ Read this first. Where it conflicts with the 24 October notes below, this sectio
   - Plain-language errors (`homeward/web/public/friendly.mjs`, shared by the server and the browser). Mubit/LLM failures show a readable message plus Try again. The server keeps the redacted original as `detail` and logs it.
   - A no-WebGPU screen in place of a stalled loader, covering missing, blocked and lost GPU devices. Preview it with `?no-webgpu`. The page title is now London Guide.
 - **Live checks (25 October):**
-  - Fit verdicts: Shell promising; Google weak; Barclays, HSBC, J.P. Morgan and Unilever conditional.
+  - Fit verdicts: Shell promising; Google weak; Barclays, HSBC, J.P. Morgan and Unilever conditional. A final post-deploy check (25 October) rated Shell conditional, with the same pilot idea. Verdicts are fresh Luna calls and vary between runs.
   - The evidence audit refused a wrong "90 m indoor" Bank correction and accepted an evidence-backed fix, with teaching receipts.
   - The audit is model-based and not perfectly consistent; every attempt is recorded.
 - **Still not shown:**
