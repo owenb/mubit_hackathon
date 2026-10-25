@@ -4,7 +4,7 @@
 
 Open in desktop Chrome or Edge (WebGPU required; other browsers get a screen saying where it works). The full city takes about 20 seconds to load the first time.
 
-![London Guide: a full 3D map of London with an answer card](docs/images/london-travel-webgpu.png)
+![London Guide: the full 3D map of London, an answer about changing lines at Bank, and Bank pinned on the map](docs/images/guide-answer.jpg)
 
 ---
 
@@ -43,7 +43,7 @@ Under any answer, **Fix this** lets you edit the wording or the pins. **Use on m
 
 If Mubit or the model fails, the app says so in plain words, such as *"Mubit, the service that runs our AI, didn't answer just now"*, and offers **Try again**. The raw error stays in the server log. Browsers without WebGPU get a screen that says which browsers can draw the map.
 
-![Fixing an answer: edit the wording and the verified places](docs/images/london-travel-correction.png)
+![Fix this: edit the wording or the verified places, keep it private, or share it as a correction](docs/images/guide-fix-this.jpg)
 
 ![A wrong correction refused by the evidence check](docs/images/guide-correction-refused.jpg)
 
