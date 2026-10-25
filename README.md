@@ -17,7 +17,7 @@ Open in desktop Chrome or Edge (WebGPU required). The full city takes about 20 s
 - **What actually happened (24–25 October 2026):**
   - **Bad corrections are refused.** An edit claiming Bank's Waterloo & City to DLR change is "a short indoor transfer of about 90 metres" was refused, because the sources say 290 metres via the street and lifts. An evidence-backed fix was accepted and sent to Mubit with a receipt.
   - **Mubit trains a model with no ML team.** Once 29 reviewed examples were kept, Mubit trained a **Qwen3-4B adapter on its own, in about 10 minutes**, with no training code.
-  - **That model answers a question it never trained on.** On a question written and frozen before training, it gave the right answer in about 2 seconds: Walbrook lift on weekdays, 290 metres via street and lifts, Bank pinned.
+  - **A trained model answers a question it never saw.** On a question frozen before training, one of our new models answered correctly in about 3 seconds, labelled by Mubit as our adapter running on Mubit Cloud. The question was "does Bank's step-free interchange information say boarding the train is gap-free?" The model said no: the guidance covers a 290-metre street-and-lifts route, not boarding.
   - **Mubit gates every release.** The business model scored 91.7% against an 85% target and Mubit **promoted it to 10% of traffic automatically**. Lower scorers stay in silent testing.
   - **The loop keeps running.** In a fresh project, 109 teaching calls and 80 audited examples produced **two new open models**, travel and business, now graded and held in testing.
 - **Honest status.** The trained models are **not yet better than Luna overall**. The numbers, including the losses, are below.
@@ -120,16 +120,16 @@ All results are dated development observations from 24–25 October 2026, not a 
 | Wrong correction | "A short indoor transfer of about 90 metres" **refused**: the sources say 290 m via the street and lifts. |
 | Evidence-backed correction | **Accepted**, sent to Mubit as a recorded teaching example, receipt returned. |
 | First correction-trained model (Bank task) | 29 reviewed examples kept → Mubit **started training on its own**, adapter ready in about 10 minutes. Mubit exam: 41.7% (5/12). |
-| Same model, frozen question it never saw | **Correct in about 2 s** in Mubit Try models: Walbrook lift on weekdays, 290 m via street and lifts, Bank focused. |
+| Same model, frozen Walbrook question it never saw | About 2 s in Mubit Try models: Walbrook for a Thursday, 290 m via street and lifts, Bank focused. Right for the question asked, but it didn't state the Monday–Friday limit our rubric asks for, so it's a **partial** pass. |
 | Before vs after training, six frozen questions | Fully correct (answer + classification + map): **0/6 → 2/6**. Answers alone: 2/6 → 2/6, with control questions regressing. A targeted gain, not an overall win. |
 | Business model (Enterprise v1) | Mubit exam **91.7%** (target 85%) → Mubit promoted it to 10% of traffic. Our fresh full-format test: 0/6, so the app still uses Luna for business answers. |
 | Fresh project, 24–25 Oct | 109 Luna teaching calls (73 travel, 36 business), 80 audited good examples → **two new Qwen3-4B models**: travel **50%**, business **83.3%**, both held in testing. |
-| New travel model, same frozen question | Facts right, but it used an invalid map role, so not a full pass. |
+| New travel model, all six frozen questions (one attempt each, strict rubric) | **1 full pass**: *"does step-free mean boarding is gap-free?"* (correct, about 3 s, Bank focused). **2 near passes. 3 fails**: an invalid map role, a wrong access classification, and one payment answer that contradicts itself. The demo video's test is the full pass. |
 | Business fit verdicts | Shell **promising**; Google **weak**; Barclays, HSBC, J.P. Morgan, Unilever **conditional**. |
 
 ![Mubit: two new models trained from our corrections](docs/images/guide-mubit-new-models.jpg)
 
-![The trained model answering a frozen question it never saw](docs/images/guide-mubit-test-answer.jpg)
+![One of the new models, running on Mubit Cloud, answering a frozen question it never saw: does step-free mean boarding is gap-free?](docs/images/guide-mubit-test-answer.jpg)
 
 Public evidence in this repo:
 - [Original travel diagnostic](docs/evidence/v1-development-report.json)
